@@ -1,0 +1,17 @@
+/* Ana stil dosyası */
+body {
+    background-color: #ea9090; /* Arka plan rengi */
+    color: #333; /* Yazı rengi */
+    font-family: "Open Sans", sans-serif; /* Yazı tipi */
+    font-size: 16px; /* Yazı boyutu */
+    line-height: 1.5; /* Satır yüksekliği */
+  }
+  
+  a {
+    color: #007bff; /* Link rengi */
+    text-decoration: none; /* Link altı çizgiyi kaldır */
+  }
+  
+  a:hover {
+    color: #0056b3; /* Fare imleci üzerinde link rengi */
+  }

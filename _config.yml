@@ -1,0 +1,59 @@
+title: Mr0Wido's Blog
+email: your-email@example.com
+first_name: Mr0Wido
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "http://localhost:4000" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+permalink: /:title/
+
+# Includes & excludes
+include: ['_pages']
+exclude:
+  - bin
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+keep_files:
+  - CNAME
+  - .nojekyll
+  - .git
+
+
+  # Site Author
+author:
+  name             : "Mr0Wido's Blog"
+  avatar           : "/assets/img/avatar.jpg"
+  bio              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus tellus sit amet augue ultrices varius. Curabitur tincidunt orci et lacinia posuere. Pellentesque ornare odio tempus malesuada suscipit. Nulla laoreet placerat mauris, nec posuere lorem viverra ac. Maecenas tristique tristique purus nec ornare. Orci varius natoque penatibus et magnis dis."
+  location         : "Turkey"
+  email            : "hackermandebian04@gmail.com"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "http://localhost:4000/"
+
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      # url: "https://twitter.com/"
+
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/Mr0Wido"
+
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      url: "https://www.instagram.com/furkn.dniz/"

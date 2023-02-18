@@ -1,0 +1,32 @@
+---
+layout: default
+comments: true
+title: "{{ page.title }}"
+date: "{{ page.date }}"
+categories: "{{ page.categories }}"
+author: "{{ page.author }}"
+tags: "{{ tag }}"
+
+
+---
+<div class="post">
+  <h1 class="post__title">{{ page.title }}</h1>
+  <p class="post__date">{{ page.date | date: "%b %d, %Y" }}</p>
+
+  <div class="post__content">
+    {{ content }}
+  </div>
+
+  <div class="post__footer">
+    {% if page.tags %}
+      <div class="post__tags">
+        <p class="post__tags-title">Tags:</p>
+        <ul class="post__tags-list">
+          {% for tag in page.tags %}
+            <li class="post__tags-item"><a href="{{ site.baseurl }}/tag/{{ tag | slugify }}">{{ tag }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<header class="site-header">
+  <a class="site-logo" href="/"> <img src="/assets/img/avatar_1.png" alt=""></a>
+  <div class="site-title">
+    <a href="{{ site.url }}">{{ site.title }}</a>
+  </div>
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li class="site-nav__item">
+        <a class="site-nav__link {% if page.title == "Home" %} active{% endif %}" href="/">Home</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link {% if page.title == "About Me" %} active{% endif %}" href="/about/">About</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link {% if page.title == "Posts" %} active{% endif %}" href="/posts/">Posts</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link {% if page.title == "Projects" %} active{% endif %}" href="/projects/">Projects</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link {% if page.title == "CV" %} active{% endif %}" href="/cv/">CV</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link {% if page.title == "Categories" %} active{% endif %}" href="/categories/">Categories</a>
+      </li>
+    </ul>
+  </nav>
+</header>
