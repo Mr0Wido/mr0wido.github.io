@@ -344,3 +344,7 @@ hr {
   background-color: #fed33f; /* Arka plan rengini kırmızı olarak ayarlar */
   border: none; /* Kenarlık olmamasını sağlar */
 }
+
+#disqus_thread {
+  background-color: #f2f2f2;
+}
