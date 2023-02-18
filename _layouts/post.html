@@ -14,7 +14,7 @@ tags: "{{ tag }}"
   <div class="post__content">
     {{ content }}
   </div>
-
+  {% include disqus.html %}
   <div class="post__footer">
     {% if page.tags %}
       <div class="post__tags">
@@ -27,7 +27,6 @@ tags: "{{ tag }}"
       </div>
     {% endif %}
   </div>
-  {% include disqus.html %}
 
 </div>
 
