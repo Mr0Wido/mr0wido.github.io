@@ -11,14 +11,15 @@ plugins:
   - jekyll-paginate
 
 permalink: /:title/
+paginate: 2
+paginate_path: '/page:num/'
 
-paginate_multiple:
-  - paginate: 2
-    paginate_path: '/page:num/'
-    sub_dir: '/'
-  - paginate: 3
-    paginate_path: '/posts/page/:num/'
-    sub_dir: '/'
+defaults:
+  - scope:
+      path: "posts"
+    values:
+      paginate: 5
+      paginate_path: "/posts/page/:num/"
 
 sass:
   sass_dir: _sass
