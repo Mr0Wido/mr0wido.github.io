@@ -4,16 +4,17 @@ title: Posts
 permalink: /posts/
 
 ---
+
 <div class="post-list">
-    <ul class="post-list__list">
-        {% for post in site.posts %}
-            <li class="post-list__item">
-                <h3 class="post-list__item-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-                <p class="post-list__item-meta">{{ post.date | date: "%d %B %Y" }}</p>
-                <p class="post-list__item-excerpt">{{ post.excerpt | split:'\n\n' | first }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+  <ul class="post-list__list">
+    {% for post in paginator.posts %}
+      <li class="post-list__item">
+        <h3 class="post-list__item-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p class="post-list__item-meta">{{ post.date | date: "%d %B %Y" }}</p>
+        <p class="post-list__item-excerpt">{{ post.excerpt | split:'\n\n' | first }}</p>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
 
 
