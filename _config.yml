@@ -4,13 +4,16 @@ baseurl: "/"
 url: "https://mr0wido.github.io" # 
 
 
-
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 permalink: /:title/
+paginate: 3
+paginate_path: "/page:num/"
+
 
 sass:
   sass_dir: _sass
@@ -52,5 +55,3 @@ author:
       icon: "fab fa-fw fa-instagram"
       url: "https://www.instagram.com/furkn.dniz/"
 
-paginate: 5
-paginate_path: "/posts/page:num/"
