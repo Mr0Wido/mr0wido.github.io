@@ -3,7 +3,7 @@ layout: page
 title: Posts
 pagination:
   enabled: true
-  permalink: /posts/page/:num/
+  permalink: /posts/
   paginate: 5
 ---
 {% for post in paginator.posts %}

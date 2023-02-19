@@ -82,8 +82,7 @@ GEM
       jekyll (>= 3.5)
       json-minify (~> 0.0.3)
       uglifier (~> 4.1)
-    jekyll-paginate-v2 (3.0.0)
-      jekyll (>= 3.0, < 5.0)
+    jekyll-paginate (1.1.0)
     jekyll-sass-converter (3.0.0)
       sass-embedded (~> 1.54)
     jekyll-scholar (7.1.2)
@@ -191,7 +190,7 @@ DEPENDENCIES
   jekyll-imagemagick
   jekyll-link-attributes
   jekyll-minifier
-  jekyll-paginate-v2
+  jekyll-paginate
   jekyll-scholar
   jekyll-sitemap
   jekyll-twitter-plugin

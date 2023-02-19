@@ -37,6 +37,9 @@
 <loc>http://localhost:4000/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/_pages/posts/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/projects/</loc>
 </url>
 </urlset>
