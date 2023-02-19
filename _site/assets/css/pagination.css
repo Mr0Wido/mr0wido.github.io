@@ -1,0 +1,28 @@
+.pagination {
+    margin: 0 auto 2em;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+  
+  .pagination__prev,
+  .pagination__next,
+  .pagination__page {
+    padding: 0.5em 1em;
+    color: #333;
+  }
+  
+  .pagination__prev.pagination__prev--disabled,
+  .pagination__next.pagination__next--disabled,
+  .pagination__page--active {
+    opacity: 0.5;
+  }
+  
+  .pagination__prev:hover,
+  .pagination__next:hover,
+  .pagination__page:hover,
+  .pagination__page--active {
+    background-color: #333;
+    color: #fff;
+  }
+  

@@ -25,7 +25,7 @@ plugins:
 pagination:
   enabled: true
 
-paginate_path: "/posts/page/:num/"
+paginate_path: "/posts/:num/"
 
 disqus_shortname: mr0widos-blog
 
@@ -41,8 +41,7 @@ permalink: /:title/
 include: ['_pages']
 exclude:
   - bin
-  - Gemfile
-  - Gemfile.lock
+
   - vendor
 keep_files:
   - CNAME
