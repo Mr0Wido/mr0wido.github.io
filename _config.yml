@@ -12,7 +12,7 @@ plugins:
 
 permalink: /:title/
 paginate: 3
-paginate_path: "/page:num/"
+paginate_path: "/:collection/:num/"
 
 
 sass:

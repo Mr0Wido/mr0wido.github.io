@@ -2,6 +2,10 @@
 layout: page
 title: Posts
 permalink: /posts/
+pagination:
+  enabled: true
+  collection: posts
+  per_page: 3
 ---
 
 <div class="post-list">
