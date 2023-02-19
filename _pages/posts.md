@@ -1,27 +1,37 @@
 ---
 layout: page
 title: Posts
-pagination:
-  enabled: true
-  collection: posts
-  permalink: /page/:num/
-  per_page: 3
-  sort_field: date
-  sort_reverse: true
-  trail:
-    before: 1 # The number of links before the current page
-    after: 3  # The number of links after the current page
+permalink: /posts/
+
 ---
-{% for post in paginator.posts %}
-    <div class="post-list">
-        <ul class="post-list__list">
+<div class="post-list">
+    <ul class="post-list__list">
+        {% for post in site.posts %}
             <li class="post-list__item">
-                <h3 class="post-list__item-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                <h3 class="post-list__item-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
                 <p class="post-list__item-meta">{{ post.date | date: "%d %B %Y" }}</p>
                 <p class="post-list__item-excerpt">{{ post.excerpt | split:'\n\n' | first }}</p>
             </li>
-        </ul>
-    </div>
-{% endfor %}
+        {% endfor %}
+    </ul>
+</div>
 
 
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">
+      Previous
+    </a>
+  {% else %}
+    <span class="previous">Previous</span>
+  {% endif %}
+  <span class="page_number ">
+    Page: {{ paginator.page }} of {{ paginator.total_pages }}
+  </span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+  {% else %}
+    <span class="next ">Next</span>
+  {% endif %}
+</div>
