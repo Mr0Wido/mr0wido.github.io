@@ -358,17 +358,20 @@ hr {
 }
 
 .previous, .next {
-  color: #333;
+  color: #2be4ea #5d2322;
+  background-color: #1e181e;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   margin: 0 0.5rem;
+  border: 1px solid #e8615a;
+  cursor: pointer;
+  border-radius: 2px;
 }
 
 .previous:hover, .next:hover {
-  background-color: #333;
-  color: #fff;
+  background-color: #571d1d;
+  border-radius: 2px;
+  text-shadow: none;
 }
 
 .previous.disabled, .next.disabled {
@@ -378,7 +381,6 @@ hr {
 
 .page_number {
   margin: 0 1.5rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
+  font-size: 12px;
+  color: #fed13f83 ;
 }

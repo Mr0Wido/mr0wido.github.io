@@ -10,6 +10,7 @@ group :jekyll_plugins do
   gem 'jekyll-imagemagick'
   gem 'jekyll-minifier'
   gem 'jekyll-paginate'
+  gem 'jekyll-paginate-multiple'
   gem 'jekyll-scholar'
   gem 'jekyll-sitemap'
   gem 'jekyll-link-attributes'

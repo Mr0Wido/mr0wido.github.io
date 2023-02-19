@@ -9,11 +9,17 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-paginate-multiple
 
 permalink: /:title/
-paginate: 3
-paginate_path: /posts/page:num/
 
+paginate_multiple:
+  - paginate: 2
+    paginate_path: '/page:num/'
+    sub_dir: '/'
+  - paginate: 3
+    paginate_path: '/posts/page/:num/'
+    sub_dir: '/'
 
 sass:
   sass_dir: _sass
