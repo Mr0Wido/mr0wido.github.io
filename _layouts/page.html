@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "{{ page.title }}"
+paginate: true
 ---
 
 <article class="post">
@@ -9,6 +10,5 @@ title: "{{ page.title }}"
   </header>
   <div class="post-content">
     {{ content }}
-    {% include disqus.html %}
   </div>
 </article>

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: About Me
 permalink: /about/
 date: '2023-02-17 19:21:33'

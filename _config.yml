@@ -9,17 +9,21 @@ baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://mr0wido.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 comments:
-  provider               : "disqus"
+  provider: "disqus"
   disqus:
-    shortname            : mr0widos-blog
+    shortname: mr0widos-blog
 
 disqus:
   shortname: mr0widos-blog
+
+paginate: 5 # her sayfada gösterilecek post sayısı
+paginate_path: "/page:num/" # sayfa numaralarının görüntüleneceği URL yapısı
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate-v2
 
 sass:
   sass_dir: _sass
