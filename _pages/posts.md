@@ -3,8 +3,14 @@ layout: page
 title: Posts
 pagination:
   enabled: true
-  permalink: /posts/
-  paginate: 5
+  collection: posts
+  permalink: /page/:num/
+  per_page: 3
+  sort_field: date
+  sort_reverse: true
+  trail:
+    before: 1 # The number of links before the current page
+    after: 3  # The number of links after the current page
 ---
 {% for post in paginator.posts %}
     <div class="post-list">
@@ -18,5 +24,4 @@ pagination:
     </div>
 {% endfor %}
 
-{% include pagination.html %}
 

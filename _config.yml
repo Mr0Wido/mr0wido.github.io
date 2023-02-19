@@ -8,13 +8,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://mr0wido.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
-comments:
-  provider: "disqus"
-  disqus:
-    shortname: mr0widos-blog
 
-disqus:
-  shortname: mr0widos-blog
 
 # Build settings
 theme: minima
@@ -25,11 +19,7 @@ plugins:
 pagination:
   enabled: true
 
-paginate_path: "/:title/:num/"
-
-disqus_shortname: mr0widos-blog
-
-
+permalink: /posts/:title/
 
 sass:
   sass_dir: _sass
