@@ -16,14 +16,15 @@ comments:
 disqus:
   shortname: mr0widos-blog
 
-paginate: 5 # her sayfada gösterilecek post sayısı
-paginate_path: "/page:num/" # sayfa numaralarının görüntüleneceği URL yapısı
-
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-paginate-v2
+
+
+disqus_shortname: mr0widos-blog
+
+
 
 sass:
   sass_dir: _sass

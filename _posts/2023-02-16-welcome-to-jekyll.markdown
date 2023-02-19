@@ -1,6 +1,6 @@
 ---
 title: Welcome
-comment: true
+comments: true
 layout: post
 date: '2023-02-17 21:54:45 +0300'
 categories:

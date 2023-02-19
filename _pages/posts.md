@@ -3,7 +3,7 @@ layout: page
 title: Posts
 permalink: /posts/
 ---
-{% for post in site.posts %}
+{% for post in paginator.posts %}
   <div class="post-list">
     <ul class="post-list__list">
         <li class="post-list__item">
