@@ -12,28 +12,4 @@ title: "{{ page.title }}"
   </div>
 </article>
 
-{% if paginator.total_pages > 1 %}
-  <div class="pagination">
-    {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path }}" class="previous">&laquo; Previous</a>
-    {% else %}
-      <span class="previous">&laquo; Previous</span>
-    {% endif %}
 
-    {% for page in (1..paginator.total_pages) %}
-      {% if page == paginator.page %}
-        <span class="page current">{{ page }}</span>
-      {% elsif page == 1 %}
-        <a href="{{ site.baseurl }}{{ page_path }}" class="page">{{ page }}</a>
-      {% else %}
-        <a href="{{ site.baseurl }}/page{{ page_path | replace: '/1/', '/' }}{{ page }}" class="page">{{ page }}</a>
-      {% endif %}
-    {% endfor %}
-
-    {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path }}" class="next">Next &raquo;</a>
-    {% else %}
-      <span class="next">Next &raquo;</span>
-    {% endif %}
-  </div>
-{% endif %}

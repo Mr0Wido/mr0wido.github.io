@@ -20,7 +20,12 @@ disqus:
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate-v2
 
+pagination:
+  enabled: true
+
+paginate_path: "/posts/page/:num/"
 
 disqus_shortname: mr0widos-blog
 
