@@ -68,13 +68,8 @@ GEM
       sinatra-contrib (>= 1.4)
     jekyll-archives (2.2.1)
       jekyll (>= 3.6, < 5.0)
-    jekyll-diagrams (0.10.0)
-      jekyll (>= 3.8, < 5.0)
-    jekyll-email-protect (1.1.0)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-imagemagick (1.4.0)
-      jekyll (>= 3.4)
     jekyll-link-attributes (1.0.1)
     jekyll-minifier (0.1.10)
       cssminify2 (~> 2.0)
@@ -97,7 +92,6 @@ GEM
       jekyll (>= 3.8, < 5.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-twitter-plugin (2.1.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     jemoji (0.13.0)
@@ -187,17 +181,13 @@ DEPENDENCIES
   jekyll
   jekyll-admin
   jekyll-archives
-  jekyll-diagrams
-  jekyll-email-protect
   jekyll-feed (~> 0.12)
-  jekyll-imagemagick
   jekyll-link-attributes
   jekyll-minifier
   jekyll-paginate
   jekyll-paginate-multiple
   jekyll-scholar
   jekyll-sitemap
-  jekyll-twitter-plugin
   jemoji
   mini_racer
   minima
