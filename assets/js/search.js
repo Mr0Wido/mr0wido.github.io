@@ -7,7 +7,7 @@ function search(event) {
     success: function(data) {
       var filteredData = data.filter(function(item) {
         // burada filtreleme işlemi gerçekleştirilir
-        // örneğin item başlığı veya açıklaması searchTerm'i içeriyorsa true döndürürüz
+        return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 || item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
       });
       var topResults = filteredData.slice(0, 3); // en yakın 3 sonucu alır
       var resultList = $("<ul>"); // sonuçları liste olarak görüntüler
@@ -18,4 +18,5 @@ function search(event) {
     }
   });
 }
+
 $("#search-form").on("submit", search); // form submit edildiğinde search fonksiyonunu çağırır

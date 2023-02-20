@@ -426,35 +426,68 @@ hr {
   color: #fed13f83 ;
 }
 
-/* Arama kutusu */
-#search-form input[type="text"] {
-  border: none;
-  padding: 10px;
+/* Search Form */
+#search-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
-  border-bottom: 2px solid #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-/* Arama sonuçları */
-.search-results {
-  margin-top: 20px;
+#search-form label {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-right: 1rem;
 }
 
-.search-results h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+#search-form input[type="text"] {
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  flex-grow: 1;
 }
 
-.search-results ul {
+#search-form button[type="submit"] {
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#search-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Search Results */
+#search-results {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.search-results li {
-  margin-bottom: 10px;
+#search-results li {
+  margin-bottom: 0.5rem;
 }
 
-.search-results li a {
-  color: #333;
+#search-results li a {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #007bff;
   text-decoration: none;
+}
+
+#search-results li a:hover {
+  text-decoration: underline;
 }
