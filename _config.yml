@@ -13,6 +13,7 @@ plugins:
 
 search_enabled: true
 
+disqus_shortname: mr0widos-blog
 
 permalink: /:title/
 
