@@ -159,6 +159,47 @@ footer {
   margin-bottom: 20px;
 }
 
+.post-list__list {
+  list-style: none;
+}
+.post__content img {
+  max-width: 800px;
+}
+
+.post-list__image{
+  width: 250px;
+  height: 140px;
+  float: left;
+  border: 1px solid #fed33f;
+	box-shadow:	0 0 4px	  #fed33f,
+							0 0 4px 	#fed33f,
+							0 0 15px	#fed33f,
+							0 0 7px   #fed33f,
+							inset 0 0 10px  #fed33f;
+}
+
+.post-list__head {
+  display: inline-block;
+  max-width: 650px;
+  margin-left: 20px;
+  height: 140px;
+}
+.post-list__head p {
+  font-size: 13px;
+}
+
+.post-list__head .post-list__item-meta {
+  font-size: 12px;
+}
+
+.post-categories  a {
+  color: #fed33f;
+  font-size: 12px;
+  
+}
+.post-categories  a:hover {
+  text-shadow: 0 0 5px #fed33f;
+}
 
 h1 {
   font-size: 2em;

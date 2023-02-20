@@ -15,6 +15,10 @@
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3/dist/crate.full.min.js"></script>
+<!-- Simple Jekyll Search -->
+<script src="/assets/js/simple-jekyll-search.js"></script>
+<script src="/assets/js/search.js"></script>
+
 
 
 
@@ -40,7 +44,7 @@
         <a class="site-nav__link " href="/about/">About</a>
       </li>
       <li class="site-nav__item">
-        <a class="site-nav__link " href="/posts/index.html">Posts</a>
+        <a class="site-nav__link " href="/posts/">Posts</a>
       </li>
       <li class="site-nav__item">
         <a class="site-nav__link " href="/projects/">Projects</a>
@@ -50,6 +54,12 @@
       </li>
       <li class="site-nav__item">
         <a class="site-nav__link " href="/categories/">Categories</a>
+      </li>
+      <li class="site-nav__item">
+        <div id="search-container">
+          <input type="text" id="search-input" placeholder="Search...">
+          <ul id="results-container"></ul>
+        </div>
       </li>
     </ul>
   </nav>
@@ -145,30 +155,27 @@
       </div>
       <div class="content-container">
         <main class="default">
-          <h1>Bu web sitesi hakkında</h1>
-
-Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.
-
----------------------------------------------------------------------
-<div class="post-list">
-  <h2 class="post-list__title">Recent Post</h2>
-
+          <div class="post-list">
   <ul class="post-list__list">
     
       <li class="post-list__item">
-        <h3 class="post-list__item-title"><a href="/post-10/">Post-10</a></h3>
-        <p class="post-list__item-meta">19 February 2023</p>
-        <p class="post-list__item-excerpt"></p>
+        
+          <h3 class="post-list__item-title"><a href="/post-1/">Post-1</a></h3>
+          <p class="post-list__item-meta">17 February 2023</p>
+          <div class="post-categories">
+            
+            
+            <a href="//categories/#jekyll">jekyll</a>
+             
+            
+            <a href="//categories/#update">update</a>
+            
+            
+          </div>
+          <p class="post-list__item-excerpt"></p>
 <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
-      </li>
-    
-      <li class="post-list__item">
-        <h3 class="post-list__item-title"><a href="/post-5/">Post-5</a></h3>
-        <p class="post-list__item-meta">18 February 2023</p>
-        <p class="post-list__item-excerpt"></p>
-<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
-
+          
       </li>
     
   </ul>
@@ -177,15 +184,15 @@ Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lor
 <!-- Pagination links -->
 <div class="pagination">
   
-    <a href="/page2/" class="previous">
+    <a href="/posts/page2/" class="previous">
       Previous
     </a>
   
   <span class="page_number ">
-    Page: 3 of 6
+    Page: 3 of 3
   </span>
   
-    <a href="/page4/" class="next">Next</a>
+    <span class="next ">Next</span>
   
 </div>
         </main>
