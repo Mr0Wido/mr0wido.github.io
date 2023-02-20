@@ -58,14 +58,11 @@
         <a class="site-nav__link  active" href="/categories/">Categories</a>
       </li>
       <li class="site-nav__item">
-        
-<form id="search-form" action="//search.html" method="get">
-  <label for="search-input">Search:</label>
-  <input type="text" id="search-input" name="query" placeholder="Type your search term here" autocomplete="off">
-  <button type="submit">Search</button>
-</form>
-
-
+        <div class="search">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input type="text" id="search-input" placeholder="Search posts by keyword ...">
+          <ul id="results-container"></ul>
+        </div>
       </li>
     </ul>
   </nav>
