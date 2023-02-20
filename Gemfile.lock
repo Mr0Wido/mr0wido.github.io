@@ -89,6 +89,10 @@ GEM
       jekyll (>= 3.8, < 5.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
+    jekyll-spaceship (0.5.3)
+      jekyll (>= 3.6, < 5.0)
+      nokogiri (~> 1.6)
+      rainbow (~> 3.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     jemoji (0.13.0)
@@ -134,6 +138,7 @@ GEM
     rack (2.2.6.2)
     rack-protection (3.0.5)
       rack
+    rainbow (3.1.1)
     rake (13.0.6)
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
@@ -184,6 +189,7 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-scholar
   jekyll-sitemap
+  jekyll-spaceship
   jemoji
   mini_racer
   minima

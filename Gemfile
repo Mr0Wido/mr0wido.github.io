@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-spaceship"
   gem "jekyll"
   gem "minima"
   gem 'jekyll-admin'

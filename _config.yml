@@ -9,6 +9,10 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-spaceship
+
+search_enabled: true
+
 
 permalink: /:title/
 
