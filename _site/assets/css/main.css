@@ -387,13 +387,10 @@ hr {
 }
 
 #disqus_thread {
-  background-color: #f2f2f2; /* arka plan rengi */
-  border: 1px solid #ccc; /* kenarlık rengi ve kalınlığı */
+  background-color: #f2f2f200; /* arka plan rengi */
   padding: 20px; /* içerik ile kenarlık arasındaki boşluk */
 }
 #disqus-form {
-  background-color: #f2f2f2; /* arka plan rengi */
-  border: 1px solid #ccc; /* kenarlık rengi ve kalınlığı */
   padding: 20px; /* içerik ile kenarlık arasındaki boşluk */
 }
 #disqus_thread h3 {
@@ -407,7 +404,7 @@ hr {
 }
 
 #disqus_thread li {
-  border-bottom: 1px solid #ccc; /* yorumlar arasındaki kenarlık */
+  border-bottom: 5px solid #1b3ac4; /* yorumlar arasındaki kenarlık */
   padding: 20px; /* yorum ile kenarlık arasındaki boşluk */
   margin-bottom: 20px; /* yorumlar arasındaki boşluk */
 }
@@ -415,8 +412,14 @@ hr {
 #disqus_thread li:last-child {
   border-bottom: none; /* son yorumun altındaki kenarlığı kaldırma */
 }
+#disqus_thread .avatar {
+  border: 2px solid yellow;
+}
 
-
+.textarea-wrapper {
+  background-color: transparent;
+  color: #e8615a;
+}
 
 .pagination {
   display: flex;
