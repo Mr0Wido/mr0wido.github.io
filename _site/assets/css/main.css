@@ -387,31 +387,30 @@ hr {
 }
 
 #disqus_thread {
-  background-color: #f2f2f200; /* arka plan rengi */
-  padding: 20px; /* içerik ile kenarlık arasındaki boşluk */
+  background-color: #f2f2f200; 
+  padding: 20px; 
 }
 #disqus-form {
-  padding: 20px; /* içerik ile kenarlık arasındaki boşluk */
+  padding: 20px; 
 }
 #disqus_thread h3 {
-  font-size: 24px; /* başlık yazı tipi boyutu */
-  color: #333; /* başlık yazı tipi rengi */
-  margin-bottom: 20px; /* başlık altındaki boşluk */
+  font-size: 24px; 
+  color: #333; 
+  margin-bottom: 20px; 
 }
 #disqus_thread ol {
-  list-style: none; /* yorumlar için liste işaretlerini gizleme */
-  padding: 0; /* liste içeriğiyle kenarlık arasındaki boşluk */
+  list-style: none; 
+  padding: 0; 
 }
 
 #disqus_thread li {
-  border-bottom: 5px solid #1b3ac4; /* yorumlar arasındaki kenarlık */
-  padding: 20px; /* yorum ile kenarlık arasındaki boşluk */
-  margin-bottom: 20px; /* yorumlar arasındaki boşluk */
+  padding: 20px; 
+  margin-bottom: 20px; 
 }
 
 #disqus_thread li:last-child {
-  border-bottom: none; /* son yorumun altındaki kenarlığı kaldırma */
-}
+  border-bottom: none; 
+} 
 
 
 .pagination {
