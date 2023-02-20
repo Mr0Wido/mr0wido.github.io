@@ -16,9 +16,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3/dist/crate.full.min.js"></script>
 <!-- Simple Jekyll Search -->
-<script src="/assets/js/simple-jekyll-search.js"></script>
 <script src="/assets/js/search.js"></script>
 <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 
 
 
@@ -64,6 +67,10 @@
   </nav>
 </header>
 
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Search...">
+      <ul id="results-container"></ul>
+    </div>
     <div class="container-default">
       <div class="author-container">
         
@@ -257,7 +264,14 @@ Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lor
     </div>
  </footer>
 -->
+
+    <!-- Simple Jekyll Search -->
+    <script src="/assets/js/search.js"></script>
+    <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script src="/assets/js/clip.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   </body>
 </html>

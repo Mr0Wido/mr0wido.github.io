@@ -1,5 +1,5 @@
-// Simple Jekyll Search
-var search = SimpleJekyllSearch({
+$(function() {
+  SimpleJekyllSearch({
     searchInput: document.getElementById('search-input'),
     resultsContainer: document.getElementById('results-container'),
     json: '/search.json',
@@ -8,3 +8,4 @@ var search = SimpleJekyllSearch({
     limit: 10,
     fuzzy: false,
   });
+});
