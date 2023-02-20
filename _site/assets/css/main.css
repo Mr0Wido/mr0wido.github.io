@@ -412,14 +412,7 @@ hr {
 #disqus_thread li:last-child {
   border-bottom: none; /* son yorumun altındaki kenarlığı kaldırma */
 }
-#disqus_thread .avatar {
-  border: 2px solid yellow;
-}
 
-.textarea-wrapper {
-  background-color: transparent;
-  color: #e8615a;
-}
 
 .pagination {
   display: flex;

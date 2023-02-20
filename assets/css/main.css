@@ -413,10 +413,6 @@ hr {
   border-bottom: none; /* son yorumun altındaki kenarlığı kaldırma */
 }
 
-.textarea-wrapper {
-  background-color: transparent;
-  color: #e8615a;
-}
 
 .pagination {
   display: flex;
