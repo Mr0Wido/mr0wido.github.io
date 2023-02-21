@@ -450,39 +450,41 @@ hr {
 
 /* Arama kutusu */
 .search {
-  max-width: 200px;
-  max-height: 30px;
+  width: 350px;
+  height: 30px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: left;
   margin-bottom: 20px;
-  border: 3px solid red;
 }
 
 /* Arama ikonu */
 .fa-search {
+  width: 30px;
+  height: 30px;
   margin-right: 10px;
   color: #aaa;
-  border: 3px solid red;
+  float: right;
 }
 
 /* Arama kutusu içeriği */
 #search-input {
+  width: 200px;
+  height: 30px;
+  background-color: #1e181e;
   padding: 10px;
-  border: 2px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid #9c3230;
   font-size: 16px;
-  color: #683b3b;
+  color: #e8615a;
   outline: none;
   transition: all 0.3s;
-  border: 3px solid red;
 }
 
 /* Arama kutusu odaklandığında */
 #search-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #e12920;
+  box-shadow: 0 0 5px #e8615a;
 }
 
 /* Arama sonuçları */
@@ -494,33 +496,32 @@ hr {
   position: absolute;
   top: 100%;
   z-index: 9999;
-  width: 100%;
-  margin-top: 48px;
-  border: 3px solid red;
+  width: 200px;
+  padding: 0;
+  margin-top: 45px;
+  border: 1px solid #9c3230;
+  background-color: #1e181e;
 }
 
 /* Arama sonucu öğesi */
 #results-container li {
-  display: none;
-  border: 3px solid red;
-  margin-right: 50px;
+  text-align: left;
+  margin: 0;
+  padding: 3px;
+  height: 23px;
 }
 
 /* Arama sonucu öğesi başlığı */
 #results-container li a {
-  color: #333;
+  width: 200px;
+  font-size: 14px;
+  color: #e8615a;
   text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1.4;
-  border: 3px solid red;
 }
 
 /* Arama sonucu öğesi açıklaması */
 #results-container li p {
-  margin: 5px 0 0;
   font-size: 14px;
-  line-height: 1.4;
-  color: #999;
-  border: 3px solid red;
+  margin: 5px 0 0;
+  color: #e8615a;
 }
