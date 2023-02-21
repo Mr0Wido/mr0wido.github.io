@@ -111,6 +111,7 @@ main {
 footer {
   padding: 100px;
   text-align: center;
+  width: 100%;
 }
 
 /* navbar style */
