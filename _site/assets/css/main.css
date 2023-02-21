@@ -37,7 +37,7 @@ text-decoration: none;
   justify-content: space-between;
   height: 100px;
   padding-left: 250px;
-  padding-right: 350px;
+  padding-right: 20px;
   top: 0;
   left: 0;
   right: 0;
@@ -46,11 +46,16 @@ text-decoration: none;
   width: 80px;
   height: 80px;
 }
-.site-title{
+
+.site-title {
   padding-top: 22px;
   font-size: 24px;
   font-weight: 700;
-  margin-right: 350px;
+  margin-right: 290px;
+}
+.site-nav {
+  text-align: center;
+  justify-content: center;
 }
 .site-nav__list {
   list-style: none;
@@ -459,14 +464,6 @@ hr {
   margin-bottom: 20px;
 }
 
-/* Arama ikonu */
-.fa-search {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  color: #aaa;
-  float: right;
-}
 
 /* Arama kutusu içeriği */
 #search-input {
@@ -489,8 +486,6 @@ hr {
 
 /* Arama sonuçları */
 #results-container {
-  align-items: left;
-  background-color: transparent;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -498,13 +493,17 @@ hr {
   z-index: 9999;
   width: 200px;
   padding: 0;
-  margin-top: 45px;
-  border: 1px solid #9c3230;
+  border-bottom : 1px solid #9c3230;
+  border-left: 1px solid #9c3230;
+  border-right: 1px solid #9c3230;
   background-color: #1e181e;
 }
 
 /* Arama sonucu öğesi */
 #results-container li {
+  display: flex;
+  align-items: center;
+  justify-content: left;
   text-align: left;
   margin: 0;
   padding: 3px;
@@ -513,10 +512,10 @@ hr {
 
 /* Arama sonucu öğesi başlığı */
 #results-container li a {
-  width: 200px;
   font-size: 14px;
   color: #e8615a;
   text-decoration: none;
+  flex-grow: 1;
 }
 
 /* Arama sonucu öğesi açıklaması */
