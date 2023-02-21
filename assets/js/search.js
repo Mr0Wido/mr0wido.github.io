@@ -4,7 +4,7 @@ window.simpleJekyllSearch = new SimpleJekyllSearch({
         json: '/search.json',
         searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>',
         noResultsText: 'No results found',
-        limit: 10,
+        limit: 3,
         fuzzy: false,
         exclude: ['Welcome']
     })
