@@ -10,20 +10,33 @@ image: {{ post.image }}
 ---
 <div class="post">
   <h1 class="post__title">{{ page.title }}</h1>
-  <p class="post__date">{{ page.date | date: "%b %d, %Y" }}</p>
   <div class="post__content">
     {{ content }}
   </div>
   <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  {{ page.date | date: "%b %d, %Y" }}</p>
+    <div class="post__categories">
+      {% if post %}
+        {% assign categories = post.categories %}
+      {% else %}
+        {% assign categories = page.categories %}
+      {% endif %}
+      {% for category in categories %}
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#{{category|slugize}}">{{category}}</a></p>
+      {% endfor %}      
+    </div>      
     {% if page.tags %}
-      <div class="post__tags">
-        <p class="post__tags-title">Tags:</p>
-        <ul class="post__tags-list">
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
           {% for tag in page.tags %}
-          <li class="post__tags-item"><a href="{{ site.baseurl }}/tag/{{ tag | slugify }}">{{ tag }}</a></li>
+          <span class="post__tags-item">{{ tag }}</span>
           {% endfor %}
-        </ul>
-      </div>
+        </span>
+      </p>
+    </div>
     {% endif %}
   </div>
 </div>

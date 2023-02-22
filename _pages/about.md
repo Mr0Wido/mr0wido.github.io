@@ -1,7 +1,7 @@
 ---
 layout: default
-title: About Me
-permalink: /about/
+title: Whoami
+permalink: /whoami/
 date: '2023-02-17 19:21:33'
 categories:
 - jekyll

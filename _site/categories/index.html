@@ -43,7 +43,7 @@
         <a class="site-nav__link " href="/">Home</a>
       </li>
       <li class="site-nav__item">
-        <a class="site-nav__link " href="/about/">About</a>
+        <a class="site-nav__link " href="/whoami/">Whoami</a>
       </li>
       <li class="site-nav__item">
         <a class="site-nav__link " href="/posts/">Posts</a>
@@ -157,55 +157,82 @@
       </div>
       <div class="content-container">
         <main class="default">
-          <div id="archives">
-
-  <div class="archive-group">
+          <div id="archives__head">
+  
+  <div class="archive__group-head">
     
-    <div id="#jekyll"></div>
-    <p></p>
-    <h3 class="category-head">jekyll</h3>
-    <a name="jekyll"></a>
-    
-    <article class="archive-item">
-      <h4><a href="/welcome-to-jekyll/">Welcome</a></h4>
-    </article>
-    
-    <article class="archive-item">
-      <h4><a href="/post-1/">Post-1</a></h4>
-    </article>
-    
+    <a href="#jekyll"> <p class="category__head"><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> jekyll <span class="count_head"> 2</span></p></a>
   </div>
-
-  <div class="archive-group">
+  
+  <div class="archive__group-head">
     
-    <div id="#update"></div>
-    <p></p>
-    <h3 class="category-head">update</h3>
-    <a name="update"></a>
-    
-    <article class="archive-item">
-      <h4><a href="/welcome-to-jekyll/">Welcome</a></h4>
-    </article>
-    
-    <article class="archive-item">
-      <h4><a href="/post-1/">Post-1</a></h4>
-    </article>
-    
+    <a href="#update"> <p class="category__head"><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> update <span class="count_head"> 2</span></p></a>
   </div>
-
-  <div class="archive-group">
+  
+  <div class="archive__group-head">
     
-    <div id="#TryHackMe"></div>
-    <p></p>
-    <h3 class="category-head">TryHackMe</h3>
-    <a name="TryHackMe"></a>
-    
-    <article class="archive-item">
-      <h4><a href="/post-9/">TryHackMe-Gatekeeper</a></h4>
-    </article>
-    
+    <a href="#TryHackMe"> <p class="category__head"><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> TryHackMe <span class="count_head"> 1</span></p></a>
   </div>
+  
+</div>
 
+<div id="archives">
+  
+    <div class="archive-group">
+      
+        <div id="#jekyll"></div>
+        <br>
+        <h3 class="category-head">jekyll</h3>
+        <a name="jekyll"></a>
+        
+          <article class="archive-item">
+            <h4><a href="/welcome-to-jekyll/">Welcome</a></h4>
+            <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>17 February 2023</p>
+          </article>
+        
+          <article class="archive-item">
+            <h4><a href="/post-1/">Post-1</a></h4>
+            <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>17 February 2023</p>
+          </article>
+        
+    </div>
+    <hr>
+  
+    <div class="archive-group">
+      
+        <div id="#update"></div>
+        <br>
+        <h3 class="category-head">update</h3>
+        <a name="update"></a>
+        
+          <article class="archive-item">
+            <h4><a href="/welcome-to-jekyll/">Welcome</a></h4>
+            <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>17 February 2023</p>
+          </article>
+        
+          <article class="archive-item">
+            <h4><a href="/post-1/">Post-1</a></h4>
+            <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>17 February 2023</p>
+          </article>
+        
+    </div>
+    <hr>
+  
+    <div class="archive-group">
+      
+        <div id="#TryHackMe"></div>
+        <br>
+        <h3 class="category-head">TryHackMe</h3>
+        <a name="TryHackMe"></a>
+        
+          <article class="archive-item">
+            <h4><a href="/post-9/">TryHackMe-Gatekeeper</a></h4>
+            <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>19 February 2023</p>
+          </article>
+        
+    </div>
+    <hr>
+  
 </div>
 
         </main>
@@ -218,8 +245,6 @@
     © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
   </div>
 </footer>
-
-
 
     <!-- Simple Jekyll Search -->
     <script src="/assets/js/search.js"></script>

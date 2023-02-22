@@ -43,7 +43,7 @@
         <a class="site-nav__link " href="/">Home</a>
       </li>
       <li class="site-nav__item">
-        <a class="site-nav__link " href="/about/">About</a>
+        <a class="site-nav__link " href="/whoami/">Whoami</a>
       </li>
       <li class="site-nav__item">
         <a class="site-nav__link " href="/posts/">Posts</a>
@@ -159,7 +159,6 @@
         <main class="default">
           <div class="post">
   <h1 class="post__title">Post-10</h1>
-  <p class="post__date">Feb 19, 2023</p>
   <div class="post__content">
     <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
@@ -184,13 +183,21 @@ print_hi('Tom')
 
   </div>
   <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Feb 19, 2023</p>
+    <div class="post__categories">
+      
+            
+    </div>      
     
-      <div class="post__tags">
-        <p class="post__tags-title">Tags:</p>
-        <ul class="post__tags-list">
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
           
-        </ul>
-      </div>
+        </span>
+      </p>
+    </div>
     
   </div>
 </div>
@@ -221,8 +228,6 @@ print_hi('Tom')
     © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
   </div>
 </footer>
-
-
 
     <!-- Simple Jekyll Search -->
     <script src="/assets/js/search.js"></script>

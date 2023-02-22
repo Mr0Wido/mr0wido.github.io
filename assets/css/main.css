@@ -151,6 +151,19 @@ footer {
   margin-right: 10px;
 }
 
+.post__tags__title {
+  float: left;
+}
+.post__tags-container{
+  max-width: 300px;
+  display: inline-block;
+  justify-content: space-between;
+}
+.post__tags-item {
+  color: #2be4ea;
+  padding-left: 5px;
+}
+
 .post__content {
   margin-top: 20px;
   font-size: 15px;
@@ -205,6 +218,7 @@ footer {
 }
 
 h1 {
+  color: #2be4ea;
   font-size: 2em;
   margin-bottom: 0.5em;
 }
@@ -224,8 +238,22 @@ li {
   line-height: 1.5;
   margin-bottom: 0.5em;
 }
+.tos_title {
+  color: #2be4ea;
+}
 
+.tos_list {
+  list-style: none;
+}
+.tos_list li::before {
+  font-size: 25px;
+  content: ".";
+  color: #fed33f;
+  display: inline-block; 
+  font-weight: bold;
+  width: 1em;
 
+}
 
 .author-card {
   margin-left: 1250px;
@@ -521,3 +549,51 @@ hr {
   margin: 5px 0 0;
   color: #e8615a;
 }
+
+.home_title {
+  color: #2be4ea;
+}
+
+.archive__group-head {
+  text-align: left;
+  width: 300px;
+  height: 30px;
+  font-size: 18px;
+}
+
+.count_head{
+  float: right;
+}
+
+#archives {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.archive-group {
+  margin: 20px 0;
+}
+
+.category-head {
+  font-weight: bolder;
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #2be4ea;
+}
+
+.archive-item {
+  margin-bottom: 5px;
+}
+
+.archive-item a {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e8615a ;
+}
+
+.archive-item a:hover {
+  text-decoration: underline;
+}
+
+
+

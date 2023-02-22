@@ -18,7 +18,7 @@ layout: default
                   {% assign categories = page.categories %}
                 {% endif %}
                 {% for category in categories %}
-                <p class="post-list__item-meta">{{ post.date | date: "%d %B %Y" }} - <a href="/categories/#{{category|slugize}}">{{category}}</a></p>
+                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>{{ post.date | date: "%d %B %Y" }} - <a href="/categories/#{{category|slugize}}">{{category}}</a></p>
                 {% unless forloop.last %}&nbsp;{% endunless %}
                 {% endfor %}
               </div>
