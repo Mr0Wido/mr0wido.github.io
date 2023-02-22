@@ -595,5 +595,7 @@ hr {
   text-decoration: underline;
 }
 
-
+.archive-item .post-list__item-meta {
+  font-size: 12px;
+}
 

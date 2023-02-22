@@ -3,6 +3,9 @@ layout: default
 title: Categories
 permalink: /categories/
 ---
+
+<h1>Posts by Category</h1>
+<br>
 <div id="archives__head">
   {% for category in site.categories %}
   <div class="archive__group-head">
@@ -11,7 +14,8 @@ permalink: /categories/
   </div>
   {% endfor %}
 </div>
-
+<br>
+<br>
 <div id="archives">
   {% for category in site.categories %}
     <div class="archive-group">
@@ -22,9 +26,9 @@ permalink: /categories/
         <a name="{{ category_name | slugize }}"></a>
         {% for post in site.categories[category_name] %}
           <article class="archive-item">
-            <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+            <h4><a href="{{ post.url }}"><i class="fas fa-fw fa-link"></i> {{ post.title }}</a></h4>
             <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>{{ post.date | date: "%d %B %Y" }}</p>
-            <p class="post-list__item-excerpt">{{ post.excerpt | truncatewords: 10 }}</p>
+            <p class="post-list__item-excerpt">{{ post.excerpt | strip_html | truncatewords: 23, "..." }}</p>
           </article>
         {% endfor %}
     </div>
