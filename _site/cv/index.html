@@ -20,8 +20,8 @@
 <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@/dist/css/bootstrap.min.css" rel="stylesheet" integrity="" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@/css/mdb.min.css" integrity="" crossorigin="anonymous">
 
 
 
@@ -62,6 +62,7 @@
       <li class="site-nav__item">
         <div class="search">
           <input type="text" id="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
           <ul id="results-container"></ul>
         </div>
       </li>
@@ -166,262 +167,301 @@
       <div class="content-container">
         <main class="default">
           <!-- _layouts/cv.html -->
-        <div class="post">
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">CV <a href="/assets/pdf/cv-en.pdf" target="_blank" class="pdf__link"><i class="fas fa-file-pdf"></i></a>
+</h1>
+    <p class="post-description"></p>
+  </header>
 
-          <header class="post-header">
-            <h1 class="post-title">CV </h1>
-            <p class="post-description"></p>
-          </header>
+  <article>
+    <div class="cv">
+      
+        <div class="card">
+          <h3 class="card-title">General Information</h3>
+          <div>
 
-          <article>
-            <div class="cv">
-              
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">General Information</h3>
-                  <div>
-                  
-                    <table class="table table-sm table-borderless table-responsive">
-    
-      <tr>
-        <td class="p-1 pr-2 font-weight-bold">
+            <!-- Map  -->
+            
+              <table class="table table-borderless">
+                
+                  <tr class="map__content">
+                    <td class="map__name">
 <p>Full Name</p>
 </td>
-        <td class="p-1 pl-2 font-weight-light text">
+                    <td class="map__value">
 <p>Furkan Deniz</p>
 </td>
-      </tr>
-    
-      <tr>
-        <td class="p-1 pr-2 font-weight-bold">
+                  </tr>
+                
+                  <tr class="map__content">
+                    <td class="map__name">
+<p>E-Mail</p>
+</td>
+                    <td class="map__value">
+<p>furkn.dniz@protonnmail.com</p>
+</td>
+                  </tr>
+                
+                  <tr class="map__content">
+                    <td class="map__name">
 <p>Date of Birth</p>
 </td>
-        <td class="p-1 pl-2 font-weight-light text">
+                    <td class="map__value">
 <p>24th January 2003</p>
 </td>
-      </tr>
-    
-      <tr>
-        <td class="p-1 pr-2 font-weight-bold">
+                  </tr>
+                
+                  <tr class="map__content">
+                    <td class="map__name">
 <p>Languages</p>
 </td>
-        <td class="p-1 pl-2 font-weight-light text">
+                    <td class="map__value">
 <p>Turkish, English</p>
 </td>
-      </tr>
-    
-</table>
-                  
-                  </div>
-                </div>
-              
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">Education</h3>
-                  <div>
-                  
-                   <ul class="card-text font-weight-light list-group list-group-flush">
-    
-      <li class="list-group-item">
-        <div class="row">
-          
-            <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2022 - Still going on
-              </span>
-            </div>
-          
-          <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
-            
-            <h6 class="title font-weight-bold ml-1 ml-md-4">Economics</h6>
-            
-            
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">Akdeniz University, Antalya, Türkiye</h6>
-            
-            
-            
-          </div>
-        </div>
-      </li>
-    
-      <li class="list-group-item">
-        <div class="row">
-          
-            <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2022 - Still going on
-              </span>
-            </div>
-          
-          <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
-            
-            <h6 class="title font-weight-bold ml-1 ml-md-4">İnformation System Managemant</h6>
-            
-            
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">Anadolu University, Eskişehir, Türkiye</h6>
-            
-            
-            
-          </div>
-        </div>
-      </li>
-    
-    </ul>
-                  
-                  </div>
-                </div>
-              
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">Experience</h3>
-                  <div>
-                  
-                   <ul class="card-text font-weight-light list-group list-group-flush">
-    
-      <li class="list-group-item">
-        <div class="row">
-          
-          <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
-            
-            <h6 class="title font-weight-bold ml-1 ml-md-4">I don't have work experince.</h6>
-            
-            
-            
-            
-          </div>
-        </div>
-      </li>
-    
-    </ul>
-                  
-                  </div>
-                </div>
-              
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">Open Source Projects</h3>
-                  <div>
-                  
-                   <ul class="card-text font-weight-light list-group list-group-flush">
-    
-      <li class="list-group-item">
-        <div class="row">
-          
-            <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2020
-              </span>
-            </div>
-          
-          <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
-            
-            <h6 class="title font-weight-bold ml-1 ml-md-4"><a href="https://github.com/Mr0Wido/FrSec-Hunting-Toolkit" rel="external nofollow noopener" target="_blank">FrSec-Hunting-Toolkit/a&gt;</a></h6>
-            
-            
-            
-              <ul class="items">
+                  </tr>
                 
-                  <li>
-                    
-                      <span class="item">This Tool is Purely to Make My Job Easier. Its Purpose is Both Bug Bounty and Web Security.</span>
-                    
-                  </li>
-                
-              </ul>
-            
-            
-          </div>
-        </div>
-      </li>
-    
-      <li class="list-group-item">
-        <div class="row">
-          
-            <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2023-Now
-              </span>
-            </div>
-          
-          <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
-            
-            <h6 class="title font-weight-bold ml-1 ml-md-4"><a href="https://github.com/Mr0Wido/mr0wido.github.io" rel="external nofollow noopener" target="_blank">mr0wido.github.io/a&gt;</a></h6>
-            
-            
-            
-              <ul class="items">
-                
-                  <li>
-                    
-                      <span class="item">My Personal Website</span>
-                    
-                  </li>
-                
-              </ul>
-            
-            
-          </div>
-        </div>
-      </li>
-    
-    </ul>
-                  
-                  </div>
-                </div>
-              
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">Interests</h3>
-                  <div>
-                  
-                    <ul class="card-text font-weight-light list-group list-group-flush">
-    
-      <li class="list-group-item">
-      <h5 class="font-italic">Security</h5>
-      
-        <ul class="subitems">
-          
-            <li><span class="subitem">Penetration Tester</span></li>
-          
-            <li><span class="subitem">Web Application Security Researcher</span></li>
-          
-            <li><span class="subitem">Cloud Security</span></li>
-          
-        </ul>
-      
-      </li>
-    
-      <li class="list-group-item">
-      <h5 class="font-italic">Hobbies and Other Interests</h5>
-      
-        <ul class="subitems">
-          
-            <li><span class="subitem">Front-End Development</span></li>
-          
-            <li><span class="subitem">Game Development</span></li>
-          
-            <li><span class="subitem">Video Games</span></li>
-          
-            <li><span class="subitem">Movies</span></li>
-          
-            <li><span class="subitem">TV Series</span></li>
-          
-            <li><span class="subitem">Basketboll</span></li>
-          
-        </ul>
-      
-      </li>
-    
-</ul>
-                  
-                  </div>
-                </div>
-              
-              </div>
-          </article>
+              </table>
 
+            <!-- Time Table -->
+            
+
+          </div>
         </div>
+      
+        <div class="card">
+          <h3 class="card-title">Education</h3>
+          <div>
+
+            <!-- Map  -->
+            
+              <div class="card__content">
+                <ul class="card-text list-group list-group-flush">
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                          <div>
+                            <span class="badge">
+                              2022 - Now
+                            </span>
+                          </div>
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title">Economics</h6>
+                          
+                          
+                            <h6>Akdeniz University, Antalya, Türkiye</h6>
+                          
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                          <div>
+                            <span class="badge">
+                              2022 - Now
+                            </span>
+                          </div>
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title">İnformation System Managemant</h6>
+                          
+                          
+                            <h6>Anadolu University, Eskişehir, Türkiye</h6>
+                          
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                </ul>
+              </div>
+
+            <!-- Nested List -->
+            
+
+          </div>
+        </div>
+      
+        <div class="card">
+          <h3 class="card-title">Experience</h3>
+          <div>
+
+            <!-- Map  -->
+            
+              <div class="card__content">
+                <ul class="card-text list-group list-group-flush">
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title">I don't have work experince.</h6>
+                          
+                          
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                </ul>
+              </div>
+
+            <!-- Nested List -->
+            
+
+          </div>
+        </div>
+      
+        <div class="card">
+          <h3 class="card-title">Open Source Projects</h3>
+          <div>
+
+            <!-- Map  -->
+            
+              <div class="card__content">
+                <ul class="card-text list-group list-group-flush">
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                          <div>
+                            <span class="badge">
+                              2020
+                            </span>
+                          </div>
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title"><a href="https://github.com/Mr0Wido/FrSec-Hunting-Toolkit" rel="external nofollow noopener" target="_blank">FrSec-Hunting-Toolkit </a></h6>
+                          
+                          
+                          
+                            <ul class="items">
+                              
+                                <li>
+                                  
+                                    <span class="item">This Tool is Purely to Make My Job Easier. Its Purpose is Both Bug Bounty and Web Security.</span>
+                                  
+                                </li>
+                              
+                            </ul>
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                          <div>
+                            <span class="badge">
+                              2023-Now
+                            </span>
+                          </div>
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title"><a href="https://github.com/Mr0Wido/mr0wido.github.io" rel="external nofollow noopener" target="_blank">mr0wido.github.io </a></h6>
+                          
+                          
+                          
+                            <ul class="items">
+                              
+                                <li>
+                                  
+                                    <span class="item">My Personal Website</span>
+                                  
+                                </li>
+                              
+                            </ul>
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                </ul>
+              </div>
+
+            <!-- Nested List -->
+            
+
+          </div>
+        </div>
+      
+        <div class="card">
+          <h3 class="card-title">Interests</h3>
+          <div>
+
+            <!-- Map  -->
+            
+              <div class="card__content">
+                <ul class="card-text list-group list-group-flush">
+                  
+                    <li class="list-group-item">
+                    <h5>Security</h5>
+                      
+                        <ul class="subitems">
+                          
+                            <li><span class="subitem">Penetration Tester</span></li>
+                          
+                            <li><span class="subitem">Web Application Security Researcher</span></li>
+                          
+                            <li><span class="subitem">Cloud Security</span></li>
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                    <li class="list-group-item">
+                    <h5>Hobbies and Other Interests</h5>
+                      
+                        <ul class="subitems">
+                          
+                            <li><span class="subitem">Front-End Development</span></li>
+                          
+                            <li><span class="subitem">Game Development</span></li>
+                          
+                            <li><span class="subitem">Video Games</span></li>
+                          
+                            <li><span class="subitem">Movies</span></li>
+                          
+                            <li><span class="subitem">TV Series</span></li>
+                          
+                            <li><span class="subitem">Basketboll</span></li>
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                </ul>
+              </div>
+            
+
+          </div>
+        </div>
+      
+    </div>
+  </article>
+</div>
 
         </main>
       </div>
     </div>
 
-
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
     <footer>
   <div class="container">
     © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
@@ -430,6 +470,7 @@
 
     <!-- Simple Jekyll Search -->
     <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/scroll-top.js"></script>
     <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script src="/assets/js/clip.js"></script>
