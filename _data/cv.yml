@@ -1,0 +1,55 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Furkan Deniz
+    - name: Date of Birth
+      value: 24th January 2003
+    - name: Languages
+      value: Turkish, English
+
+- title: Education
+  type: time_table
+  contents:
+    - title: Economics
+      institution: Akdeniz University, Antalya, Türkiye
+      year: 2022 - Still going on
+
+    - title: İnformation System Managemant
+      institution: Anadolu University, Eskişehir, Türkiye
+      year: 2022 - Still going on
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: I don't have work experince.
+
+- title: Open Source Projects
+  type: time_table
+  contents:
+    - title: <a href="https://github.com/Mr0Wido/FrSec-Hunting-Toolkit">FrSec-Hunting-Toolkit/a>
+      year: 2020
+      description: This Tool is Purely to Make My Job Easier. Its Purpose is Both Bug Bounty and Web Security.
+    
+    - title: <a href="https://github.com/Mr0Wido/mr0wido.github.io">mr0wido.github.io/a>
+      year: 2023-Now
+      description: My Personal Website
+
+- title: Interests
+  type: nested_list
+  contents:
+    - title: Security
+      items: 
+        - Penetration Tester
+        - Web Application Security Researcher
+        - Cloud Security
+    - title: Hobbies and Other Interests
+      items:
+        - Front-End Development
+        - Game Development
+        - Video Games
+        - Movies
+        - TV Series
+        - Basketboll
+
+

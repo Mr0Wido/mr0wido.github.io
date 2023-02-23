@@ -14,6 +14,8 @@ plugins:
 search_enabled: true
 
 disqus_shortname: mr0widos-blog
+repo_theme_dark: transparent  
+
 
 permalink: /:title/
 
@@ -43,6 +45,7 @@ author:
   bio              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus tellus sit amet augue ultrices varius. Curabitur tincidunt orci et lacinia posuere. Pellentesque ornare odio tempus malesuada suscipit. Nulla laoreet placerat mauris, nec posuere lorem viverra ac. Maecenas tristique tristique purus nec ornare. Orci varius natoque penatibus et magnis dis."
   location         : "Turkey"
   email            : "hackermandebian04@gmail.com"
+  
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
@@ -50,7 +53,7 @@ author:
 
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
+      url: "https://twitter.com/Mr0Wido"
 
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -60,3 +63,19 @@ author:
       icon: "fab fa-fw fa-instagram"
       url: "https://www.instagram.com/furkn.dniz/"
 
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/furkan-deniz-0b4389267"
+
+
+
+bootstrap:
+  version: "4.6.1"
+  integrity:
+    css: "sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY="
+    js: "sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8="
+mdb:
+  version: "4.20.0"
+  integrity:
+    css: "sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
+    js: "sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="

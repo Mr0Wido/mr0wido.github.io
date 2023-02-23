@@ -599,3 +599,16 @@ hr {
   font-size: 12px;
 }
 
+.repositories {
+  margin: 0 -15px;
+}
+
+@media (min-width: 768px) {
+  .repo {
+    max-width: 50%;
+  }
+}
+
+
+
+
