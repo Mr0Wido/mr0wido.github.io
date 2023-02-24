@@ -6,20 +6,19 @@
 }
 .author__avatar {
   margin-right: 1rem;
-  border: 1px solid #fed33f;
+  border: 1px solid $author-border;
   width: 111px;
   height: 107px;
   text-align: center;
   padding-top: 2px;
-    box-shadow:	0 0 4px	  #fed33f,
-                            0 0 4px 	#fed33f,
-                            0 0 15px	#fed33f,
-                            0 0 7px   #fed33f,
-                            inset 0 0 10px  #fed33f;
+    box-shadow:	0 0 4px	  $author-border,
+                            0 0 4px 	$author-border,
+                            0 0 15px	$author-border,
+                            0 0 7px   $author-border,
+                            inset 0 0 10px  $author-border;
   
 }
 .author__avatar img {
-  
   max-width: 100px;
   height: auto;
 }
@@ -55,10 +54,10 @@
   display: flex;
   align-items: left;
   text-decoration: none;
-  color: #fed33f;
+  color: $author-url;
 }
 .author__urls a:hover {
-  color: #fed33f;
+  color: $author-url;
   text-shadow: -9px -6px 20px currentcolor;
 }
 .author__urls .label {

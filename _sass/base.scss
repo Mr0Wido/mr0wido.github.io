@@ -1,13 +1,12 @@
-/* Sayfa öğeleri */
 body {
-  background-color: #191a1e;
+  background-color: $bg-color;
   background-image: radial-gradient(
     ellipse at 33% 10%,
-    #461616 0%,
+    $gr-bg-color 0%,
     transparent 75%
   );
   background-repeat: no-repeat;
-  color: #e8615a;
+  color: $text-color;
   font-family: "Rajdhani", sans-serif;
   font-size: 100%;
   line-height: 1.4;
@@ -21,16 +20,16 @@ main {
   text-align: left;
 }
 a {
-color: #2be4ea; 
+color: $title-color; 
 text-decoration: none; 
 }
 a:hover {
-color: #2be4ea;
-text-shadow: -9px -6px 40px currentcolor; /* Fare imleci üzerinde link rengi */
+color: $title-color;
+text-shadow: -9px -6px 40px currentcolor;
 text-decoration: none;
 }
 h1 {
-  color: #2be4ea;
+  color: $title-color;
   font-size: 2em;
   margin-bottom: 0.5em;
 }
@@ -49,7 +48,7 @@ li {
 }
 hr {
   height: 1px; 
-  background-color: #fed33f; 
+  background-color: $hr-color; 
   border: none; 
 }
 .default{
@@ -62,14 +61,9 @@ hr {
 }
 
 
-
-
-
-
-
 /* tos.md */
 .tos_title {
-  color: #2be4ea;
+  color: $tos-title;
 }
 .tos_list {
   list-style: none;
@@ -77,16 +71,12 @@ hr {
 .tos_list li::before {
   font-size: 25px;
   content: ".";
-  color: #fed33f;
+  color: $list-color;
   display: inline-block; 
   font-weight: bold;
   width: 1em;
 
 }
-
-
-
-
 
 
 /* pre */
@@ -105,8 +95,8 @@ pre.highlight .copy {
   position: absolute;
   top: 0;
   left: 0;
-  color: #f4908b;
-  background: #9c3230;
+  color: $copy-text;
+  background: $copy-bg;
   cursor: pointer;
   transform: translate(-10px, -100%);
   transition: all 200ms ease;
@@ -117,43 +107,33 @@ pre.highlight code {
   overflow: auto;
   display: block;
   padding: 10px;
-  background-color: #0000001d;
+  background-color: $code-bg;
   clip-path: polygon( 0 0, 100% 0, 100% calc(100% - 1rem + 2px), calc(100% - 1rem + 2px) 100%, 0 100% );
   border: none;
-  color: #2be4ea;;
+  color: $code-text;
   font-size: 14px;
   line-height: 1.4;
   tab-size: 4;
-  box-shadow: 0 0 0 7px red;
+  box-shadow: 0 0 0 7px $code-shadow;
 }
 pre.highlight code::-webkit-scrollbar {
-  width: 10px; /* scroll bar genişliği */
+  width: 10px; 
   height: 4px;
 }
 pre.highlight code::-webkit-scrollbar-track {
-  background: #4a0d0dbf; /* scroll bar arka plan rengi */
+  background: $scroll-bg;
 }
 pre.highlight code::-webkit-scrollbar-thumb {
-  background: #e23f36; /* scroll bar rengi */
+  background: $scroll;
 }
 pre.highlight code::-webkit-scrollbar-thumb:hover {
-  background: #e12920; /* scroll bar rengi */
+  background: $scroll-hover;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 /* Disqus */
 #disqus_thread {
-  background-color: #f2f2f200; 
+  background-color: $disqus-bg; 
   padding: 20px; 
 }
 #disqus-form {
@@ -161,7 +141,6 @@ pre.highlight code::-webkit-scrollbar-thumb:hover {
 }
 #disqus_thread h3 {
   font-size: 24px; 
-  color: #333; 
   margin-bottom: 20px; 
 }
 #disqus_thread ol {
@@ -177,14 +156,6 @@ pre.highlight code::-webkit-scrollbar-thumb:hover {
 } 
 
 
-
-
-
-
-
-
-
-
 /* Pagination */
 .pagination {
   display: flex;
@@ -193,17 +164,17 @@ pre.highlight code::-webkit-scrollbar-thumb:hover {
   margin-top: 1.5rem;
 }
 .previous, .next {
-  color: #2be4ea #5d2322;
-  background-color: #1e181e;
+  color: $pervous $next;
+  background-color: $pagi-bg;
   text-decoration: none;
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
-  border: 1px solid #e8615a;
+  border: 1px solid $pagi-border;
   cursor: pointer;
   border-radius: 2px;
 }
 .previous:hover, .next:hover {
-  background-color: #571d1d;
+  background-color: $pagi-hover;
   border-radius: 2px;
   text-shadow: none;
 }
@@ -214,18 +185,8 @@ pre.highlight code::-webkit-scrollbar-thumb:hover {
 .page_number {
   margin: 0 1.5rem;
   font-size: 12px;
-  color: #fed13f83 ;
+  color: $page-number;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* projects.md */
 .repositories {
@@ -236,18 +197,6 @@ pre.highlight code::-webkit-scrollbar-thumb:hover {
     max-width: 50%;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* FOOTER */
 footer {

@@ -27,15 +27,15 @@
   gap: 2rem;
 }
 .card {
-  background-color: #1e181e65;
+  background-color: $card-bg;
   border-radius: 2px;
-  border: 2px solid #9c3230;
+  border: 2px solid $card-border;
   padding: 2rem;
   width: 100%;
   max-width: 800px;
 }
 .card-title {
-  color: #2be4ea;
+  color: $card-title;
   font-size: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -53,11 +53,11 @@
   text-align: inherit;
 }
 .map__name {
-  color: #2be4ea;
+  color: $text-name;
   font-weight: bold;
 }
 .map__value{
-  color: #e8615a;
+  color: $text-value;
 }
 .cv .time_table {
   margin-bottom: 2rem;
@@ -78,13 +78,13 @@
   margin-top: 0.25rem;
   margin-left: 2rem;
   font-weight: bold;
-  color: #2be4ea;
+  color: $content-title;
   width: 400px;
 }
 .cv .card__content .list-group-item .time__content h6 {
   margin-top: 0.25rem;
   margin-left: 2rem;
-  color: #e8615a;
+  color: $content-text;
 }
 .cv .card__content .list-group-item .time__content ul {
   margin-top: 0;
@@ -109,7 +109,7 @@
 .cv .card__content .list-group-item h5 {
   margin-bottom: 0;
   font-weight: bold;
-  color: #2be4ea;
+  color: $content-title;
   
 }
 .cv .card__content .list-group-item .subitems {
@@ -126,9 +126,9 @@
   
 }
 .cv .card__content .list-group-item .badge {
-  color: #fed33f;
-  border: 1px solid #fed33f;
-  background-color: #1e181ea1;
+  color: $badge;
+  border: 1px solid $badge-border;
+  background-color: $badge-bg;
   border-radius: 1px;
   width: 100px;
 }

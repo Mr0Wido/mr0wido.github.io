@@ -30,7 +30,7 @@ nav li {
   top: 0;
   left: 0;
   right: 0;
-  border-bottom: 2px solid #e8615a;
+  border-bottom: 2px solid $btm-border;
 }
 .site-logo img {
   width: 80px;
@@ -69,8 +69,8 @@ nav li {
     display: flex;
     flex-direction: column;
     align-items: left;
-    background-color: #1e181e;
-    border: 1px solid #9c3230;
+    background-color: $search-bg;
+    border: 1px solid $search-border;
   }
 .search i {
   width: 20px;
@@ -82,11 +82,11 @@ nav li {
 #search-input {
   width: 200px;
   height: 30px;
-  background-color: #1e181e;
-  border-top: 1px solid #9c3230;
-  border-bottom: 1px solid #9c3230;
-  border-left: 0px solid #9c3230;
-  border-right: 0px solid #9c3230;
+  background-color: $search-bg;
+  border-top: 1px solid $search-border;
+  border-bottom: 1px solid $search-border;
+  border-left: 0px solid $search-border;
+  border-right: 0px solid $search-border;
   padding: 10px;
   font-size: 16px;
   color: #e8615a;
@@ -103,10 +103,10 @@ nav li {
   z-index: 9999;
   width: 232px;
   padding: 0;
-  border-bottom : 1px solid #9c3230;
-  border-left: 1px solid #9c3230;
-  border-right: 1px solid #9c3230;
-  background-color: #1e181e;
+  border-bottom : 1px solid $search-border;
+  border-left: 1px solid $search-border;
+  border-right: 1px solid $search-border;
+  background-color: $search-bg;
   margin-left: -1px;
 }
 #results-container li {
@@ -120,12 +120,12 @@ nav li {
 }
 #results-container li a {
   font-size: 14px;
-  color: #e8615a;
+  color: $search-text;
   text-decoration: none;
   flex-grow: 1;
 }
 #results-container li p {
   font-size: 14px;
   margin: 5px 0 0;
-  color: #e8615a;
+  color: $search-text;
 }
