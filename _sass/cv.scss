@@ -1,0 +1,134 @@
+/* CV */
+.post-header {
+  text-align: center;
+}
+.post-title {
+  font-size: 2.5rem;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+.pdf__link {
+  float: left;
+  padding-right: 150px;
+}
+.fa-file-pdf {
+  font-size: 2rem;
+}
+.post-description {
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+.cv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.card {
+  background-color: #1e181e65;
+  border-radius: 2px;
+  border: 2px solid #9c3230;
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+.card-title {
+  color: #2be4ea;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+.table td,
+.table th {
+  padding: 0;
+}
+.table th {
+  text-align: inherit;
+}
+.map__name {
+  color: #2be4ea;
+  font-weight: bold;
+}
+.map__value{
+  color: #e8615a;
+}
+.cv .time_table {
+  margin-bottom: 2rem;
+}
+.cv .card h3 {
+  font-weight: bold;
+}
+.cv .card__content .list-group-item h6.title {
+  margin-bottom: 0;
+}
+.cv .card-text .list-group-item {
+  background-color: transparent;
+}
+.cv .card__content .list-group-item .time__content {
+  width: 500px;
+}
+.cv .card__content .list-group-item .time__content .title {
+  margin-top: 0.25rem;
+  margin-left: 2rem;
+  font-weight: bold;
+  color: #2be4ea;
+  width: 400px;
+}
+.cv .card__content .list-group-item .time__content h6 {
+  margin-top: 0.25rem;
+  margin-left: 2rem;
+  color: #e8615a;
+}
+.cv .card__content .list-group-item .time__content ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  margin-left: 80px;
+  line-height: 0;
+}
+.cv .card__content .list-group-item .time__content .item {
+  font-size: 16px;
+  margin-top: 0.5rem;
+}
+.cv .card__content .list-group-item .item-title {
+  font-weight: bold;
+
+}
+.cv .card__content .list-group-item .subitem {
+  margin-top: 0.25rem;
+  display: block;
+  margin-left: 1.5rem;
+}
+.cv .card__content .list-group-item h5 {
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #2be4ea;
+  
+}
+.cv .card__content .list-group-item .subitems {
+  padding-bottom: 30px;
+  margin-left: 100px;
+}
+.cv .card__content .list-group-item .subitem {
+  margin-top: 0;
+  margin-bottom: -20px;
+  display: block;
+  font-size: 16px;
+  padding-right: 0px;
+  margin-left: 0px;
+  
+}
+.cv .card__content .list-group-item .badge {
+  color: #fed33f;
+  border: 1px solid #fed33f;
+  background-color: #1e181ea1;
+  border-radius: 1px;
+  width: 100px;
+}

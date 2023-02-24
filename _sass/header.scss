@@ -1,0 +1,131 @@
+/* Header */
+header {
+  padding: 10px;
+  text-align: center;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+nav li {
+  margin: 0 10px;
+}
+.site-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 100px;
+  padding-left: 250px;
+  padding-right: 150px;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 2px solid #e8615a;
+}
+.site-logo img {
+  width: 80px;
+  height: 80px;
+  margin-left: -65px;
+}
+.site-title {
+  padding-top: 22px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 330px;
+}
+.site-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.site-nav__item {
+  margin-left: 15px;
+}
+.site-nav__link {
+  font-weight: 600;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+
+/* search */
+.search {
+    width: 232px;
+    height: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #1e181e;
+    border: 1px solid #9c3230;
+  }
+.search i {
+  width: 20px;
+  height: 30px;
+  float: left;
+  margin-top: -25px;
+  margin-left: 5px;
+}
+#search-input {
+  width: 200px;
+  height: 30px;
+  background-color: #1e181e;
+  border-top: 1px solid #9c3230;
+  border-bottom: 1px solid #9c3230;
+  border-left: 0px solid #9c3230;
+  border-right: 0px solid #9c3230;
+  padding: 10px;
+  font-size: 16px;
+  color: #e8615a;
+  outline: none;
+  transition: all 0.3s;
+  margin-left: 30px;
+  margin-top: -1px;
+}
+#results-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  z-index: 9999;
+  width: 232px;
+  padding: 0;
+  border-bottom : 1px solid #9c3230;
+  border-left: 1px solid #9c3230;
+  border-right: 1px solid #9c3230;
+  background-color: #1e181e;
+  margin-left: -1px;
+}
+#results-container li {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  text-align: left;
+  margin: 0;
+  padding: 3px;
+  height: 23px;
+}
+#results-container li a {
+  font-size: 14px;
+  color: #e8615a;
+  text-decoration: none;
+  flex-grow: 1;
+}
+#results-container li p {
+  font-size: 14px;
+  margin: 5px 0 0;
+  color: #e8615a;
+}

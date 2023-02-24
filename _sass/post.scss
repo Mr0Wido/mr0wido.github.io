@@ -1,0 +1,78 @@
+/* index.html */
+.post h1, h2 {
+  color: #2be4ea;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+.home_title {
+  color: #2be4ea;
+}
+.post-list__list {
+  list-style: none;
+}
+.post-list__image{
+  width: 250px;
+  height: 140px;
+  float: left;
+  border: 1px solid #fed33f;
+	box-shadow:	0 0 4px	  #fed33f,
+							0 0 4px 	#fed33f,
+							0 0 15px	#fed33f,
+							0 0 7px   #fed33f,
+							inset 0 0 10px  #fed33f;
+}
+.post-list__head {
+  display: inline-block;
+  max-width: 650px;
+  margin-left: 20px;
+  height: 140px;
+}
+.post-list__head p {
+  font-size: 13px;
+}
+.post-list__head .post-list__item-meta {
+  font-size: 12px;
+}
+.post-categories  a {
+  color: #fed33f;
+  font-size: 12px;
+  
+}
+.post-categories  a:hover {
+  text-shadow: 0 0 5px #fed33f;
+}
+.post-list__item-meta {
+  color: #fed33f;
+  font-size: 15px;
+}
+
+/* post içerik asıl */
+.post__date, .post__categories, .post__tags {
+  color: #fed33f;
+  font-size: 14px;
+  margin-right: 10px;
+}
+.post__tags__title {
+  float: left;
+}
+.post__tags-container{
+  max-width: 300px;
+  display: inline-block;
+  justify-content: space-between;
+}
+.post__tags-item {
+  color: #2be4ea;
+  padding-left: 5px;
+}
+.post__content {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.post__content p {
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+.post__content img {
+  max-width: 800px;
+}

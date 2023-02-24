@@ -1,0 +1,70 @@
+/* Author */
+.author-card {
+  margin-left: 1250px;
+  width: 500px;
+  float: right;
+}
+.author__avatar {
+  margin-right: 1rem;
+  border: 1px solid #fed33f;
+  width: 111px;
+  height: 107px;
+  text-align: center;
+  padding-top: 2px;
+    box-shadow:	0 0 4px	  #fed33f,
+                            0 0 4px 	#fed33f,
+                            0 0 15px	#fed33f,
+                            0 0 7px   #fed33f,
+                            inset 0 0 10px  #fed33f;
+  
+}
+.author__avatar img {
+  
+  max-width: 100px;
+  height: auto;
+}
+.author__name {
+  margin-top: 10px;
+  margin: 0;
+  font-size: 18px;
+  padding-top: 30px;
+}
+.author__bio {
+  margin-top: 0.5rem;
+  max-width: 400px;
+}
+.author__urls-wrapper {
+  margin-right: auto;
+  max-width: 200px;
+}
+.author__urls-wrapper .btn {
+  margin-right: 1rem;
+}
+.author__urls {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.author__urls li:not(:last-child) {
+  margin-right: 1rem;
+}
+.author__urls a {
+  display: flex;
+  align-items: left;
+  text-decoration: none;
+  color: #fed33f;
+}
+.author__urls a:hover {
+  color: #fed33f;
+  text-shadow: -9px -6px 20px currentcolor;
+}
+.author__urls .label {
+  margin-left: 0.5rem;
+}
+.author__urls i {
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+}
