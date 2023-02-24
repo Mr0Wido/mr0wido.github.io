@@ -1,7 +1,10 @@
-title: Mr0Wido's Blog
-first_name: Mr0Wido
-baseurl: "/" 
-url: "https://mr0wido.github.io" # 
+title       : Mr0Wido's Blog
+first_name  : Mr0Wido
+description : "My blog website."
+baseurl     : "/" 
+url         : "https://mr0wido.github.io" 
+lang        : "en"
+icon        : "favicon.ico"
 
 
 # Build settings
@@ -30,7 +33,8 @@ sass:
 include: ['_pages']
 exclude:
   - bin
-
+  - Gemfile
+  - Gemfile.lock
   - vendor
 keep_files:
   - CNAME
@@ -68,3 +72,20 @@ author:
       url: "https://www.linkedin.com/in/furkan-deniz-0b4389267"
 
 
+#Social
+github_username: # your GitHub user name
+gitlab_username: # your GitLab user name
+twitter_username: # your Twitter handle
+linkedin_username: # your LinkedIn user name
+scholar_userid: # your Google Scholar ID
+medium_username: # your Medium username
+quora_username: # your Quora username
+stackoverflow_id: # your stackoverflow id
+spotify_id: # your spotify id
+instagram_id: # your instagram id
+facebook_id: # your facebook id
+discord_id: # your discord id (18-digit unique numerical identifie
+
+
+google_analytics:  # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
+google_site_verification:  # your google-site-verification ID (Google Search Console)
