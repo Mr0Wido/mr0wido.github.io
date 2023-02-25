@@ -10,7 +10,7 @@ header {
   position: absolute;
   right: 0;
   max-width: 60%;
-  padding-right: 10%;
+  padding-right: 3%;
 }
 
 .site-header {
@@ -30,7 +30,7 @@ header {
   margin: auto;
   width: 80px;
   height: 80px;
-  margin-left: 175px;
+  margin-left: 100px;
 }
 .site-title {
   max-width: 20%;
@@ -48,10 +48,13 @@ header {
   margin: 0;
   padding: 0;
 }
+.site-nav__item{
+  padding-right: 25px;
+}
 .site-nav__link {
   text-decoration: none;
   font-weight: 600;
-  padding: 5px 10px;
+
 }
 
 
