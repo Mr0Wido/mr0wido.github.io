@@ -1,62 +1,56 @@
 /* Header */
 header {
-  padding: 10px;
-  text-align: center;
-}
-nav {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 10px;
+  width: 100%;
 }
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.site-nav {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  max-width: 60%;
+  padding-right: 10%;
 }
-nav li {
-  margin: 0 10px;
-}
+
 .site-header {
+  position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   width: 100%;
   height: 100px;
-  padding-left: 250px;
-  padding-right: 150px;
   top: 0;
   left: 0;
   right: 0;
   border-bottom: 2px solid $btm-border;
+
 }
+
 .site-logo img {
+  margin: auto;
   width: 80px;
   height: 80px;
-  margin-left: -65px;
+  margin-left: 175px;
 }
 .site-title {
-  padding-top: 22px;
+  max-width: 20%;
   font-size: 24px;
   font-weight: 700;
-  margin-right: 330px;
+  
 }
 .site-nav__list {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-}
-.site-nav__item {
-  margin-left: 15px;
+  width: auto;
+  justify-content: flex-end;
+  height: 30px;
+  margin: 0;
+  padding: 0;
 }
 .site-nav__link {
-  font-weight: 600;
   text-decoration: none;
+  font-weight: 600;
   padding: 5px 10px;
 }
 

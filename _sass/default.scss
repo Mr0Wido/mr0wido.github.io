@@ -1,20 +1,29 @@
 /* default.html */
 .container-default {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.default{
+  max-width: 100%;
+  margin-left: 100px;;
+  padding: 20px;
+  text-align: left;
 }
 .author-container {
   position: -webkit-sticky;
   position: sticky;
-  margin-top: 0px;
   top: 0;
-  width: 550px;
-  margin-left: 1250px;
+  width: 25%;
   padding-top: 100px;
 }
+
 .content-container {
+  max-width: 62%;
   margin-left: 20px;
 }
+
+
 #myBtn {
   display: none;
   position: fixed;

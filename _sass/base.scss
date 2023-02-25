@@ -14,11 +14,7 @@ body {
   padding: 0;
   min-height: 100vh;
 }
-main {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-align: left;
-}
+
 a {
 color: $title-color; 
 text-decoration: none; 
@@ -51,14 +47,7 @@ hr {
   background-color: $hr-color; 
   border: none; 
 }
-.default{
-  max-width: 1000px;
-  margin-left: 150px;
-  margin-top: -600px;
-  padding: 20px;
-  text-align: left;
-  float: left;
-}
+
 
 
 /* tos.md */
