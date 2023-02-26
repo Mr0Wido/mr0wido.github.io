@@ -1,0 +1,137 @@
+/* Header */
+@media screen and (min-width: 1368px) {
+  .site-nav {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    max-width: 60%;
+    padding-right: 3%;
+  }
+  
+  .site-header {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 2px solid $btm-border;
+  
+  }
+  
+  .site-logo img {
+    margin: auto;
+    width: 80px;
+    height: 80px;
+    margin-left: 100px;
+  }
+  .site-title {
+    max-width: 20%;
+    font-size: 24px;
+    font-weight: 700;
+    
+  }
+  .site-nav__list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    justify-content: flex-end;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+  }
+  .site-nav__item{
+    padding-right: 25px;
+  }
+  .site-nav__link {
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  
+  /* search */
+  .search {
+      width: 232px;
+      height: 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      background-color: $search-bg;
+      border: 1px solid $search-border;
+    }
+  .search i {
+    width: 20px;
+    height: 30px;
+    float: left;
+    margin-top: -25px;
+    margin-left: 5px;
+  }
+  #search-input {
+    width: 200px;
+    height: 30px;
+    background-color: $search-bg;
+    border-top: 1px solid $search-border;
+    border-bottom: 1px solid $search-border;
+    border-left: 0px solid $search-border;
+    border-right: 0px solid $search-border;
+    padding: 10px;
+    font-size: 16px;
+    color: #e8615a;
+    outline: none;
+    transition: all 0.3s;
+    margin-left: 30px;
+    margin-top: -1px;
+  }
+  #results-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    z-index: 9999;
+    width: 232px;
+    padding: 0;
+    border-bottom : 1px solid $search-border;
+    border-left: 1px solid $search-border;
+    border-right: 1px solid $search-border;
+    background-color: $search-bg;
+    margin-left: -1px;
+  }
+  #results-container li {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    margin: 0;
+    padding: 3px;
+    height: 23px;
+  }
+  #results-container li a {
+    font-size: 14px;
+    color: $search-text;
+    text-decoration: none;
+    flex-grow: 1;
+  }
+  #results-container li p {
+    font-size: 14px;
+    margin: 5px 0 0;
+    color: $search-text;
+  }
+
+  .header-mobile {
+    display: none;
+  }
+  .sidebar {
+    display: none;
+  }
+  .overlay {
+    display: none;
+  }
+    
+}

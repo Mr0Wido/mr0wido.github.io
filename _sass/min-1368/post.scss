@@ -1,0 +1,91 @@
+/* index.html */
+@media screen and (min-width: 1368px) {
+  .post h1, h2 {
+    color: $post-title;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  .home_title {
+    color: $post-title;
+  }
+  .post-list {
+    width: 100%
+  }
+  .post-list__list {
+    list-style: none;
+  }
+
+  .post-list__item {
+    max-width: 100%;
+  }
+
+  .post-list__head {
+    display: inline-block;
+    max-width: 75%;
+    height: 140px;
+    padding-left: 25px;
+  }
+  .post-list__item-title {
+    font-size: 23px;
+  }
+  .post-list__image{
+    width: 25%;
+    height: 140px;
+    float: left;
+    border: 1px solid $img-border;
+    box-shadow:	0 0 4px	  $img-border,
+                0 0 4px 	$img-border,
+                0 0 15px	$img-border,
+                0 0 7px   $img-border,
+                inset 0 0 10px  $img-border;
+  }
+
+  .post-list__head p {
+    font-size: 13px;
+  }
+  .post-list__head .post-list__item-meta {
+    font-size: 12px;
+  }
+  .post-categories  a {
+    color: $post-alt-text;
+    font-size: 12px;
+    
+  }
+  .post-categories  a:hover {
+    text-shadow: 0 0 5px $post-alt-text;
+  }
+  .post-list__item-meta {
+    color: $post-alt-text;
+    font-size: 15px;
+  }
+
+  .post__date, .post__categories, .post__tags {
+    color: $post-alt-text;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  .post__tags__title {
+    float: left;
+  }
+  .post__tags-container{
+    max-width: 30%;
+    display: inline-block;
+    justify-content: space-between;
+  }
+  .post__tags-item {
+    color: $post-tags-text;
+    padding-left: 5px;
+  }
+  .post__content {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .post__content p {
+    font-size: 19px;
+    margin-bottom: 20px;
+  }
+  .post__content img {
+    max-width: 80%;
+  }
+}
