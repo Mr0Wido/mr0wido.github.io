@@ -1,5 +1,9 @@
 /* index.html */
 @media screen and (min-width: 1368px) {
+  .post-list__small {
+    display: none;
+  }
+
   .post h1, h2 {
     color: $post-title;
     font-size: 26px;

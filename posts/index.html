@@ -45,6 +45,48 @@ layout: default
       </li>
     {% endfor %}
   </ul>
+  <ul class="post-list__small">
+    {% for post in paginator.posts %}
+      <li class="post-list__item">
+        {% if post.image %}
+          <div>
+            <a href="{{ post.url }}"><img class="post-list__image" src="{{ post.image }}" alt="Post Görseli"></a>
+            <div class="post-list__head">
+              <h3 class="post-list__item-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+              <div class="post-categories">
+                {% if post %}
+                  {% assign categories = post.categories %}
+                {% else %}
+                  {% assign categories = page.categories %}
+                {% endif %}
+                {% for category in categories %}
+                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>{{ post.date | date: "%d %B %Y" }} - <a href="/categories/#{{category|slugize}}">{{category}}</a></p>
+                {% unless forloop.last %}&nbsp;{% endunless %}
+                {% endfor %}
+              </div>
+              <p class="post-list__item-excerpt">{{ post.excerpt | split:'\n\n' | first }}</p>
+            </div>
+          </div>
+          <br>
+        {% else %}
+          <h3 class="post-list__item-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <p class="post-list__item-meta">{{ post.date | date: "%d %B %Y" }}</p>
+          <div class="post-categories">
+            {% if post %}
+              {% assign categories = post.categories %}
+            {% else %}
+              {% assign categories = page.categories %}
+            {% endif %}
+            {% for category in categories %}
+            <a href="{{site.baseurl}}/categories/#{{category|slugize}}">{{category}}</a>
+            {% unless forloop.last %}&nbsp;{% endunless %}
+            {% endfor %}
+          </div>
+          <p class="post-list__item-excerpt">{{ post.excerpt | split:'\n\n' | first }}</p>
+        {% endif %}  
+      </li>
+    {% endfor %}
+  </ul>
 </div>
 
 <!-- Pagination links -->

@@ -1,3 +1,79 @@
 @media screen and (min-width: 360px) and (max-width: 980px) {
-    
+    .author-card{
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        padding-top: 50px;
+    }
+    .author__avatar {
+        width: 100px;
+        height: 100px;
+        padding-top: 2px;
+        float: left;
+    }
+    .author__avatar img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $author-border;
+        box-shadow:	0 0 5px	  $author-border;
+        border-radius: 2px;
+    }
+
+    .author__content {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        float: right;
+        padding-left: 130px;
+    }
+
+
+    .author__content-head {
+        display: none;
+    }
+
+    .author__urls-wrapper {
+        height: 40px;
+        width: 100%;
+    }
+
+    .author__name {
+        font-size: 20px;
+    }
+    .author__bio {
+        width: 100%;
+    }
+    .author__bio p {
+        font-size: 14px;
+    }
+
+    .author__urls-wrapper .btn {
+        margin-right: 1rem;
+    }
+
+    .author__urls {
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .author__urls li:not(:last-child) {
+        margin-right: 1rem;
+    }
+    .author__urls a {
+        display: flex;
+        align-items: left;
+        text-decoration: none;
+        color: $author-url;
+    }
+    .author__urls .label {
+        display: none;
+    }
+    .author__urls i {
+        font-size: 18px;
+    }
 }
