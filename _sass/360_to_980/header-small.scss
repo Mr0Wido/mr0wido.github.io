@@ -71,44 +71,25 @@
         Nav
     -------------------------------------------------------- */
     nav {
-        overflow-y: auto;
         position: fixed;
         top: 0px;
         left: -250px;
-        width: 150px;
+        width: 60%;
         height: 100%;
-        color: #fff;
-        background-color: #f9f9f9;
+        background-color: #1e181e65;
         transition: all 0.3s ease;
         opacity: 0.9;
         z-index: 1002;
     }
     nav .nav-header {
         display: block;
-        background-color: #3f51b5;
+        background-color: #1e181e;
     }
-    nav .nav-header .logo-wrap {
-        padding: 1.7em 1em;
-    }
-    nav .nav-header .logo-wrap .logo-icon {
-        display: inline-block;
-        text-decoration: none;
-    }
-    nav .nav-header .logo-wrap .logo-icon img {
-        display: block;
-        border-radius: 50%;
-    }
-    nav .nav-header .logo-wrap .logo-text {
-        display: inline-block;
-        color: #fff;
-        font-size: 1.2em;
-        vertical-align: 12px;
-        margin-left: 8px;
-        text-decoration: none;
-    }
+
     nav .nav-header .nav-search {
         position: relative;
         height: 40px;
+        border-bottom: 1px solid #9c3230;
     }
     nav .nav-header .nav-search .search {
         display: block;
@@ -116,34 +97,37 @@
     }
     nav .nav-header .nav-search .search i {
         position: absolute;
-        top: 8px;
+        top: 10px;
         right: 0.7em;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 24px;
+        color: #e8615a;
+        background-color: transparent;
+        font-size: 20px;
         cursor: pointer;
     }
     nav .nav-header .nav-search .search input[type=search] {
         width: 100%;
         height: 40px;
-        color: rgba(255, 255, 255, 0.8);
+        color: #e8615a;
         font-size: 15px;
         padding: 0 48px 0 20px;
         outline: none;
         border: none;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: #1e181e;
     }
     nav .nav-header .nav-search .search ::-webkit-input-placeholder {
-        color: rgba(255, 255, 255, 0.5);
+        color: #e8615a;
     }
     nav .nav-header .nav-search .search ::-moz-placeholder {
-        color: rgba(255, 255, 255, 0.8);
+        color: #e8615a;
     }
     nav .nav-header .nav-search .search :-moz-placeholder {
-        color: rgba(255, 255, 255, 0.8);
+        color: #e8615a;
     }
     nav .nav-header .nav-search .search :-ms-input-placeholder {
-        color: rgba(255, 255, 255, 0.8);
+        color: #e8615a;
     }
+
+
     nav .nav-categories li {
         display: block;
         position: relative;
@@ -152,12 +136,13 @@
         display: block;
         width: 100%;
         font-size: 1rem;
-        color: #5c5c5c;
+        color: #2be4ea;
+        text-shadow: 0 0 5px #2be4ea;
         padding: 0.625em 1.3em;
         text-decoration: none;
     }
     nav .nav-categories li a:hover {
-        background-color: rgba(0, 0, 0, 0.1);
+        text-shadow: 0 0 5px #2be4ea;
     }
     nav.open {
         left: 0px;
@@ -179,8 +164,8 @@
     nav .social {
         display: flex;
         margin: 4px 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.155);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.155);
+        border-top: 1px solid #9c3230;
+        border-bottom: 1px solid #9c3230;
     }
     nav .social li {
         display: inline-block;
