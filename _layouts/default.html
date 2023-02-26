@@ -24,10 +24,25 @@
       </div>
     </div>
 
+    <div class="container-medium">
+      <div class="author-container">
+        {% include author.html %}
+      </div>
+      <div class="content-container">
+        <main class="default">
+          {{ content }}
+        </main>
+      </div>
+    </div>
+
+
+
+
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
     {% include footer.html %}
 
     <!-- script -->
+    <script src="{{ '/assets/js/nav.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/clip.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/scroll-top.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/search.js' | relative_url }}"></script>

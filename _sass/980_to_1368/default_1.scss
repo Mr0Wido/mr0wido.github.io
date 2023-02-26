@@ -1,0 +1,46 @@
+@media screen and (min-width: 980px) and (max-width: 1368px) {
+
+    .container-default {
+        display: none;
+    }
+
+    .container-medium {
+        width: 100%;
+    }
+
+    .content-container {
+        width: 100%;
+    }
+
+    .author-container {
+        width: 100%;
+        height: 200px;
+    }
+
+    .default{
+        max-width: 100%;
+        margin-left: 10px;;
+        padding: 20px;
+        padding-top: 50px;
+        text-align: left;
+    }
+
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 24px;
+        outline: none;
+        background-color: $buton-bg;
+        color: $buton;
+        border: none;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 1px;
+    }
+    #myBtn:hover {
+        color: $buton-hover;
+    }
+}

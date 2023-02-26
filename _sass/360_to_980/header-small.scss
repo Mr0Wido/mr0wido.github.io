@@ -1,0 +1,231 @@
+@media screen and (min-width: 360px) and (max-width: 980px) {
+    .site-header {
+        display: none;
+    } 
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.285);
+        z-index: 1001;
+    }
+
+    /* For Typography */
+    .ul-base {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    /* -----------------------------------------------------
+    Clearfix
+    -------------------------------------------------------- */
+    .clearfix {
+        *zoom: 1;
+    }
+    .clearfix::after {
+        content: "";
+        display: table;
+        line-height: 0;
+        clear: both;
+    }
+
+    /* -----------------------------------------------------
+        Header
+    -------------------------------------------------------- */
+    header {
+        display: block;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        background-color: transparent;
+        z-index: 1000;
+    }
+    header .nav-btn {
+        cursor: pointer;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 38px;
+        margin: 12px 0;
+        -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+    }
+    header .nav-btn.nav-slider {
+        float: left;
+    }
+    header .nav-btn.search {
+        display: none;
+    }
+    header .nav-btn i {
+        vertical-align: middle;
+    }
+
+    /* -----------------------------------------------------
+        Nav
+    -------------------------------------------------------- */
+    nav {
+        overflow-y: auto;
+        position: fixed;
+        top: 0px;
+        left: -250px;
+        width: 150px;
+        height: 100%;
+        color: #fff;
+        background-color: #f9f9f9;
+        transition: all 0.3s ease;
+        opacity: 0.9;
+        z-index: 1002;
+    }
+    nav .nav-header {
+        display: block;
+        background-color: #3f51b5;
+    }
+    nav .nav-header .logo-wrap {
+        padding: 1.7em 1em;
+    }
+    nav .nav-header .logo-wrap .logo-icon {
+        display: inline-block;
+        text-decoration: none;
+    }
+    nav .nav-header .logo-wrap .logo-icon img {
+        display: block;
+        border-radius: 50%;
+    }
+    nav .nav-header .logo-wrap .logo-text {
+        display: inline-block;
+        color: #fff;
+        font-size: 1.2em;
+        vertical-align: 12px;
+        margin-left: 8px;
+        text-decoration: none;
+    }
+    nav .nav-header .nav-search {
+        position: relative;
+        height: 40px;
+    }
+    nav .nav-header .nav-search .search {
+        display: block;
+        position: relative;
+    }
+    nav .nav-header .nav-search .search i {
+        position: absolute;
+        top: 8px;
+        right: 0.7em;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 24px;
+        cursor: pointer;
+    }
+    nav .nav-header .nav-search .search input[type=search] {
+        width: 100%;
+        height: 40px;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 15px;
+        padding: 0 48px 0 20px;
+        outline: none;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    nav .nav-header .nav-search .search ::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    nav .nav-header .nav-search .search ::-moz-placeholder {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    nav .nav-header .nav-search .search :-moz-placeholder {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    nav .nav-header .nav-search .search :-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    nav .nav-categories li {
+        display: block;
+        position: relative;
+    }
+    nav .nav-categories li a {
+        display: block;
+        width: 100%;
+        font-size: 1rem;
+        color: #5c5c5c;
+        padding: 0.625em 1.3em;
+        text-decoration: none;
+    }
+    nav .nav-categories li a:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    nav.open {
+        left: 0px;
+        box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.275);
+        opacity: 1;
+    }
+    nav .nav-separator {
+        width: 100%;
+        height: 1px;
+        margin: 7px 0;
+        background-color: rgba(0, 0, 0, 0.175);
+    }
+    nav .nav-link-title {
+        display: block;
+        color: #3f51b5;
+        font-size: 1rem;
+        padding: 0.5em 1.3em;
+    }
+    nav .social {
+        display: flex;
+        margin: 4px 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.155);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.155);
+    }
+    nav .social li {
+        display: inline-block;
+        position: relative;
+        width: 25%;
+        height: 28px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        line-height: 28px;
+        flex-direction: row;
+        border-right: 1px solid rgba(0, 0, 0, 0.175);
+    }
+    nav .social li:last-child {
+        border-right: 0;
+    }
+    nav .social li a {
+        display: block;
+        color: #5c5c5c;
+        font-size: 15px;
+        padding: 2px;
+        text-decoration: none;
+    }
+    nav .social li a.twitter:hover {
+        color: #00baf0;
+    }
+    nav .social li a.facebook:hover {
+        color: #3b5997;
+    }
+    nav .social li a.google-plus:hover {
+        color: #c43c2c;
+    }
+    nav .social li a.rss:hover {
+        color: #ff6600;
+    }
+    nav .copyright {
+        display: block;
+        color: #5c5c5c;
+        text-align: center;
+        padding: 0.5em 0 1em;
+    }
+    nav .copyright span {
+        display: block;
+        width: 100%;
+        font-size: 11px;
+        margin-bottom: 4px;
+    }
+}

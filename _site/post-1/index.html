@@ -83,31 +83,28 @@
   <div class="nav-header">
     <div class="nav-search">
       <div class="search">
-        <i class="material-icons">search</i>
-        <input type="search" name="search" placeholder="Search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
       </div>
     </div>
   </div>
   <ul class="nav-categories ul-base">
-    <li><a href="http://www.mediahawkz.com/topic/technology" rel="external nofollow noopener" target="_blank">Technology</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/science" rel="external nofollow noopener" target="_blank">Science</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/speak-up" rel="external nofollow noopener" target="_blank">Speak up</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/general" rel="external nofollow noopener" target="_blank">General</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/lifestyle" rel="external nofollow noopener" target="_blank">Lifestyle</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/world" rel="external nofollow noopener" target="_blank">World</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/business" rel="external nofollow noopener" target="_blank">Business</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/entertainment" rel="external nofollow noopener" target="_blank">Entertainment</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/sports" rel="external nofollow noopener" target="_blank">Sports</a></li>
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
   </ul>
   <ul class="social ul-base">
-    <li><a href="https://twitter.com/MediahawkZ" class="twitter" target="_blank" rel="external nofollow noopener"><i class="fa fa-twitter"></i></a></li>
-    <li><a href="https://www.facebook.com/mediahawkz" class="facebook" target="_blank" rel="external nofollow noopener"><i class="fa fa-facebook"></i></a></li>
-    <li><a href="https://plus.google.com/+MediahawkzIndia" class="google-plus" target="_blank" rel="external nofollow noopener"><i class="fa fa-google-plus"></i></a></li>
-    <li><a href="http://www.mediahawkz.com/rss" class="rss" target="_blank" rel="external nofollow noopener"><i class="fa fa-rss"></i></a></li>
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
   </ul>
   <div class="copyright">
-    <span>© 2016 <a href="http://www.mediahawkz.com" class="link" rel="external nofollow noopener" target="_blank">MediahawkZ.com</a> Made in India</span>
-    <span>Designed by <a href="https://twitter.com/rkchauhan01" target="_blank" rel="external nofollow noopener">Ravikumar Chauhan</a></span>
+    <span> © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
   </div>
 </nav>
 <div class="overlay"></div>
@@ -202,89 +199,406 @@ Nmap done: 1 IP address (1 host up) scanned in 6.72 seconds
         <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
     </div>
   
-
-  <div class="author__content">
-    <h3 class="author__name p-name" itemprop="name">
-      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
-    </h3>
-    
-      <div class="author__bio p-note" itemprop="description">
-        <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
-
-      </div>
-    
-  </div>
-
-  <div class="author__urls-wrapper">
-    <ul class="author__urls social-icons">
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
       
-        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
-          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Turkey</span>
-        </li>
-      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
 
+        </div>
       
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
         
           
-            <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+              <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
           
         
-          
-            <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
-          
+  
         
-          
-            <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
-          
+  
         
-          
-            <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
-          
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
         
-          
-            <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
-          
+  
         
-      
-
-      
-
-      
-        <li>
-          <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
-            <meta itemprop="email" content="furkn.dniz@gmail.com">
-            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
-          </a>
-        </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
   <li>
     <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
       <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
     </a>
   </li>
 -->
-    </ul>
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
   </div>
 </div>
 
       </div>
     </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">Post-1</h1>
+  <div class="post__content">
+    <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>Jekyll requires blog post files to be named according to the following format:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Starting Nmap 7.93 ( https://nmap.org ) at 2023-02-16 16:43 +03
+Nmap scan report for mr0wido.github.io (185.199.111.153)
+Host is up (0.040s latency).
+Other addresses for mr0wido.github.io (not scanned): 185.199.109.153 185.199.110.153 185.199.108.153 2606:50c0:8001::153 2606:50c0:8002::153 2606:50c0:8003::153 2606:50c0:8000::153
+rDNS record for 185.199.111.153: cdn-185-199-111-153.github.com
+Not shown: 997 filtered tcp ports (no-response), 1 filtered tcp ports (admin-prohibited)
+PORT    STATE SERVICE
+80/tcp  open  http
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 6.72 seconds
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p>
+
+<p>Where <code class="language-plaintext highlighter-rouge">YEAR</code> is a four-digit number, <code class="language-plaintext highlighter-rouge">MONTH</code> and <code class="language-plaintext highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="language-plaintext highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+
+<p>Jekyll also offers powerful support for code snippets:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+
+<p>Check out the <a href="https://jekyllrb.com/docs/home" rel="external nofollow noopener" target="_blank">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll" rel="external nofollow noopener" target="_blank">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].</p>
+
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Feb 17, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#jekyll">jekyll</a></p>
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#update">update</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/post-1/';
+    this.page.identifier = '/post-1';
+    };
+ 
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+        </main>
+      </div>
+    </div>
+
+
+
 
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
     <footer>
@@ -294,6 +608,7 @@ Nmap done: 1 IP address (1 host up) scanned in 6.72 seconds
 </footer>
 
     <!-- script -->
+    <script src="/assets/js/nav.js"></script>
     <script src="/assets/js/clip.js"></script>
     <script src="/assets/js/scroll-top.js"></script>
     <script src="/assets/js/search.js"></script>

@@ -83,31 +83,28 @@
   <div class="nav-header">
     <div class="nav-search">
       <div class="search">
-        <i class="material-icons">search</i>
-        <input type="search" name="search" placeholder="Search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
       </div>
     </div>
   </div>
   <ul class="nav-categories ul-base">
-    <li><a href="http://www.mediahawkz.com/topic/technology" rel="external nofollow noopener" target="_blank">Technology</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/science" rel="external nofollow noopener" target="_blank">Science</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/speak-up" rel="external nofollow noopener" target="_blank">Speak up</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/general" rel="external nofollow noopener" target="_blank">General</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/lifestyle" rel="external nofollow noopener" target="_blank">Lifestyle</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/world" rel="external nofollow noopener" target="_blank">World</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/business" rel="external nofollow noopener" target="_blank">Business</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/entertainment" rel="external nofollow noopener" target="_blank">Entertainment</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/sports" rel="external nofollow noopener" target="_blank">Sports</a></li>
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link  active" href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
   </ul>
   <ul class="social ul-base">
-    <li><a href="https://twitter.com/MediahawkZ" class="twitter" target="_blank" rel="external nofollow noopener"><i class="fa fa-twitter"></i></a></li>
-    <li><a href="https://www.facebook.com/mediahawkz" class="facebook" target="_blank" rel="external nofollow noopener"><i class="fa fa-facebook"></i></a></li>
-    <li><a href="https://plus.google.com/+MediahawkzIndia" class="google-plus" target="_blank" rel="external nofollow noopener"><i class="fa fa-google-plus"></i></a></li>
-    <li><a href="http://www.mediahawkz.com/rss" class="rss" target="_blank" rel="external nofollow noopener"><i class="fa fa-rss"></i></a></li>
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
   </ul>
   <div class="copyright">
-    <span>© 2016 <a href="http://www.mediahawkz.com" class="link" rel="external nofollow noopener" target="_blank">MediahawkZ.com</a> Made in India</span>
-    <span>Designed by <a href="https://twitter.com/rkchauhan01" target="_blank" rel="external nofollow noopener">Ravikumar Chauhan</a></span>
+    <span> © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
   </div>
 </nav>
 <div class="overlay"></div>
@@ -419,89 +416,623 @@
         <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
     </div>
   
-
-  <div class="author__content">
-    <h3 class="author__name p-name" itemprop="name">
-      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
-    </h3>
-    
-      <div class="author__bio p-note" itemprop="description">
-        <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
-
-      </div>
-    
-  </div>
-
-  <div class="author__urls-wrapper">
-    <ul class="author__urls social-icons">
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
       
-        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
-          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Turkey</span>
-        </li>
-      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
 
+        </div>
       
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
         
           
-            <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+              <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
           
         
-          
-            <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
-          
+  
         
-          
-            <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
-          
+  
         
-          
-            <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
-          
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
         
-          
-            <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
-          
+  
         
-      
-
-      
-
-      
-        <li>
-          <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
-            <meta itemprop="email" content="furkn.dniz@gmail.com">
-            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
-          </a>
-        </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
   <li>
     <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
       <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
     </a>
   </li>
 -->
-    </ul>
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
   </div>
 </div>
 
       </div>
     </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <!-- _layouts/cv.html -->
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">CV <a href="/assets/pdf/cv-en.pdf" target="_blank" class="pdf__link"><i class="fas fa-file-pdf"></i></a>
+</h1>
+    <p class="post-description"></p>
+  </header>
+
+  <article>
+    <div class="cv">
+      
+        <div class="card">
+          <h3 class="card-title">General Information</h3>
+          <div>
+
+            <!-- Map  -->
+            
+              <table class="table table-borderless">
+                
+                  <tr class="map__content">
+                    <td class="map__name">
+<p>Full Name</p>
+</td>
+                    <td class="map__value">
+<p>Furkan Deniz</p>
+</td>
+                  </tr>
+                
+                  <tr class="map__content">
+                    <td class="map__name">
+<p>E-Mail</p>
+</td>
+                    <td class="map__value">
+<p>furkn.dniz@protonnmail.com</p>
+</td>
+                  </tr>
+                
+                  <tr class="map__content">
+                    <td class="map__name">
+<p>Date of Birth</p>
+</td>
+                    <td class="map__value">
+<p>24th January 2003</p>
+</td>
+                  </tr>
+                
+                  <tr class="map__content">
+                    <td class="map__name">
+<p>Languages</p>
+</td>
+                    <td class="map__value">
+<p>Turkish, English</p>
+</td>
+                  </tr>
+                
+              </table>
+
+            <!-- Time Table -->
+            
+
+          </div>
+        </div>
+      
+        <div class="card">
+          <h3 class="card-title">Education</h3>
+          <div>
+
+            <!-- Map  -->
+            
+              <div class="card__content">
+                <ul class="card-text list-group list-group-flush">
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                          <div>
+                            <span class="badge">
+                              2022 - Now
+                            </span>
+                          </div>
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title">Economics</h6>
+                          
+                          
+                            <h6>Akdeniz University, Antalya, Türkiye</h6>
+                          
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                          <div>
+                            <span class="badge">
+                              2022 - Now
+                            </span>
+                          </div>
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title">İnformation System Managemant</h6>
+                          
+                          
+                            <h6>Anadolu University, Eskişehir, Türkiye</h6>
+                          
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                </ul>
+              </div>
+
+            <!-- Nested List -->
+            
+
+          </div>
+        </div>
+      
+        <div class="card">
+          <h3 class="card-title">Experience</h3>
+          <div>
+
+            <!-- Map  -->
+            
+              <div class="card__content">
+                <ul class="card-text list-group list-group-flush">
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title">I don't have work experince.</h6>
+                          
+                          
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                </ul>
+              </div>
+
+            <!-- Nested List -->
+            
+
+          </div>
+        </div>
+      
+        <div class="card">
+          <h3 class="card-title">Open Source Projects</h3>
+          <div>
+
+            <!-- Map  -->
+            
+              <div class="card__content">
+                <ul class="card-text list-group list-group-flush">
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                          <div>
+                            <span class="badge">
+                              2020
+                            </span>
+                          </div>
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title"><a href="https://github.com/Mr0Wido/FrSec-Hunting-Toolkit" rel="external nofollow noopener" target="_blank">FrSec-Hunting-Toolkit </a></h6>
+                          
+                          
+                          
+                            <ul class="items">
+                              
+                                <li>
+                                  
+                                    <span class="item">This Tool is Purely to Make My Job Easier. Its Purpose is Both Bug Bounty and Web Security.</span>
+                                  
+                                </li>
+                              
+                            </ul>
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                    <li class="list-group-item">
+                      <div class="row">
+                        
+                          <div>
+                            <span class="badge">
+                              2023-Now
+                            </span>
+                          </div>
+                        
+                        <div class="time__content">
+                          
+                            <h6 class="title"><a href="https://github.com/Mr0Wido/mr0wido.github.io" rel="external nofollow noopener" target="_blank">mr0wido.github.io </a></h6>
+                          
+                          
+                          
+                            <ul class="items">
+                              
+                                <li>
+                                  
+                                    <span class="item">My Personal Website</span>
+                                  
+                                </li>
+                              
+                            </ul>
+                          
+                          
+                        </div>
+                      </div>
+                    </li>
+                  
+                </ul>
+              </div>
+
+            <!-- Nested List -->
+            
+
+          </div>
+        </div>
+      
+        <div class="card">
+          <h3 class="card-title">Interests</h3>
+          <div>
+
+            <!-- Map  -->
+            
+              <div class="card__content">
+                <ul class="card-text list-group list-group-flush">
+                  
+                    <li class="list-group-item">
+                    <h5>Security</h5>
+                      
+                        <ul class="subitems">
+                          
+                            <li><span class="subitem">Penetration Tester</span></li>
+                          
+                            <li><span class="subitem">Web Application Security Researcher</span></li>
+                          
+                            <li><span class="subitem">Cloud Security</span></li>
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                    <li class="list-group-item">
+                    <h5>Hobbies and Other Interests</h5>
+                      
+                        <ul class="subitems">
+                          
+                            <li><span class="subitem">Front-End Development</span></li>
+                          
+                            <li><span class="subitem">Game Development</span></li>
+                          
+                            <li><span class="subitem">Video Games</span></li>
+                          
+                            <li><span class="subitem">Movies</span></li>
+                          
+                            <li><span class="subitem">TV Series</span></li>
+                          
+                            <li><span class="subitem">Basketboll</span></li>
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                </ul>
+              </div>
+            
+
+          </div>
+        </div>
+      
+    </div>
+  </article>
+</div>
+
+        </main>
+      </div>
+    </div>
+
+
+
 
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
     <footer>
@@ -511,6 +1042,7 @@
 </footer>
 
     <!-- script -->
+    <script src="/assets/js/nav.js"></script>
     <script src="/assets/js/clip.js"></script>
     <script src="/assets/js/scroll-top.js"></script>
     <script src="/assets/js/search.js"></script>

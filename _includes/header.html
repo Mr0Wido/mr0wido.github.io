@@ -47,31 +47,28 @@
   <div class="nav-header">
     <div class="nav-search">
       <div class="search">
-        <i class="material-icons">search</i>
-        <input type="search" name="search" placeholder="Search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
       </div>
     </div>
   </div>
   <ul class="nav-categories ul-base">
-    <li><a href="http://www.mediahawkz.com/topic/technology">Technology</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/science">Science</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/speak-up">Speak up</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/general">General</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/lifestyle">Lifestyle</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/world">World</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/business">Business</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/entertainment">Entertainment</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/sports">Sports</a></li>
+    <li><a class="site-nav__link {% if page.title == "Home" %} active{% endif %}" href="/">Home</a></li>
+    <li><a class="site-nav__link {% if page.title == "About Me" %} active{% endif %}" href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link {% if page.title == "Posts" %} active{% endif %}" href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link {% if page.title == "Projects" %} active{% endif %}" href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link {% if page.title == "CV" %} active{% endif %}" href="/cv/">CV</a></li>
+    <li><a class="site-nav__link {% if page.title == "Categories" %} active{% endif %}" href="/categories/">Categories</a></li>
   </ul>
   <ul class="social ul-base">
-    <li><a href="https://twitter.com/MediahawkZ" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
-    <li><a href="https://www.facebook.com/mediahawkz" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-    <li><a href="https://plus.google.com/+MediahawkzIndia" class="google-plus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-    <li><a href="http://www.mediahawkz.com/rss" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    <li><a href="https://twitter.com/{{ author.twitter }}" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/{{ author.instagram }}" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/{{ author.linkedin }}" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/{{ author.github }}" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
   </ul>
   <div class="copyright">
-    <span>&copy; 2016 <a href="http://www.mediahawkz.com" class="link">MediahawkZ.com</a> Made in India</span>
-    <span>Designed by <a href="https://twitter.com/rkchauhan01" target="_blank">Ravikumar Chauhan</a></span>
+    <span> &copy; Copyright {{ site.time | date: '%Y' }} {{ site.title }} | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
   </div>
 </nav>
 <div class="overlay"></div>

@@ -83,31 +83,28 @@
   <div class="nav-header">
     <div class="nav-search">
       <div class="search">
-        <i class="material-icons">search</i>
-        <input type="search" name="search" placeholder="Search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
       </div>
     </div>
   </div>
   <ul class="nav-categories ul-base">
-    <li><a href="http://www.mediahawkz.com/topic/technology" rel="external nofollow noopener" target="_blank">Technology</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/science" rel="external nofollow noopener" target="_blank">Science</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/speak-up" rel="external nofollow noopener" target="_blank">Speak up</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/general" rel="external nofollow noopener" target="_blank">General</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/lifestyle" rel="external nofollow noopener" target="_blank">Lifestyle</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/world" rel="external nofollow noopener" target="_blank">World</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/business" rel="external nofollow noopener" target="_blank">Business</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/entertainment" rel="external nofollow noopener" target="_blank">Entertainment</a></li>
-    <li><a href="http://www.mediahawkz.com/topic/sports" rel="external nofollow noopener" target="_blank">Sports</a></li>
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
   </ul>
   <ul class="social ul-base">
-    <li><a href="https://twitter.com/MediahawkZ" class="twitter" target="_blank" rel="external nofollow noopener"><i class="fa fa-twitter"></i></a></li>
-    <li><a href="https://www.facebook.com/mediahawkz" class="facebook" target="_blank" rel="external nofollow noopener"><i class="fa fa-facebook"></i></a></li>
-    <li><a href="https://plus.google.com/+MediahawkzIndia" class="google-plus" target="_blank" rel="external nofollow noopener"><i class="fa fa-google-plus"></i></a></li>
-    <li><a href="http://www.mediahawkz.com/rss" class="rss" target="_blank" rel="external nofollow noopener"><i class="fa fa-rss"></i></a></li>
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
   </ul>
   <div class="copyright">
-    <span>© 2016 <a href="http://www.mediahawkz.com" class="link" rel="external nofollow noopener" target="_blank">MediahawkZ.com</a> Made in India</span>
-    <span>Designed by <a href="https://twitter.com/rkchauhan01" target="_blank" rel="external nofollow noopener">Ravikumar Chauhan</a></span>
+    <span> © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
   </div>
 </nav>
 <div class="overlay"></div>
@@ -248,89 +245,452 @@
         <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
     </div>
   
-
-  <div class="author__content">
-    <h3 class="author__name p-name" itemprop="name">
-      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
-    </h3>
-    
-      <div class="author__bio p-note" itemprop="description">
-        <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
-
-      </div>
-    
-  </div>
-
-  <div class="author__urls-wrapper">
-    <ul class="author__urls social-icons">
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
       
-        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
-          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Turkey</span>
-        </li>
-      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
 
+        </div>
       
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
         
           
-            <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+              <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
           
         
-          
-            <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
-          
+  
         
-          
-            <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
-          
+  
         
-          
-            <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
-          
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
         
-          
-            <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
-          
+  
         
-      
-
-      
-
-      
-        <li>
-          <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
-            <meta itemprop="email" content="furkn.dniz@gmail.com">
-            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
-          </a>
-        </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
   <li>
     <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
       <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
     </a>
   </li>
 -->
-    </ul>
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
   </div>
 </div>
 
       </div>
     </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <h2><strong>Terms and Conditions</strong></h2>
+
+<p>Welcome to Mr0Wido's Blog!</p>
+
+<p>These terms and conditions outline the rules and regulations for the use of Mr0Wido's Blog's Website, located at https://mr0wido.github.io/.</p>
+
+<p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Mr0Wido's Blog if you do not agree to take all of the terms and conditions stated on this page.</p>
+
+<p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same. Our Terms and Conditions were created with the help of the <a href="https://www.privacypolicyonline.com/terms-conditions-generator/" rel="external nofollow noopener" target="_blank">Terms &amp; Conditions Generator</a>.</p>
+
+<h3 class="tos_title"><strong>Cookies</strong></h3>
+
+<p>We employ the use of cookies. By accessing Mr0Wido's Blog, you agreed to use cookies in agreement with the Mr0Wido's Blog's Privacy Policy.</p>
+
+<p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
+
+<h3 class="tos_title"><strong>License</strong></h3>
+
+<p>Unless otherwise stated, Mr0Wido's Blog and/or its licensors own the intellectual property rights for all material on Mr0Wido's Blog. All intellectual property rights are reserved. You may access this from Mr0Wido's Blog for your own personal use subjected to restrictions set in these terms and conditions.</p>
+
+<p>You must not:</p>
+<ul class="tos_list">
+    <li>Republish material from Mr0Wido's Blog</li>
+    <li>Sell, rent or sub-license material from Mr0Wido's Blog</li>
+    <li>Reproduce, duplicate or copy material from Mr0Wido's Blog</li>
+    <li>Redistribute content from Mr0Wido's Blog</li>
+</ul>
+
+<p>This Agreement shall begin on the date hereof.</p>
+
+<p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Mr0Wido's Blog does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Mr0Wido's Blog,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, Mr0Wido's Blog shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</p>
+
+<p>Mr0Wido's Blog reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>
+
+<p>You warrant and represent that:</p>
+
+<ul class="tos_list">
+    <li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
+    <li>The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party;</li>
+    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy</li>
+    <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
+</ul>
+
+<p>You hereby grant Mr0Wido's Blog a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>
+
+<h3 class="tos_title"><strong>Hyperlinking to our Content</strong></h3>
+
+<p>The following organizations may link to our Website without prior written approval:</p>
+
+<ul class="tos_list">
+    <li>Government agencies;</li>
+    <li>Search engines;</li>
+    <li>News organizations;</li>
+    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</li>
+    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
+</ul>
+
+<p>These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party’s site.</p>
+
+<p>We may consider and approve other link requests from the following types of organizations:</p>
+
+<ul class="tos_list">
+    <li>commonly-known consumer and/or business information sources;</li>
+    <li>dot.com community sites;</li>
+    <li>associations or other groups representing charities;</li>
+    <li>online directory distributors;</li>
+    <li>internet portals;</li>
+    <li>accounting, law and consulting firms; and</li>
+    <li>educational institutions and trade associations.</li>
+</ul>
+
+<p>We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Mr0Wido's Blog; and (d) the link is in the context of general resource information.</p>
+
+<p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party’s site.</p>
+
+<p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Mr0Wido's Blog. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.</p>
+
+<p>Approved organizations may hyperlink to our Website as follows:</p>
+
+<ul class="tos_list">
+    <li>By use of our corporate name; or</li>
+    <li>By use of the uniform resource locator being linked to; or</li>
+    <li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.</li>
+</ul>
+
+<p>No use of Mr0Wido's Blog's logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
+
+<h3 class="tos_title"><strong>iFrames</strong></h3>
+
+<p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.</p>
+
+<h3 class="tos_title"><strong>Content Liability</strong></h3>
+
+<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
+
+<h3 class="tos_title"><strong>Reservation of Rights</strong></h3>
+
+<p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it’s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
+
+<h3 class="tos_title"><strong>Removal of links from our website</strong></h3>
+
+<p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.</p>
+
+<p>We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
+
+<h3 class="tos_title"><strong>Disclaimer</strong></h3>
+
+<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>
+
+<ul class="tos_list">
+    <li>limit or exclude our or your liability for death or personal injury;</li>
+    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
+    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
+    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
+</ul>
+
+<p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.</p>
+
+<p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+
+        </main>
+      </div>
+    </div>
+
+
+
 
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
     <footer>
@@ -340,6 +700,7 @@
 </footer>
 
     <!-- script -->
+    <script src="/assets/js/nav.js"></script>
     <script src="/assets/js/clip.js"></script>
     <script src="/assets/js/scroll-top.js"></script>
     <script src="/assets/js/search.js"></script>

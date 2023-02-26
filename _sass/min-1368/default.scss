@@ -1,5 +1,9 @@
 /* default.html */
 @media screen and (min-width: 1368px) {
+  .container-medium {
+    display: none;
+  }
+
   .container-default {
     width: 100%;
     display: flex;
