@@ -16,13 +16,13 @@ body {
 }
 
 a {
-color: $title-color; 
-text-decoration: none; 
+  color: $title-color; 
+  text-decoration: none; 
 }
 a:hover {
-color: $title-color;
-text-shadow: -9px -6px 40px currentcolor;
-text-decoration: none;
+  color: $title-color;
+  text-shadow: -9px -6px 40px currentcolor;
+  text-decoration: none;
 }
 h1 {
   color: $title-color;
@@ -66,6 +66,9 @@ hr {
   width: 1em;
 
 }
+
+
+
 
 
 /* pre */
@@ -123,26 +126,7 @@ pre.highlight code::-webkit-scrollbar-thumb:hover {
 /* Disqus */
 #disqus_thread {
   background-color: $disqus-bg; 
-  padding: 20px; 
 }
-#disqus-form {
-  padding: 20px; 
-}
-#disqus_thread h3 {
-  font-size: 24px; 
-  margin-bottom: 20px; 
-}
-#disqus_thread ol {
-  list-style: none; 
-  padding: 0; 
-}
-#disqus_thread li {
-  padding: 20px; 
-  margin-bottom: 20px; 
-}
-#disqus_thread li:last-child {
-  border-bottom: none; 
-} 
 
 
 /* Pagination */
@@ -177,6 +161,8 @@ pre.highlight code::-webkit-scrollbar-thumb:hover {
   color: $page-number;
 }
 
+
+
 /* projects.md */
 .repositories {
   margin: 0 -15px;
@@ -187,6 +173,8 @@ pre.highlight code::-webkit-scrollbar-thumb:hover {
   }
 }
 
+
+
 /* FOOTER */
 footer {
   padding: 100px;
@@ -194,3 +182,54 @@ footer {
   width: 100%;
 }
 
+
+//Categories
+.archive__group-head {
+  text-align: left;
+  width: 30%;
+  height: 30px;
+  font-size: 18px;
+}
+.count_head{
+  float: right;
+}
+#archives {
+  width: 100%;
+  margin: 0 auto;
+}
+.archive-group {
+  margin: 20px 0;
+}
+.category-head {
+  font-weight: bolder;
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: $cat-title;
+}
+.archive-item {
+  margin-bottom: 5px;
+}
+.archive-item a {
+  font-size: 20px;
+  font-weight: bold;
+  color: $cat-text;
+}
+.archive-item a:hover {
+  text-decoration: underline;
+}
+.archive-item .post-list__item-meta {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 360px) and (max-width: 980px) {
+  .archive__group-head {
+    text-align: left;
+    width: 40%;
+    height: 30px;
+    font-size: 18px;
+  }
+  .archive-item .post-list__item-meta {
+    color: $item-meta ;
+    font-size: 12px;
+  }    
+}

@@ -10,22 +10,22 @@
 
 
   .author__avatar {
+    text-align: center;
     margin-right: 1rem;
-    border: 1px solid $author-border;
     width: 111px;
     height: 107px;
-    text-align: center;
     padding-top: 2px;
-      box-shadow:	0 0 4px	  $author-border,
+    
+  }
+  .author__avatar img {
+    height: auto;
+    max-width: 100px;
+    border: 1px solid $author-border;
+    box-shadow:	0 0 4px	  $author-border,
                               0 0 4px 	$author-border,
                               0 0 15px	$author-border,
                               0 0 7px   $author-border,
                               inset 0 0 10px  $author-border;
-    
-  }
-  .author__avatar img {
-    max-width: 100px;
-    height: auto;
   }
   .author__name {
     margin-top: 10px;

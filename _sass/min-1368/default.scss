@@ -1,26 +1,28 @@
 /* default.html */
 @media screen and (min-width: 1368px) {
+  
   .container-medium {
     display: none;
   }
 
   .container-default {
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
+
 
   .content-container {
     max-width: 65%;
   }
 
   .default{
+    text-align: left;
     max-width: 100%;
     height: 100%;
     margin-left: 100px;;
     padding: 20px;
     padding-top: 80px;
-    text-align: left;
   }
   .author-container {
     position: -webkit-sticky;
@@ -33,7 +35,7 @@
   }
 
 
-
+  //Button
   #myBtn {
     display: none;
     position: fixed;

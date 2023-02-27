@@ -64,7 +64,7 @@ layout: default
                 {% unless forloop.last %}&nbsp;{% endunless %}
                 {% endfor %}
               </div>
-              <p class="post-list__item-excerpt">{{ post.excerpt | split:'\n\n' | first }}</p>
+              <p class="post-list__item-excerpt">{{ post.excerpt | truncatewords:20 }}</p>
             </div>
           </div>
           <br>
@@ -82,7 +82,7 @@ layout: default
             {% unless forloop.last %}&nbsp;{% endunless %}
             {% endfor %}
           </div>
-          <p class="post-list__item-excerpt">{{ post.excerpt | split:'\n\n' | first }}</p>
+          <p class="post-list__item-excerpt">{{ post.excerpt | truncatewords:20 }}</p>
         {% endif %}  
       </li>
     {% endfor %}

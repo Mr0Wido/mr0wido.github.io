@@ -188,7 +188,7 @@
         width: 60%;
         max-width: 500px;
         height: 100%;
-        background-color: #1e181edd;
+        background-color: $nav-bg;
         transition: all 0.3s ease;
         opacity: 0.9;
         z-index: 1002;
@@ -206,13 +206,13 @@
 
     nav .nav-header {
         display: block;
-        background-color: #1e181e;
+        background-color: $nav-header-bg;
     }
 
     nav .nav-header .nav-search {
         position: relative;
         height: 40px;
-        border-bottom: 1px solid #9c3230;
+        border-bottom: 1px solid $nav-border;
     }
     nav .nav-header .nav-search .search {
         display: block;
@@ -222,7 +222,7 @@
         position: absolute;
         top: 10px;
         right: 0.7em;
-        color: #e8615a;
+        color: $search-i;
         background-color: transparent;
         font-size: 20px;
         cursor: pointer;
@@ -230,24 +230,24 @@
     nav .nav-header .nav-search .search input[type=search] {
         width: 100%;
         height: 58px;
-        color: #e8615a;
+        color: $search-i;
         font-size: 15px;
         padding: 0 48px 0 20px;
         outline: none;
         border: none;
-        background-color: #1e181e;
+        background-color: $nav-header-bg;
     }
     nav .nav-header .nav-search .search ::-webkit-input-placeholder {
-        color: #e8615a;
+        color: $search-i;
     }
     nav .nav-header .nav-search .search ::-moz-placeholder {
-        color: #e8615a;
+        color: $search-i;
     }
     nav .nav-header .nav-search .search :-moz-placeholder {
-        color: #e8615a;
+        color: $search-i;
     }
     nav .nav-header .nav-search .search :-ms-input-placeholder {
-        color: #e8615a;
+        color: $search-i;
     }
 
     nav .nav-categories li {
@@ -258,7 +258,7 @@
         display: block;
         width: 100%;
         font-size: 1rem;
-        color: #2be4ea;
+        color: $nav-list;
         padding: 0.625em 1.3em;
         text-decoration: none;
     }
@@ -276,15 +276,14 @@
     }
     nav .nav-link-title {
         display: block;
-        color: #3f51b5;
         font-size: 1rem;
         padding: 0.5em 1.3em;
     }
     nav .social {
         display: flex;
         margin: 4px 0;
-        border-top: 1px solid #9c3230;
-        border-bottom: 1px solid #9c3230;
+        border-top: 1px solid $nav-border;
+        border-bottom: 1px solid $nav-border;
     }
     nav .social li {
         display: inline-block;
@@ -296,14 +295,14 @@
         text-align: center;
         line-height: 28px;
         flex-direction: row;
-        border-right: 1px solid #9c3230;
+        border-right: 1px solid $nav-border;
     }
     nav .social li:last-child {
         border-right: 0;
     }
     nav .social li a {
         display: block;
-        color: #fed33f;
+        color: $nav-social;
         font-size: 15px;
         padding: 2px;
         text-decoration: none;
@@ -311,7 +310,7 @@
 
     nav .copyright {
         display: block;
-        color: #e8615a;
+        color: $nav-copy;
         text-align: center;
         padding: 0.5em 0 1em;
     }

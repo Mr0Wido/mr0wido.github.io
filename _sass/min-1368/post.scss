@@ -1,5 +1,5 @@
 /* index.html */
-@media screen and (min-width: 1368px) {
+@media screen and (min-width: 980px) {
   .post-list__small {
     display: none;
   }
@@ -13,7 +13,7 @@
     color: $post-title;
   }
   .post-list {
-    width: 100%
+    width: 100%;
   }
   .post-list__list {
     list-style: none;
