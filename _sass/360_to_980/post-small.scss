@@ -2,11 +2,19 @@
     .default p {
         font-size: 14px;
     }
-    .post h1, h2 {
+    .post h1 {
         color: $post-title;
         font-size: 20px;
         margin-bottom: 20px;
     }
+    .post h2 {
+        color: $post-title;
+        font-size: 18px;
+      }
+    .post h3 {
+        color: $post-title;
+        font-size: 16px;
+      }
     .home_title {
         color: $post-title;
         font-size: 22px;
@@ -23,6 +31,11 @@
         flex-wrap: wrap;
         justify-content: space-between;
         list-style: none;
+    }
+    .post-list__title {
+        color: $post-title;
+        font-size: 22px;
+        padding-bottom: 10px;
     }
     .post-list__small li {
         width: calc(50% - 10px);
