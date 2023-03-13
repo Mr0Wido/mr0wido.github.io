@@ -1,4 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-09T20:32:45+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>My website.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">Tryhackme - Overpass 2 - Hacked</title><link href="http://localhost:4000/tryhackme-overpass-2-hacked/" rel="alternate" type="text/html" title="Tryhackme - Overpass 2 - Hacked" /><published>2023-03-09T00:00:00+03:00</published><updated>2023-03-09T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-overpass-2-hacked</id><content type="html" xml:base="http://localhost:4000/tryhackme-overpass-2-hacked/"><![CDATA[<p>This was an easy Linux machine and the second in the Overpass TryHackMe series. It involved analyzing a capture file containing requests issued by an attacker to compromise the web server, escalate privileges to root and establish persistence, in order to understand the exact steps followed to do so, and then using that information to hack back into the host.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-13T23:04:51+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>My website.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Simple CTF</title><link href="http://localhost:4000/tryhackme-simple-ctf/" rel="alternate" type="text/html" title="TryHackMe - Simple CTF" /><published>2023-03-13T00:00:00+03:00</published><updated>2023-03-13T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-simple-ctf</id><content type="html" xml:base="http://localhost:4000/tryhackme-simple-ctf/"><![CDATA[<p>This is an easy CTF. Let’s start.</p>
+
+<p><br /></p>
+
+<h3 id="1-how-many-services-are-running-under-port-1000">1. How many services are running under port 1000?</h3>
+
+<p>We first run a <code class="language-plaintext highlighter-rouge">nmap</code> scan to find running ports.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.22.97
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/simple_ctf/nmap.png" alt="nmap" /></p>
+
+<p>As you can see, a total of 3 ports are running. These are <code class="language-plaintext highlighter-rouge">21/tcp FTP</code>, <code class="language-plaintext highlighter-rouge">80/tcp HTTP</code>, <code class="language-plaintext highlighter-rouge">and 2222/tcp SSH.</code></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">2</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="2-what-is-running-on-the-higher-port">2. What is running on the higher port?</h3>
+
+<p>As you will remember from the previous question, the highest port is 2222/tcp. And SSH is running on this port.</p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">SSH</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="3-whats-the-cve-youre-using-against-the-application">3. What’s the CVE you’re using against the application?</h3>
+
+<p>When we visit the website, we see the default page of apache.</p>
+
+<p><img src="/assets/img/tryhackme/simple_ctf/apache.png" alt="apache" /></p>
+
+<p>First of all, I did a <code class="language-plaintext highlighter-rouge">nikto</code> scan, but no results came out. Now let’s do a directory scan with <code class="language-plaintext highlighter-rouge">gobuster</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.22.97/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/simple_ctf/gobuster.png" alt="gobuster" /></p>
+
+<p>Yes, we discovered the <code class="language-plaintext highlighter-rouge">/simple/</code> directory here. Let’s see what it contains.</p>
+
+<p><img src="/assets/img/tryhackme/simple_ctf/cms.png" alt="cms" /></p>
+
+<p>A CMS page appears. This is the app the question tells us.
+At the bottom of the page, we find the CMS version.</p>
+
+<p><img src="/assets/img/tryhackme/simple_ctf/version.png" alt="version" /></p>
+
+<p>Now, we’re looking for any CMS Made Simple vulnerability in exploit-db, and let’s not forget that the version is <code class="language-plaintext highlighter-rouge">2.2.8</code>.</p>
+
+<p><img src="/assets/img/tryhackme/simple_ctf/db.png" alt="db" /></p>
+
+<p>As a result of the search, we detect the vulnerability that is suitable for the CMS version of our target. 
+<a href="https://www.exploit-db.com/exploits/46635">https://www.exploit-db.com/exploits/46635</a></p>
+
+<p><img src="/assets/img/tryhackme/simple_ctf/exploit.png" alt="exploit" /></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">CVE- 2019-9053 </code></strong></p>
+
+<p><br /></p>
+
+<h3 id="4-to-what-kind-of-vulnerability-is-the-application-vulnerable">4. To what kind of vulnerability is the application vulnerable?</h3>
+
+<p>As you can see in the previous question, the vulnerability is <code class="language-plaintext highlighter-rouge">SQL Injection</code>.</p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">sqli</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="5-whats-the-password">5. What’s the password?</h3>
+
+<p><em>Hint: You can use /usr/share/seclists/Passwords/Common-Credentials/best110.txt to crack the pass</em></p>
+
+<p>We need to download the exploit in exploit-db and run it as it says.</p>
+
+<p><img src="/assets/img/tryhackme/simple_ctf/how.png" alt="how" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ python3 46635.py -u http://10.10.52.237/simple/ --crack -w /usr/share/seclists/Passwords/Common-Credentials/best110.txt
+</code></pre></div></div>
+
+<p>We want to run it but we can’t. I guess we cannot run this code because it is written in the python2 script, and we encounter many errors. I fixed it as best I could, you can download and run it from <a href="/assets/img/tryhackme/simple_ctf/46635.py">here</a>. If you want to fix it, you can ask in the comments.</p>
+
+<p><img src="/assets/img/tryhackme/simple_ctf/pass.png" alt="pass" /></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">secret</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="6-where-can-you-login-with-the-details-obtained">6. Where can you login with the details obtained?</h3>
+
+<p>We may use these credentials to login against ssh <code class="language-plaintext highlighter-rouge">(running on port 2222)</code></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">ssh</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="7-whats-the-user-flag">7. What’s the user flag?</h3>
+
+<p>Using the information we collect, we login to <code class="language-plaintext highlighter-rouge">ssh</code> and then we get the <code class="language-plaintext highlighter-rouge">user.txt</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ ssh mitch@10.10.52.237 -p 2222
+ $ whoami
+ $ cat user.txt
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/simple_ctf/login.png" alt="login" /></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">G00d j0b, keep up!</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="8-is-there-any-other-user-in-the-home-directory-whats-its-name">8. Is there any other user in the home directory? What’s its name?</h3>
+
+<p>We go to the /home directory and look at the users with the <code class="language-plaintext highlighter-rouge">ls -al</code> command.</p>
+
+<p><img src="/assets/img/tryhackme/simple_ctf/users.png" alt="users" /></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">sunbath</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="9-what-can-you-leverage-to-spawn-a-privileged-shell">9. What can you leverage to spawn a privileged shell?</h3>
+
+<p>First, we run the <code class="language-plaintext highlighter-rouge">sudo -l</code> command. We notice that Vim can run without the need for a root password.</p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">vim</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="10-whats-the-root-flag">10. What’s the root flag?</h3>
+
+<p>Now we can get root privileges using vim. The code we will run is as follows.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo vim -c '!sh'
+$ whoami
+$ cat /root/root.txt
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/simple_ctf/root.png" alt="root" /></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">W3ll d0n3. You made it!</code></strong></p>
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="security," /><category term="enumeration," /><category term="privesc" /><summary type="html"><![CDATA[This is an easy CTF. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/simple.png" /><media:content medium="image" url="http://localhost:4000/assets/img/simple.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tryhackme - Overpass 2 - Hacked</title><link href="http://localhost:4000/tryhackme-overpass-2-hacked/" rel="alternate" type="text/html" title="Tryhackme - Overpass 2 - Hacked" /><published>2023-03-09T00:00:00+03:00</published><updated>2023-03-09T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-overpass-2-hacked</id><content type="html" xml:base="http://localhost:4000/tryhackme-overpass-2-hacked/"><![CDATA[<p>This was an easy Linux machine and the second in the Overpass TryHackMe series. It involved analyzing a capture file containing requests issued by an attacker to compromise the web server, escalate privileges to root and establish persistence, in order to understand the exact steps followed to do so, and then using that information to hack back into the host.</p>
 
 <p><br /></p>
 
@@ -111,7 +255,7 @@ $ ./backdoor -h
 
 <p><br /></p>
 <h3 id="22-whats-the-hardcoded-salt-for-the-backdoor">2.2 What’s the hardcoded salt for the backdoor?</h3>
-<p>Reading the source code of the backdoor (<a href="https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go">https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go</a>), reveals that the salt is hardcoded.</p>
+<p>Reading the source code of the backdoor <a href="https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go">https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go</a>, reveals that the salt is hardcoded.</p>
 
 <p><img src="/assets/img/tryhackme/overpass-2/salt.png" alt="salt" /></p>
 

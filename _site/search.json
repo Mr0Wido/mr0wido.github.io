@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Simple CTF",
+      "category" : "",
+      "tags"     : "security,, enumeration,, privesc",
+      "url"      : "/tryhackme-simple-ctf/",
+      "date"     : "2023-03-13 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "Tryhackme - Overpass 2 - Hacked",
       "category" : "",
       "tags"     : "security,, forensics,, wireshark",

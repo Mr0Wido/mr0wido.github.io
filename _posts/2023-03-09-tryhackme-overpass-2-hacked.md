@@ -127,7 +127,7 @@ As you can see here, if no hash is entered in the -a option, the tool itself use
 
 <br>
 ### 2.2 What's the hardcoded salt for the backdoor?
-Reading the source code of the backdoor ([https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go](https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go)), reveals that the salt is hardcoded.
+Reading the source code of the backdoor [https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go](https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go), reveals that the salt is hardcoded.
 
 ![salt](/assets/img/tryhackme/overpass-2/salt.png)
 
