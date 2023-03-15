@@ -5,7 +5,7 @@ baseurl     : "/"
 url         : "https://mr0wido.github.io" 
 
 # Google Analytics
-google_analytics: G-2JH0DV3EN3
+google_analytics: G-ZKD6SG72NE
 
 # Build settings
 theme: minima
