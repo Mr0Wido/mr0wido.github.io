@@ -4,6 +4,8 @@ description : This is my personal website. The purpose of the Website is to assi
 baseurl     : "/" 
 url         : "https://mr0wido.github.io" 
 
+# Google Analytics
+google_analytics: G-2JH0DV3EN3
 
 # Build settings
 theme: minima
