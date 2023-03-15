@@ -1,4 +1,157 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-14T19:34:32+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>My website.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Vulnversity</title><link href="http://localhost:4000/tryhackme-vulnversity/" rel="alternate" type="text/html" title="TryHackMe - Vulnversity" /><published>2023-03-14T00:00:00+03:00</published><updated>2023-03-14T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-vulnversity</id><content type="html" xml:base="http://localhost:4000/tryhackme-vulnversity/"><![CDATA[<p>This is an easy CTF. Let’s start.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-15T17:21:13+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Pickle Rick</title><link href="http://localhost:4000/tryhackme-pickle-rick/" rel="alternate" type="text/html" title="TryHackMe - Pickle Rick" /><published>2023-03-15T00:00:00+03:00</published><updated>2023-03-15T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-pickle-rick</id><content type="html" xml:base="http://localhost:4000/tryhackme-pickle-rick/"><![CDATA[<p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
+Deploy the virtual machine on this task and explore the web application: “http://target-ip/”</p>
+
+<p><br /></p>
+
+<h3 id="1-what-is-the-first-ingredient-rick-needs">1. What is the first ingredient Rick needs?</h3>
+
+<p>First, we run a <strong><code class="language-plaintext highlighter-rouge">nmap</code></strong> scan as usual.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.125.149
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/nmap.png" alt="nmap" /></p>
+
+<p>As you can see there are 2 ports running.</p>
+
+<p>Let’s visit the website and see what we can find.
+On the homepage, we see such an article.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/home.png" alt="home" /></p>
+
+<p>In summary, Rick needs 3 ingredients to get back to his old self. The names of these ingredients are located inside the target machine. First of all, we need to find rick’s password and username and login into the target.</p>
+
+<p>Now let’s do a <strong><code class="language-plaintext highlighter-rouge">gobuster</code></strong> scan and see if we can find anything.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.125.149/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/gobuster.png" alt="gobuster" /></p>
+
+<p>Nothing came out.</p>
+
+<p>Let’s do a <strong><code class="language-plaintext highlighter-rouge">nikto</code></strong> scan and see if we can find anything there.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nikto -h http://10.10.125.149/
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/nikto.png" alt="nikto" /></p>
+
+<p>Yes, we found something important here. <strong><code class="language-plaintext highlighter-rouge">login.php</code></strong> is most likely the place where we should log in.</p>
+
+<p>We return to the homepage. We will take a look at the source codes of the pages.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/source.png" alt="source" /></p>
+
+<p>Yes, we found Rick’s username. 
+<strong><code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
+
+<p>I checked the source code of the login page, but nothing came up.</p>
+
+<p>We check what is there in robots.txt, which is one of the classic control points. And we find an article I’m not sure about, but this article may be the password.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/robot.png" alt="robot" /></p>
+
+<p>I go back to the login page and try username and password.</p>
+
+<p><strong>Username: <code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
+
+<p><strong>Password: <code class="language-plaintext highlighter-rouge">Wubbalubbadubdub</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/login.png" alt="login" /></p>
+
+<p>And we are inside.
+A command panel appears directly in front of us.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/whoami.png" alt="whoami" /></p>
+
+<p>Let’s take a look at the /home directory, who are our users?</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/whois.png" alt="whois" /></p>
+
+<p>I’m looking to see what’s in the directory we’re in. <strong><code class="language-plaintext highlighter-rouge">ls -la</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/ls.png" alt="ls" /></p>
+
+<p>And it looks like there are important files here.</p>
+
+<p>First, let’s take a look at what’s inside the clue.txt. <strong><code class="language-plaintext highlighter-rouge">cat clue.txt</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/cat.png" alt="cat" /></p>
+
+<p>The cat command is blocked. We can use less instead. Let’s do it. <strong><code class="language-plaintext highlighter-rouge">less clue.txt</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/less.png" alt="less" /></p>
+
+<p><em>clue.txt: Look around the file system for the other ingredient.</em></p>
+
+<p>Yes the less command worked.</p>
+
+<p>Now we can look at our first ingredient. <strong><code class="language-plaintext highlighter-rouge">less Sup3rS3cretPickl3Ingred.txt</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/first.png" alt="first" /></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">mr. meeseek hair</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="2-whats-the-second-ingredient-rick-needs">2. Whats the second ingredient Rick needs?</h3>
+
+<p>You remember the rick directory in /home from the previous question. Most likely the second ingredient is here and the third is in the root directory.
+I tried going to the/rick directory but it didn’t work so I can’t change the directory from the command panel. To solve this, we can run a reverse shell on the system and enter the target machine directly.</p>
+
+<p>First I set up a netcat listener on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+<p>I go to the pentest monkey cheat sheet <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">here</a>.
+And I’m trying the codes on the page. Those two are working.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/shell.png" alt="shell" /></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/nc.png" alt="nc" /></p>
+
+<p>Now we can go to the rick directory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/rick
+$ cat second\ ingredients
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/second.png" alt="second" /></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">jerry tear</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="3-whats-the-final-ingredient-rick-needs">3. Whats the final ingredient Rick needs?</h3>
+
+<p>For the third ingredient, we need to get root privileges.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/privesc.png" alt="privesc" /></p>
+
+<p>No password is set for root.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
+$ sudo bash
+</code></pre></div></div>
+
+<p>Now we can reach the third ingredient and save rick.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /root
+$ cat /root/3rd.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/3rd.png" alt="3rd" /></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">fleeb juice</code></strong></p>
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="ctf," /><category term="gobuster," /><category term="linux" /><summary type="html"><![CDATA[This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. Deploy the virtual machine on this task and explore the web application: “http://target-ip/”]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/picle_rick.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/picle_rick.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Vulnversity</title><link href="http://localhost:4000/tryhackme-vulnversity/" rel="alternate" type="text/html" title="TryHackMe - Vulnversity" /><published>2023-03-14T00:00:00+03:00</published><updated>2023-03-14T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-vulnversity</id><content type="html" xml:base="http://localhost:4000/tryhackme-vulnversity/"><![CDATA[<p>This is an easy CTF. Let’s start.</p>
 
 <p><br /></p>
 
@@ -58,7 +211,7 @@ Gather information about this machine using a network scanning tool called <code
 
 <p><br /></p>
 
-<h3 id="25-what-port-is-the-web-server-running-on">2.5 What port is the web server running on?</h3>
+<h3 id="26-what-port-is-the-web-server-running-on">2.6 What port is the web server running on?</h3>
 
 <p><strong>Answer: <code class="language-plaintext highlighter-rouge">3333</code></strong></p>
 
@@ -118,7 +271,7 @@ Gather information about this machine using a network scanning tool called <code
 
 <p><br /></p>
 
-<h3 id="42-what-is-the-name-of-the-user-who-manages-the-webserver">4.2 What is the name of the user who manages the webserver?</h3>
+<h3 id="43-what-is-the-name-of-the-user-who-manages-the-webserver">4.3 What is the name of the user who manages the webserver?</h3>
 
 <p>Now we edit the reverse shell (we adjust the ip and port parts according to ourselves) and upload it.</p>
 
@@ -146,7 +299,7 @@ Gather information about this machine using a network scanning tool called <code
 
 <p><br /></p>
 
-<h3 id="43-what-is-the-user-flag">4.3 What is the user flag?</h3>
+<h3 id="44-what-is-the-user-flag">4.4 What is the user flag?</h3>
 
 <p>Now we open the <code class="language-plaintext highlighter-rouge">user.txt</code> owned by the user, Bill.</p>
 
@@ -161,13 +314,13 @@ Gather information about this machine using a network scanning tool called <code
 
 <p><br /></p>
 
-<h2 id="4-privilege-escalation">4. Privilege Escalation</h2>
+<h2 id="5-privilege-escalation">5. Privilege Escalation</h2>
 
 <p>Now you have compromised this machine, we are going to escalate our privileges and become the superuser (root).</p>
 
 <p><br /></p>
 
-<h3 id="41-on-the-system-search-for-all-suid-files-what-file-stands-out">4.1 On the system, search for all SUID files. What file stands out?</h3>
+<h3 id="51-on-the-system-search-for-all-suid-files-what-file-stands-out">5.1 On the system, search for all SUID files. What file stands out?</h3>
 
 <p><em>Hint: Use the command: find / -user root -perm -4000 -print 2&gt;/dev/null</em></p>
 
@@ -177,7 +330,7 @@ Gather information about this machine using a network scanning tool called <code
 
 <p><br /></p>
 
-<h3 id="42-become-root-and-get-the-last-flag-rootroottxt">4.2 Become root and get the last flag (/root/root.txt).</h3>
+<h3 id="52-become-root-and-get-the-last-flag-rootroottxt">5.2 Become root and get the last flag (/root/root.txt).</h3>
 
 <p><em>Hint: /bin/systemctl</em></p>
 

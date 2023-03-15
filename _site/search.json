@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Pickle Rick",
+      "category" : "",
+      "tags"     : "ctf,, gobuster,, linux",
+      "url"      : "/tryhackme-pickle-rick/",
+      "date"     : "2023-03-15 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Vulnversity",
       "category" : "",
       "tags"     : "recon,, privesc,, webappsec",

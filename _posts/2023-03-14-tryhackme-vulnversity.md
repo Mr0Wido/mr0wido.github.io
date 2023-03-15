@@ -72,7 +72,7 @@ As you may have noticed from the previous question, squid proxy is http-proxy ru
 
 <br>
 
-### 2.5 What port is the web server running on?
+### 2.6 What port is the web server running on?
 
 **Answer: `3333`**
 
@@ -133,7 +133,7 @@ Since the .php extension does not work here, we need to try other php extensions
 
 <br>
 
-### 4.2 What is the name of the user who manages the webserver?
+### 4.3 What is the name of the user who manages the webserver?
 
 Now we edit the reverse shell (we adjust the ip and port parts according to ourselves) and upload it. 
 
@@ -163,7 +163,7 @@ Now, to find out who the user is, we go to the `/home` directory and list the fi
 
 <br>
 
-### 4.3 What is the user flag?
+### 4.4 What is the user flag?
 
 Now we open the `user.txt` owned by the user, Bill.
 
@@ -179,13 +179,13 @@ $ cat /home/bill/user.txt
 
 <br>
 
-## 4. Privilege Escalation    
+## 5. Privilege Escalation    
 
 Now you have compromised this machine, we are going to escalate our privileges and become the superuser (root).
 
 <br>
 
-### 4.1 On the system, search for all SUID files. What file stands out?
+### 5.1 On the system, search for all SUID files. What file stands out?
 
 _Hint: Use the command: find / -user root -perm -4000 -print 2>/dev/null_
 
@@ -195,7 +195,7 @@ _Hint: Use the command: find / -user root -perm -4000 -print 2>/dev/null_
 
 <br>
 
-### 4.2 Become root and get the last flag (/root/root.txt).
+### 5.2 Become root and get the last flag (/root/root.txt).
 
 _Hint: /bin/systemctl_
 

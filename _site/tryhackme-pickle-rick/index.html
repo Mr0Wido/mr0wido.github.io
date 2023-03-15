@@ -14,7 +14,7 @@
 
 
 
-<title>TryHackMe - Vulnversity - Mr0Wido's Blog</title>
+<title>TryHackMe - Pickle Rick - Mr0Wido's Blog</title>
 
 
 
@@ -30,7 +30,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>TryHackMe - Vulnversity - Mr0Wido's Blog</title>
+    <title>TryHackMe - Pickle Rick - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
     
   </head>
@@ -118,205 +118,156 @@
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe - Vulnversity</h1>
+  <h1 class="post__title">TryHackMe - Pickle Rick</h1>
   <div class="post__content">
-    <p>This is an easy CTF. Let’s start.</p>
+    <p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
+Deploy the virtual machine on this task and explore the web application: “http://target-ip/”</p>
 
 <p><br></p>
 
-<h2 id="1-deploy-the-machine">1. Deploy the machine</h2>
+<h3 id="1-what-is-the-first-ingredient-rick-needs">1. What is the first ingredient Rick needs?</h3>
 
-<p>Connect to our network and deploy this machine. If you are unsure on how to get connected, complete the OpenVPN room first.</p>
+<p>First, we run a <strong><code class="language-plaintext highlighter-rouge">nmap</code></strong> scan as usual.</p>
 
-<p><br></p>
-
-<hr>
-
-<p><br></p>
-
-<h2 id="2-reconnaissance">2. Reconnaissance</h2>
-
-<p>Now that you’ve found the code for the backdoor, it’s time to analyse it.
-Gather information about this machine using a network scanning tool called <code class="language-plaintext highlighter-rouge">nmap</code>.</p>
-
-<p><br></p>
-
-<h3 id="21-scan-the-box-how-many-ports-are-open">2.1 Scan the box, how many ports are open?</h3>
-
-<p>Let’s find out how many ports are open on the target with a simple <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.56.244
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.125.149
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/vulnversity/nmap.png" alt="nmap"></p>
+<p><img src="/assets/img/tryhackme/pickle_rick/nmap.png" alt="nmap"></p>
 
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">6</code></strong></p>
+<p>As you can see there are 2 ports running.</p>
 
-<p><br></p>
+<p>Let’s visit the website and see what we can find.
+On the homepage, we see such an article.</p>
 
-<h3 id="22-what-version-of-the-squid-proxy-is-running-on-the-machine">2.2 What version of the squid proxy is running on the machine?</h3>
+<p><img src="/assets/img/tryhackme/pickle_rick/home.png" alt="home"></p>
 
-<p>As you may have noticed from the previous question, squid proxy is http-proxy running on port <code class="language-plaintext highlighter-rouge">3128/tcp</code>.</p>
+<p>In summary, Rick needs 3 ingredients to get back to his old self. The names of these ingredients are located inside the target machine. First of all, we need to find rick’s password and username and login into the target.</p>
 
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3.5.12</code></strong></p>
+<p>Now let’s do a <strong><code class="language-plaintext highlighter-rouge">gobuster</code></strong> scan and see if we can find anything.</p>
 
-<p><br></p>
-
-<h3 id="23-how-many-ports-will-nmap-scan-if-the-flag--p-400-was-used">2.3 How many ports will nmap scan if the flag -p-400 was used?</h3>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">400</code></strong></p>
-
-<p><br></p>
-
-<h3 id="24-using-the-nmap-flag--n-what-will-it-not-resolve">2.4 Using the nmap flag -n what will it not resolve?</h3>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">DNS</code></strong></p>
-
-<p><br></p>
-
-<h3 id="25-what-is-the-most-likely-operating-system-this-machine-is-running">2.5 What is the most likely operating system this machine is running?</h3>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">ubuntu</code></strong></p>
-
-<p><br></p>
-
-<h3 id="26-what-port-is-the-web-server-running-on">2.6 What port is the web server running on?</h3>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3333</code></strong></p>
-
-<p><br></p>
-
-<hr>
-
-<p><br></p>
-
-<h2 id="3-locating-directories-using-gobuster">3. Locating directories using GoBuster</h2>
-
-<p>Using a fast directory discovery tool called GoBuster you will locate a directory that you can use to upload a shell to.</p>
-
-<p><br></p>
-
-<h3 id="31-what-is-the-directory-that-has-an-upload-form-page">3.1 What is the directory that has an upload form page?</h3>
-
-<p>Now, let’s do a directory scan using <code class="language-plaintext highlighter-rouge">gobuster</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`$ gobuster dir -u http://10.10.56.244:3333/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.125.149/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/vulnversity/gobuster.png" alt="gobuster"></p>
+<p><img src="/assets/img/tryhackme/pickle_rick/gobuster.png" alt="gobuster"></p>
 
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">/internal/</code></strong></p>
+<p>Nothing came out.</p>
+
+<p>Let’s do a <strong><code class="language-plaintext highlighter-rouge">nikto</code></strong> scan and see if we can find anything there.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nikto -h http://10.10.125.149/
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/nikto.png" alt="nikto"></p>
+
+<p>Yes, we found something important here. <strong><code class="language-plaintext highlighter-rouge">login.php</code></strong> is most likely the place where we should log in.</p>
+
+<p>We return to the homepage. We will take a look at the source codes of the pages.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/source.png" alt="source"></p>
+
+<p>Yes, we found Rick’s username. 
+<strong><code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
+
+<p>I checked the source code of the login page, but nothing came up.</p>
+
+<p>We check what is there in robots.txt, which is one of the classic control points. And we find an article I’m not sure about, but this article may be the password.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/robot.png" alt="robot"></p>
+
+<p>I go back to the login page and try username and password.</p>
+
+<p><strong>Username: <code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
+
+<p><strong>Password: <code class="language-plaintext highlighter-rouge">Wubbalubbadubdub</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/login.png" alt="login"></p>
+
+<p>And we are inside.
+A command panel appears directly in front of us.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/whoami.png" alt="whoami"></p>
+
+<p>Let’s take a look at the /home directory, who are our users?</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/whois.png" alt="whois"></p>
+
+<p>I’m looking to see what’s in the directory we’re in. <strong><code class="language-plaintext highlighter-rouge">ls -la</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/ls.png" alt="ls"></p>
+
+<p>And it looks like there are important files here.</p>
+
+<p>First, let’s take a look at what’s inside the clue.txt. <strong><code class="language-plaintext highlighter-rouge">cat clue.txt</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/cat.png" alt="cat"></p>
+
+<p>The cat command is blocked. We can use less instead. Let’s do it. <strong><code class="language-plaintext highlighter-rouge">less clue.txt</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/less.png" alt="less"></p>
+
+<p><em>clue.txt: Look around the file system for the other ingredient.</em></p>
+
+<p>Yes the less command worked.</p>
+
+<p>Now we can look at our first ingredient. <strong><code class="language-plaintext highlighter-rouge">less Sup3rS3cretPickl3Ingred.txt</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/first.png" alt="first"></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">mr. meeseek hair</code></strong></p>
 
 <p><br></p>
 
-<hr>
+<h3 id="2-whats-the-second-ingredient-rick-needs">2. Whats the second ingredient Rick needs?</h3>
 
-<p><br></p>
+<p>You remember the rick directory in /home from the previous question. Most likely the second ingredient is here and the third is in the root directory.
+I tried going to the/rick directory but it didn’t work so I can’t change the directory from the command panel. To solve this, we can run a reverse shell on the system and enter the target machine directly.</p>
 
-<h2 id="4-compromise-the-webserver">4. Compromise the webserver</h2>
-
-<p>Now you have found a form to upload files, we can leverage this to upload and execute our payload that will lead to compromising the web server.</p>
-
-<p><br></p>
-
-<h3 id="41-what-common-file-type-which-youd-want-to-upload-to-exploit-the-server-is-blocked-try-a-couple-to-find-out">4.1 What common file type, which you’d want to upload to exploit the server, is blocked? Try a couple to find out.</h3>
-
-<p>I downloaded and tried pentest monkey’s php-reverse-shell.php file, but it didn’t upload.
-<a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">php-reverse-shell.php</a></p>
-
-<p><img src="/assets/img/tryhackme/vulnversity/error.png" alt="error"></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">.php</code></strong></p>
-
-<p><br></p>
-
-<h3 id="42-run-this-attack-what-extension-is-allowed">4.2 Run this attack, what extension is allowed?</h3>
-
-<p>Since the .php extension does not work here, we need to try other php extensions instead. If you want, you can do it manually or by using burp suite as tryhackme explained, I don’t see the need to use burp suite for now.</p>
-
-<p><img src="/assets/img/tryhackme/vulnversity/success.png" alt="success"></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">.phtml</code></strong></p>
-
-<p><br></p>
-
-<h3 id="43-what-is-the-name-of-the-user-who-manages-the-webserver">4.3 What is the name of the user who manages the webserver?</h3>
-
-<p>Now we edit the reverse shell (we adjust the ip and port parts according to ourselves) and upload it.</p>
-
-<p><img src="/assets/img/tryhackme/vulnversity/set.png" alt="set"></p>
-
-<p>Then we open a listener for the port we wrote in the shell using <code class="language-plaintext highlighter-rouge">netcat</code>.</p>
+<p>First I set up a netcat listener on my own machine.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
 </code></pre></div></div>
+<p>I go to the pentest monkey cheat sheet <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" rel="external nofollow noopener" target="_blank">here</a>.
+And I’m trying the codes on the page. Those two are working.</p>
 
-<p>Then we visit the shell that we uploaded to the target site.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ http://10.10.56.244:3333/internal/uploads/shell.phtml
-</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/pickle_rick/shell.png" alt="shell"></p>
 
 <p>And we are inside.</p>
 
-<p><img src="/assets/img/tryhackme/vulnversity/in.png" alt="in"></p>
+<p><img src="/assets/img/tryhackme/pickle_rick/nc.png" alt="nc"></p>
 
-<p>Now, to find out who the user is, we go to the <code class="language-plaintext highlighter-rouge">/home</code> directory and list the files using the <code class="language-plaintext highlighter-rouge">ls -la</code> command. There should be a folder with the user’s name here.</p>
+<p>Now we can go to the rick directory.</p>
 
-<p><img src="/assets/img/tryhackme/vulnversity/bill.png" alt="bill"></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">bill</code></strong></p>
-
-<p><br></p>
-
-<h3 id="44-what-is-the-user-flag">4.4 What is the user flag?</h3>
-
-<p>Now we open the <code class="language-plaintext highlighter-rouge">user.txt</code> owned by the user, Bill.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/bill/user.txt
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/rick
+$ cat second\ ingredients
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/vulnversity/user-flag.png" alt="user-flag"></p>
+<p><img src="/assets/img/tryhackme/pickle_rick/second.png" alt="second"></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">jerry tear</code></strong></p>
 
 <p><br></p>
 
-<hr>
+<h3 id="3-whats-the-final-ingredient-rick-needs">3. Whats the final ingredient Rick needs?</h3>
 
-<p><br></p>
+<p>For the third ingredient, we need to get root privileges.</p>
 
-<h2 id="5-privilege-escalation">5. Privilege Escalation</h2>
+<p><img src="/assets/img/tryhackme/pickle_rick/privesc.png" alt="privesc"></p>
 
-<p>Now you have compromised this machine, we are going to escalate our privileges and become the superuser (root).</p>
+<p>No password is set for root.</p>
 
-<p><br></p>
-
-<h3 id="51-on-the-system-search-for-all-suid-files-what-file-stands-out">5.1 On the system, search for all SUID files. What file stands out?</h3>
-
-<p><em>Hint: Use the command: find / -user root -perm -4000 -print 2&gt;/dev/null</em></p>
-
-<p><img src="/assets/img/tryhackme/vulnversity/find.png" alt="find"></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">/bin/systemctl</code></strong></p>
-
-<p><br></p>
-
-<h3 id="52-become-root-and-get-the-last-flag-rootroottxt">5.2 Become root and get the last flag (/root/root.txt).</h3>
-
-<p><em>Hint: /bin/systemctl</em></p>
-
-<p>Let’s enter the following codes one by one to raise privileges and access root.txt.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &gt; /tmp/flag.service &lt;&lt; EOF
-&gt; [Service]
-&gt; ExecStart=/bin/bash -c "cat /root/root.txt &gt; /tmp/flag.txt"
-&gt; [Install]
-&gt; WantedBy=multi-user.target
-&gt; EOF
-$ /bin/systemctl link /tmp/flag.service
-$ /bin/systemctl enable --now /tmp/flag.service
-$ cat /tmp/flag.txt 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
+$ sudo bash
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/vulnversity/root-flag.png" alt="root-flag"></p>
+<p>Now we can reach the third ingredient and save rick.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /root
+$ cat /root/3rd.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/3rd.png" alt="3rd"></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">fleeb juice</code></strong></p>
 
 <p><br></p>
 
@@ -327,7 +278,7 @@ $ cat /tmp/flag.txt
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 14, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 15, 2023</p>
     <div class="post__categories">
       
       
@@ -340,11 +291,11 @@ $ cat /tmp/flag.txt
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
           
-          <span class="post__tags-item">recon,</span>
+          <span class="post__tags-item">ctf,</span>
           
-          <span class="post__tags-item">privesc,</span>
+          <span class="post__tags-item">gobuster,</span>
           
-          <span class="post__tags-item">webappsec</span>
+          <span class="post__tags-item">linux</span>
           
         </span>
       </p>
@@ -358,8 +309,8 @@ $ cat /tmp/flag.txt
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/tryhackme-vulnversity/';
-    this.page.identifier = '/tryhackme-vulnversity';
+    this.page.url = 'http://localhost:4000/tryhackme-pickle-rick/';
+    this.page.identifier = '/tryhackme-pickle-rick';
     
     };
 
@@ -709,205 +660,156 @@ $ cat /tmp/flag.txt
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe - Vulnversity</h1>
+  <h1 class="post__title">TryHackMe - Pickle Rick</h1>
   <div class="post__content">
-    <p>This is an easy CTF. Let’s start.</p>
+    <p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
+Deploy the virtual machine on this task and explore the web application: “http://target-ip/”</p>
 
 <p><br></p>
 
-<h2 id="1-deploy-the-machine">1. Deploy the machine</h2>
+<h3 id="1-what-is-the-first-ingredient-rick-needs">1. What is the first ingredient Rick needs?</h3>
 
-<p>Connect to our network and deploy this machine. If you are unsure on how to get connected, complete the OpenVPN room first.</p>
+<p>First, we run a <strong><code class="language-plaintext highlighter-rouge">nmap</code></strong> scan as usual.</p>
 
-<p><br></p>
-
-<hr>
-
-<p><br></p>
-
-<h2 id="2-reconnaissance">2. Reconnaissance</h2>
-
-<p>Now that you’ve found the code for the backdoor, it’s time to analyse it.
-Gather information about this machine using a network scanning tool called <code class="language-plaintext highlighter-rouge">nmap</code>.</p>
-
-<p><br></p>
-
-<h3 id="21-scan-the-box-how-many-ports-are-open">2.1 Scan the box, how many ports are open?</h3>
-
-<p>Let’s find out how many ports are open on the target with a simple <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.56.244
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.125.149
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/vulnversity/nmap.png" alt="nmap"></p>
+<p><img src="/assets/img/tryhackme/pickle_rick/nmap.png" alt="nmap"></p>
 
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">6</code></strong></p>
+<p>As you can see there are 2 ports running.</p>
 
-<p><br></p>
+<p>Let’s visit the website and see what we can find.
+On the homepage, we see such an article.</p>
 
-<h3 id="22-what-version-of-the-squid-proxy-is-running-on-the-machine">2.2 What version of the squid proxy is running on the machine?</h3>
+<p><img src="/assets/img/tryhackme/pickle_rick/home.png" alt="home"></p>
 
-<p>As you may have noticed from the previous question, squid proxy is http-proxy running on port <code class="language-plaintext highlighter-rouge">3128/tcp</code>.</p>
+<p>In summary, Rick needs 3 ingredients to get back to his old self. The names of these ingredients are located inside the target machine. First of all, we need to find rick’s password and username and login into the target.</p>
 
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3.5.12</code></strong></p>
+<p>Now let’s do a <strong><code class="language-plaintext highlighter-rouge">gobuster</code></strong> scan and see if we can find anything.</p>
 
-<p><br></p>
-
-<h3 id="23-how-many-ports-will-nmap-scan-if-the-flag--p-400-was-used">2.3 How many ports will nmap scan if the flag -p-400 was used?</h3>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">400</code></strong></p>
-
-<p><br></p>
-
-<h3 id="24-using-the-nmap-flag--n-what-will-it-not-resolve">2.4 Using the nmap flag -n what will it not resolve?</h3>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">DNS</code></strong></p>
-
-<p><br></p>
-
-<h3 id="25-what-is-the-most-likely-operating-system-this-machine-is-running">2.5 What is the most likely operating system this machine is running?</h3>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">ubuntu</code></strong></p>
-
-<p><br></p>
-
-<h3 id="26-what-port-is-the-web-server-running-on">2.6 What port is the web server running on?</h3>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3333</code></strong></p>
-
-<p><br></p>
-
-<hr>
-
-<p><br></p>
-
-<h2 id="3-locating-directories-using-gobuster">3. Locating directories using GoBuster</h2>
-
-<p>Using a fast directory discovery tool called GoBuster you will locate a directory that you can use to upload a shell to.</p>
-
-<p><br></p>
-
-<h3 id="31-what-is-the-directory-that-has-an-upload-form-page">3.1 What is the directory that has an upload form page?</h3>
-
-<p>Now, let’s do a directory scan using <code class="language-plaintext highlighter-rouge">gobuster</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`$ gobuster dir -u http://10.10.56.244:3333/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.125.149/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/vulnversity/gobuster.png" alt="gobuster"></p>
+<p><img src="/assets/img/tryhackme/pickle_rick/gobuster.png" alt="gobuster"></p>
 
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">/internal/</code></strong></p>
+<p>Nothing came out.</p>
+
+<p>Let’s do a <strong><code class="language-plaintext highlighter-rouge">nikto</code></strong> scan and see if we can find anything there.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nikto -h http://10.10.125.149/
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/nikto.png" alt="nikto"></p>
+
+<p>Yes, we found something important here. <strong><code class="language-plaintext highlighter-rouge">login.php</code></strong> is most likely the place where we should log in.</p>
+
+<p>We return to the homepage. We will take a look at the source codes of the pages.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/source.png" alt="source"></p>
+
+<p>Yes, we found Rick’s username. 
+<strong><code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
+
+<p>I checked the source code of the login page, but nothing came up.</p>
+
+<p>We check what is there in robots.txt, which is one of the classic control points. And we find an article I’m not sure about, but this article may be the password.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/robot.png" alt="robot"></p>
+
+<p>I go back to the login page and try username and password.</p>
+
+<p><strong>Username: <code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
+
+<p><strong>Password: <code class="language-plaintext highlighter-rouge">Wubbalubbadubdub</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/login.png" alt="login"></p>
+
+<p>And we are inside.
+A command panel appears directly in front of us.</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/whoami.png" alt="whoami"></p>
+
+<p>Let’s take a look at the /home directory, who are our users?</p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/whois.png" alt="whois"></p>
+
+<p>I’m looking to see what’s in the directory we’re in. <strong><code class="language-plaintext highlighter-rouge">ls -la</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/ls.png" alt="ls"></p>
+
+<p>And it looks like there are important files here.</p>
+
+<p>First, let’s take a look at what’s inside the clue.txt. <strong><code class="language-plaintext highlighter-rouge">cat clue.txt</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/cat.png" alt="cat"></p>
+
+<p>The cat command is blocked. We can use less instead. Let’s do it. <strong><code class="language-plaintext highlighter-rouge">less clue.txt</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/less.png" alt="less"></p>
+
+<p><em>clue.txt: Look around the file system for the other ingredient.</em></p>
+
+<p>Yes the less command worked.</p>
+
+<p>Now we can look at our first ingredient. <strong><code class="language-plaintext highlighter-rouge">less Sup3rS3cretPickl3Ingred.txt</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/first.png" alt="first"></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">mr. meeseek hair</code></strong></p>
 
 <p><br></p>
 
-<hr>
+<h3 id="2-whats-the-second-ingredient-rick-needs">2. Whats the second ingredient Rick needs?</h3>
 
-<p><br></p>
+<p>You remember the rick directory in /home from the previous question. Most likely the second ingredient is here and the third is in the root directory.
+I tried going to the/rick directory but it didn’t work so I can’t change the directory from the command panel. To solve this, we can run a reverse shell on the system and enter the target machine directly.</p>
 
-<h2 id="4-compromise-the-webserver">4. Compromise the webserver</h2>
-
-<p>Now you have found a form to upload files, we can leverage this to upload and execute our payload that will lead to compromising the web server.</p>
-
-<p><br></p>
-
-<h3 id="41-what-common-file-type-which-youd-want-to-upload-to-exploit-the-server-is-blocked-try-a-couple-to-find-out">4.1 What common file type, which you’d want to upload to exploit the server, is blocked? Try a couple to find out.</h3>
-
-<p>I downloaded and tried pentest monkey’s php-reverse-shell.php file, but it didn’t upload.
-<a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">php-reverse-shell.php</a></p>
-
-<p><img src="/assets/img/tryhackme/vulnversity/error.png" alt="error"></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">.php</code></strong></p>
-
-<p><br></p>
-
-<h3 id="42-run-this-attack-what-extension-is-allowed">4.2 Run this attack, what extension is allowed?</h3>
-
-<p>Since the .php extension does not work here, we need to try other php extensions instead. If you want, you can do it manually or by using burp suite as tryhackme explained, I don’t see the need to use burp suite for now.</p>
-
-<p><img src="/assets/img/tryhackme/vulnversity/success.png" alt="success"></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">.phtml</code></strong></p>
-
-<p><br></p>
-
-<h3 id="43-what-is-the-name-of-the-user-who-manages-the-webserver">4.3 What is the name of the user who manages the webserver?</h3>
-
-<p>Now we edit the reverse shell (we adjust the ip and port parts according to ourselves) and upload it.</p>
-
-<p><img src="/assets/img/tryhackme/vulnversity/set.png" alt="set"></p>
-
-<p>Then we open a listener for the port we wrote in the shell using <code class="language-plaintext highlighter-rouge">netcat</code>.</p>
+<p>First I set up a netcat listener on my own machine.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
 </code></pre></div></div>
+<p>I go to the pentest monkey cheat sheet <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" rel="external nofollow noopener" target="_blank">here</a>.
+And I’m trying the codes on the page. Those two are working.</p>
 
-<p>Then we visit the shell that we uploaded to the target site.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ http://10.10.56.244:3333/internal/uploads/shell.phtml
-</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/pickle_rick/shell.png" alt="shell"></p>
 
 <p>And we are inside.</p>
 
-<p><img src="/assets/img/tryhackme/vulnversity/in.png" alt="in"></p>
+<p><img src="/assets/img/tryhackme/pickle_rick/nc.png" alt="nc"></p>
 
-<p>Now, to find out who the user is, we go to the <code class="language-plaintext highlighter-rouge">/home</code> directory and list the files using the <code class="language-plaintext highlighter-rouge">ls -la</code> command. There should be a folder with the user’s name here.</p>
+<p>Now we can go to the rick directory.</p>
 
-<p><img src="/assets/img/tryhackme/vulnversity/bill.png" alt="bill"></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">bill</code></strong></p>
-
-<p><br></p>
-
-<h3 id="44-what-is-the-user-flag">4.4 What is the user flag?</h3>
-
-<p>Now we open the <code class="language-plaintext highlighter-rouge">user.txt</code> owned by the user, Bill.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/bill/user.txt
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/rick
+$ cat second\ ingredients
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/vulnversity/user-flag.png" alt="user-flag"></p>
+<p><img src="/assets/img/tryhackme/pickle_rick/second.png" alt="second"></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">jerry tear</code></strong></p>
 
 <p><br></p>
 
-<hr>
+<h3 id="3-whats-the-final-ingredient-rick-needs">3. Whats the final ingredient Rick needs?</h3>
 
-<p><br></p>
+<p>For the third ingredient, we need to get root privileges.</p>
 
-<h2 id="5-privilege-escalation">5. Privilege Escalation</h2>
+<p><img src="/assets/img/tryhackme/pickle_rick/privesc.png" alt="privesc"></p>
 
-<p>Now you have compromised this machine, we are going to escalate our privileges and become the superuser (root).</p>
+<p>No password is set for root.</p>
 
-<p><br></p>
-
-<h3 id="51-on-the-system-search-for-all-suid-files-what-file-stands-out">5.1 On the system, search for all SUID files. What file stands out?</h3>
-
-<p><em>Hint: Use the command: find / -user root -perm -4000 -print 2&gt;/dev/null</em></p>
-
-<p><img src="/assets/img/tryhackme/vulnversity/find.png" alt="find"></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">/bin/systemctl</code></strong></p>
-
-<p><br></p>
-
-<h3 id="52-become-root-and-get-the-last-flag-rootroottxt">5.2 Become root and get the last flag (/root/root.txt).</h3>
-
-<p><em>Hint: /bin/systemctl</em></p>
-
-<p>Let’s enter the following codes one by one to raise privileges and access root.txt.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &gt; /tmp/flag.service &lt;&lt; EOF
-&gt; [Service]
-&gt; ExecStart=/bin/bash -c "cat /root/root.txt &gt; /tmp/flag.txt"
-&gt; [Install]
-&gt; WantedBy=multi-user.target
-&gt; EOF
-$ /bin/systemctl link /tmp/flag.service
-$ /bin/systemctl enable --now /tmp/flag.service
-$ cat /tmp/flag.txt 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
+$ sudo bash
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/vulnversity/root-flag.png" alt="root-flag"></p>
+<p>Now we can reach the third ingredient and save rick.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /root
+$ cat /root/3rd.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/pickle_rick/3rd.png" alt="3rd"></p>
+
+<p><strong>Answer : <code class="language-plaintext highlighter-rouge">fleeb juice</code></strong></p>
 
 <p><br></p>
 
@@ -918,7 +820,7 @@ $ cat /tmp/flag.txt
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 14, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 15, 2023</p>
     <div class="post__categories">
       
       
@@ -931,11 +833,11 @@ $ cat /tmp/flag.txt
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
           
-          <span class="post__tags-item">recon,</span>
+          <span class="post__tags-item">ctf,</span>
           
-          <span class="post__tags-item">privesc,</span>
+          <span class="post__tags-item">gobuster,</span>
           
-          <span class="post__tags-item">webappsec</span>
+          <span class="post__tags-item">linux</span>
           
         </span>
       </p>
@@ -949,8 +851,8 @@ $ cat /tmp/flag.txt
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/tryhackme-vulnversity/';
-    this.page.identifier = '/tryhackme-vulnversity';
+    this.page.url = 'http://localhost:4000/tryhackme-pickle-rick/';
+    this.page.identifier = '/tryhackme-pickle-rick';
     
     };
 
