@@ -24,7 +24,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 <script src="https://kit.fontawesome.com/d54796acd1.js" crossorigin="anonymous"></script>
+{% if site.google_analytics and jekyll.environment == 'production' %}
 {% include analytics.html %}
+{% endif %}
 
 
 
