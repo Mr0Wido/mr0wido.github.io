@@ -1,0 +1,16 @@
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.excerpt }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ post.image | absolute_url }}">
+<meta property="og:image:alt" content="{{ post.image_alt }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ twitter_site }}">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.excerpt }}">
+<meta name="twitter:image" content="{{ post.image | absolute_url }}">
