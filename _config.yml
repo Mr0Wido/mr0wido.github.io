@@ -14,6 +14,7 @@ plugins:
   - jekyll-paginate
   - jekyll-spaceship
   - jekyll-sitemap
+  - jekyll-minifier
 
 search_enabled: true
 
@@ -49,7 +50,10 @@ defaults:
     values:
       sitemap: false
   
-  
+jekyll-minifier:
+  exclude: ['robots.txt']
+  uglifier_args:
+    harmony: true
 
   # Site Author
 author:
