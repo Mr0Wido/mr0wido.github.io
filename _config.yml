@@ -42,6 +42,14 @@ keep_files:
   - .nojekyll
   - .git
 
+# Sitemap settings
+defaults:
+  - scope:
+      path: "assets/**/*.*"
+    values:
+      sitemap: false
+  
+  
 
   # Site Author
 author:
