@@ -7,7 +7,7 @@ tag:
 - security,
 - enumeration,
 - privesc
-image: assets/img/simple.png
+image: "/assets/img/simple.png"
 image_alt: simple
 ---
 

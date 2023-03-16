@@ -8,7 +8,7 @@ tag:
 - easy,
 - cron,
 - owasp top 10
-image: assets/img/overpass.png
+image: "/assets/img/overpass.png"
 image_alt: overpass
 ---
 

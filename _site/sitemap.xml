@@ -21,6 +21,10 @@
 <lastmod>2023-03-15T00:00:00+03:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/tryhackme-blue/</loc>
+<lastmod>2023-03-16T00:00:00+03:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/whoami/</loc>
 </url>
 <url>
@@ -43,6 +47,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/tos/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/posts/page2/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/pdf/cv-en.pdf</loc>

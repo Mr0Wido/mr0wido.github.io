@@ -3,7 +3,7 @@ title: Tryhackme - Overpass 2 - Hacked
 layout: post
 categories:
 - TryHackMe
-image: assets/img/overpass-2.png
+image: "/assets/img/overpass-2.png"
 image_alt: overpass-2
 tag:
 - security,

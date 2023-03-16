@@ -50,6 +50,14 @@ author:
   location         : "Turkey"
   email            : "furkn.dniz@gmail.com"
   
+defaults:
+  - scope:
+      path: "" 
+      type: "posts"
+    values:
+      twitter_card: "summary_large_image"
+      twitter_site: "@Mr0Wido"
+
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"

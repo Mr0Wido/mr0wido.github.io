@@ -4,6 +4,29 @@
 <meta name="google-site-verification" content="NeMnHGyDeeJqt9s_pg03TI1foYUOvLwrHreqLj_mgRE">
 <meta name="language" content="en">
 
+<!-- Twitter Meta -->
+{% if page.title %}
+<meta name="twitter:title" content="{{ page.title }}">
+{% endif %}
+{% if page.excerpt %}
+<meta name="twitter:description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}">
+{% endif %}
+{% if page.image %}
+{% assign image = page.image | absolute_url %}
+{% else %}
+{% assign image = site.logo | absolute_url %}
+{% endif %}
+{% assign twittercard = "summary_large_image" %}
+{% if twittercard == 'summary' or twittercard == 'summary_large_image' %}
+<meta name="twitter:card" content="{{ twitter_card }}">
+{% endif %}
+{% if site.twitter %}
+<meta name="twitter:site" content="{{ twitter_site }}">
+{% endif %}
+<meta name="twitter:image" content="{{ post.image }}">
+
+
+
 <!-- css -->
 <link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico" >
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

@@ -7,7 +7,7 @@ tag:
 - ctf,
 - gobuster,
 - linux
-image: assets/img/picle_rick.jpeg
+image: "/assets/img/picle_rick.jpeg"
 image_alt: pickle-rick
 ---
 

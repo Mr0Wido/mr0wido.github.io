@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Blue",
+      "category" : "",
+      "tags"     : "windows,, eternal blue,, MS17-010",
+      "url"      : "/tryhackme-blue/",
+      "date"     : "2023-03-16 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Pickle Rick",
       "category" : "",
       "tags"     : "ctf,, gobuster,, linux",
