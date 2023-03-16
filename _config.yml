@@ -13,6 +13,7 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-spaceship
+  - jekyll-sitemap
 
 search_enabled: true
 

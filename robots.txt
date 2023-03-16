@@ -1,2 +1,7 @@
+---
+permalink: /robots.txt
+---
 User-agent: *
-Disallow: /cv/
+Disallow:
+
+Sitemap: {{ site.baseurl | prepend: site.url }}/sitemap.xml
