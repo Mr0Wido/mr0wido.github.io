@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Daily Bugle",
+      "category" : "",
+      "tags"     : "sqli,, yum,, joomla",
+      "url"      : "/tryhackme-daily-bugle/",
+      "date"     : "2023-03-17 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Blue",
       "category" : "",
       "tags"     : "windows,, eternal blue,, MS17-010",

