@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Mustacchio",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tryhackme-mustacchio/",
+      "date"     : "2023-03-19 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Relevant",
       "category" : "",
       "tags"     : "pentest,, security,, accessible",

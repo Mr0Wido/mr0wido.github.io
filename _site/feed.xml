@@ -1,4 +1,227 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-18T18:01:54+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Relevant</title><link href="http://localhost:4000/tryhackme-relevant/" rel="alternate" type="text/html" title="TryHackMe - Relevant" /><published>2023-03-18T00:00:00+03:00</published><updated>2023-03-18T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-relevant</id><content type="html" xml:base="http://localhost:4000/tryhackme-relevant/"><![CDATA[<p>Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-19T16:33:11+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Mustacchio</title><link href="http://localhost:4000/tryhackme-mustacchio/" rel="alternate" type="text/html" title="TryHackMe - Mustacchio" /><published>2023-03-19T00:00:00+03:00</published><updated>2023-03-19T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-mustacchio</id><content type="html" xml:base="http://localhost:4000/tryhackme-mustacchio/"><![CDATA[<p>Easy boot2root Machine. Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-mustacchio">1. Mustacchio</h2>
+
+<p>Deploy and compromise the machine!</p>
+
+<p><br /></p>
+
+<h3 id="11-user-flag">1.1 User Flag?</h3>
+
+<p><em>Hint: Check the source of the page.</em></p>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.80.114
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/mustacchio/nmap.png" alt="nmap" /></p>
+
+<p>We found three open ports. These are <code class="language-plaintext highlighter-rouge">22/tcp SSH, 80/tcp HTTP, and 8765/tcp HTTP</code>.</p>
+
+<p>First, let’s visit the website running on port 80/tcp and see what we can find.
+Five different pages appear. These are home, about, gallery, blog, and contact.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/home.png" alt="home" /></p>
+
+<p>I am checking the links and source pages that can be visited on the website, but I could not find anything remarkable.</p>
+
+<p>I decided to do a directory scan with Gobuster. But first, let’s visit the website running on 8765/tcp port.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/admin.png" alt="admin" /></p>
+
+<p>We found an admin panel, it will help us. Anyway, let’s go back to port 80/tcp and do a gobuster scan.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/gobuster.png" alt="gobuster" /></p>
+
+<p>The custom directory looks interesting. When we go inside, we find a file called <code class="language-plaintext highlighter-rouge">user.bak</code>, which is interesting.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/userbak.png" alt="userbak" /></p>
+
+<p>Let’s see what’s in it.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/admincode.png" alt="admincode" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">admin : 1868e36a6d2b17d4c2745f1659433a54d4bc5f4b</code></strong></p>
+
+<p>I guess this is the login information to the admin panel but the password seems to be encrypted. 
+I check with the hash-identifier.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/codeid.png" alt="codeid" /></p>
+
+<p>Most likely admin’s password is encrypted using <code class="language-plaintext highlighter-rouge">SHA1</code>.</p>
+
+<p>You can decrypt online from any website by searching for “SHA1 decrypt” in the browser. I used the following website. <a href="https://md5decrypt.net/en/Sha1/#answer">Here</a></p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/decode.png" alt="decode" /></p>
+
+<p>We found the password.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">admin : bulldog19</code></strong></p>
+
+<p>Now let’s go to the admin panel and log in.
+We logged in.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/comment.png" alt="comment" /></p>
+
+<p>I’ve tried a few command injections into the area that comes up, but it just seems like a gimmick.</p>
+
+<p>I’m checking the source of the page and we’re getting some important information here.</p>
+<ul>
+  <li>
+    <p>We explore the /auth/dontforget.bak file.</p>
+  </li>
+  <li>
+    <p><img src="/assets/img/tryhackme/mustacchio/dontforget.png" alt="dontforget" /></p>
+  </li>
+  <li>
+    <p>We discover that Barry is now able to log into SSH.</p>
+  </li>
+  <li>
+    <p><img src="/assets/img/tryhackme/mustacchio/barryssh.png" alt="barryssh" /></p>
+  </li>
+</ul>
+
+<p>Let’s first check the dontforget.bak file.</p>
+
+<p>Download directly from here <a href="http://10.10.80.114:8765/auth/dontforget.bak">http://10.10.80.114:8765/auth/dontforget.bak</a>.</p>
+
+<p>Something like this welcomes us.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/dontforgetbakin.png" alt="dontforgetbakin" /></p>
+
+<p>But there is one important thing about this code, it’s not a complete waste of time. 
+This code is an XML code, if we copy this code and paste it into the comment section in the admin panel, we get the following result.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/joe.png" alt="joe" /></p>
+
+<p>I mean, we need to write xml code in this comment section. So I am trying to do command injection using xml.</p>
+
+<p>I tried the commands <a href="https://github.com/payloadbox/xxe-injection-payload-list">here</a> but no result.</p>
+
+<p>But I realized something, I was constantly getting this result.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/empty.png" alt="empty" /></p>
+
+<p>Here I understood that I should use the tags in dontforget.bak.</p>
+
+<p>First I decided to give it a try with the code below.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/try.png" alt="try" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE replace [&lt;!ENTITY example "XML Injection"&gt; ]&gt;
+&lt;comment&gt;
+  &lt;name&gt;Joe Hamd&lt;/name&gt;
+  &lt;author&gt;&amp;example;&lt;/author&gt;
+&lt;com&gt;Test paragraph&lt;/com&gt;
+&lt;/comment&gt;
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/mustacchio/tryout.png" alt="tryout" /></p>
+
+<p>It worked as you can see. Now we can access the information inside the system.</p>
+
+<p>We got the message that Barry can now log in to ssh, if we go to Barry’s directory and get the rsa key, we can log in too.</p>
+
+<p>I run the following code in the admin panel to get the id_rsa key.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/commentinssh.png" alt="commentinssh" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE replace [&lt;!ENTITY example SYSTEM 'file:////home/barry/.ssh/id_rsa'&gt;]&gt;
+&lt;comment&gt;
+  &lt;name&gt;Joe Hamd&lt;/name&gt;
+  &lt;author&gt;Joe&lt;/author&gt;
+&lt;com&gt;&amp;example;&lt;/com&gt;
+&lt;/comment&gt;
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/mustacchio/outrsa.png" alt="outrsa" /></p>
+
+<p>Yes, we have reached the RSA key, now we need to copy and edit this key. I tried without editing and it doesn’t work :D.
+Make sure there are no spaces at the end of the lines. Each one should be a separate line.
+It should look like this when you edit it.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/edit.png" alt="edit" /></p>
+
+<p>Now we need to crack this id_rsa for barry’s ssh password.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh2john id_rsa &gt; id_rsa.hash
+$ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/mustacchio/crack.png" alt="crack" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">barry : urieljames</code></strong></p>
+
+<p>Now we can log in ssh.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod 600 id_rsa
+$ ssh -i id_rsa barry@10.10.80.114
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/mustacchio/barryin.png" alt="barryin" /></p>
+
+<p>And we are inside.</p>
+
+<p>Now we can access the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="12-root-flag">1.2 Root Flag?</h3>
+
+<p><em>Hint: SUID?</em></p>
+
+<p>We proceed with the clue that the question gives us. First, we will run the following code.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -perm -04000 -ls 2&gt;/dev/null
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/mustacchio/suid.png" alt="suid" /></p>
+
+<p>I couldn’t find anything remarkable and started navigating the system.</p>
+
+<p>I discovered the joe directory next to barry, and if you remember a file like <code class="language-plaintext highlighter-rouge">live_log</code> in it, we also saw this file as a result of the code we wrote above.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/ls.png" alt="ls" /></p>
+
+<p>I’m looking at the strings content of this log file and we find something remarkable here. The tail command was used.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$strings live_log
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/mustacchio/strings.png" alt="strings" /></p>
+
+<p>I’ve been doing some research on how to escalate using this and I find that it’s as follows.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/privesc.png" alt="privesc" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "/bin/sh" &gt; tail
+$ chmod 777 tail
+$ export PATH=/tmp.$PATH
+$ cd /home/joe/
+$ ./live_log
+</code></pre></div></div>
+
+<p>And we are inside. To be frank, I don’t fully understand the logic of raising authority, I’ll go over it a little later.
+But now we can get to root.txt.</p>
+
+<p><img src="/assets/img/tryhackme/mustacchio/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><summary type="html"><![CDATA[Easy boot2root Machine. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/mustacchio.png" /><media:content medium="image" url="http://localhost:4000/assets/img/mustacchio.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Relevant</title><link href="http://localhost:4000/tryhackme-relevant/" rel="alternate" type="text/html" title="TryHackMe - Relevant" /><published>2023-03-18T00:00:00+03:00</published><updated>2023-03-18T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-relevant</id><content type="html" xml:base="http://localhost:4000/tryhackme-relevant/"><![CDATA[<p>Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.</p>
 
 <p><br /></p>
 
