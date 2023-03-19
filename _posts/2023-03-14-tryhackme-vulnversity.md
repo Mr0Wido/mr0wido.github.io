@@ -7,7 +7,7 @@ tag:
 - recon,
 - privesc,
 - webappsec
-image: assets/img/vulnversity.png
+image: "/assets/img/vulnversity.png"
 image_alt: vulversity
 ---
 
