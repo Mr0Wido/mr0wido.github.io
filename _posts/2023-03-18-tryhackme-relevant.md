@@ -8,7 +8,7 @@ tag:
 - security,
 - accessible
 image: "/assets/img/relevant.jpeg"
-New field 8: relevant
+image_alt: relevant
 ---
 
 Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I'll solve it one way. Let's start.
