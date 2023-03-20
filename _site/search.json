@@ -1,9 +1,17 @@
 [
   
     {
+      "title"    : "TryHackMe - Ignite",
+      "category" : "",
+      "tags"     : "ctf,, privesc,, exploit",
+      "url"      : "/tryhackme-ignite/",
+      "date"     : "2023-03-20 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Mustacchio",
       "category" : "",
-      "tags"     : "",
+      "tags"     : "xxe,, privesc,, enumeraton",
       "url"      : "/tryhackme-mustacchio/",
       "date"     : "2023-03-19 00:00:00 +0300"
     } ,

