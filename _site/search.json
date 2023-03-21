@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - GamingServer",
+      "category" : "",
+      "tags"     : "lxd,, ssh2john,, security",
+      "url"      : "/tryhackme-gamingserver/",
+      "date"     : "2023-03-21 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Ignite",
       "category" : "",
       "tags"     : "ctf,, privesc,, exploit",
