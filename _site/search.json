@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Bounty Hacker",
+      "category" : "",
+      "tags"     : "linux,, tar,, privesc",
+      "url"      : "/tryhackme-bounty-hacker/",
+      "date"     : "2023-03-23 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - GamingServer",
       "category" : "",
       "tags"     : "lxd,, ssh2john,, security",

