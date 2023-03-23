@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Easy Peasy",
+      "category" : "",
+      "tags"     : "nmap,, gobuster,, cronjob",
+      "url"      : "/tryhackme-easy-peasy/",
+      "date"     : "2023-03-24 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Bounty Hacker",
       "category" : "",
       "tags"     : "linux,, tar,, privesc",

