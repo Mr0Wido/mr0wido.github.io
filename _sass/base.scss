@@ -103,10 +103,11 @@ pre.highlight code {
   clip-path: polygon( 0 0, 100% 0, 100% calc(100% - 1rem + 2px), calc(100% - 1rem + 2px) 100%, 0 100% );
   border: none;
   color: $code-text;
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.4;
   tab-size: 4;
   box-shadow: 0 0 0 7px $code-shadow;
+
 }
 pre.highlight code::-webkit-scrollbar {
   width: 10px; 
@@ -122,6 +123,10 @@ pre.highlight code::-webkit-scrollbar-thumb:hover {
   background: $scroll-hover;
 }
 
+
+code {
+  font-size: 20px;
+}
 
 /* Disqus */
 #disqus_thread {
@@ -232,4 +237,49 @@ footer {
     color: $item-meta ;
     font-size: 12px;
   }    
+}
+
+
+//post image
+
+@media screen and (min-width: 1525px) {
+  .post-list__image{
+    width: 210px;
+    height: 140px;
+    float: left;
+    border: 1px solid $img-border;
+    box-shadow:	0 0 4px	  $img-border,
+                0 0 4px 	$img-border,
+                0 0 15px	$img-border,
+                0 0 7px   $img-border,
+                inset 0 0 10px  $img-border;
+  }
+}
+
+@media screen and (min-width: 1368px) and (max-width: 1525px) {
+  .post-list__image{
+    width: 25%;
+    height: 140px;
+    float: left;
+    border: 1px solid $img-border;
+    box-shadow:	0 0 4px	  $img-border,
+                0 0 4px 	$img-border,
+                0 0 15px	$img-border,
+                0 0 7px   $img-border,
+                inset 0 0 10px  $img-border;
+  }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1368px) {
+  .post-list__image{
+    width: 210px;
+    height: 140px;
+    float: left;
+    border: 1px solid $img-border;
+    box-shadow:	0 0 4px	  $img-border,
+                0 0 4px 	$img-border,
+                0 0 15px	$img-border,
+                0 0 7px   $img-border,
+                inset 0 0 10px  $img-border;
+  }
 }

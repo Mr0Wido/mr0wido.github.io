@@ -46,17 +46,6 @@
   .post-list__item-title {
     font-size: 23px;
   }
-  .post-list__image{
-    width: 25%;
-    height: 140px;
-    float: left;
-    border: 1px solid $img-border;
-    box-shadow:	0 0 4px	  $img-border,
-                0 0 4px 	$img-border,
-                0 0 15px	$img-border,
-                0 0 7px   $img-border,
-                inset 0 0 10px  $img-border;
-  }
 
   .post-list__head p {
     font-size: 13px;

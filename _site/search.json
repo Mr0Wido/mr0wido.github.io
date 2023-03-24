@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Magician",
+      "category" : "",
+      "tags"     : "CVE-2016-3714",
+      "url"      : "/tryhackme-magician/",
+      "date"     : "2023-03-24 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Easy Peasy",
       "category" : "",
       "tags"     : "nmap,, gobuster,, cronjob",
