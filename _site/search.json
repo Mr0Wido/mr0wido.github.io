@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - RootMe",
+      "category" : "",
+      "tags"     : "web, linux, security",
+      "url"      : "/tryhackme-rootme/",
+      "date"     : "2023-03-27 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Source",
       "category" : "",
       "tags"     : "easy, ctf, cve",

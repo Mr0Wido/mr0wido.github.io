@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This is my personal website. The purpose of the Website is to assist and monitor my own development.">
+<meta name="google-site-verification" content="NeMnHGyDeeJqt9s_pg03TI1foYUOvLwrHreqLj_mgRE">
+<meta name="language" content="en">
+
+<!-- Twitter And Open Graph Meta -->
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="TryHackMe - RootMe">
+<meta property="og:description" content="&lt;p&gt;A ctf for beginners, can you root me?&lt;/p&gt;
+">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://localhost:4000/tryhackme-rootme/">
+<meta property="og:image" content="">
+<meta property="og:image:alt" content="">
+<meta property="og:site_name" content="Mr0Wido's Blog">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+<meta name="twitter:title" content="TryHackMe - RootMe">
+<meta name="twitter:description" content="&lt;p&gt;A ctf for beginners, can you root me?&lt;/p&gt;
+">
+<meta name="twitter:image" content="">
+
+
+<!-- css -->
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="canonical" href="http://localhost:4000/tryhackme-rootme/">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<title>TryHackMe - RootMe - Mr0Wido's Blog</title>
+
+
+
+<!-- Script -->
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://kit.fontawesome.com/d54796acd1.js" crossorigin="anonymous"></script>
+
+
+
+
+
+    <title>TryHackMe - RootMe - Mr0Wido's Blog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+  <div class="site-title">
+    <a href="http://localhost:4000">Mr0Wido's Blog</a>
+  </div>
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/">Home</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/whoami/">Whoami</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/posts/">Posts</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/projects/">Projects</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/cv/">CV</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/categories/">Categories</a>
+      </li>
+      <li class="site-nav__item">
+        <div class="search">
+          <input type="text" id="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+          <ul id="results-container"></ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- 360 to 980 -->
+<header class="header-mobile">
+  <div class="header-inner clearfix">
+    <div class="nav-btn nav-slider">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+    <div class="site-title">
+      <a href="http://localhost:4000">Mr0Wido's Blog</a>
+    </div>
+  </div>
+</header>
+<nav class="sidebar">
+  <div class="nav-header">
+    <div class="nav-search">
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
+      </div>
+    </div>
+  </div>
+  <ul class="nav-categories ul-base">
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
+  </ul>
+  <ul class="social ul-base">
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+  </ul>
+  <div class="copyright">
+    <span> © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+  </div>
+</nav>
+<div class="overlay"></div>
+    
+    <div class="container-default">
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - RootMe</h1>
+  <div class="post__content">
+    <p>A ctf for beginners, can you root me?</p>
+
+<p><br></p>
+
+<h2 id="1-deploy-the-machine">1. Deploy the machine</h2>
+
+<p>Connect to TryHackMe network and deploy the machine. If you don’t know how to do this, complete the OpenVPN room first.</p>
+
+<p><br></p>
+
+<h2 id="2-reconnaissance">2 Reconnaissance</h2>
+
+<p>First, let’s get information about the target.</p>
+
+<p><br></p>
+
+<h3 id="21-scan-the-machine-how-many-ports-are-open">2.1 Scan the machine, how many ports are open?</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.226.173
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/rootme/nmap.png" alt="nmap"></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code></strong>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 2</code></strong></p>
+
+<p><br></p>
+
+<h3 id="22-what-version-of-apache-is-running">2.2 What version of Apache is running?</h3>
+
+<p><img src="/assets/img/tryhackme/rootme/apache.png" alt="apache"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 2.4.29</code></strong></p>
+
+<p><br></p>
+
+<h3 id="23-what-service-is-running-on-port-22">2.3 What service is running on port 22?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: SSH</code></strong></p>
+
+<p><br></p>
+
+<h3 id="24-find-directories-on-the-web-server-using-the-gobuster-tool">2.4 Find directories on the web server using the GoBuster tool.</h3>
+
+<p>I am visiting the website running on port 80. I see a page like this:</p>
+
+<p><img src="/assets/img/tryhackme/rootme/home.png" alt="home"></p>
+
+<p>Let’s do a gobuster scan for this website.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.226.173/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><br></p>
+
+<h3 id="25-what-is-the-hidden-directory">2.5 What is the hidden directory?</h3>
+
+<p><img src="/assets/img/tryhackme/rootme/gobuster.png" alt="gobuster"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /panel/</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="3-getting-a-shell">3 Getting a shell</h2>
+
+<p>Find a form to upload and get a reverse shell, and find the flag.</p>
+
+<p><br></p>
+
+<h3 id="31-usertxt">3.1 user.txt</h3>
+
+<p>I check the /uploads/ directory but nothing in here.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/uploads.png" alt="uploads"></p>
+
+<p>I am going to the /panel/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/panel.png" alt="panel"></p>
+
+<p>We upload files here. Then let’s do this:</p>
+<ul>
+  <li>Let’s download pentestmonkey’s php-reverse-shell.php file. <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">Here</a>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>$ wget https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now, edit the php-reverse-shell.php file.</p>
+
+    <p><img src="/assets/img/tryhackme/rootme/edit.png" alt="edit"></p>
+  </li>
+  <li>
+    <p>Let’s set up a netcat listener.</p>
+
+    <p><img src="/assets/img/tryhackme/rootme/nc.png" alt="nc"></p>
+  </li>
+</ul>
+
+<p>Now we can upload the file to the website. Let’s go back to the /panel/ directory.</p>
+
+<p>I try to upload the file but it’s not working. I get error like this.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/error.png" alt="error"></p>
+
+<p>Let’s try changing the extension of the PHP file. Like this:</p>
+
+<p><img src="/assets/img/tryhackme/rootme/ex.png" alt="ex"></p>
+
+<p>If you want, you can try using burp suite, but there is not much possibility anyway, I prefer to change manually.</p>
+
+<p>I will try these: <code class="language-plaintext highlighter-rouge">.php, .php2, .php3, .php4, .php5, .php6, .php7, .phps, .phps, .pht, .phtm, .phtml</code></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">.phtml</code> worked.</p>
+
+<p>Now, let’s go to the /uploads/ directory and run the reverse shell we uploaded.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/upshell.png" alt="upshell"></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/in.png" alt="in"></p>
+
+<p>Now we can get the user flag.
+I looked at the user directories in the home directory, but could not find the user.txt.</p>
+
+<p>Now let’s find user.txt with this command.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/find.png" alt="find"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -name user.txt
+</code></pre></div></div>
+
+<p>Yes, we found the user.txt file.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/finduser.png" alt="finduser"></p>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/user-flag.png" alt="user-flag"></p>
+
+<p><em><strong>Attention: It allows some files to be uploaded, but when you try to run it in the /uploads/ directory, you get something like this.</strong></em></p>
+
+<p><img src="/assets/img/tryhackme/rootme/uperror.png" alt="uperror"></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="4-privilege-escalation">4 Privilege escalation</h2>
+
+<p>Now that we have a shell, let’s escalate our privileges to root.</p>
+
+<p><br></p>
+
+<h3 id="41-search-for-files-with-suid-permission-which-file-is-weird">4.1 Search for files with SUID permission, which file is weird?</h3>
+
+<p><em><strong>Hint: find / -user root -perm /4000</strong></em></p>
+
+<p>Based on the hint, I ran the following code on the target system.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -perm -04000 -ls 2&gt;/dev/null
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/rootme/suid.png" alt="suid"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /usr/bin/python</code></strong></p>
+
+<p><br></p>
+
+<h3 id="42-find-a-form-to-escalate-your-privileges">4.2 Find a form to escalate your privileges.</h3>
+
+<p><em><strong>Hint : Search for gtfobins</strong></em></p>
+
+<p>Let’s go to <a href="https://gtfobins.github.io/gtfobins/python/" rel="external nofollow noopener" target="_blank">gtfobins</a> and search for python.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/gtfobins.png" alt="gtfobins"></p>
+
+<p>Let’s run the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/rootme/privesc.png" alt="privesc"></p>
+
+<p>Yesss, We get root privilege. Now let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 27, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">web, linux, security</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-rootme/';
+    this.page.identifier = '/tryhackme-rootme';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="furkn.dniz@gmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:furkn.dniz@gmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="furkn.dniz@gmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - RootMe</h1>
+  <div class="post__content">
+    <p>A ctf for beginners, can you root me?</p>
+
+<p><br></p>
+
+<h2 id="1-deploy-the-machine">1. Deploy the machine</h2>
+
+<p>Connect to TryHackMe network and deploy the machine. If you don’t know how to do this, complete the OpenVPN room first.</p>
+
+<p><br></p>
+
+<h2 id="2-reconnaissance">2 Reconnaissance</h2>
+
+<p>First, let’s get information about the target.</p>
+
+<p><br></p>
+
+<h3 id="21-scan-the-machine-how-many-ports-are-open">2.1 Scan the machine, how many ports are open?</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.226.173
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/rootme/nmap.png" alt="nmap"></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code></strong>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 2</code></strong></p>
+
+<p><br></p>
+
+<h3 id="22-what-version-of-apache-is-running">2.2 What version of Apache is running?</h3>
+
+<p><img src="/assets/img/tryhackme/rootme/apache.png" alt="apache"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 2.4.29</code></strong></p>
+
+<p><br></p>
+
+<h3 id="23-what-service-is-running-on-port-22">2.3 What service is running on port 22?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: SSH</code></strong></p>
+
+<p><br></p>
+
+<h3 id="24-find-directories-on-the-web-server-using-the-gobuster-tool">2.4 Find directories on the web server using the GoBuster tool.</h3>
+
+<p>I am visiting the website running on port 80. I see a page like this:</p>
+
+<p><img src="/assets/img/tryhackme/rootme/home.png" alt="home"></p>
+
+<p>Let’s do a gobuster scan for this website.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.226.173/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><br></p>
+
+<h3 id="25-what-is-the-hidden-directory">2.5 What is the hidden directory?</h3>
+
+<p><img src="/assets/img/tryhackme/rootme/gobuster.png" alt="gobuster"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /panel/</code></strong></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="3-getting-a-shell">3 Getting a shell</h2>
+
+<p>Find a form to upload and get a reverse shell, and find the flag.</p>
+
+<p><br></p>
+
+<h3 id="31-usertxt">3.1 user.txt</h3>
+
+<p>I check the /uploads/ directory but nothing in here.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/uploads.png" alt="uploads"></p>
+
+<p>I am going to the /panel/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/panel.png" alt="panel"></p>
+
+<p>We upload files here. Then let’s do this:</p>
+<ul>
+  <li>Let’s download pentestmonkey’s php-reverse-shell.php file. <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">Here</a>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>$ wget https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now, edit the php-reverse-shell.php file.</p>
+
+    <p><img src="/assets/img/tryhackme/rootme/edit.png" alt="edit"></p>
+  </li>
+  <li>
+    <p>Let’s set up a netcat listener.</p>
+
+    <p><img src="/assets/img/tryhackme/rootme/nc.png" alt="nc"></p>
+  </li>
+</ul>
+
+<p>Now we can upload the file to the website. Let’s go back to the /panel/ directory.</p>
+
+<p>I try to upload the file but it’s not working. I get error like this.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/error.png" alt="error"></p>
+
+<p>Let’s try changing the extension of the PHP file. Like this:</p>
+
+<p><img src="/assets/img/tryhackme/rootme/ex.png" alt="ex"></p>
+
+<p>If you want, you can try using burp suite, but there is not much possibility anyway, I prefer to change manually.</p>
+
+<p>I will try these: <code class="language-plaintext highlighter-rouge">.php, .php2, .php3, .php4, .php5, .php6, .php7, .phps, .phps, .pht, .phtm, .phtml</code></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">.phtml</code> worked.</p>
+
+<p>Now, let’s go to the /uploads/ directory and run the reverse shell we uploaded.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/upshell.png" alt="upshell"></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/in.png" alt="in"></p>
+
+<p>Now we can get the user flag.
+I looked at the user directories in the home directory, but could not find the user.txt.</p>
+
+<p>Now let’s find user.txt with this command.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/find.png" alt="find"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -name user.txt
+</code></pre></div></div>
+
+<p>Yes, we found the user.txt file.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/finduser.png" alt="finduser"></p>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/user-flag.png" alt="user-flag"></p>
+
+<p><em><strong>Attention: It allows some files to be uploaded, but when you try to run it in the /uploads/ directory, you get something like this.</strong></em></p>
+
+<p><img src="/assets/img/tryhackme/rootme/uperror.png" alt="uperror"></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="4-privilege-escalation">4 Privilege escalation</h2>
+
+<p>Now that we have a shell, let’s escalate our privileges to root.</p>
+
+<p><br></p>
+
+<h3 id="41-search-for-files-with-suid-permission-which-file-is-weird">4.1 Search for files with SUID permission, which file is weird?</h3>
+
+<p><em><strong>Hint: find / -user root -perm /4000</strong></em></p>
+
+<p>Based on the hint, I ran the following code on the target system.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -perm -04000 -ls 2&gt;/dev/null
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/rootme/suid.png" alt="suid"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /usr/bin/python</code></strong></p>
+
+<p><br></p>
+
+<h3 id="42-find-a-form-to-escalate-your-privileges">4.2 Find a form to escalate your privileges.</h3>
+
+<p><em><strong>Hint : Search for gtfobins</strong></em></p>
+
+<p>Let’s go to <a href="https://gtfobins.github.io/gtfobins/python/" rel="external nofollow noopener" target="_blank">gtfobins</a> and search for python.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/gtfobins.png" alt="gtfobins"></p>
+
+<p>Let’s run the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/rootme/privesc.png" alt="privesc"></p>
+
+<p>Yesss, We get root privilege. Now let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 27, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">web, linux, security</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-rootme/';
+    this.page.identifier = '/tryhackme-rootme';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+    </div>
+
+
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
+    <footer>
+  <div class="footer">
+    © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+  </div>
+</footer>
+
+    <!-- script -->
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/clip.js"></script>
+    <script src="/assets/js/scroll-top.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "TryHackMe - RootMe",
+    "author": {
+      "@type": "Person",
+      "name": ""
+    },
+    "datePublished": "2023-03-27 00:00:00 +0300",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://localhost:4000/tryhackme-rootme/"
+    },
+    "articleSection": "TryHackMe"
+  }
+</script>
+  </body>
+</html>
