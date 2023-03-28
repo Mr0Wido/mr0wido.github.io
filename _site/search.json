@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Lazy Admin",
+      "category" : "",
+      "tags"     : "security, linux",
+      "url"      : "/tryhackme-lazy-admin/",
+      "date"     : "2023-03-28 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - RootMe",
       "category" : "",
       "tags"     : "web, linux, security",

