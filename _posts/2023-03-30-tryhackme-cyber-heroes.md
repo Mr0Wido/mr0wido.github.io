@@ -4,7 +4,7 @@ layout: post
 categories:
 - TryHackMe
 tag: ctf, security, credential
-image: assets/img/cyber-heroes.png
+image: "/assets/img/cyber-heroes.png"
 image_alt: cyber-heroes
 ---
 
