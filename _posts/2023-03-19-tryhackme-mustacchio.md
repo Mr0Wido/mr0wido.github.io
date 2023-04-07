@@ -73,7 +73,7 @@ You can decrypt online from any website by searching for "SHA1 decrypt" in the b
 
 We found the password.
 
-**`admin : bulldog19`**
+**`admin : b*****19`**
 
 Now let's go to the admin panel and log in.
 We logged in.
@@ -165,7 +165,7 @@ $ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
 
 ![crack](/assets/img/tryhackme/mustacchio/crack.png)
 
-**`barry : urieljames`**
+**`barry : u*******s`**
 
 Now we can log in ssh.
 

@@ -104,7 +104,7 @@ $ echo "ZmxhZZ3tmMXJzN19mbDRnfQ==" | base64 -d
 
 ![encode](/assets/img/tryhackme/easy-peasy/encode.png)
 
-**`Answer: flag{f1rs7_fl4g}`**
+**`Answer: flag{*********}`**
 
 <br>
 
@@ -128,7 +128,7 @@ I found a site that can crack it online. [Here](https://md5hashing.net/hash)
 
 ![crack-robots](/assets/img/tryhackme/easy-peasy/crack-robots.png)
 
-**`Answer: flag{1m_s3c0nd_fl4g}`**
+**`Answer: flag{********}`**
 
 <br>
 
@@ -142,7 +142,7 @@ let's crack it :9fdafbd64c47471a8f54cd3fc64cd312
 
 ![crack-flag3](/assets/img/tryhackme/easy-peasy/crack-flag3.png)
 
-**`Answer: flag{9fdafbd64c47471a8f54cd3fc64cd312}`**
+**`Answer: flag{*************************}`**
 
 <br>
 
@@ -189,7 +189,7 @@ $ john --wordlist=easypeasy.txt --format=gost hash.txt
 
 ![dict-source-crack](/assets/img/tryhackme/easy-peasy/dict-source-crack.png)
 
-**`Answer: mypasswordforthatjob`**
+**`Answer: **********`**
 
 <br>
 
@@ -235,11 +235,9 @@ And we are inside. Let's get the user flag.
 
 ![user-flag](/assets/img/tryhackme/easy-peasy/user-flag.png)
 
-We found this **`synt{a0jvgf33zfa0ez4y}`**. Let's crack it.
+We found this **`synt{***********}`**. Let's crack it.
 
 ![rot](/assets/img/tryhackme/easy-peasy/rot.png)
-
-**`Answer: flag{n0wits33msn0rm4l}`**
 
 <br>
 
@@ -276,7 +274,6 @@ Yes, we have root privileges. Let's get the root flag.
 
 ![root-flag](/assets/img/tryhackme/easy-peasy/root-flag.png)
 
-**`Answer: flag{63a9f0ea7bb98050796b649e85481845}`**
 
 <br>
 

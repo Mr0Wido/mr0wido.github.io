@@ -98,7 +98,7 @@ We want to run it but we can't. I guess we cannot run this code because it is wr
 
 ![pass](/assets/img/tryhackme/simple_ctf/pass.png)
 
-**Answer : `secret`**
+**Answer : `*****`**
 
 <br>
 
@@ -120,8 +120,6 @@ Using the information we collect, we login to `ssh` and then we get the `user.tx
  $ cat user.txt
 ```
 ![login](/assets/img/tryhackme/simple_ctf/login.png)
-
-**Answer : `G00d j0b, keep up!`**
 
 <br>
 
@@ -153,8 +151,6 @@ $ whoami
 $ cat /root/root.txt
 ```
 ![root](/assets/img/tryhackme/simple_ctf/root.png)
-
-**Answer : `W3ll d0n3. You made it!`**
 
 <br>
 

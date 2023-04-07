@@ -102,9 +102,9 @@ $ echo "QmlsbCAtIEp1dzRubmFNNG40MjA20TY5NjkhJCQK" | base4 -d
 
 ![base64](/assets/img/tryhackme/relevant/base64.png)
 
-**`Bob : !P@$$W0rD!123`**
+**`Bob : ***********`**
 
-**`Bill: Juw4nnaM4n420696969!$$$`**
+**`Bill: ********************`**
 
 You have access to SMB, so let's check if we can install and run the reverse shell.
 

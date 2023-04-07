@@ -122,7 +122,7 @@ Let's crack. [https://md5decrypt.net/](https://md5decrypt.net/)
 
 ![crack-hash](/assets/img/tryhackme/lazy-admin/crack-hash.png)
 
-_**`Passwd: Password123`**_
+_**`Passwd: *******`**_
 
 Now we can log in as an admin user. Let's go to the /as/ directory and log in.
 

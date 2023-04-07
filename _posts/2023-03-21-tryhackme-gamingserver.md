@@ -92,7 +92,7 @@ $ ssh2john id_rsa > id_rsa.hash
 $ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
 ```
 
-**`Password: letmein`**
+**`Password: *****`**
 
 Now we can log in to ssh.
 

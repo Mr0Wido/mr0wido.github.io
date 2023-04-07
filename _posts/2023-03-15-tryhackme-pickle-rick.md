@@ -72,7 +72,7 @@ I go back to the login page and try username and password.
 
 **Username: `R1ckRul3s`**
 
-**Password: `Wubbalubbadubdub`**
+**Password: `************`**
 
 ![login](/assets/img/tryhackme/pickle_rick/login.png)
 
@@ -107,7 +107,7 @@ Now we can look at our first ingredient. **`less Sup3rS3cretPickl3Ingred.txt`**
 
 ![first](/assets/img/tryhackme/pickle_rick/first.png)
 
-**Answer : `mr. meeseek hair`**
+**Answer : `**********`**
 
 <br>
 
@@ -139,7 +139,7 @@ $ cat second\ ingredients
 
 ![second](/assets/img/tryhackme/pickle_rick/second.png)
 
-**Answer : `jerry tear`**
+**Answer : `*************`**
 
 <br>
 
@@ -165,7 +165,7 @@ $ cat /root/3rd.txt
 
 ![3rd](/assets/img/tryhackme/pickle_rick/3rd.png)
 
-**Answer : `fleeb juice`**
+**Answer : `**********`**
 
 <br>
 

@@ -70,7 +70,7 @@ We look at the TCP Stream and we have james' password.
 
 ![password](/assets/img/tryhackme/overpass-2/password.png)
 
-**Answer: `whenevernoteartinstant`**
+**Answer: `*************`**
 
 <br>
 ### 1.4 How did the attacker establish persistence?
@@ -167,7 +167,7 @@ $ john --format='dynamic=sha512($p.$s)' --wordlist=/usr/share/wordlists/rockyou.
 
 ![hash](/assets/img/tryhackme/overpass-2/hash.png)
 
-**Answer: `november16`**
+**Answer: `********`**
 
 <br>
 

@@ -97,7 +97,6 @@ $ hydra -l lin -P locks.txt 10.10.231.70 -t 4 ssh
 
 ![hydra](/assets/img/tryhackme/bounty-hacker/hydra.png)
 
-**`Answer: RedDr4gonSynd1cat3`**
 
 <br>
 

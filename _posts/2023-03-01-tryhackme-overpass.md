@@ -99,7 +99,7 @@ $ ssh2john id_rsa > hash.txt
 $ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 
-And we find the password **`james13`**
+And we find the password **`j****13`**
 Now we can connect to james using this information.
 
 ```

@@ -53,9 +53,9 @@ Let's look at them all.
 
     ![source](/assets/img/tryhackme/cyber-heroes/source.png)
 
-    As I understand it `username: h3ck3rBoi` and `password: RevereString("54321@terceSrepuS")`.
+    As I understand it `username: h3ck3rBoi` and `password: RevereString("*****@t*****r****")`.
 
-    We need to write the password in reverse. So, `password: SuperSecret@12345`
+    We need to write the password in reverse. So, `password: S****S*****@*****`
 
 Now that we've found the username and password, let's log in.
 

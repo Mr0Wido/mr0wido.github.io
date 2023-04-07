@@ -123,13 +123,13 @@ $ john --wordlist=/usr/share/wordlists/rockyou.txt hash.hash
 ![john](/assets/img/tryhackme/daily-bugle/john.png)
 
 
-**Answer: `spiderman123`**
+**Answer: `s********123`**
 
 <br>
 
 ### 2.3 What is the user flag?
 
-Go to the administrator directory and login with **`jonah:spiderman123`**
+Go to the administrator directory and login with **`jonah:s********123`**
 
 We are looking for a suitable place for any reverse shell. We go to where the .php pages are located.
 
@@ -200,7 +200,7 @@ Let's try it for jjameson.
 
 ![jj](/assets/img/tryhackme/daily-bugle/jj.png)
 
-We also found the jjameson password**`(nv5uz9r3ZEDzVjNu)`**
+We also found the jjameson password**`(**********)`**
 
 Now we can go to the jjameson directory and get the user flag.
 

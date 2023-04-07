@@ -216,7 +216,7 @@ $ john --wordlist=/usr/share/wordlists/rockyou.txt --format=NT hashdump.txt
 
 ![john](/assets/img/tryhackme/blue/john.png)
 
-**Answer: `alqfna22`**
+**Answer: `a******2`**
 
 <br>
 
@@ -238,8 +238,6 @@ Let’s move to the root directory to see how the file system looks like.
 
 Our first flag is located at the root of C:\
 
-**Answer: `flag{access_the_machine}`**
-
 
 <br>
 
@@ -258,13 +256,12 @@ Content of other flags.
 
 ![flags](/assets/img/tryhackme/blue/flags.png)
 
-**Answer: `flag{sam_database_elevated_access}`**
 
 <br>
 
 ### 5.3 flag3? This flag can be found in an excellent location to loot. After all, Administrators usually have pretty interesting things saved. 
 
-**Answer: `flag{admin_documents_can_be_valuable}`**
+![flags](/assets/img/tryhackme/blue/flags.png)
 <br>
 
 It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.

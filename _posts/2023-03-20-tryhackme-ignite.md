@@ -123,7 +123,7 @@ And it worked. Now we're waiting to see if we can find anything useful.
 
 ![linpeas](/assets/img/tryhackme/ignite/linpeas.png)
 
-**`Password: mememe`**
+**`Password: ******`**
 
 We found a password information, but I don't know what it is for. But let's try it for root.
 
@@ -132,7 +132,7 @@ First, let's call a shell using python. Then let's try logging in.
 ```
 $ python -c 'import pty; pty.spawn("/bin/bash")'
 $ su root
-Password: mememe
+Password: ******
 ```
 
 It worked :D. We have successfully rooted.

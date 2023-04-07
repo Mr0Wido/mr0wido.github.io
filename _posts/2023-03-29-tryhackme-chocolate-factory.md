@@ -110,13 +110,11 @@ Let's look at the files in the directory in order, of what we will find.
     ![validate](/assets/img/tryhackme/chocolate-factory/validate.png)
 
 
-**`Answer: b'-VkgXhFf6sAEcAwrC6YR-SZbiuSb8ABXeQuvhcGSQzY='`**
-
 <br>
 
 ### 2.2 What is Charlie's password?
 
-**`Answer: cn7824`**
+**`Answer: c*****`**
 
 <br>
 
