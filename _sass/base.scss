@@ -72,10 +72,15 @@ hr {
 
 
 /* pre */
+.highlight {
+  background-color: transparent;
+}
+
 pre.highlight {
   position: relative;
   overflow: visible;
   padding-top: 25px;
+
 }
 pre.highlight .copy {
   content: "COPY";
