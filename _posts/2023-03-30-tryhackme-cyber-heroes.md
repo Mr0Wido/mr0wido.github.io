@@ -12,7 +12,7 @@ Want to be a part of the elite club of CyberHeroes? Prove your merit by finding 
 
 <br>
 
-## 1. CyberHeroes     
+## 1. CyberHeroes
 
 <br>
 

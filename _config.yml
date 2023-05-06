@@ -24,8 +24,6 @@ plugins:
   - jekyll-spaceship
   - jekyll-sitemap
   - jekyll-minifier
-  - jekyll-seo-tag
-  - jekyll-polyglot
 
 search_enabled: true
 

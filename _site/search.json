@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "SQL Injection Guide",
+      "category" : "",
+      "tags"     : "sql injection, sqli guide",
+      "url"      : "/sql-injection-guide/",
+      "date"     : "2023-05-06 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Cyber Heroes",
       "category" : "",
       "tags"     : "ctf, security, credential",

@@ -14,11 +14,8 @@ group :jekyll_plugins do
   gem 'jemoji'
   gem 'mini_racer'
   gem 'unicode_utils'
-  gem 'jekyll-include-cache'
   gem 'webrick'
-  gem 'jekyll-seo-tag'
   gem 'kramdown-parser-gfm'
-  gem 'jekyll-polyglot'
 end
 
 group :other_plugins do
