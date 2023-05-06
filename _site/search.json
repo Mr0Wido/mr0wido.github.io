@@ -1,14 +1,6 @@
 [
   
     {
-      "title"    : "SQL INJECTION",
-      "category" : "",
-      "tags"     : "sql injection",
-      "url"      : "/sql-injection/",
-      "date"     : "2023-05-06 00:00:00 +0300"
-    } ,
-  
-    {
       "title"    : "TryHackMe - Cyber Heroes",
       "category" : "",
       "tags"     : "ctf, security, credential",
