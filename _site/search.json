@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Chill Hack",
+      "category" : "",
+      "tags"     : "command-injection, sql-injection, real-world",
+      "url"      : "/tryhackme-chill-hack/",
+      "date"     : "2023-05-09 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "SQL Injection Guide",
       "category" : "",
       "tags"     : "sql injection, sqli guide",
