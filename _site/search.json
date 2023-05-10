@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Gallery",
+      "category" : "",
+      "tags"     : "sqli, rce, cms",
+      "url"      : "/tryhackme-gallery/",
+      "date"     : "2023-05-10 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Chill Hack",
       "category" : "",
       "tags"     : "command-injection, sql-injection, real-world",

@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This is my personal website. The purpose of the Website is to assist and monitor my own development.">
+<meta name="google-site-verification" content="NeMnHGyDeeJqt9s_pg03TI1foYUOvLwrHreqLj_mgRE">
+<meta name="language" content="en">
+
+<!-- Twitter And Open Graph Meta -->
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="TryHackMe - Gallery">
+<meta property="og:type" content="Article">
+<meta property="og:url" content="http://localhost:4000/tryhackme-gallery/">
+<meta name="image" property="og:image" content="/assets/img/avatar.jpg">
+<meta property="og:image:alt" content="">
+<meta property="og:site_name" content="Mr0Wido's Blog">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+<meta name="twitter:title" content="TryHackMe - Gallery">
+<meta name="twitter:image" content="/assets/img/avatar.jpg">
+
+
+
+<!-- css -->
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="canonical" href="/tryhackme-gallery/">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<title>TryHackMe - Gallery - Mr0Wido's Blog</title>
+
+
+
+<!-- Script -->
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://kit.fontawesome.com/d54796acd1.js" crossorigin="anonymous"></script>
+
+
+
+
+
+    <title>TryHackMe - Gallery - Mr0Wido's Blog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+  <div class="site-title">
+    <a href="http://localhost:4000">Mr0Wido's Blog</a>
+  </div>
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/">Home</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/whoami/">Whoami</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/posts/">Posts</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/projects/">Projects</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/cv/">CV</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/categories/">Categories</a>
+      </li>
+      <li class="site-nav__item">
+        <div class="search">
+          <input type="text" id="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+          <ul id="results-container"></ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- 360 to 980 -->
+<header class="header-mobile">
+  <div class="header-inner clearfix">
+    <div class="nav-btn nav-slider">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+    <div class="site-title">
+      <a href="http://localhost:4000">Mr0Wido's Blog</a>
+    </div>
+  </div>
+</header>
+<nav class="sidebar">
+  <div class="nav-header">
+    <div class="nav-search">
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
+      </div>
+    </div>
+  </div>
+  <ul class="nav-categories ul-base">
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
+  </ul>
+  <ul class="social ul-base">
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+  </ul>
+  <div class="copyright">
+    <span> © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+  </div>
+</nav>
+<div class="overlay"></div>
+    
+    <div class="container-default">
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - Gallery</h1>
+  <div class="post__content">
+    <p>Try to exploit our image gallery system.</p>
+
+<p><br></p>
+
+<h2 id="1-deploy-and-get-a-shell">1. Deploy and get a Shell</h2>
+
+<p>Our gallery is not very well secured.</p>
+
+<p>Designed and created by <a href="https://twitter.com/mika_sec" rel="external nofollow noopener" target="_blank">Mikaa</a>!</p>
+
+<p><br></p>
+
+<h3 id="11-how-many-ports-are-open">1.1 How many ports are open?</h3>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.35.177
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/nmap.png" alt="nmap"></p>
+
+<p>Two ports are open. These are <code class="language-plaintext highlighter-rouge">80/tcp HTTP, 8080/tcp HTTP</code></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer : 2</code></strong></p>
+
+<p><br></p>
+
+<h3 id="12-whats-the-name-of-the-cms">1.2 What’s the name of the CMS?</h3>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>An <code class="language-plaintext highlighter-rouge">Apache2 default</code> page appears.</p>
+
+<p>Let’s look at the websie runining on <code class="language-plaintext highlighter-rouge">8080/tcp</code> port.</p>
+
+<p>A login page appears.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/login.png" alt="login"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer : Simple Image Gallery</code></strong></p>
+
+<p><br></p>
+
+<h3 id="13-whats-the-hash-password-of-the-admin-user">1.3 What’s the hash password of the admin user?</h3>
+
+<p>The Website is using <code class="language-plaintext highlighter-rouge">Simple image gallery</code>. I’m looking to see if I can find anything in <a href="https://www.exploit-db.com" rel="external nofollow noopener" target="_blank">exploit-db</a>.</p>
+
+<p>I found four results in <code class="language-plaintext highlighter-rouge">exploit-db</code>.</p>
+
+<p>I’m going through the first and second results, separately.</p>
+
+<p>First <a href="https://www.exploit-db.com/exploits/50214" rel="external nofollow noopener" target="_blank">Simple Image Gallery 1.0 - Remote Code Execution</a></p>
+
+<p><img src="/assets/img/tryhackme/gallery/rce1.png" alt="rce1"></p>
+
+<p>I tried downloading and running the exploit first, but it didn’t work.</p>
+
+<p>When I looked through the code, I saw this.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/rce2.png" alt="rce2"></p>
+
+<p>It seems we can access the admin login with SQLi.</p>
+
+<p>We need to write this to the username; <code class="language-plaintext highlighter-rouge">admin' or '1'='1'#</code></p>
+
+<p>Let’s try.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/rce3.png" alt="rce3"></p>
+
+<p>Yes it works.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/home.png" alt="home"></p>
+
+<p>We were able to log in to the site as an admin. I’ve been browsing the site for a bit, let’s see what I can find.</p>
+
+<p>It seems we can upload files. Maybe we can upload a reverse shell.</p>
+
+<p>But first, I want to examine the other page in exploit-db.
+<a href="https://www.exploit-db.com/exploits/50198" rel="external nofollow noopener" target="_blank">Simple Image Gallery System 1.0 - ‘id’ SQL Injection</a></p>
+
+<p><img src="/assets/img/tryhackme/gallery/sql1.png" alt="sql1"></p>
+
+<p>The page explains what to do.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/sql2.png" alt="sql2"></p>
+
+<p>We need to capture the request for a picture with Burp Suite.
+Right click &gt; Save item and we need to save the request and run it in sqlmap.</p>
+
+<p>Let ‘s do it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r text.req --dbs
+</code></pre></div></div>
+
+<p>There are <code class="language-plaintext highlighter-rouge">Boolean Based</code> and <code class="language-plaintext highlighter-rouge">Time Based</code> vulnerabilities of SQLi types on the site.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/kind.png" alt="kind"></p>
+
+<p>With the <code class="language-plaintext highlighter-rouge">--dbs</code> tag, sqlmap will give us the database names.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/databases.png" alt="databases"></p>
+
+<p>Now that we know the database names, let’s get the tables.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test.req -D &lt;database-name&gt; --tables 
+</code></pre></div></div>
+
+<p>I dumped the tables for <code class="language-plaintext highlighter-rouge">gallery_db</code>.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/tables.png" alt="tables"></p>
+
+<p>Now I will empty the columns of the <code class="language-plaintext highlighter-rouge">users</code> table.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test.req -D gallery_db -T users --columns
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/columns.png" alt="columns"></p>
+
+<p>Now let’s dump the <code class="language-plaintext highlighter-rouge">id, username, firstname, and password</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test.req -D gallery_db -T users -C id,username,firstname,password --dump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/dump.png" alt="dump"></p>
+
+<p><br></p>
+
+<h3 id="14-whats-the-user-flag">1.4 What’s the user flag?</h3>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.35.177/gallery/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/gobuster.png" alt="gobuster"></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">/uploads</code> directory caught my attention. Maybe I can run the <code class="language-plaintext highlighter-rouge">reverse shell</code> that I will upload from this directory.</p>
+
+<p>Let’s try.</p>
+
+<p>First, go to albums, then create a new album, then you can upload files from inside the album.</p>
+
+<p>Let’s create and upload our reverse shell. <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">Pentestmonkey’s PHP Reverse Shell</a></p>
+
+<p><img src="/assets/img/tryhackme/gallery/upload.png" alt="upload"></p>
+
+<p>Now I’m setting up a <code class="language-plaintext highlighter-rouge">netcat</code> listener on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Now let’s go to the <code class="language-plaintext highlighter-rouge">/uploads</code> directory and find the file we uploaded.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/shell.png" alt="shell"></p>
+
+<p>Yes it works.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/in.png" alt="in"></p>
+
+<p>I see two folders named <code class="language-plaintext highlighter-rouge">mike</code> and <code class="language-plaintext highlighter-rouge">ubuntu</code> in my <code class="language-plaintext highlighter-rouge">/home</code> directory.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/users.png" alt="users"></p>
+
+<p>We need Mike’s password for <code class="language-plaintext highlighter-rouge">user.txt</code>.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/denied.png" alt="denied"></p>
+
+<p>I didn’t know what to do and decided to run <a href="https://github.com/carlospolop/PEASS-ng/blob/master/linPEAS/README.md" rel="external nofollow noopener" target="_blank">linpeas.sh</a> on the target machine.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/mikepass.png" alt="mikepass"></p>
+
+<p>We found a password as you can see in the picture, but I don’t know who it belongs to.</p>
+
+<p>Let’s try it for Mike.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/sumike.png" alt="sumike"></p>
+
+<p>And it worked. If you get an error, run the following codes on the target machine.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/term.png" alt="term"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+CTRL + Z
+$ stty raw -echo;fg
+$ reset
+$ xterm
+</code></pre></div></div>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="2--escalate-to-the-root-user">2.  Escalate to the root user</h2>
+
+<p>Good luck with the last step !</p>
+
+<p><br></p>
+
+<h3 id="21-whats-the-root-flag">2.1 What’s the root flag?</h3>
+
+<p>Let’s try the <code class="language-plaintext highlighter-rouge">sudo -l</code> command.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/sudol.png" alt="sudol"></p>
+
+<p>It seems we can run <code class="language-plaintext highlighter-rouge">rootkit.sh</code> with root privileges without requiring a password.</p>
+
+<p>Let’s see what’s in it.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/rootkit.png" alt="rootkit"></p>
+
+<p>This means that we can use the <code class="language-plaintext highlighter-rouge">nano</code> to get root.</p>
+
+<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/nano/" rel="external nofollow noopener" target="_blank">GTFOBins</a> to see if I can find anything about nano.</p>
+
+<p>Let’s try this.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/gtf.png" alt="gtf"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export TERM=xterm
+$ sudo /bin/bash /opt/rootkit.sh
+$ read
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/opt.png" alt="opt"></p>
+
+<p>After typing <code class="language-plaintext highlighter-rouge">read</code>, nano will open. Then we will do the following in order:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   ^R^X
+   reset; sh 1&gt;&amp;0 2&gt;&amp;0
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/execute.png" alt="execute"></p>
+
+<p>And we are <code class="language-plaintext highlighter-rouge">root</code>. Yes!</p>
+
+<p><img src="/assets/img/tryhackme/gallery/rootin.png" alt="rootin"></p>
+
+<p>Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care <image class="emoji" title="wave" alt="👋" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  May 10, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">sqli, rce, cms</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+<!-- Twitter Share Button -->
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Gallery&amp;url=http://localhost:4000/tryhackme-gallery/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+    Tweet
+</a>
+  
+<!-- LinkedIn Share Button -->
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-gallery/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+    LinkedIn
+</a>
+  
+  
+
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-gallery/';
+    this.page.identifier = '/tryhackme-gallery';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - Gallery</h1>
+  <div class="post__content">
+    <p>Try to exploit our image gallery system.</p>
+
+<p><br></p>
+
+<h2 id="1-deploy-and-get-a-shell">1. Deploy and get a Shell</h2>
+
+<p>Our gallery is not very well secured.</p>
+
+<p>Designed and created by <a href="https://twitter.com/mika_sec" rel="external nofollow noopener" target="_blank">Mikaa</a>!</p>
+
+<p><br></p>
+
+<h3 id="11-how-many-ports-are-open">1.1 How many ports are open?</h3>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.35.177
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/nmap.png" alt="nmap"></p>
+
+<p>Two ports are open. These are <code class="language-plaintext highlighter-rouge">80/tcp HTTP, 8080/tcp HTTP</code></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer : 2</code></strong></p>
+
+<p><br></p>
+
+<h3 id="12-whats-the-name-of-the-cms">1.2 What’s the name of the CMS?</h3>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>An <code class="language-plaintext highlighter-rouge">Apache2 default</code> page appears.</p>
+
+<p>Let’s look at the websie runining on <code class="language-plaintext highlighter-rouge">8080/tcp</code> port.</p>
+
+<p>A login page appears.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/login.png" alt="login"></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer : Simple Image Gallery</code></strong></p>
+
+<p><br></p>
+
+<h3 id="13-whats-the-hash-password-of-the-admin-user">1.3 What’s the hash password of the admin user?</h3>
+
+<p>The Website is using <code class="language-plaintext highlighter-rouge">Simple image gallery</code>. I’m looking to see if I can find anything in <a href="https://www.exploit-db.com" rel="external nofollow noopener" target="_blank">exploit-db</a>.</p>
+
+<p>I found four results in <code class="language-plaintext highlighter-rouge">exploit-db</code>.</p>
+
+<p>I’m going through the first and second results, separately.</p>
+
+<p>First <a href="https://www.exploit-db.com/exploits/50214" rel="external nofollow noopener" target="_blank">Simple Image Gallery 1.0 - Remote Code Execution</a></p>
+
+<p><img src="/assets/img/tryhackme/gallery/rce1.png" alt="rce1"></p>
+
+<p>I tried downloading and running the exploit first, but it didn’t work.</p>
+
+<p>When I looked through the code, I saw this.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/rce2.png" alt="rce2"></p>
+
+<p>It seems we can access the admin login with SQLi.</p>
+
+<p>We need to write this to the username; <code class="language-plaintext highlighter-rouge">admin' or '1'='1'#</code></p>
+
+<p>Let’s try.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/rce3.png" alt="rce3"></p>
+
+<p>Yes it works.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/home.png" alt="home"></p>
+
+<p>We were able to log in to the site as an admin. I’ve been browsing the site for a bit, let’s see what I can find.</p>
+
+<p>It seems we can upload files. Maybe we can upload a reverse shell.</p>
+
+<p>But first, I want to examine the other page in exploit-db.
+<a href="https://www.exploit-db.com/exploits/50198" rel="external nofollow noopener" target="_blank">Simple Image Gallery System 1.0 - ‘id’ SQL Injection</a></p>
+
+<p><img src="/assets/img/tryhackme/gallery/sql1.png" alt="sql1"></p>
+
+<p>The page explains what to do.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/sql2.png" alt="sql2"></p>
+
+<p>We need to capture the request for a picture with Burp Suite.
+Right click &gt; Save item and we need to save the request and run it in sqlmap.</p>
+
+<p>Let ‘s do it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r text.req --dbs
+</code></pre></div></div>
+
+<p>There are <code class="language-plaintext highlighter-rouge">Boolean Based</code> and <code class="language-plaintext highlighter-rouge">Time Based</code> vulnerabilities of SQLi types on the site.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/kind.png" alt="kind"></p>
+
+<p>With the <code class="language-plaintext highlighter-rouge">--dbs</code> tag, sqlmap will give us the database names.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/databases.png" alt="databases"></p>
+
+<p>Now that we know the database names, let’s get the tables.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test.req -D &lt;database-name&gt; --tables 
+</code></pre></div></div>
+
+<p>I dumped the tables for <code class="language-plaintext highlighter-rouge">gallery_db</code>.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/tables.png" alt="tables"></p>
+
+<p>Now I will empty the columns of the <code class="language-plaintext highlighter-rouge">users</code> table.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test.req -D gallery_db -T users --columns
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/columns.png" alt="columns"></p>
+
+<p>Now let’s dump the <code class="language-plaintext highlighter-rouge">id, username, firstname, and password</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test.req -D gallery_db -T users -C id,username,firstname,password --dump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/dump.png" alt="dump"></p>
+
+<p><br></p>
+
+<h3 id="14-whats-the-user-flag">1.4 What’s the user flag?</h3>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.35.177/gallery/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/gobuster.png" alt="gobuster"></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">/uploads</code> directory caught my attention. Maybe I can run the <code class="language-plaintext highlighter-rouge">reverse shell</code> that I will upload from this directory.</p>
+
+<p>Let’s try.</p>
+
+<p>First, go to albums, then create a new album, then you can upload files from inside the album.</p>
+
+<p>Let’s create and upload our reverse shell. <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">Pentestmonkey’s PHP Reverse Shell</a></p>
+
+<p><img src="/assets/img/tryhackme/gallery/upload.png" alt="upload"></p>
+
+<p>Now I’m setting up a <code class="language-plaintext highlighter-rouge">netcat</code> listener on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
+</code></pre></div></div>
+
+<p>Now let’s go to the <code class="language-plaintext highlighter-rouge">/uploads</code> directory and find the file we uploaded.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/shell.png" alt="shell"></p>
+
+<p>Yes it works.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/in.png" alt="in"></p>
+
+<p>I see two folders named <code class="language-plaintext highlighter-rouge">mike</code> and <code class="language-plaintext highlighter-rouge">ubuntu</code> in my <code class="language-plaintext highlighter-rouge">/home</code> directory.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/users.png" alt="users"></p>
+
+<p>We need Mike’s password for <code class="language-plaintext highlighter-rouge">user.txt</code>.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/denied.png" alt="denied"></p>
+
+<p>I didn’t know what to do and decided to run <a href="https://github.com/carlospolop/PEASS-ng/blob/master/linPEAS/README.md" rel="external nofollow noopener" target="_blank">linpeas.sh</a> on the target machine.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/mikepass.png" alt="mikepass"></p>
+
+<p>We found a password as you can see in the picture, but I don’t know who it belongs to.</p>
+
+<p>Let’s try it for Mike.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/sumike.png" alt="sumike"></p>
+
+<p>And it worked. If you get an error, run the following codes on the target machine.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/term.png" alt="term"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+CTRL + Z
+$ stty raw -echo;fg
+$ reset
+$ xterm
+</code></pre></div></div>
+
+<p>Let’s get the user flag.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<hr>
+
+<p><br></p>
+
+<h2 id="2--escalate-to-the-root-user">2.  Escalate to the root user</h2>
+
+<p>Good luck with the last step !</p>
+
+<p><br></p>
+
+<h3 id="21-whats-the-root-flag">2.1 What’s the root flag?</h3>
+
+<p>Let’s try the <code class="language-plaintext highlighter-rouge">sudo -l</code> command.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/sudol.png" alt="sudol"></p>
+
+<p>It seems we can run <code class="language-plaintext highlighter-rouge">rootkit.sh</code> with root privileges without requiring a password.</p>
+
+<p>Let’s see what’s in it.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/rootkit.png" alt="rootkit"></p>
+
+<p>This means that we can use the <code class="language-plaintext highlighter-rouge">nano</code> to get root.</p>
+
+<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/nano/" rel="external nofollow noopener" target="_blank">GTFOBins</a> to see if I can find anything about nano.</p>
+
+<p>Let’s try this.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/gtf.png" alt="gtf"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export TERM=xterm
+$ sudo /bin/bash /opt/rootkit.sh
+$ read
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/opt.png" alt="opt"></p>
+
+<p>After typing <code class="language-plaintext highlighter-rouge">read</code>, nano will open. Then we will do the following in order:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   ^R^X
+   reset; sh 1&gt;&amp;0 2&gt;&amp;0
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/gallery/execute.png" alt="execute"></p>
+
+<p>And we are <code class="language-plaintext highlighter-rouge">root</code>. Yes!</p>
+
+<p><img src="/assets/img/tryhackme/gallery/rootin.png" alt="rootin"></p>
+
+<p>Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/gallery/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care <image class="emoji" title="wave" alt="👋" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  May 10, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">sqli, rce, cms</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+<!-- Twitter Share Button -->
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Gallery&amp;url=http://localhost:4000/tryhackme-gallery/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+    Tweet
+</a>
+  
+<!-- LinkedIn Share Button -->
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-gallery/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+    LinkedIn
+</a>
+  
+  
+
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-gallery/';
+    this.page.identifier = '/tryhackme-gallery';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+    </div>
+
+
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
+    <footer>
+  <div class="footer">
+    © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+  </div>
+</footer>
+
+    <!-- script -->
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/clip.js"></script>
+    <script src="/assets/js/scroll-top.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "TryHackMe - Gallery",
+    "author": {
+      "@type": "Person",
+      "name": ""
+    },
+    "datePublished": "2023-05-10 00:00:00 +0300",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://localhost:4000/tryhackme-gallery/"
+    },
+    "articleSection": "TryHackMe"
+  }
+</script>
+  </body>
+</html>
