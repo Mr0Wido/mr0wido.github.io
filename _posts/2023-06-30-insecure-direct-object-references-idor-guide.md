@@ -100,7 +100,7 @@ Let's continue with an example from web security academy.
 - [Web Security Academy - Lab: Insecure direct object references](https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references)
 - [TryHackMe - Web Application Security](https://tryhackme.com/room/introwebapplicationsecurity)
 - [TryHackMe - Corridor](https://tryhackme.com/room/corridor)
-- [TryHackMe - Neighbour](https://tryhackme.com/room/neighbour)
+- [TryHackMe - Neighbour](https://tryhackme.com/room/neighbour) - [My Writeup :punch:](https://mr0wido.github.io/tryhackme-neighbour/)
 
 
 <br>

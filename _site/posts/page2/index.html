@@ -142,6 +142,238 @@
       <li class="post-list__item">
         
           <div>
+            <a href="/sql-injection-guide/"><img class="post-list__image" src="/assets/img/sqli.png" alt="Post Görseli"></a>
+            <div class="post-list__head">
+              <h3 class="post-list__item-title"><a href="/sql-injection-guide/">SQL Injection Guide</a></h3>
+              <div class="post-categories">
+                
+                
+                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>06 May 2023 - <a href="/categories/#Guide">Guide</a></p>
+                
+                
+              </div>
+              <p class="post-list__item-excerpt"></p>
+<p>In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level.  So, I preferred a shorter and clearer explanation.</p>
+
+<p>But it would not be right for me to give only the basic information in my article. I want you to understand the basics, and let the SQL injection fit your logic. So, there are many <a href="#sources">resources</a> that I have shared in this article, check them out. There are many <a href="#labs">labs</a> where you can practice your knowledge. I also shared a lot of <a href="#chs">cheat sheets</a> as a helper.</p>
+
+<p>I hope the article is useful to you. It helps you to learn SQL injection <image class="emoji" title="worried" alt="😟" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61f.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+<h3 id="topics">Topics</h3>
+
+<ul>
+  <li>
+<a href="#bft">Basic First</a> <br>
+</li>
+  <li>
+<a href="#sit">SQL Injection and Types</a> <br>
+</li>
+  <li>
+<a href="#labs">SQL Injection Labs</a> <br>
+</li>
+  <li>
+<a href="#sources">SQL Injection Sources</a> <br>
+</li>
+  <li>
+<a href="#chs">SQL Injection Cheat Sheats</a> <br>
+</li>
+</ul>
+
+<p><br></p>
+
+<p><img src="/assets/video/sqli-guide/sqli-attack.png" alt="sqli"></p>
+
+<h3 id="bft">Basic First</h3>
+
+<h3 id="what-is-a-database">What is a Database?</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">database</code> is where all kinds of data and information are stored electronically.</p>
+
+<h3 id="what-is-database-management-system-dbms">What is Database Management System (DBMS)?</h3>
+
+<p>The database is usually controlled by a <code class="language-plaintext highlighter-rouge">Database Management System (DBMS)</code>. Thanks to this system, data can be easily accessed, managed, changed, updated, and organized.</p>
+
+<p>Most databases today use <code class="language-plaintext highlighter-rouge">SQL</code>.</p>
+
+<h3 id="what-is-sql">What is SQL?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">SQL</code> is a programming language used in databases to query, manipulate and define data, as well as to provide access control.</p>
+
+<p><br></p>
+
+<h3 id="sit">SQL Injection and Types</h3>
+
+<p>A web application sends SQL queries to use data found in the database. The attacker can inject their own queries into these SQL queries or manipulate the queries. In this case, it can access other information stored in the database. We call this situation the <code class="language-plaintext highlighter-rouge">SQL Injection</code> vulnerability.</p>
+
+<p>A successful <code class="language-plaintext highlighter-rouge">SQL injection</code> attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information.  In some cases, an attacker can obtain a persistent backdoor into an organization’s systems, leading to a long-term compromise that can go unnoticed for an extended period.</p>
+
+<p><br></p>
+<h3 id="error-based-sqli">Error-Based SQLi</h3>
+
+<p>An error is received in response to submitted SQL queries. The attacker can also send new queries according to this error, or by manipulating the error, he can reach the information he wants to reach from within the output.</p>
+
+<p><br></p>
+<h3 id="union-based-sqli">Union-Based SQLi</h3>
+
+<p>Multiple <code class="language-plaintext highlighter-rouge">Select</code> queries can be written using the <code class="language-plaintext highlighter-rouge">Union</code> operator. In this case, the attacker can write his own SELECT query with a union operator. But it should be noted that when the union expression is used, the <code class="language-plaintext highlighter-rouge">number of columns must be equal</code> to each other.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Union-Based-SQLi.mp4" type="video/mp4"></source>
+</video>
+
+<p><br></p>
+
+<h3 id="boolean-based-sqli">Boolean-Based SQLi</h3>
+
+<p>It does not return an error or requested information in response to submitted SQL queries. Instead, it gives a <code class="language-plaintext highlighter-rouge">true or false</code> answer. This makes the process very long.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Boolean-Based-SQLi.mp4" type="video/mp4"></source>
+</video>
+<p><br></p>
+
+<h3 id="time-based-sqli">Time-Based SQLi</h3>
+
+<p>It doesn’t return anything in response to submitted SQL queries. However, the attacker tries to see if the query works by adding functions such as <code class="language-plaintext highlighter-rouge">sleep()</code> to these SQL queries.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Time-Based-SQLi.mp4" type="video/mp4"></source>
+</video>
+<p><br></p>
+
+<h3 id="out-of-ban-sqli">Out-of-Ban SQLi</h3>
+
+<p>None of the techniques described so far will work. The application’s response doesn’t depend on whether the query returns any data, on whether a database error occurs or on the time taken to execute the query. In this situation, it is often possible to exploit the blind SQL injection vulnerability by triggering out-of-band network interactions with a system that you control. These can be triggered conditionally, depending on an injected condition, to infer information one bit at a time. But more powerfully, data can be exfiltrated directly within the network interaction itself.</p>
+
+<p>Various network protocols can be used for this purpose, but typically the most effective is DNS.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Out-of-Band-SQLi.mp4" type="video/mp4"></source>
+</video>
+<p><br></p>
+
+<h3 id="warning">Warning</h3>
+
+<p>Take care when injecting the condition OR 1=1 into a SQL query. Although this may be harmless in the initial context you’re injecting into, it’s common for applications to use data from a single request in multiple different queries. If your condition reaches an UPDATE or DELETE statement, for example, this can result in an accidental loss of data.</p>
+
+<p><br></p>
+
+<h3 id="labs">SQL Injection Labs</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/all-labs" rel="external nofollow noopener" target="_blank">Web Security Academy - All Labs</a></li>
+  <li><a href="https://tryhackme.com/room/sqlilab" rel="external nofollow noopener" target="_blank">TryHackMe - SQL Injection Lab</a></li>
+  <li><a href="https://tryhackme.com/room/owaspjuiceshop" rel="external nofollow noopener" target="_blank">TryHackMe - OWASP Juice Shop</a></li>
+  <li><a href="https://tryhackme.com/room/sqlinjectionlm" rel="external nofollow noopener" target="_blank">TryHackMe - SQL Injection</a></li>
+  <li><a href="https://tryhackme.com/room/sqlmap" rel="external nofollow noopener" target="_blank">TryHackMe - Sqlmap</a></li>
+  <li><a href="https://tryhackme.com/room/gamezone" rel="external nofollow noopener" target="_blank">TryHackMe - Game Zone</a></li>
+  <li><a href="https://tryhackme.com/room/poster" rel="external nofollow noopener" target="_blank">TryHackMe - Poster</a></li>
+  <li>
+<a href="https://tryhackme.com/room/chillhack" rel="external nofollow noopener" target="_blank">TryHackMe - Chill Hack</a> - <a href="https://mr0wido.github.io/tryhackme-chill-hack/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
+  <li>
+<a href="https://tryhackme.com/room/gallery666" rel="external nofollow noopener" target="_blank">TryHackMe - Gallery</a> - <a href="https://mr0wido.github.io/tryhackme-gallery/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
+  <li><a href="https://tryhackme.com/room/avengers" rel="external nofollow noopener" target="_blank">TryHackMe - Avengers Blog</a></li>
+  <li>
+<a href="https://tryhackme.com/room/marketplace" rel="external nofollow noopener" target="_blank">TryHackMe - The Marketplace</a> - <a href="https://mr0wido.github.io/tryhackme-the-marketplace/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
+  <li><a href="https://tryhackme.com/room/wekorra" rel="external nofollow noopener" target="_blank">TryHackMe - Wekor</a></li>
+  <li><a href="https://tryhackme.com/room/zeno" rel="external nofollow noopener" target="_blank">TryHackMe - Zeno</a></li>
+  <li><a href="https://tryhackme.com/room/sqhell" rel="external nofollow noopener" target="_blank">TryHackMe - SQHell</a></li>
+  <li><a href="https://tryhackme.com/room/olympusroom" rel="external nofollow noopener" target="_blank">TryHackMe - Olympus</a></li>
+  <li><a href="https://tryhackme.com/room/revenge" rel="external nofollow noopener" target="_blank">TryHackMe - Revenge</a></li>
+  <li><a href="https://tryhackme.com/room/metamorphosis" rel="external nofollow noopener" target="_blank">TryHackMe - Metamorphosis</a></li>
+  <li><a href="https://tryhackme.com/room/wwbuddy" rel="external nofollow noopener" target="_blank">TryHackMe - WWBuddy</a></li>
+  <li><a href="https://tryhackme.com/room/unstabletwin" rel="external nofollow noopener" target="_blank">TryHackMe - Unstable Twin</a></li>
+  <li>
+<a href="https://tryhackme.com/room/dailybugle" rel="external nofollow noopener" target="_blank">TryHackMe - Daily Bugle</a> - <a href="https://mr0wido.github.io/tryhackme-daily-bugle/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
+  <li><a href="https://tryhackme.com/room/yearofthedog" rel="external nofollow noopener" target="_blank">TryHackMe - Year of the Dog</a></li>
+  <li><a href="https://tryhackme.com/room/yearofthepig" rel="external nofollow noopener" target="_blank">TryHackMe - Year of the Pig</a></li>
+  <li><a href="https://tryhackme.com/room/m4tr1xexitdenied" rel="external nofollow noopener" target="_blank">TryHackMe - M4tr1x: Exit Denied</a></li>
+  <li><a href="https://pentesterlab.com/exercises/from_sqli_to_shell/course" rel="external nofollow noopener" target="_blank">PentesterLab - From SQL Injection to Shell</a></li>
+  <li><a href="https://pentesterlab.com/exercises/from_sqli_to_shell_pg_edition/course" rel="external nofollow noopener" target="_blank">PentesterLab - From SQL Injection to Shell: PostgreSQL Edition</a></li>
+  <li><a href="https://ctflearn.com/challenge/88" rel="external nofollow noopener" target="_blank">CTFLearn - Basic Injection</a></li>
+  <li><a href="https://ctflearn.com/challenge/149" rel="external nofollow noopener" target="_blank">CTFLearn - Inj3ction Time</a></li>
+</ul>
+
+<p><br></p>
+
+<h3 id="sources">SQL Injection Sources</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/sql-injection" rel="external nofollow noopener" target="_blank">Web Security Academy - SQL injection</a></li>
+  <li><a href="https://tryhackme.com/room/sqlinjectionlm" rel="external nofollow noopener" target="_blank">TryHackMe - SQL Injection</a></li>
+  <li><a href="https://www.hackerrank.com/domains/sql" rel="external nofollow noopener" target="_blank">HackerRank - SQL</a></li>
+  <li><a href="https://owasp.org/www-community/attacks/SQL_Injection" rel="external nofollow noopener" target="_blank">OWASP - SQL Injection</a></li>
+  <li><a href="https://systemweakness.com/handbook-for-sql-injection-2c12ec29d7ee" rel="external nofollow noopener" target="_blank">Niveet Palan - Handbook for SQL Injection</a></li>
+  <li><a href="https://thegrayarea.tech/p1-bug-hunting-a-step-by-step-guide-to-sql-injection-76f95c8986b0" rel="external nofollow noopener" target="_blank">Graham Zemel - Step by Step Guide to SQL Injection</a></li>
+  <li><a href="https://www.hackingarticles.in/manual-sql-injection-exploitation-step-step/" rel="external nofollow noopener" target="_blank">Raj Chandel’s Blog - Manual SQL Injection Exploitation Step by Step</a></li>
+  <li><a href="https://infosecwriteups.com/a-technique-that-a-lot-of-sql-injection-beginners-dont-know-atmanand-nagpure-write-up-abdc7c269dd5" rel="external nofollow noopener" target="_blank">Atmanand Nagpure - A technique that a lot of SQL injection beginners don’t know</a></li>
+  <li><a href="https://infosecwriteups.com/identifying-exploiting-sql-injection-manual-automated-79c932f0c9b5" rel="external nofollow noopener" target="_blank">goswamiijaya - Identifying &amp; Exploiting SQL Injections: Manual &amp; Automated</a></li>
+  <li><a href="https://github.com/daffainfo/AllAboutBugBounty/blob/master/SQL%20Injection.md" rel="external nofollow noopener" target="_blank">daffainfo - SQL Injection</a></li>
+  <li><a href="https://infosecwriteups.com/definitive-guide-to-sql-injection-df5ac445eef1" rel="external nofollow noopener" target="_blank">Security Lit Limited - Definitive Guide to SQL Injection</a></li>
+  <li><a href="https://infosecwriteups.com/exploiting-error-based-sql-injections-bypassing-restrictions-ed099623cd94" rel="external nofollow noopener" target="_blank">goswamiijaya - Exploiting Error Based SQL Injections &amp; Bypassing Restrictions</a></li>
+  <li><a href="https://infosecwriteups.com/out-of-band-oob-sql-injection-87b7c666548b" rel="external nofollow noopener" target="_blank">Lee Chun How - Out-of-Band (OOB) SQL Injection</a></li>
+  <li><a href="https://infosecwriteups.com/first-steps-to-sql-injection-45fc0d9aae21" rel="external nofollow noopener" target="_blank">Mcry - First step to an SQL-Injection</a></li>
+  <li><a href="https://infosecwriteups.com/sql-injection-an-overview-1057c5729dc5" rel="external nofollow noopener" target="_blank">Secpy Community - SQL Injection: An Overview</a></li>
+  <li><a href="https://infosecwriteups.com/what-is-sql-injection-6985c298ea20" rel="external nofollow noopener" target="_blank">Frost - What is SQL Injection and How Does it Work</a></li>
+  <li><a href="https://application.security/free-application-security-training/owasp-top-10-sql-injection" rel="external nofollow noopener" target="_blank">Kontra Application Security - SQL Injection</a></li>
+  <li><a href="https://www.hacksplaining.com/exercises/sql-injection#/start" rel="external nofollow noopener" target="_blank">Start - SQL Injections</a></li>
+  <li><a href="https://ctflearn.com/lab/SQL-Injection-Part-1" rel="external nofollow noopener" target="_blank">CTFlearn - SQL Injection</a></li>
+  <li><a href="https://www.imperva.com/learn/application-security/sql-injection-sqli/" rel="external nofollow noopener" target="_blank">Imperva - What is SQL Injection</a></li>
+  <li><a href="https://python.plainenglish.io/pentesting-introduction-to-sql-injection-attack-part-1-5166e4617b71" rel="external nofollow noopener" target="_blank">Edward Low - Edward Low</a></li>
+  <li><a href="https://systemweakness.com/sql-injection-important-things-you-need-to-know-right-now-b173cdea0610" rel="external nofollow noopener" target="_blank">Sudarshan S - SQL INJECTION: IMPORTANT…</a></li>
+  <li><a href="https://systemweakness.com/sql-injection-6348398d6651" rel="external nofollow noopener" target="_blank">Arth Detroja - SQL Injection</a></li>
+  <li><a href="https://a51f221b.medium.com/web-penetration-testing-guide-3a5162731fe6" rel="external nofollow noopener" target="_blank">A51F221B - Web penetration testing guide</a></li>
+  <li><a href="https://www.w3schools.com/sql/default.asp" rel="external nofollow noopener" target="_blank">W3Schools - SQL Tutorial</a></li>
+  <li><a href="https://www.codecademy.com/learn/learn-sql" rel="external nofollow noopener" target="_blank">Codecademy - Learn SQL</a></li>
+  <li><a href="https://www.programiz.com/sql" rel="external nofollow noopener" target="_blank">Programiz - Learn SQL: SQL Tutorial for Beginners</a></li>
+  <li><a href="https://www.tutorialspoint.com/sql/index.htm" rel="external nofollow noopener" target="_blank">TutorialsPoint - SQL Tutorial</a></li>
+  <li><a href="https://roadmap.sh/cyber-security" rel="external nofollow noopener" target="_blank">Cyber Security Roadmap</a></li>
+</ul>
+
+<p><br></p>
+
+<h3 id="chs">SQL Injection Cheat Sheets</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/sql-injection/cheat-sheet" rel="external nofollow noopener" target="_blank">Web Security Academy - SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://infosecwriteups.com/sql-injection-payload-list-b97656cfd66b" rel="external nofollow noopener" target="_blank">Ismail Tasdelen - SQL Injection Payload List</a></li>
+  <li><a href="https://sqlwiki.netspi.com/" rel="external nofollow noopener" target="_blank">NetSPI SQL Injection Wiki</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/oracle-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - Oracle SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - MySQL SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/postgres-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - Postgres SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/informix-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - Informix SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - MSSQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/db2-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - DB2 SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/ingres-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - Ingres SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://www.codecademy.com/learn/defending-express-applications-from-sql-injection-xss-csrf-attacks/modules/preventing-sql-injection-attacks/cheatsheet" rel="external nofollow noopener" target="_blank">Codecademy - Preventing SQL Injection Attacks</a></li>
+  <li><a href="https://websec.wordpress.com/2010/03/19/exploiting-hard-filtered-sql-injections/" rel="external nofollow noopener" target="_blank">Exploiting hard filtered SQL Injections</a></li>
+  <li><a href="http://web.archive.org/web/20080822123152/http://www.webapptest.org/ms-access-sql-injection-cheat-sheet-EN.html" rel="external nofollow noopener" target="_blank">MS Access SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://www.yazilimkodlama.com/sql-server-2/sql-sorgulari-ve-ornekleri/" rel="external nofollow noopener" target="_blank">Yazılım Kodlama - SQL Sorguları ve SQL Sorgu Örnekleri</a></li>
+  <li><a href="https://cheatography.com/neolex/cheat-sheets/injection-sql/" rel="external nofollow noopener" target="_blank">Cheatography - Injection SQL Cheat Sheet by Neolex</a></li>
+  <li><a href="https://cheatography.com/nimakarimian/cheat-sheets/sql-cheatsheet/" rel="external nofollow noopener" target="_blank">Cheatography - SQL CheatSheet Cheat Sheet by nimakarimian</a></li>
+  <li><a href="https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/" rel="external nofollow noopener" target="_blank">INVICTI - SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://deadlyhacker.wordpress.com/2013/05/09/list-of-google-dorks-for-sql-injection/" rel="external nofollow noopener" target="_blank">Deadly Hacker - List of google dorks for sql injection</a></li>
+  <li><a href="https://perspectiverisk.com/mysql-sql-injection-practical-cheat-sheet/" rel="external nofollow noopener" target="_blank">Perspective Risk - MySQL SQL Injection Practical Cheat Sheet</a></li>
+  <li><a href="https://www.asafety.fr/mysql-injection-cheat-sheet/" rel="external nofollow noopener" target="_blank">MySQL Injection Cheat Sheet</a></li>
+</ul>
+
+<p><br>
+<br>
+I hope you liked my article. See you in my other articles<image class="emoji" title="hand" alt="✋" src="https://github.githubassets.com/images/icons/emoji/unicode/270b.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+            </div>
+          </div>
+          <br>
+          
+      </li>
+    
+      <li class="post-list__item">
+        
+          <div>
             <a href="/tryhackme-cyber-heroes/"><img class="post-list__image" src="/assets/img/cyber-heroes.png" alt="Post Görseli"></a>
             <div class="post-list__head">
               <h3 class="post-list__item-title"><a href="/tryhackme-cyber-heroes/">TryHackMe - Cyber Heroes</a></h3>
@@ -227,30 +459,29 @@
           
       </li>
     
+  </ul>
+  <ul class="post-list__small">
+    
       <li class="post-list__item">
         
           <div>
-            <a href="/tryhackme-source/"><img class="post-list__image" src="/assets/img/source.png" alt="Post Görseli"></a>
+            <a href="/sql-injection-guide/"><img class="post-list__image" src="/assets/img/sqli.png" alt="Post Görseli"></a>
             <div class="post-list__head">
-              <h3 class="post-list__item-title"><a href="/tryhackme-source/">TryHackMe - Source</a></h3>
+              <h3 class="post-list__item-title"><a href="/sql-injection-guide/">SQL Injection Guide</a></h3>
               <div class="post-categories">
                 
                 
-                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>25 March 2023 - <a href="/categories/#TryHackMe">TryHackMe</a></p>
+                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>06 May 2023 - <a href="/categories/#Guide">Guide</a></p>
                 
                 
               </div>
               <p class="post-list__item-excerpt"></p>
-<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
-
+<p>In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the...</p>
             </div>
           </div>
           <br>
           
       </li>
-    
-  </ul>
-  <ul class="post-list__small">
     
       <li class="post-list__item">
         
@@ -339,28 +570,6 @@
           
       </li>
     
-      <li class="post-list__item">
-        
-          <div>
-            <a href="/tryhackme-source/"><img class="post-list__image" src="/assets/img/source.png" alt="Post Görseli"></a>
-            <div class="post-list__head">
-              <h3 class="post-list__item-title"><a href="/tryhackme-source/">TryHackMe - Source</a></h3>
-              <div class="post-categories">
-                
-                
-                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>25 March 2023 - <a href="/categories/#TryHackMe">TryHackMe</a></p>
-                
-                
-              </div>
-              <p class="post-list__item-excerpt"></p>
-<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
-
-            </div>
-          </div>
-          <br>
-          
-      </li>
-    
   </ul>
 </div>
 
@@ -398,7 +607,7 @@
       </h3>
       
         <div class="author__bio p-note" itemprop="description">
-          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+          <p>I am interested in everything related to technology. I am a limitless learner.</p>
 
         </div>
       
@@ -472,7 +681,7 @@
       </h3>
       
         <div class="author__bio p-note" itemprop="description">
-          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+          <p>I am interested in everything related to technology. I am a limitless learner.</p>
 
         </div>
       
@@ -564,7 +773,7 @@
       </h3>
       
         <div class="author__bio p-note" itemprop="description">
-          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+          <p>I am interested in everything related to technology. I am a limitless learner.</p>
 
         </div>
       
@@ -638,7 +847,7 @@
       </h3>
       
         <div class="author__bio p-note" itemprop="description">
-          <p>I am an avid CTF player. I am interested in everything related to technology. I enjoy my time working with computers. Self and constant learner.</p>
+          <p>I am interested in everything related to technology. I am a limitless learner.</p>
 
         </div>
       
@@ -713,6 +922,238 @@
         <main class="default">
           <div class="post-list">
   <ul class="post-list__list">
+    
+      <li class="post-list__item">
+        
+          <div>
+            <a href="/sql-injection-guide/"><img class="post-list__image" src="/assets/img/sqli.png" alt="Post Görseli"></a>
+            <div class="post-list__head">
+              <h3 class="post-list__item-title"><a href="/sql-injection-guide/">SQL Injection Guide</a></h3>
+              <div class="post-categories">
+                
+                
+                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>06 May 2023 - <a href="/categories/#Guide">Guide</a></p>
+                
+                
+              </div>
+              <p class="post-list__item-excerpt"></p>
+<p>In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level.  So, I preferred a shorter and clearer explanation.</p>
+
+<p>But it would not be right for me to give only the basic information in my article. I want you to understand the basics, and let the SQL injection fit your logic. So, there are many <a href="#sources">resources</a> that I have shared in this article, check them out. There are many <a href="#labs">labs</a> where you can practice your knowledge. I also shared a lot of <a href="#chs">cheat sheets</a> as a helper.</p>
+
+<p>I hope the article is useful to you. It helps you to learn SQL injection <image class="emoji" title="worried" alt="😟" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61f.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+<h3 id="topics">Topics</h3>
+
+<ul>
+  <li>
+<a href="#bft">Basic First</a> <br>
+</li>
+  <li>
+<a href="#sit">SQL Injection and Types</a> <br>
+</li>
+  <li>
+<a href="#labs">SQL Injection Labs</a> <br>
+</li>
+  <li>
+<a href="#sources">SQL Injection Sources</a> <br>
+</li>
+  <li>
+<a href="#chs">SQL Injection Cheat Sheats</a> <br>
+</li>
+</ul>
+
+<p><br></p>
+
+<p><img src="/assets/video/sqli-guide/sqli-attack.png" alt="sqli"></p>
+
+<h3 id="bft">Basic First</h3>
+
+<h3 id="what-is-a-database">What is a Database?</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">database</code> is where all kinds of data and information are stored electronically.</p>
+
+<h3 id="what-is-database-management-system-dbms">What is Database Management System (DBMS)?</h3>
+
+<p>The database is usually controlled by a <code class="language-plaintext highlighter-rouge">Database Management System (DBMS)</code>. Thanks to this system, data can be easily accessed, managed, changed, updated, and organized.</p>
+
+<p>Most databases today use <code class="language-plaintext highlighter-rouge">SQL</code>.</p>
+
+<h3 id="what-is-sql">What is SQL?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">SQL</code> is a programming language used in databases to query, manipulate and define data, as well as to provide access control.</p>
+
+<p><br></p>
+
+<h3 id="sit">SQL Injection and Types</h3>
+
+<p>A web application sends SQL queries to use data found in the database. The attacker can inject their own queries into these SQL queries or manipulate the queries. In this case, it can access other information stored in the database. We call this situation the <code class="language-plaintext highlighter-rouge">SQL Injection</code> vulnerability.</p>
+
+<p>A successful <code class="language-plaintext highlighter-rouge">SQL injection</code> attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information.  In some cases, an attacker can obtain a persistent backdoor into an organization’s systems, leading to a long-term compromise that can go unnoticed for an extended period.</p>
+
+<p><br></p>
+<h3 id="error-based-sqli">Error-Based SQLi</h3>
+
+<p>An error is received in response to submitted SQL queries. The attacker can also send new queries according to this error, or by manipulating the error, he can reach the information he wants to reach from within the output.</p>
+
+<p><br></p>
+<h3 id="union-based-sqli">Union-Based SQLi</h3>
+
+<p>Multiple <code class="language-plaintext highlighter-rouge">Select</code> queries can be written using the <code class="language-plaintext highlighter-rouge">Union</code> operator. In this case, the attacker can write his own SELECT query with a union operator. But it should be noted that when the union expression is used, the <code class="language-plaintext highlighter-rouge">number of columns must be equal</code> to each other.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Union-Based-SQLi.mp4" type="video/mp4"></source>
+</video>
+
+<p><br></p>
+
+<h3 id="boolean-based-sqli">Boolean-Based SQLi</h3>
+
+<p>It does not return an error or requested information in response to submitted SQL queries. Instead, it gives a <code class="language-plaintext highlighter-rouge">true or false</code> answer. This makes the process very long.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Boolean-Based-SQLi.mp4" type="video/mp4"></source>
+</video>
+<p><br></p>
+
+<h3 id="time-based-sqli">Time-Based SQLi</h3>
+
+<p>It doesn’t return anything in response to submitted SQL queries. However, the attacker tries to see if the query works by adding functions such as <code class="language-plaintext highlighter-rouge">sleep()</code> to these SQL queries.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Time-Based-SQLi.mp4" type="video/mp4"></source>
+</video>
+<p><br></p>
+
+<h3 id="out-of-ban-sqli">Out-of-Ban SQLi</h3>
+
+<p>None of the techniques described so far will work. The application’s response doesn’t depend on whether the query returns any data, on whether a database error occurs or on the time taken to execute the query. In this situation, it is often possible to exploit the blind SQL injection vulnerability by triggering out-of-band network interactions with a system that you control. These can be triggered conditionally, depending on an injected condition, to infer information one bit at a time. But more powerfully, data can be exfiltrated directly within the network interaction itself.</p>
+
+<p>Various network protocols can be used for this purpose, but typically the most effective is DNS.</p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/sqli-guide/Out-of-Band-SQLi.mp4" type="video/mp4"></source>
+</video>
+<p><br></p>
+
+<h3 id="warning">Warning</h3>
+
+<p>Take care when injecting the condition OR 1=1 into a SQL query. Although this may be harmless in the initial context you’re injecting into, it’s common for applications to use data from a single request in multiple different queries. If your condition reaches an UPDATE or DELETE statement, for example, this can result in an accidental loss of data.</p>
+
+<p><br></p>
+
+<h3 id="labs">SQL Injection Labs</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/all-labs" rel="external nofollow noopener" target="_blank">Web Security Academy - All Labs</a></li>
+  <li><a href="https://tryhackme.com/room/sqlilab" rel="external nofollow noopener" target="_blank">TryHackMe - SQL Injection Lab</a></li>
+  <li><a href="https://tryhackme.com/room/owaspjuiceshop" rel="external nofollow noopener" target="_blank">TryHackMe - OWASP Juice Shop</a></li>
+  <li><a href="https://tryhackme.com/room/sqlinjectionlm" rel="external nofollow noopener" target="_blank">TryHackMe - SQL Injection</a></li>
+  <li><a href="https://tryhackme.com/room/sqlmap" rel="external nofollow noopener" target="_blank">TryHackMe - Sqlmap</a></li>
+  <li><a href="https://tryhackme.com/room/gamezone" rel="external nofollow noopener" target="_blank">TryHackMe - Game Zone</a></li>
+  <li><a href="https://tryhackme.com/room/poster" rel="external nofollow noopener" target="_blank">TryHackMe - Poster</a></li>
+  <li>
+<a href="https://tryhackme.com/room/chillhack" rel="external nofollow noopener" target="_blank">TryHackMe - Chill Hack</a> - <a href="https://mr0wido.github.io/tryhackme-chill-hack/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
+  <li>
+<a href="https://tryhackme.com/room/gallery666" rel="external nofollow noopener" target="_blank">TryHackMe - Gallery</a> - <a href="https://mr0wido.github.io/tryhackme-gallery/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
+  <li><a href="https://tryhackme.com/room/avengers" rel="external nofollow noopener" target="_blank">TryHackMe - Avengers Blog</a></li>
+  <li>
+<a href="https://tryhackme.com/room/marketplace" rel="external nofollow noopener" target="_blank">TryHackMe - The Marketplace</a> - <a href="https://mr0wido.github.io/tryhackme-the-marketplace/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
+  <li><a href="https://tryhackme.com/room/wekorra" rel="external nofollow noopener" target="_blank">TryHackMe - Wekor</a></li>
+  <li><a href="https://tryhackme.com/room/zeno" rel="external nofollow noopener" target="_blank">TryHackMe - Zeno</a></li>
+  <li><a href="https://tryhackme.com/room/sqhell" rel="external nofollow noopener" target="_blank">TryHackMe - SQHell</a></li>
+  <li><a href="https://tryhackme.com/room/olympusroom" rel="external nofollow noopener" target="_blank">TryHackMe - Olympus</a></li>
+  <li><a href="https://tryhackme.com/room/revenge" rel="external nofollow noopener" target="_blank">TryHackMe - Revenge</a></li>
+  <li><a href="https://tryhackme.com/room/metamorphosis" rel="external nofollow noopener" target="_blank">TryHackMe - Metamorphosis</a></li>
+  <li><a href="https://tryhackme.com/room/wwbuddy" rel="external nofollow noopener" target="_blank">TryHackMe - WWBuddy</a></li>
+  <li><a href="https://tryhackme.com/room/unstabletwin" rel="external nofollow noopener" target="_blank">TryHackMe - Unstable Twin</a></li>
+  <li>
+<a href="https://tryhackme.com/room/dailybugle" rel="external nofollow noopener" target="_blank">TryHackMe - Daily Bugle</a> - <a href="https://mr0wido.github.io/tryhackme-daily-bugle/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
+  <li><a href="https://tryhackme.com/room/yearofthedog" rel="external nofollow noopener" target="_blank">TryHackMe - Year of the Dog</a></li>
+  <li><a href="https://tryhackme.com/room/yearofthepig" rel="external nofollow noopener" target="_blank">TryHackMe - Year of the Pig</a></li>
+  <li><a href="https://tryhackme.com/room/m4tr1xexitdenied" rel="external nofollow noopener" target="_blank">TryHackMe - M4tr1x: Exit Denied</a></li>
+  <li><a href="https://pentesterlab.com/exercises/from_sqli_to_shell/course" rel="external nofollow noopener" target="_blank">PentesterLab - From SQL Injection to Shell</a></li>
+  <li><a href="https://pentesterlab.com/exercises/from_sqli_to_shell_pg_edition/course" rel="external nofollow noopener" target="_blank">PentesterLab - From SQL Injection to Shell: PostgreSQL Edition</a></li>
+  <li><a href="https://ctflearn.com/challenge/88" rel="external nofollow noopener" target="_blank">CTFLearn - Basic Injection</a></li>
+  <li><a href="https://ctflearn.com/challenge/149" rel="external nofollow noopener" target="_blank">CTFLearn - Inj3ction Time</a></li>
+</ul>
+
+<p><br></p>
+
+<h3 id="sources">SQL Injection Sources</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/sql-injection" rel="external nofollow noopener" target="_blank">Web Security Academy - SQL injection</a></li>
+  <li><a href="https://tryhackme.com/room/sqlinjectionlm" rel="external nofollow noopener" target="_blank">TryHackMe - SQL Injection</a></li>
+  <li><a href="https://www.hackerrank.com/domains/sql" rel="external nofollow noopener" target="_blank">HackerRank - SQL</a></li>
+  <li><a href="https://owasp.org/www-community/attacks/SQL_Injection" rel="external nofollow noopener" target="_blank">OWASP - SQL Injection</a></li>
+  <li><a href="https://systemweakness.com/handbook-for-sql-injection-2c12ec29d7ee" rel="external nofollow noopener" target="_blank">Niveet Palan - Handbook for SQL Injection</a></li>
+  <li><a href="https://thegrayarea.tech/p1-bug-hunting-a-step-by-step-guide-to-sql-injection-76f95c8986b0" rel="external nofollow noopener" target="_blank">Graham Zemel - Step by Step Guide to SQL Injection</a></li>
+  <li><a href="https://www.hackingarticles.in/manual-sql-injection-exploitation-step-step/" rel="external nofollow noopener" target="_blank">Raj Chandel’s Blog - Manual SQL Injection Exploitation Step by Step</a></li>
+  <li><a href="https://infosecwriteups.com/a-technique-that-a-lot-of-sql-injection-beginners-dont-know-atmanand-nagpure-write-up-abdc7c269dd5" rel="external nofollow noopener" target="_blank">Atmanand Nagpure - A technique that a lot of SQL injection beginners don’t know</a></li>
+  <li><a href="https://infosecwriteups.com/identifying-exploiting-sql-injection-manual-automated-79c932f0c9b5" rel="external nofollow noopener" target="_blank">goswamiijaya - Identifying &amp; Exploiting SQL Injections: Manual &amp; Automated</a></li>
+  <li><a href="https://github.com/daffainfo/AllAboutBugBounty/blob/master/SQL%20Injection.md" rel="external nofollow noopener" target="_blank">daffainfo - SQL Injection</a></li>
+  <li><a href="https://infosecwriteups.com/definitive-guide-to-sql-injection-df5ac445eef1" rel="external nofollow noopener" target="_blank">Security Lit Limited - Definitive Guide to SQL Injection</a></li>
+  <li><a href="https://infosecwriteups.com/exploiting-error-based-sql-injections-bypassing-restrictions-ed099623cd94" rel="external nofollow noopener" target="_blank">goswamiijaya - Exploiting Error Based SQL Injections &amp; Bypassing Restrictions</a></li>
+  <li><a href="https://infosecwriteups.com/out-of-band-oob-sql-injection-87b7c666548b" rel="external nofollow noopener" target="_blank">Lee Chun How - Out-of-Band (OOB) SQL Injection</a></li>
+  <li><a href="https://infosecwriteups.com/first-steps-to-sql-injection-45fc0d9aae21" rel="external nofollow noopener" target="_blank">Mcry - First step to an SQL-Injection</a></li>
+  <li><a href="https://infosecwriteups.com/sql-injection-an-overview-1057c5729dc5" rel="external nofollow noopener" target="_blank">Secpy Community - SQL Injection: An Overview</a></li>
+  <li><a href="https://infosecwriteups.com/what-is-sql-injection-6985c298ea20" rel="external nofollow noopener" target="_blank">Frost - What is SQL Injection and How Does it Work</a></li>
+  <li><a href="https://application.security/free-application-security-training/owasp-top-10-sql-injection" rel="external nofollow noopener" target="_blank">Kontra Application Security - SQL Injection</a></li>
+  <li><a href="https://www.hacksplaining.com/exercises/sql-injection#/start" rel="external nofollow noopener" target="_blank">Start - SQL Injections</a></li>
+  <li><a href="https://ctflearn.com/lab/SQL-Injection-Part-1" rel="external nofollow noopener" target="_blank">CTFlearn - SQL Injection</a></li>
+  <li><a href="https://www.imperva.com/learn/application-security/sql-injection-sqli/" rel="external nofollow noopener" target="_blank">Imperva - What is SQL Injection</a></li>
+  <li><a href="https://python.plainenglish.io/pentesting-introduction-to-sql-injection-attack-part-1-5166e4617b71" rel="external nofollow noopener" target="_blank">Edward Low - Edward Low</a></li>
+  <li><a href="https://systemweakness.com/sql-injection-important-things-you-need-to-know-right-now-b173cdea0610" rel="external nofollow noopener" target="_blank">Sudarshan S - SQL INJECTION: IMPORTANT…</a></li>
+  <li><a href="https://systemweakness.com/sql-injection-6348398d6651" rel="external nofollow noopener" target="_blank">Arth Detroja - SQL Injection</a></li>
+  <li><a href="https://a51f221b.medium.com/web-penetration-testing-guide-3a5162731fe6" rel="external nofollow noopener" target="_blank">A51F221B - Web penetration testing guide</a></li>
+  <li><a href="https://www.w3schools.com/sql/default.asp" rel="external nofollow noopener" target="_blank">W3Schools - SQL Tutorial</a></li>
+  <li><a href="https://www.codecademy.com/learn/learn-sql" rel="external nofollow noopener" target="_blank">Codecademy - Learn SQL</a></li>
+  <li><a href="https://www.programiz.com/sql" rel="external nofollow noopener" target="_blank">Programiz - Learn SQL: SQL Tutorial for Beginners</a></li>
+  <li><a href="https://www.tutorialspoint.com/sql/index.htm" rel="external nofollow noopener" target="_blank">TutorialsPoint - SQL Tutorial</a></li>
+  <li><a href="https://roadmap.sh/cyber-security" rel="external nofollow noopener" target="_blank">Cyber Security Roadmap</a></li>
+</ul>
+
+<p><br></p>
+
+<h3 id="chs">SQL Injection Cheat Sheets</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/sql-injection/cheat-sheet" rel="external nofollow noopener" target="_blank">Web Security Academy - SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://infosecwriteups.com/sql-injection-payload-list-b97656cfd66b" rel="external nofollow noopener" target="_blank">Ismail Tasdelen - SQL Injection Payload List</a></li>
+  <li><a href="https://sqlwiki.netspi.com/" rel="external nofollow noopener" target="_blank">NetSPI SQL Injection Wiki</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/oracle-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - Oracle SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - MySQL SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/postgres-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - Postgres SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/informix-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - Informix SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - MSSQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/db2-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - DB2 SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/ingres-sql-injection-cheat-sheet" rel="external nofollow noopener" target="_blank">Pentestmonkey - Ingres SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://www.codecademy.com/learn/defending-express-applications-from-sql-injection-xss-csrf-attacks/modules/preventing-sql-injection-attacks/cheatsheet" rel="external nofollow noopener" target="_blank">Codecademy - Preventing SQL Injection Attacks</a></li>
+  <li><a href="https://websec.wordpress.com/2010/03/19/exploiting-hard-filtered-sql-injections/" rel="external nofollow noopener" target="_blank">Exploiting hard filtered SQL Injections</a></li>
+  <li><a href="http://web.archive.org/web/20080822123152/http://www.webapptest.org/ms-access-sql-injection-cheat-sheet-EN.html" rel="external nofollow noopener" target="_blank">MS Access SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://www.yazilimkodlama.com/sql-server-2/sql-sorgulari-ve-ornekleri/" rel="external nofollow noopener" target="_blank">Yazılım Kodlama - SQL Sorguları ve SQL Sorgu Örnekleri</a></li>
+  <li><a href="https://cheatography.com/neolex/cheat-sheets/injection-sql/" rel="external nofollow noopener" target="_blank">Cheatography - Injection SQL Cheat Sheet by Neolex</a></li>
+  <li><a href="https://cheatography.com/nimakarimian/cheat-sheets/sql-cheatsheet/" rel="external nofollow noopener" target="_blank">Cheatography - SQL CheatSheet Cheat Sheet by nimakarimian</a></li>
+  <li><a href="https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/" rel="external nofollow noopener" target="_blank">INVICTI - SQL Injection Cheat Sheet</a></li>
+  <li><a href="https://deadlyhacker.wordpress.com/2013/05/09/list-of-google-dorks-for-sql-injection/" rel="external nofollow noopener" target="_blank">Deadly Hacker - List of google dorks for sql injection</a></li>
+  <li><a href="https://perspectiverisk.com/mysql-sql-injection-practical-cheat-sheet/" rel="external nofollow noopener" target="_blank">Perspective Risk - MySQL SQL Injection Practical Cheat Sheet</a></li>
+  <li><a href="https://www.asafety.fr/mysql-injection-cheat-sheet/" rel="external nofollow noopener" target="_blank">MySQL Injection Cheat Sheet</a></li>
+</ul>
+
+<p><br>
+<br>
+I hope you liked my article. See you in my other articles<image class="emoji" title="hand" alt="✋" src="https://github.githubassets.com/images/icons/emoji/unicode/270b.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+
+            </div>
+          </div>
+          <br>
+          
+      </li>
     
       <li class="post-list__item">
         
@@ -802,30 +1243,29 @@
           
       </li>
     
+  </ul>
+  <ul class="post-list__small">
+    
       <li class="post-list__item">
         
           <div>
-            <a href="/tryhackme-source/"><img class="post-list__image" src="/assets/img/source.png" alt="Post Görseli"></a>
+            <a href="/sql-injection-guide/"><img class="post-list__image" src="/assets/img/sqli.png" alt="Post Görseli"></a>
             <div class="post-list__head">
-              <h3 class="post-list__item-title"><a href="/tryhackme-source/">TryHackMe - Source</a></h3>
+              <h3 class="post-list__item-title"><a href="/sql-injection-guide/">SQL Injection Guide</a></h3>
               <div class="post-categories">
                 
                 
-                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>25 March 2023 - <a href="/categories/#TryHackMe">TryHackMe</a></p>
+                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>06 May 2023 - <a href="/categories/#Guide">Guide</a></p>
                 
                 
               </div>
               <p class="post-list__item-excerpt"></p>
-<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
-
+<p>In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the...</p>
             </div>
           </div>
           <br>
           
       </li>
-    
-  </ul>
-  <ul class="post-list__small">
     
       <li class="post-list__item">
         
@@ -907,28 +1347,6 @@
               </div>
               <p class="post-list__item-excerpt"></p>
 <p>A ctf for beginners, can you root me?</p>
-
-            </div>
-          </div>
-          <br>
-          
-      </li>
-    
-      <li class="post-list__item">
-        
-          <div>
-            <a href="/tryhackme-source/"><img class="post-list__image" src="/assets/img/source.png" alt="Post Görseli"></a>
-            <div class="post-list__head">
-              <h3 class="post-list__item-title"><a href="/tryhackme-source/">TryHackMe - Source</a></h3>
-              <div class="post-categories">
-                
-                
-                <p class="post-list__item-meta"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>25 March 2023 - <a href="/categories/#TryHackMe">TryHackMe</a></p>
-                
-                
-              </div>
-              <p class="post-list__item-excerpt"></p>
-<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
 
             </div>
           </div>

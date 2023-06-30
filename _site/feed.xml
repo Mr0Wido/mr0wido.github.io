@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-30T15:52:12+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Insecure Direct Object References (IDOR) Guide</title><link href="http://localhost:4000/insecure-direct-object-references-idor-guide/" rel="alternate" type="text/html" title="Insecure Direct Object References (IDOR) Guide" /><published>2023-06-30T00:00:00+03:00</published><updated>2023-06-30T00:00:00+03:00</updated><id>http://localhost:4000/insecure-direct-object-references-idor-guide</id><content type="html" xml:base="http://localhost:4000/insecure-direct-object-references-idor-guide/"><![CDATA[<p>In this article, I will explain <code class="language-plaintext highlighter-rouge">Insecure Direct Object References (IDOR)</code> as best I can.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-30T17:26:31+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Insecure Direct Object References (IDOR) Guide</title><link href="http://localhost:4000/insecure-direct-object-references-idor-guide/" rel="alternate" type="text/html" title="Insecure Direct Object References (IDOR) Guide" /><published>2023-06-30T00:00:00+03:00</published><updated>2023-06-30T00:00:00+03:00</updated><id>http://localhost:4000/insecure-direct-object-references-idor-guide</id><content type="html" xml:base="http://localhost:4000/insecure-direct-object-references-idor-guide/"><![CDATA[<p>In this article, I will explain <code class="language-plaintext highlighter-rouge">Insecure Direct Object References (IDOR)</code> as best I can.</p>
 
 <p>I shared many <a href="#sources">resources</a> and <a href="#labs">labs</a> in this article, check them out.</p>
 
@@ -89,12 +89,62 @@
   <li><a href="https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references">Web Security Academy - Lab: Insecure direct object references</a></li>
   <li><a href="https://tryhackme.com/room/introwebapplicationsecurity">TryHackMe - Web Application Security</a></li>
   <li><a href="https://tryhackme.com/room/corridor">TryHackMe - Corridor</a></li>
-  <li><a href="https://tryhackme.com/room/neighbour">TryHackMe - Neighbour</a></li>
+  <li><a href="https://tryhackme.com/room/neighbour">TryHackMe - Neighbour</a> - <a href="https://mr0wido.github.io/tryhackme-neighbour/">My Writeup :punch:</a></li>
 </ul>
 
 <p><br />
 <br />
-I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="idor, idor guide" /><summary type="html"><![CDATA[In this article, I will explain Insecure Direct Object References (IDOR) as best I can.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/idor1.png" /><media:content medium="image" url="http://localhost:4000/assets/img/idor1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - The Marketplace</title><link href="http://localhost:4000/tryhackme-the-marketplace/" rel="alternate" type="text/html" title="TryHackMe - The Marketplace" /><published>2023-05-11T00:00:00+03:00</published><updated>2023-05-11T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-the-marketplace</id><content type="html" xml:base="http://localhost:4000/tryhackme-the-marketplace/"><![CDATA[<p>Can you take over The Marketplace’s infrastructure?</p>
+I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="idor, idor guide" /><summary type="html"><![CDATA[In this article, I will explain Insecure Direct Object References (IDOR) as best I can.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/idor1.png" /><media:content medium="image" url="http://localhost:4000/assets/img/idor1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Neighbour</title><link href="http://localhost:4000/tryhackme-neighbour/" rel="alternate" type="text/html" title="TryHackMe - Neighbour" /><published>2023-06-30T00:00:00+03:00</published><updated>2023-06-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-neighbour</id><content type="html" xml:base="http://localhost:4000/tryhackme-neighbour/"><![CDATA[<p>Check out our new cloud service, Authentication Anywhere. Can you find other user’s secrets?</p>
+
+<p>Users can enter their username and password, for a totally secure login process! You definitely wouldn’t be able to find any secrets that other people have in their profile, right?</p>
+
+<p>Access this challenge by deploying both the vulnerable machine by pressing the green “Start Machine” button located within this task, and the TryHackMe AttackBox by pressing the  “Start AttackBox” button located at the top-right of the page.</p>
+
+<p>Navigate to the following URL using the AttackBox: http://MACHINE_IP</p>
+
+<p>Check out similar content on TryHackMe:</p>
+
+<ul>
+  <li><a href="https://tryhackme.com/room/idor">IDOR</a></li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="1-find-the-flag-on-your-neighbors-logged-in-page">1. Find the flag on your neighbor’s logged in page!</h3>
+
+<p>Let’s visit the website.</p>
+
+<p>Here is a login page.</p>
+
+<p><img src="/assets/img/tryhackme/neighbour/login.png" alt="login" /></p>
+
+<p>The login page says you can log in as a guest. So let’s do <code class="language-plaintext highlighter-rouge">CTRL+U</code>.</p>
+
+<p><img src="/assets/img/tryhackme/neighbour/guest.png" alt="guest" /></p>
+
+<p>So, we can log in as <code class="language-plaintext highlighter-rouge">guest:guest</code>. Let’s log in.</p>
+
+<p><img src="/assets/img/tryhackme/neighbour/guest-login.png" alt="guest-login" /></p>
+
+<p>Yes, we are successfully login.</p>
+
+<p><img src="/assets/img/tryhackme/neighbour/in.png" alt="in" /></p>
+
+<p>Now, we must look at the <code class="language-plaintext highlighter-rouge">URL</code>.</p>
+
+<p><img src="/assets/img/tryhackme/neighbour/url.png" alt="url" /></p>
+
+<p>Let’s change the URL to this: <code class="language-plaintext highlighter-rouge">?user=admin</code>.</p>
+
+<p>Huh! It was so easy. We are now an admin.</p>
+
+<p><img src="/assets/img/tryhackme/neighbour/admin.png" alt="admin" /></p>
+
+<p><br /></p>
+
+<p>It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care :wave:</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="web, idor, authentication" /><summary type="html"><![CDATA[Check out our new cloud service, Authentication Anywhere. Can you find other user’s secrets?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/neighbour.png" /><media:content medium="image" url="http://localhost:4000/assets/img/neighbour.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - The Marketplace</title><link href="http://localhost:4000/tryhackme-the-marketplace/" rel="alternate" type="text/html" title="TryHackMe - The Marketplace" /><published>2023-05-11T00:00:00+03:00</published><updated>2023-05-11T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-the-marketplace</id><content type="html" xml:base="http://localhost:4000/tryhackme-the-marketplace/"><![CDATA[<p>Can you take over The Marketplace’s infrastructure?</p>
 
 <p>This is a medium level machine and looking at the tags we will be focusing on web, xss, docker and sqli.</p>
 
@@ -1034,7 +1084,7 @@ $ john --wordlist=usr/share/wordlists/rockyou.txt hash.hash
 
 <p><br />
 <br />
-I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="sql injection, sqli guide" /><summary type="html"><![CDATA[In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level. So, I preferred a shorter and clearer explanation.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/sqli.png" /><media:content medium="image" url="http://localhost:4000/assets/img/sqli.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
+I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="sql injection, sqli guide" /><summary type="html"><![CDATA[In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level. So, I preferred a shorter and clearer explanation. But it would not be right for me to give only the basic information in my article. I want you to understand the basics, and let the SQL injection fit your logic. So, there are many resources that I have shared in this article, check them out. There are many labs where you can practice your knowledge. I also shared a lot of cheat sheets as a helper. I hope the article is useful to you. It helps you to learn SQL injection :worried: Topics Basic First SQL Injection and Types SQL Injection Labs SQL Injection Sources SQL Injection Cheat Sheats Basic First What is a Database? A database is where all kinds of data and information are stored electronically. What is Database Management System (DBMS)? The database is usually controlled by a Database Management System (DBMS). Thanks to this system, data can be easily accessed, managed, changed, updated, and organized. Most databases today use SQL. What is SQL? SQL is a programming language used in databases to query, manipulate and define data, as well as to provide access control. SQL Injection and Types A web application sends SQL queries to use data found in the database. The attacker can inject their own queries into these SQL queries or manipulate the queries. In this case, it can access other information stored in the database. We call this situation the SQL Injection vulnerability. A successful SQL injection attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information. In some cases, an attacker can obtain a persistent backdoor into an organization’s systems, leading to a long-term compromise that can go unnoticed for an extended period. Error-Based SQLi An error is received in response to submitted SQL queries. The attacker can also send new queries according to this error, or by manipulating the error, he can reach the information he wants to reach from within the output. Union-Based SQLi Multiple Select queries can be written using the Union operator. In this case, the attacker can write his own SELECT query with a union operator. But it should be noted that when the union expression is used, the number of columns must be equal to each other. Boolean-Based SQLi It does not return an error or requested information in response to submitted SQL queries. Instead, it gives a true or false answer. This makes the process very long. Time-Based SQLi It doesn’t return anything in response to submitted SQL queries. However, the attacker tries to see if the query works by adding functions such as sleep() to these SQL queries. Out-of-Ban SQLi None of the techniques described so far will work. The application’s response doesn’t depend on whether the query returns any data, on whether a database error occurs or on the time taken to execute the query. In this situation, it is often possible to exploit the blind SQL injection vulnerability by triggering out-of-band network interactions with a system that you control. These can be triggered conditionally, depending on an injected condition, to infer information one bit at a time. But more powerfully, data can be exfiltrated directly within the network interaction itself. Various network protocols can be used for this purpose, but typically the most effective is DNS. Warning Take care when injecting the condition OR 1=1 into a SQL query. Although this may be harmless in the initial context you’re injecting into, it’s common for applications to use data from a single request in multiple different queries. If your condition reaches an UPDATE or DELETE statement, for example, this can result in an accidental loss of data. SQL Injection Labs Web Security Academy - All Labs TryHackMe - SQL Injection Lab TryHackMe - OWASP Juice Shop TryHackMe - SQL Injection TryHackMe - Sqlmap TryHackMe - Game Zone TryHackMe - Poster TryHackMe - Chill Hack - My Writeup :punch: TryHackMe - Gallery - My Writeup :punch: TryHackMe - Avengers Blog TryHackMe - The Marketplace - My Writeup :punch: TryHackMe - Wekor TryHackMe - Zeno TryHackMe - SQHell TryHackMe - Olympus TryHackMe - Revenge TryHackMe - Metamorphosis TryHackMe - WWBuddy TryHackMe - Unstable Twin TryHackMe - Daily Bugle - My Writeup :punch: TryHackMe - Year of the Dog TryHackMe - Year of the Pig TryHackMe - M4tr1x: Exit Denied PentesterLab - From SQL Injection to Shell PentesterLab - From SQL Injection to Shell: PostgreSQL Edition CTFLearn - Basic Injection CTFLearn - Inj3ction Time SQL Injection Sources Web Security Academy - SQL injection TryHackMe - SQL Injection HackerRank - SQL OWASP - SQL Injection Niveet Palan - Handbook for SQL Injection Graham Zemel - Step by Step Guide to SQL Injection Raj Chandel’s Blog - Manual SQL Injection Exploitation Step by Step Atmanand Nagpure - A technique that a lot of SQL injection beginners don’t know goswamiijaya - Identifying &amp; Exploiting SQL Injections: Manual &amp; Automated daffainfo - SQL Injection Security Lit Limited - Definitive Guide to SQL Injection goswamiijaya - Exploiting Error Based SQL Injections &amp; Bypassing Restrictions Lee Chun How - Out-of-Band (OOB) SQL Injection Mcry - First step to an SQL-Injection Secpy Community - SQL Injection: An Overview Frost - What is SQL Injection and How Does it Work Kontra Application Security - SQL Injection Start - SQL Injections CTFlearn - SQL Injection Imperva - What is SQL Injection Edward Low - Edward Low Sudarshan S - SQL INJECTION: IMPORTANT… Arth Detroja - SQL Injection A51F221B - Web penetration testing guide W3Schools - SQL Tutorial Codecademy - Learn SQL Programiz - Learn SQL: SQL Tutorial for Beginners TutorialsPoint - SQL Tutorial Cyber Security Roadmap SQL Injection Cheat Sheets Web Security Academy - SQL Injection Cheat Sheet Ismail Tasdelen - SQL Injection Payload List NetSPI SQL Injection Wiki Pentestmonkey - Oracle SQL Injection Cheat Sheet Pentestmonkey - MySQL SQL Injection Cheat Sheet Pentestmonkey - Postgres SQL Injection Cheat Sheet Pentestmonkey - Informix SQL Injection Cheat Sheet Pentestmonkey - MSSQL Injection Cheat Sheet Pentestmonkey - DB2 SQL Injection Cheat Sheet Pentestmonkey - Ingres SQL Injection Cheat Sheet Codecademy - Preventing SQL Injection Attacks Exploiting hard filtered SQL Injections MS Access SQL Injection Cheat Sheet Yazılım Kodlama - SQL Sorguları ve SQL Sorgu Örnekleri Cheatography - Injection SQL Cheat Sheet by Neolex Cheatography - SQL CheatSheet Cheat Sheet by nimakarimian INVICTI - SQL Injection Cheat Sheet Deadly Hacker - List of google dorks for sql injection Perspective Risk - MySQL SQL Injection Practical Cheat Sheet MySQL Injection Cheat Sheet I hope you liked my article. See you in my other articles:hand:]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/sqli.png" /><media:content medium="image" url="http://localhost:4000/assets/img/sqli.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
 
 <p><br /></p>
 
@@ -1679,96 +1729,4 @@ I looked at the user directories in the home directory, but could not find the u
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="web, linux, security" /><summary type="html"><![CDATA[A ctf for beginners, can you root me?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/rootme.png" /><media:content medium="image" url="http://localhost:4000/assets/img/rootme.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Source</title><link href="http://localhost:4000/tryhackme-source/" rel="alternate" type="text/html" title="TryHackMe - Source" /><published>2023-03-25T00:00:00+03:00</published><updated>2023-03-25T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-source</id><content type="html" xml:base="http://localhost:4000/tryhackme-source/"><![CDATA[<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.</p>
-
-<p><br /></p>
-
-<h2 id="1-embark">1. Embark</h2>
-
-<p>Enumerate and root the box attached to this task. Can you discover the source of the disruption and leverage it to take control?</p>
-
-<p><br /></p>
-
-<h3 id="11-usertxt">1.1 user.txt</h3>
-
-<p>Let’s do a nmap scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.11.143
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/source/nmap.png" alt="nmap" /></p>
-
-<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 1000/tcp HTTP</code></strong>.</p>
-
-<p>I am visiting the Webmin page running on port 1000. I see a page like this:</p>
-
-<p><img src="/assets/img/tryhackme/source/home.png" alt="home" /></p>
-
-<p>I fix the URL as HTTP like this <a href="https://10.10.11.143:10000/">https://10.10.11.143:10000/</a></p>
-
-<p>The Webmin login page appears on the page.</p>
-
-<p><img src="/assets/img/tryhackme/source/login.png" alt="login" /></p>
-
-<p>I tried several login attempts but it didn’t work. I’m searching for any security vulnerabilities in the version of Webmin used.</p>
-
-<p><img src="/assets/img/tryhackme/source/browse.png" alt="browse" /></p>
-
-<p>I see that this version of Webmin is vulnerable.</p>
-
-<p>I decide to do a search using Metasploit.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ msfconsole
-$ search webmin
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/source/search.png" alt="search" /></p>
-
-<p>I’ve tried most of the ones here. I can only run <strong><code class="language-plaintext highlighter-rouge">7 exploit/linux/http/webmin_backdoor</code></strong>.</p>
-
-<p>Let’s do the settings first.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ set RHOSTS 10.10.11.143
-$ set LHOST 10.8.86.168
-$ set SSL true
-$ show options
-</code></pre></div></div>
-<p><img src="/assets/img/tryhackme/source/set.png" alt="set" /></p>
-
-<p>After making the settings, it should look like this.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ show options
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/source/options.png" alt="options" /></p>
-
-<p>Let’s run it.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ run
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/source/run.png" alt="run" /></p>
-
-<p>Yes, it worked. We are inside with root privilege.</p>
-
-<p>Let’s get the user flag.</p>
-
-<p><img src="/assets/img/tryhackme/source/user-flag.png" alt="user-flag" /></p>
-
-<p><br /></p>
-
-<h3 id="12-roottxt">1.2 root.txt</h3>
-
-<p>Let’s get the root flag.</p>
-
-<p><img src="/assets/img/tryhackme/source/root-flag.png" alt="root-flag" /></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="easy, ctf, cve" /><summary type="html"><![CDATA[Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/source.png" /><media:content medium="image" url="http://localhost:4000/assets/img/source.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="web, linux, security" /><summary type="html"><![CDATA[A ctf for beginners, can you root me?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/rootme.png" /><media:content medium="image" url="http://localhost:4000/assets/img/rootme.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
