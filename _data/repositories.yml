@@ -2,7 +2,8 @@ github_users:
   - mr0wido
 
 github_repos:
-  - Mr0Wido/FrSec-Hunting-Toolkit
-  - Mr0Wido/mr0wido.github.io
-  - jekyll/jekyll
   - Mr0Wido/Subdomain-Toolkit
+  - Mr0Wido/mr0wido.github.io
+  - Mr0Wido/xss-cookie-stealer-python-script
+  - jekyll/jekyll
+

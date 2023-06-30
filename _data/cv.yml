@@ -30,13 +30,17 @@
 - title: Open Source Projects
   type: time_table
   contents:
-    - title: <a href="https://github.com/Mr0Wido/FrSec-Hunting-Toolkit">FrSec-Hunting-Toolkit </a>
-      year: 2020
-      description: This Tool is Purely to Make My Job Easier. Its Purpose is Both Bug Bounty and Web Security.
+    - title: <a href="https://github.com/Mr0Wido/Subdomain-Toolkit">Subdomain-Toolkit </a>
+      year: 2023
+      description: This tool combines 5 different subdomain discovery tools. Then it filters the strings that are the same. And finally, it filters only subdomains that give 200 OK responses.
     
     - title: <a href="https://github.com/Mr0Wido/mr0wido.github.io">mr0wido.github.io </a>
-      year: 2023-Now
+      year: 2023
       description: My Personal Website
+    
+    - title: <a href="https://github.com/Mr0Wido/xss-cookie-stealer-python-script">xss-cookie-stealer-python-script </a>
+      year: 2023
+      description: Reformed Cookie Stealer Python Script
 
 - title: Interests
   type: nested_list

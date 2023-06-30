@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Insecure Direct Object References (IDOR) Guide",
+      "category" : "",
+      "tags"     : "idor, idor guide",
+      "url"      : "/insecure-direct-object-references-idor-guide/",
+      "date"     : "2023-06-30 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - The Marketplace",
       "category" : "",
       "tags"     : "sqli, xss, docker",

