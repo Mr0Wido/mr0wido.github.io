@@ -8,11 +8,11 @@ image: "/assets/img/idor1.png"
 image_alt: idor
 ---
 
-In this article, I will explain `Insecure Direct Object References (IDOR)` as best I can.
+In this article, I will provide an explanation of  `Insecure Direct Object References (IDOR)` to the best of my ability.
 
 I shared many [resources](#sources) and [labs](#labs) in this article, check them out. 
 
-I hope the article is useful to you. 
+I hope you find this article useful.
 
 
 ### Topics
@@ -28,17 +28,13 @@ I hope the article is useful to you.
 ![sqli](/assets/video/idor-guide/idor.png)
 
 ### What is an IDOR? {#idor}
+An `Insecure Direct Object Reference (IDOR)` is a vulnerability that enables unauthorized access and the execution of actions on a targeted web application by an attacker.
 
-`IDOR` is a vulnerability that allows an attacker to get unauthorized access and perform actions on the target web application.
-
-There are functions in a Web application that users can run from their accounts. For example, the profile editing function. 
-
-Profile editing function is a simple function that each user can run from their account. An authorization check should be done in this function to avoid IDOR vulnerability. For example, when a user with `id=10` wants to use this function, the web application should check if this action belongs to the user with id=10. If not, the user can do this on different ids. This user can access and edit profiles of different ids without authorization. `This is IDOR`.
-
+Web applications often include `functions` that users can perform within their accounts, such as profile editing. However, to `prevent IDOR vulnerabilities`, proper `authorization checks` should be implemented for these functions. For instance, when a user with an `ID of 10` attempts to use the profile editing function, the web application should verify if this `action belongs to the user` with ID 10. `IF NOT`, the user may be able to `manipulate different IDs`, gaining unauthorized access to and editing profiles of other users. This is an example of an `IDOR`.
 
 IDOR is a `dangerous and critical` vulnerability. Although a common vulnerability, it can be `much more complex and hard to detect`. The reason for this web applications get more complex as they grow. These complications lead to increased vulnerability. And because of these complications, it is difficult to detect the vulnerability.
 
-Let's continue with an example from web security academy.
+Let's continue with an example from `Web Security Academy`.
 
 <br>
 
@@ -99,7 +95,7 @@ Let's continue with an example from web security academy.
 
 - [Web Security Academy - Lab: Insecure direct object references](https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references)
 - [TryHackMe - Web Application Security](https://tryhackme.com/room/introwebapplicationsecurity)
-- [TryHackMe - Corridor](https://tryhackme.com/room/corridor)
+- [TryHackMe - Corridor](https://tryhackme.com/room/corridor) - [My Writeup :punch:](https://mr0wido.github.io/tryhackme-corridor/)
 - [TryHackMe - Neighbour](https://tryhackme.com/room/neighbour) - [My Writeup :punch:](https://mr0wido.github.io/tryhackme-neighbour/)
 
 

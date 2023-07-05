@@ -139,11 +139,11 @@
           <div class="post">
   <h1 class="post__title">Insecure Direct Object References (IDOR) Guide</h1>
   <div class="post__content">
-    <p>In this article, I will explain <code class="language-plaintext highlighter-rouge">Insecure Direct Object References (IDOR)</code> as best I can.</p>
+    <p>In this article, I will provide an explanation of  <code class="language-plaintext highlighter-rouge">Insecure Direct Object References (IDOR)</code> to the best of my ability.</p>
 
 <p>I shared many <a href="#sources">resources</a> and <a href="#labs">labs</a> in this article, check them out.</p>
 
-<p>I hope the article is useful to you.</p>
+<p>I hope you find this article useful.</p>
 
 <h3 id="topics">Topics</h3>
 
@@ -164,16 +164,13 @@
 <p><img src="/assets/video/idor-guide/idor.png" alt="sqli"></p>
 
 <h3 id="idor">What is an IDOR?</h3>
+<p>An <code class="language-plaintext highlighter-rouge">Insecure Direct Object Reference (IDOR)</code> is a vulnerability that enables unauthorized access and the execution of actions on a targeted web application by an attacker.</p>
 
-<p><code class="language-plaintext highlighter-rouge">IDOR</code> is a vulnerability that allows an attacker to get unauthorized access and perform actions on the target web application.</p>
-
-<p>There are functions in a Web application that users can run from their accounts. For example, the profile editing function.</p>
-
-<p>Profile editing function is a simple function that each user can run from their account. An authorization check should be done in this function to avoid IDOR vulnerability. For example, when a user with <code class="language-plaintext highlighter-rouge">id=10</code> wants to use this function, the web application should check if this action belongs to the user with id=10. If not, the user can do this on different ids. This user can access and edit profiles of different ids without authorization. <code class="language-plaintext highlighter-rouge">This is IDOR</code>.</p>
+<p>Web applications often include <code class="language-plaintext highlighter-rouge">functions</code> that users can perform within their accounts, such as profile editing. However, to <code class="language-plaintext highlighter-rouge">prevent IDOR vulnerabilities</code>, proper <code class="language-plaintext highlighter-rouge">authorization checks</code> should be implemented for these functions. For instance, when a user with an <code class="language-plaintext highlighter-rouge">ID of 10</code> attempts to use the profile editing function, the web application should verify if this <code class="language-plaintext highlighter-rouge">action belongs to the user</code> with ID 10. <code class="language-plaintext highlighter-rouge">IF NOT</code>, the user may be able to <code class="language-plaintext highlighter-rouge">manipulate different IDs</code>, gaining unauthorized access to and editing profiles of other users. This is an example of an <code class="language-plaintext highlighter-rouge">IDOR</code>.</p>
 
 <p>IDOR is a <code class="language-plaintext highlighter-rouge">dangerous and critical</code> vulnerability. Although a common vulnerability, it can be <code class="language-plaintext highlighter-rouge">much more complex and hard to detect</code>. The reason for this web applications get more complex as they grow. These complications lead to increased vulnerability. And because of these complications, it is difficult to detect the vulnerability.</p>
 
-<p>Let’s continue with an example from web security academy.</p>
+<p>Let’s continue with an example from <code class="language-plaintext highlighter-rouge">Web Security Academy</code>.</p>
 
 <p><br></p>
 
@@ -235,7 +232,9 @@
 <ul>
   <li><a href="https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references" rel="external nofollow noopener" target="_blank">Web Security Academy - Lab: Insecure direct object references</a></li>
   <li><a href="https://tryhackme.com/room/introwebapplicationsecurity" rel="external nofollow noopener" target="_blank">TryHackMe - Web Application Security</a></li>
-  <li><a href="https://tryhackme.com/room/corridor" rel="external nofollow noopener" target="_blank">TryHackMe - Corridor</a></li>
+  <li>
+<a href="https://tryhackme.com/room/corridor" rel="external nofollow noopener" target="_blank">TryHackMe - Corridor</a> - <a href="https://mr0wido.github.io/tryhackme-corridor/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
   <li>
 <a href="https://tryhackme.com/room/neighbour" rel="external nofollow noopener" target="_blank">TryHackMe - Neighbour</a> - <a href="https://mr0wido.github.io/tryhackme-neighbour/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
 </li>
@@ -641,11 +640,11 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
           <div class="post">
   <h1 class="post__title">Insecure Direct Object References (IDOR) Guide</h1>
   <div class="post__content">
-    <p>In this article, I will explain <code class="language-plaintext highlighter-rouge">Insecure Direct Object References (IDOR)</code> as best I can.</p>
+    <p>In this article, I will provide an explanation of  <code class="language-plaintext highlighter-rouge">Insecure Direct Object References (IDOR)</code> to the best of my ability.</p>
 
 <p>I shared many <a href="#sources">resources</a> and <a href="#labs">labs</a> in this article, check them out.</p>
 
-<p>I hope the article is useful to you.</p>
+<p>I hope you find this article useful.</p>
 
 <h3 id="topics">Topics</h3>
 
@@ -666,16 +665,13 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
 <p><img src="/assets/video/idor-guide/idor.png" alt="sqli"></p>
 
 <h3 id="idor">What is an IDOR?</h3>
+<p>An <code class="language-plaintext highlighter-rouge">Insecure Direct Object Reference (IDOR)</code> is a vulnerability that enables unauthorized access and the execution of actions on a targeted web application by an attacker.</p>
 
-<p><code class="language-plaintext highlighter-rouge">IDOR</code> is a vulnerability that allows an attacker to get unauthorized access and perform actions on the target web application.</p>
-
-<p>There are functions in a Web application that users can run from their accounts. For example, the profile editing function.</p>
-
-<p>Profile editing function is a simple function that each user can run from their account. An authorization check should be done in this function to avoid IDOR vulnerability. For example, when a user with <code class="language-plaintext highlighter-rouge">id=10</code> wants to use this function, the web application should check if this action belongs to the user with id=10. If not, the user can do this on different ids. This user can access and edit profiles of different ids without authorization. <code class="language-plaintext highlighter-rouge">This is IDOR</code>.</p>
+<p>Web applications often include <code class="language-plaintext highlighter-rouge">functions</code> that users can perform within their accounts, such as profile editing. However, to <code class="language-plaintext highlighter-rouge">prevent IDOR vulnerabilities</code>, proper <code class="language-plaintext highlighter-rouge">authorization checks</code> should be implemented for these functions. For instance, when a user with an <code class="language-plaintext highlighter-rouge">ID of 10</code> attempts to use the profile editing function, the web application should verify if this <code class="language-plaintext highlighter-rouge">action belongs to the user</code> with ID 10. <code class="language-plaintext highlighter-rouge">IF NOT</code>, the user may be able to <code class="language-plaintext highlighter-rouge">manipulate different IDs</code>, gaining unauthorized access to and editing profiles of other users. This is an example of an <code class="language-plaintext highlighter-rouge">IDOR</code>.</p>
 
 <p>IDOR is a <code class="language-plaintext highlighter-rouge">dangerous and critical</code> vulnerability. Although a common vulnerability, it can be <code class="language-plaintext highlighter-rouge">much more complex and hard to detect</code>. The reason for this web applications get more complex as they grow. These complications lead to increased vulnerability. And because of these complications, it is difficult to detect the vulnerability.</p>
 
-<p>Let’s continue with an example from web security academy.</p>
+<p>Let’s continue with an example from <code class="language-plaintext highlighter-rouge">Web Security Academy</code>.</p>
 
 <p><br></p>
 
@@ -737,7 +733,9 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
 <ul>
   <li><a href="https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references" rel="external nofollow noopener" target="_blank">Web Security Academy - Lab: Insecure direct object references</a></li>
   <li><a href="https://tryhackme.com/room/introwebapplicationsecurity" rel="external nofollow noopener" target="_blank">TryHackMe - Web Application Security</a></li>
-  <li><a href="https://tryhackme.com/room/corridor" rel="external nofollow noopener" target="_blank">TryHackMe - Corridor</a></li>
+  <li>
+<a href="https://tryhackme.com/room/corridor" rel="external nofollow noopener" target="_blank">TryHackMe - Corridor</a> - <a href="https://mr0wido.github.io/tryhackme-corridor/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+</li>
   <li>
 <a href="https://tryhackme.com/room/neighbour" rel="external nofollow noopener" target="_blank">TryHackMe - Neighbour</a> - <a href="https://mr0wido.github.io/tryhackme-neighbour/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
 </li>
