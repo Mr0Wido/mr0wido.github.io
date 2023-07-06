@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - SQHell",
+      "category" : "",
+      "tags"     : "web, mysql, sqli",
+      "url"      : "/tryhackme-sqhell/",
+      "date"     : "2023-07-06 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Corridor",
       "category" : "",
       "tags"     : "security, idor, web",

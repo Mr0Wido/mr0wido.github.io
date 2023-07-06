@@ -28,9 +28,7 @@ $ nmap -sSCV 10.10.186.148
 
 As we see `80/tcp` port is open.
 
-Let's visit that port.
-
-Here, we find a homepage.
+Let's visit that port. And there it is a homepage.
 
 ![home](/assets/img/tryhackme/corridor/home.png)
 
