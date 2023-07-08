@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Olympus",
+      "category" : "",
+      "tags"     : "vhost, upload, sqli, enumeration",
+      "url"      : "/tryhackme-olympus/",
+      "date"     : "2023-07-08 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - SQHell",
       "category" : "",
       "tags"     : "web, mysql, sqli",
