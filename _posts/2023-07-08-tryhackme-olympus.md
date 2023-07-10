@@ -237,7 +237,7 @@ Let's get the `root flag` from the `root directory`.
 
 ### What is Flag 4?
 
-__`The flag is located in /etc/`__
+__`Hint: The flag is located in /etc/`__
 
 According to `hint`, the last flag is `located in /etc`. We can search for it using `grep`.
 

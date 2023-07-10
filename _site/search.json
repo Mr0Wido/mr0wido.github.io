@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "TryHackMe - Revenge",
+      "category" : "",
+      "tags"     : "security,sqlmap, real-world, enumeration",
+      "url"      : "/tryhackme-revenge/",
+      "date"     : "2023-07-10 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Olympus",
       "category" : "",
       "tags"     : "vhost, upload, sqli, enumeration",

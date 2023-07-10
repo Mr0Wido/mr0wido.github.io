@@ -119,7 +119,7 @@ Take care when injecting the condition OR 1=1 into a SQL query. Although this ma
 - [TryHackMe - Zeno](https://tryhackme.com/room/zeno)
 - [TryHackMe - SQHell](https://tryhackme.com/room/sqhell) - [My Writeup :punch:](https://mr0wido.github.io/tryhackme-sqhell/)
 - [TryHackMe - Olympus](https://tryhackme.com/room/olympusroom) - [My Writeup :punch:](https://mr0wido.github.io/tryhackme-olympus/)
-- [TryHackMe - Revenge](https://tryhackme.com/room/revenge)
+- [TryHackMe - Revenge](https://tryhackme.com/room/revenge) - [My Writeup :punch:](https://mr0wido.github.io/tryhackme-revenge/)
 - [TryHackMe - Metamorphosis](https://tryhackme.com/room/metamorphosis)
 - [TryHackMe - WWBuddy](https://tryhackme.com/room/wwbuddy)
 - [TryHackMe - Unstable Twin](https://tryhackme.com/room/unstabletwin)

