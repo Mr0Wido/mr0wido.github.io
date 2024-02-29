@@ -8,7 +8,7 @@ image: "/assets/img/otorecon.png"
 image_alt: otorecon
 ---
 
-# [OTORECON](https://github.com/Mr0Wido/otorecon)
+Bug Bounty Methodology, Otorecon
 
 <br>
 <br>
@@ -20,7 +20,7 @@ image_alt: otorecon
 </a>
 </h1>
 
-
+# [OTORECON](https://github.com/Mr0Wido/otorecon)
 
 I am building a tool for my bug bounty methodology. I will explain the tool, but first I want to explain myself and my methodology. You can get to the tool by clicking on the title.
 
