@@ -8,12 +8,19 @@ image: "/assets/img/otorecon.png"
 image_alt: otorecon
 ---
 
+# [OTORECON](https://github.com/Mr0Wido/otorecon)
+
+<br>
+<br>
+<br>
+
+
 <h1 align="center">
 <a href="https://github.com/Mr0Wido/otorecon"><img src="https://i.hizliresim.com/s1vb4eu.png" alt="otorecon"/>
-	</a>
-	</h1>
+</a>
+</h1>
 
-# [OTORECON](https://github.com/Mr0Wido/otorecon)
+
 
 I am building a tool for my bug bounty methodology. I will explain the tool, but first I want to explain myself and my methodology. You can get to the tool by clicking on the title.
 
