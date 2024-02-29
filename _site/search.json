@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Bug Bounty Methodology, Otorecon",
+      "category" : "",
+      "tags"     : "bug_bounty, bug_bounty-tools, otorecon",
+      "url"      : "/bug-bounty-methodology-oto/",
+      "date"     : "2024-02-29 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "TryHackMe - Revenge",
       "category" : "",
       "tags"     : "security,sqlmap, real-world, enumeration",
@@ -86,14 +94,6 @@
       "tags"     : "ctf, security, credential",
       "url"      : "/tryhackme-cyber-heroes/",
       "date"     : "2023-03-30 00:00:00 +0300"
-    } ,
-  
-    {
-      "title"    : "TryHackMe Chocolate Factory",
-      "category" : "",
-      "tags"     : "ctf, privesc, stego",
-      "url"      : "/tryhackme-chocolate-factory/",
-      "date"     : "2023-03-29 00:00:00 +0300"
     } ,
   
     {

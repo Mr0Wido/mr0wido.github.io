@@ -15,12 +15,12 @@
   type: time_table
   contents:
     - title: Economics
-      institution: Akdeniz University, Antalya, Türkiye
-      year: 2022 - Now
+      institution: Anadolu University, Eskişehir, Türkiye
+      year: 2024
 
     - title: İnformation System Managemant
       institution: Anadolu University, Eskişehir, Türkiye
-      year: 2022 - Now
+      year: 2024
 
 - title: Experience
   type: time_table
@@ -30,10 +30,42 @@
 - title: Open Source Projects
   type: time_table
   contents:
-    - title: <a href="https://github.com/Mr0Wido/Subdomain-Toolkit">Subdomain-Toolkit </a>
-      year: 2023
-      description: This tool combines 5 different subdomain discovery tools. Then it filters the strings that are the same. And finally, it filters only subdomains that give 200 OK responses.
+    - title: <a href="https://github.com/Mr0Wido/otorecon">otorecon </a>
+      year: 2024
+      description: Bug Bounty Recon Tool
     
+    - title: <a href="https://github.com/Mr0Wido/bff-subdomains">bff-subdomains </a>
+      year: 2024
+      description: This Python script is a subdomain bruteforcer tool.
+    
+    - title: <a href="https://github.com/Mr0Wido/parameth">parameth </a>
+      year: 2024
+      description: This Python script is a simple tool to find GET and POST parameters.
+
+    - title: <a href="https://github.com/Mr0Wido/dnmasscan">dnmasscan </a>
+      year: 2024
+      description: A script that can resolve an input file of domains and scan them with masscan.
+    
+    - title: <a href="https://github.com/Mr0Wido/EndPoint-Finder">EndPoint-Finder </a>
+      year: 2024
+      description: Finds the End-Points in JavaScript files.
+
+    - title: <a href="https://github.com/Mr0Wido/webarchive.py">webarchive.py </a>
+      year: 2024
+      description: This Python script is used to extract URLs from the https://web.archive.org.
+    
+    - title: <a href="https://github.com/Mr0Wido/commoncrawl.py">commoncrawl.py </a>
+      year: 2024
+      description: This Python script is a multi-threaded tool for retrieving data from the CommonCrawl index. It allows you to specify a domain or a list of domains, and it will retrieve all URLs associated with those domains that are indexed by CommonCrawl.
+
+    - title: <a href="https://github.com/Mr0Wido/urlcrawler.py">urlcrawler.py </a>
+      year: 2024
+      description: urlcrawler.py is a Python script that performs a web crawl for a spesific domain or domains list. This script finds all URLs under the domains.
+
+    - title: <a href="https://github.com/Mr0Wido/crtsh.py">crtsh.py </a>
+      year: 2024
+      description: This Python script is a simple tool to find subdomains using the https://crt.sh.
+      
     - title: <a href="https://github.com/Mr0Wido/mr0wido.github.io">mr0wido.github.io </a>
       year: 2023
       description: My Personal Website

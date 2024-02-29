@@ -2,8 +2,16 @@ github_users:
   - mr0wido
 
 github_repos:
+  - Mr0Wido/otorecon
+  - Mr0Wido/bff-subdomains
+  - Mr0Wido/parameth
+  - Mr0Wido/dnmasscan
+  - Mr0Wido/EndPoint-Finder
+  - Mr0Wido/webarchive.py
+  - Mr0Wido/commoncrawl.py
+  - Mr0Wido/urlcrawler.py
+  - Mr0Wido/crtsh.py
   - Mr0Wido/Subdomain-Toolkit
   - Mr0Wido/mr0wido.github.io
   - Mr0Wido/xss-cookie-stealer-python-script
-  - jekyll/jekyll
 

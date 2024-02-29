@@ -1,4 +1,224 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-10T20:02:06+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">TryHackMe - Revenge</title><link href="http://localhost:4000/tryhackme-revenge/" rel="alternate" type="text/html" title="TryHackMe - Revenge" /><published>2023-07-10T00:00:00+03:00</published><updated>2023-07-10T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-revenge</id><content type="html" xml:base="http://localhost:4000/tryhackme-revenge/"><![CDATA[<p>You’ve been hired by Billy Joel to get revenge on Ducky Inc…the company that fired him. Can you break into the server and complete your mission?</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-29T14:36:55+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Bug Bounty Methodology, Otorecon</title><link href="http://localhost:4000/bug-bounty-methodology-oto/" rel="alternate" type="text/html" title="Bug Bounty Methodology, Otorecon" /><published>2024-02-29T00:00:00+03:00</published><updated>2024-02-29T00:00:00+03:00</updated><id>http://localhost:4000/bug-bounty-methodology-oto</id><content type="html" xml:base="http://localhost:4000/bug-bounty-methodology-oto/"><![CDATA[<h1 align="center">
+<a href="https://github.com/Mr0Wido/otorecon"><img src="https://i.hizliresim.com/s1vb4eu.png" alt="otorecon" />
+	</a>
+	</h1>
+
+<h1 id="otorecon"><a href="https://github.com/Mr0Wido/otorecon">OTORECON</a></h1>
+
+<p>I am building a tool for my bug bounty methodology. I will explain the tool, but first I want to explain myself and my methodology. You can get to the tool by clicking on the title.</p>
+
+<p>First of all, I’m not a bugbounter, I don’t actually have a title in cybersecurity. But I want to have one because I’m very interested in cybersecurity. So I decided to try to get a bugbounter title first and that is my goal for now. But doing bug bounty for a job looks hard. Anyway, we use a lot of different tools and different codes in bug bounty. So I just want to combine different tools together to create and control in just one tool. Then I create <strong><code class="language-plaintext highlighter-rouge">otorecon</code></strong> tool. 
+I want to do this because I believe it could be useful and good work for my portfolio.</p>
+
+<p>I hope you like this article and the tool I created.</p>
+
+<p>Let’s continue. Now I’m going to explain my bug bounty methodology to you, I don’t have any results yet and I don’t know if the methodology works or not, but I believe it does. The first thing I want to say is that this methodology doesn’t have a lot of detail because I created this methodology for the tool. So it’s more basic and probably has a lot of things missing, but that’s not important. I can improve this project with feedback. So I will wait for your feedback.</p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br />
+<br /></p>
+
+<h3 id="otorecon-workflow">Otorecon Workflow</h3>
+<p><img src="https://i.hizliresim.com/lsc6sux.jpg" alt="otorecon_workflow" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br />
+<br /></p>
+<h3 id="basic-scan">Basic Scan</h3>
+<p>Basic scan fuction include theese tools, <a href="https://github.com/Mr0Wido/dnmasscan">dnmasscan</a> and <a href="https://github.com/urbanadventurer/WhatWeb">whatweb</a>. This fuction purpose is getting basic information about target domain. You can run this command for <strong><code class="language-plaintext highlighter-rouge">basic scan</code></strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -bs all/tools -d example.com
+</code></pre></div></div>
+
+<p>First I use <strong>masscan</strong> for the find open ports. I chose <strong>masscan</strong> because it’s fastest than <strong>nmap</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 dnmasscan.py &lt;domain_file&gt; &lt;out_file&gt;
+</code></pre></div></div>
+
+<p>Then I use <strong>whatweb</strong> for getting a lot of information about target.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>whatweb -v 
+</code></pre></div></div>
+
+<p>Now we have bunch of information about target.Basic scan function save results as txt and html format.</p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br />
+<br /></p>
+
+<h3 id="subdomain-scan">Subdomain Scan</h3>
+<p>Subdomain scan include theese tools; 
+<a href="https://github.com/projectdiscovery/subfinder">subfinder</a>, <a href="https://github.com/tomnomnom/assetfinder">assetfinder</a>, <a href="https://github.com/Findomain/Findomain">findomain</a>, <a href="https://github.com/aboul3la/Sublist3r">sublist3r</a>, 
+<a href="https://github.com/laramies/theHarvester?tab=readme-ov-file">theHarvester</a>, 
+<a href="https://github.com/projectdiscovery/shuffledns">shuffledns</a>, <a href="https://github.com/ProjectAnte/dnsgen">dnsgen</a>, 
+<a href="https://github.com/infosec-au/altdns">altdns</a>, 
+<a href="https://github.com/Mr0Wido/crtsh.py">crtsh</a> and 
+<a href="https://github.com/xmendez/wfuzz">wfuzz</a></p>
+
+<p>I use a lot of tool and I use bunch of wordlists for scan. But I didn’t use some popular tools in <code class="language-plaintext highlighter-rouge">otorecon</code> because they are too slow. These tools are;  amass, subbrute.py, subdominizer it’s a good tool but it’s too slow. But I will write all of them.
+Beside that this function have <strong><code class="language-plaintext highlighter-rouge">out of scope</code></strong> option. Remember I create this tool for bugbounty. So you can write out of scope domains in a file and try <strong><code class="language-plaintext highlighter-rouge">-os</code></strong> parameter. It’s required option. And if you want you can choose <strong><code class="language-plaintext highlighter-rouge">a tool</code></strong> for scan or <strong><code class="language-plaintext highlighter-rouge">all</code></strong> for all tools.
+You can run this command for <strong><code class="language-plaintext highlighter-rouge">subdomain scan</code></strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -subs all/tools -d example.com
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -subs subfinder/all -d example.com -os out.txt
+</code></pre></div></div>
+
+<p><br /></p>
+
+<hr />
+
+<p><br />
+<br /></p>
+
+<h3 id="hard-subdomain-scan-tools">Hard Subdomain Scan Tools</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Crtsh</code> is a usefull website you can go visit <a href="https://crt.sh/">here</a> . And I write a code for getting crtsh results in terminal my code is in my github page you can download <a href="https://github.com/Mr0Wido/crtsh.py">here</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 crtsh.py -d example.com
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">theHarvester</code>, have very usefull results. You can download <a href="https://github.com/laramies/theHarvester?tab=readme-ov-file">here</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ theHarvester -d example.com -b anubis,crtsh,dnsdumpster,rapiddns,otx,urlscan,yahoo -f theHarvester_out'
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">submass</code>, I call that submass because we use subbrute.py and massdns. You can download subbrute <a href="https://github.com/TheRook/subbrute">here</a> and you can download massdns <a href="https://github.com/blechschmidt/massdns">here</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 subbrute.py example.com names.txt | massdns -r resolvers.txt -o S -w results.txt'
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">dnsgen</code>, This time we use dnsgen tool(download) and massdns. You can use domains file. I saw this code in one source which I don’t remember. I don’t know “dnsgen -“ mean. But I use in my function. You can downlad <a href="https://github.com/ProjectAnte/dnsgen">here</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat domain.file | dnsgen - | massdns -r resolvers.txt  -t A -o J --flush 2&gt;/dev/null -w result.txt'
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">wfuzz</code>, I use all.txt t’s jason haddix’s wordlists. You can download <a href="https://github.com/xmendez/wfuzz">here</a>. Also I write a tool for subdomain bruteforcing you can downlad <a href="https://github.com/Mr0Wido/bff-subdomains">here</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wfuzz -f result.txt -Z -w fierce.txt/all.txt -sc 200,202,204,301,302,403 example.com
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">altdns</code> you can download tool <a href="https://github.com/infosec-au/altdns">here</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ altdns -i domain.file -o result.txt -w words.txt'
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Subdomainizer</code>, you can download <a href="https://github.com/nsonaniya2010/SubDomainizer">here</a> this tool have usefull results like theHarvester.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ subdomanizer -h
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Shuffledns</code> You can download <a href="https://github.com/projectdiscovery/shuffledns">here</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ shuffledns -d {domain_name} -w /names.txt -r resolvers.txt -silent'
+</code></pre></div></div>
+
+<p>Now we will get results. Subdomain Scan function save results as txt and html. Also this time theHarvester can result interesting information so I save them to.</p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br />
+<br /></p>
+<h3 id="filtering">Filtering</h3>
+
+<p>I use <a href="https://github.com/projectdiscovery/httpx">httpx</a> tool for filtering but if you want you can use <a href="https://github.com/tomnomnom/httprobe">httprobe</a> to.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -fl subdomains.txt
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">httpx</code>, you can download <a href="https://github.com/projectdiscovery/httpx">here</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ httpx -l &lt;domainlist.txt&gt; -p 443,8443,80,8080 -mc 200,202,204,301,307,403 -status-code -title 
+</code></pre></div></div>
+
+<p><br /></p>
+
+<hr />
+
+<p><br />
+<br /></p>
+<h3 id="crawling-urls">Crawling URL’s</h3>
+
+<p>I use a lot of tool for this scan. And I parse the results of the scan. Then I have two result file. One of them just include js files. First I take this file end scan with endpointer.py. Second I take other file and use clean_subs.py this like paramspider tool.</p>
+
+<p>All tools;</p>
+<ul>
+  <li><a href="https://github.com/Mr0Wido/urlcrawler.py">crawler.py</a></li>
+  <li>waymac.py</li>
+  <li><a href="https://github.com/Mr0Wido/commoncrawl.py">cocrawl.py</a></li>
+  <li><a href="https://github.com/Mr0Wido/webarchive.py">archive.py</a></li>
+  <li><a href="https://github.com/tomnomnom/waybackurls">waybackurls</a></li>
+  <li><a href="https://github.com/lc/gau">gau</a></li>
+  <li><a href="https://github.com/003random/getJS">getJS</a></li>
+  <li><a href="https://github.com/projectdiscovery/katana">katana</a></li>
+  <li><a href="https://github.com/edoardottt/cariddi">cariddi</a></li>
+  <li><a href="https://github.com/hakluke/hakrawler">hakrawler</a></li>
+  <li><a href="https://github.com/0xsha/GoLinkFinder">golinkFinder</a></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -cs all -cl subdomain_list.txt -cp
+</code></pre></div></div>
+
+<hr />
+<p><br />
+<br /></p>
+<h3 id="get-screenshots">Get Screenshots</h3>
+
+<p>I use <a href="https://github.com/sensepost/gowitness">gowitness</a> for this scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -gcs domain_list.txt
+</code></pre></div></div>
+
+<p><br /></p>
+
+<hr />
+
+<p><br />
+<br /></p>
+<h3 id="dirsearch-scan">Dirsearch Scan</h3>
+
+<p>I use <a href="">gobuster</a> for this scan. And I use 4 wordlists. Theese are;</p>
+<ul>
+  <li>rd1000.txt</li>
+  <li>raft.txt</li>
+  <li>dirm2_3.txt</li>
+  <li>dirsearch.txt</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -ds raft -dl subdomain_list.txt
+</code></pre></div></div>
+
+<p><br /></p>
+
+<hr />
+
+<p><br />
+<br /></p>
+
+<h3 id="full-scan">Full Scan</h3>
+
+<p>Otorecon have full scan option. This option combine all scans each other.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -fs example.com
+</code></pre></div></div>
+
+<p><br /></p>
+
+<hr />
+
+<p><br />
+<br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="bug_bounty, bug_bounty-tools, otorecon" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/otorecon.png" /><media:content medium="image" url="http://localhost:4000/assets/img/otorecon.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Revenge</title><link href="http://localhost:4000/tryhackme-revenge/" rel="alternate" type="text/html" title="TryHackMe - Revenge" /><published>2023-07-10T00:00:00+03:00</published><updated>2023-07-10T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-revenge</id><content type="html" xml:base="http://localhost:4000/tryhackme-revenge/"><![CDATA[<p>You’ve been hired by Billy Joel to get revenge on Ducky Inc…the company that fired him. Can you break into the server and complete your mission?</p>
 
 <p>Created by <a href="https://tryhackme.com/p/Nameless0ne">Nameless0ne</a></p>
 
@@ -1556,196 +1776,4 @@ $ john --wordlist=usr/share/wordlists/rockyou.txt hash.hash
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care :wave:</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="command-injection, sql-injection, real-world" /><summary type="html"><![CDATA[Easy level CTF. Capture the flags and have fun!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/chill-hack.png" /><media:content medium="image" url="http://localhost:4000/assets/img/chill-hack.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SQL Injection Guide</title><link href="http://localhost:4000/sql-injection-guide/" rel="alternate" type="text/html" title="SQL Injection Guide" /><published>2023-05-06T00:00:00+03:00</published><updated>2023-05-06T00:00:00+03:00</updated><id>http://localhost:4000/sql-injection-guide</id><content type="html" xml:base="http://localhost:4000/sql-injection-guide/"><![CDATA[<p>In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level.  So, I preferred a shorter and clearer explanation.</p>
-
-<p>But it would not be right for me to give only the basic information in my article. I want you to understand the basics, and let the SQL injection fit your logic. So, there are many <a href="#sources">resources</a> that I have shared in this article, check them out. There are many <a href="#labs">labs</a> where you can practice your knowledge. I also shared a lot of <a href="#chs">cheat sheets</a> as a helper.</p>
-
-<p>I hope the article is useful to you. It helps you to learn SQL injection :worried:</p>
-
-<h3 id="topics">Topics</h3>
-
-<ul>
-  <li><a href="#bft">Basic First</a> <br /></li>
-  <li><a href="#sit">SQL Injection and Types</a> <br /></li>
-  <li><a href="#labs">SQL Injection Labs</a> <br /></li>
-  <li><a href="#sources">SQL Injection Sources</a> <br /></li>
-  <li><a href="#chs">SQL Injection Cheat Sheats</a> <br /></li>
-</ul>
-
-<p><br /></p>
-
-<p><img src="/assets/video/sqli-guide/sqli-attack.png" alt="sqli" /></p>
-
-<h3 id="bft">Basic First</h3>
-
-<h3 id="what-is-a-database">What is a Database?</h3>
-
-<p>A <code class="language-plaintext highlighter-rouge">database</code> is where all kinds of data and information are stored electronically.</p>
-
-<h3 id="what-is-database-management-system-dbms">What is Database Management System (DBMS)?</h3>
-
-<p>The database is usually controlled by a <code class="language-plaintext highlighter-rouge">Database Management System (DBMS)</code>. Thanks to this system, data can be easily accessed, managed, changed, updated, and organized.</p>
-
-<p>Most databases today use <code class="language-plaintext highlighter-rouge">SQL</code>.</p>
-
-<h3 id="what-is-sql">What is SQL?</h3>
-
-<p><code class="language-plaintext highlighter-rouge">SQL</code> is a programming language used in databases to query, manipulate and define data, as well as to provide access control.</p>
-
-<p><br /></p>
-
-<h3 id="sit">SQL Injection and Types</h3>
-
-<p>A web application sends SQL queries to use data found in the database. The attacker can inject their own queries into these SQL queries or manipulate the queries. In this case, it can access other information stored in the database. We call this situation the <code class="language-plaintext highlighter-rouge">SQL Injection</code> vulnerability.</p>
-
-<p>A successful <code class="language-plaintext highlighter-rouge">SQL injection</code> attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information.  In some cases, an attacker can obtain a persistent backdoor into an organization’s systems, leading to a long-term compromise that can go unnoticed for an extended period.</p>
-
-<p><br /></p>
-<h3 id="error-based-sqli">Error-Based SQLi</h3>
-
-<p>An error is received in response to submitted SQL queries. The attacker can also send new queries according to this error, or by manipulating the error, he can reach the information he wants to reach from within the output.</p>
-
-<p><br /></p>
-<h3 id="union-based-sqli">Union-Based SQLi</h3>
-
-<p>Multiple <code class="language-plaintext highlighter-rouge">Select</code> queries can be written using the <code class="language-plaintext highlighter-rouge">Union</code> operator. In this case, the attacker can write his own SELECT query with a union operator. But it should be noted that when the union expression is used, the <code class="language-plaintext highlighter-rouge">number of columns must be equal</code> to each other.</p>
-
-<video width="640" height="360" controls="">
-  <source src="/assets/video/sqli-guide/Union-Based-SQLi.mp4" type="video/mp4" />
-</video>
-
-<p><br /></p>
-
-<h3 id="boolean-based-sqli">Boolean-Based SQLi</h3>
-
-<p>It does not return an error or requested information in response to submitted SQL queries. Instead, it gives a <code class="language-plaintext highlighter-rouge">true or false</code> answer. This makes the process very long.</p>
-
-<video width="640" height="360" controls="">
-  <source src="/assets/video/sqli-guide/Boolean-Based-SQLi.mp4" type="video/mp4" />
-</video>
-<p><br /></p>
-
-<h3 id="time-based-sqli">Time-Based SQLi</h3>
-
-<p>It doesn’t return anything in response to submitted SQL queries. However, the attacker tries to see if the query works by adding functions such as <code class="language-plaintext highlighter-rouge">sleep()</code> to these SQL queries.</p>
-
-<video width="640" height="360" controls="">
-  <source src="/assets/video/sqli-guide/Time-Based-SQLi.mp4" type="video/mp4" />
-</video>
-<p><br /></p>
-
-<h3 id="out-of-ban-sqli">Out-of-Ban SQLi</h3>
-
-<p>None of the techniques described so far will work. The application’s response doesn’t depend on whether the query returns any data, on whether a database error occurs or on the time taken to execute the query. In this situation, it is often possible to exploit the blind SQL injection vulnerability by triggering out-of-band network interactions with a system that you control. These can be triggered conditionally, depending on an injected condition, to infer information one bit at a time. But more powerfully, data can be exfiltrated directly within the network interaction itself.</p>
-
-<p>Various network protocols can be used for this purpose, but typically the most effective is DNS.</p>
-
-<video width="640" height="360" controls="">
-  <source src="/assets/video/sqli-guide/Out-of-Band-SQLi.mp4" type="video/mp4" />
-</video>
-<p><br /></p>
-
-<h3 id="warning">Warning</h3>
-
-<p>Take care when injecting the condition OR 1=1 into a SQL query. Although this may be harmless in the initial context you’re injecting into, it’s common for applications to use data from a single request in multiple different queries. If your condition reaches an UPDATE or DELETE statement, for example, this can result in an accidental loss of data.</p>
-
-<p><br /></p>
-
-<h3 id="labs">SQL Injection Labs</h3>
-
-<ul>
-  <li><a href="https://portswigger.net/web-security/all-labs">Web Security Academy - All Labs</a></li>
-  <li><a href="https://tryhackme.com/room/sqlilab">TryHackMe - SQL Injection Lab</a></li>
-  <li><a href="https://tryhackme.com/room/owaspjuiceshop">TryHackMe - OWASP Juice Shop</a></li>
-  <li><a href="https://tryhackme.com/room/sqlinjectionlm">TryHackMe - SQL Injection</a></li>
-  <li><a href="https://tryhackme.com/room/sqlmap">TryHackMe - Sqlmap</a></li>
-  <li><a href="https://tryhackme.com/room/gamezone">TryHackMe - Game Zone</a></li>
-  <li><a href="https://tryhackme.com/room/poster">TryHackMe - Poster</a></li>
-  <li><a href="https://tryhackme.com/room/chillhack">TryHackMe - Chill Hack</a> - <a href="https://mr0wido.github.io/tryhackme-chill-hack/">My Writeup :punch:</a></li>
-  <li><a href="https://tryhackme.com/room/gallery666">TryHackMe - Gallery</a> - <a href="https://mr0wido.github.io/tryhackme-gallery/">My Writeup :punch:</a></li>
-  <li><a href="https://tryhackme.com/room/avengers">TryHackMe - Avengers Blog</a></li>
-  <li><a href="https://tryhackme.com/room/marketplace">TryHackMe - The Marketplace</a> - <a href="https://mr0wido.github.io/tryhackme-the-marketplace/">My Writeup :punch:</a></li>
-  <li><a href="https://tryhackme.com/room/wekorra">TryHackMe - Wekor</a></li>
-  <li><a href="https://tryhackme.com/room/zeno">TryHackMe - Zeno</a></li>
-  <li><a href="https://tryhackme.com/room/sqhell">TryHackMe - SQHell</a> - <a href="https://mr0wido.github.io/tryhackme-sqhell/">My Writeup :punch:</a></li>
-  <li><a href="https://tryhackme.com/room/olympusroom">TryHackMe - Olympus</a> - <a href="https://mr0wido.github.io/tryhackme-olympus/">My Writeup :punch:</a></li>
-  <li><a href="https://tryhackme.com/room/revenge">TryHackMe - Revenge</a> - <a href="https://mr0wido.github.io/tryhackme-revenge/">My Writeup :punch:</a></li>
-  <li><a href="https://tryhackme.com/room/metamorphosis">TryHackMe - Metamorphosis</a></li>
-  <li><a href="https://tryhackme.com/room/wwbuddy">TryHackMe - WWBuddy</a></li>
-  <li><a href="https://tryhackme.com/room/unstabletwin">TryHackMe - Unstable Twin</a></li>
-  <li><a href="https://tryhackme.com/room/dailybugle">TryHackMe - Daily Bugle</a> - <a href="https://mr0wido.github.io/tryhackme-daily-bugle/">My Writeup :punch:</a></li>
-  <li><a href="https://tryhackme.com/room/yearofthedog">TryHackMe - Year of the Dog</a></li>
-  <li><a href="https://tryhackme.com/room/yearofthepig">TryHackMe - Year of the Pig</a></li>
-  <li><a href="https://tryhackme.com/room/m4tr1xexitdenied">TryHackMe - M4tr1x: Exit Denied</a></li>
-  <li><a href="https://pentesterlab.com/exercises/from_sqli_to_shell/course">PentesterLab - From SQL Injection to Shell</a></li>
-  <li><a href="https://pentesterlab.com/exercises/from_sqli_to_shell_pg_edition/course">PentesterLab - From SQL Injection to Shell: PostgreSQL Edition</a></li>
-  <li><a href="https://ctflearn.com/challenge/88">CTFLearn - Basic Injection</a></li>
-  <li><a href="https://ctflearn.com/challenge/149">CTFLearn - Inj3ction Time</a></li>
-</ul>
-
-<p><br /></p>
-
-<h3 id="sources">SQL Injection Sources</h3>
-
-<ul>
-  <li><a href="https://portswigger.net/web-security/sql-injection">Web Security Academy - SQL injection</a></li>
-  <li><a href="https://tryhackme.com/room/sqlinjectionlm">TryHackMe - SQL Injection</a></li>
-  <li><a href="https://www.hackerrank.com/domains/sql">HackerRank - SQL</a></li>
-  <li><a href="https://owasp.org/www-community/attacks/SQL_Injection">OWASP - SQL Injection</a></li>
-  <li><a href="https://systemweakness.com/handbook-for-sql-injection-2c12ec29d7ee">Niveet Palan - Handbook for SQL Injection</a></li>
-  <li><a href="https://thegrayarea.tech/p1-bug-hunting-a-step-by-step-guide-to-sql-injection-76f95c8986b0">Graham Zemel - Step by Step Guide to SQL Injection</a></li>
-  <li><a href="https://www.hackingarticles.in/manual-sql-injection-exploitation-step-step/">Raj Chandel’s Blog - Manual SQL Injection Exploitation Step by Step</a></li>
-  <li><a href="https://infosecwriteups.com/a-technique-that-a-lot-of-sql-injection-beginners-dont-know-atmanand-nagpure-write-up-abdc7c269dd5">Atmanand Nagpure - A technique that a lot of SQL injection beginners don’t know</a></li>
-  <li><a href="https://infosecwriteups.com/identifying-exploiting-sql-injection-manual-automated-79c932f0c9b5">goswamiijaya - Identifying &amp; Exploiting SQL Injections: Manual &amp; Automated</a></li>
-  <li><a href="https://github.com/daffainfo/AllAboutBugBounty/blob/master/SQL%20Injection.md">daffainfo - SQL Injection</a></li>
-  <li><a href="https://infosecwriteups.com/definitive-guide-to-sql-injection-df5ac445eef1">Security Lit Limited - Definitive Guide to SQL Injection</a></li>
-  <li><a href="https://infosecwriteups.com/exploiting-error-based-sql-injections-bypassing-restrictions-ed099623cd94">goswamiijaya - Exploiting Error Based SQL Injections &amp; Bypassing Restrictions</a></li>
-  <li><a href="https://infosecwriteups.com/out-of-band-oob-sql-injection-87b7c666548b">Lee Chun How - Out-of-Band (OOB) SQL Injection</a></li>
-  <li><a href="https://infosecwriteups.com/first-steps-to-sql-injection-45fc0d9aae21">Mcry - First step to an SQL-Injection</a></li>
-  <li><a href="https://infosecwriteups.com/sql-injection-an-overview-1057c5729dc5">Secpy Community - SQL Injection: An Overview</a></li>
-  <li><a href="https://infosecwriteups.com/what-is-sql-injection-6985c298ea20">Frost - What is SQL Injection and How Does it Work</a></li>
-  <li><a href="https://application.security/free-application-security-training/owasp-top-10-sql-injection">Kontra Application Security - SQL Injection</a></li>
-  <li><a href="https://www.hacksplaining.com/exercises/sql-injection#/start">Start - SQL Injections</a></li>
-  <li><a href="https://ctflearn.com/lab/SQL-Injection-Part-1">CTFlearn - SQL Injection</a></li>
-  <li><a href="https://www.imperva.com/learn/application-security/sql-injection-sqli/">Imperva - What is SQL Injection</a></li>
-  <li><a href="https://python.plainenglish.io/pentesting-introduction-to-sql-injection-attack-part-1-5166e4617b71">Edward Low - Edward Low</a></li>
-  <li><a href="https://systemweakness.com/sql-injection-important-things-you-need-to-know-right-now-b173cdea0610">Sudarshan S - SQL INJECTION: IMPORTANT…</a></li>
-  <li><a href="https://systemweakness.com/sql-injection-6348398d6651">Arth Detroja - SQL Injection</a></li>
-  <li><a href="https://a51f221b.medium.com/web-penetration-testing-guide-3a5162731fe6">A51F221B - Web penetration testing guide</a></li>
-  <li><a href="https://www.w3schools.com/sql/default.asp">W3Schools - SQL Tutorial</a></li>
-  <li><a href="https://www.codecademy.com/learn/learn-sql">Codecademy - Learn SQL</a></li>
-  <li><a href="https://www.programiz.com/sql">Programiz - Learn SQL: SQL Tutorial for Beginners</a></li>
-  <li><a href="https://www.tutorialspoint.com/sql/index.htm">TutorialsPoint - SQL Tutorial</a></li>
-  <li><a href="https://roadmap.sh/cyber-security">Cyber Security Roadmap</a></li>
-</ul>
-
-<p><br /></p>
-
-<h3 id="chs">SQL Injection Cheat Sheets</h3>
-
-<ul>
-  <li><a href="https://portswigger.net/web-security/sql-injection/cheat-sheet">Web Security Academy - SQL Injection Cheat Sheet</a></li>
-  <li><a href="https://infosecwriteups.com/sql-injection-payload-list-b97656cfd66b">Ismail Tasdelen - SQL Injection Payload List</a></li>
-  <li><a href="https://sqlwiki.netspi.com/">NetSPI SQL Injection Wiki</a></li>
-  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/oracle-sql-injection-cheat-sheet">Pentestmonkey - Oracle SQL Injection Cheat Sheet</a></li>
-  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet">Pentestmonkey - MySQL SQL Injection Cheat Sheet</a></li>
-  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/postgres-sql-injection-cheat-sheet">Pentestmonkey - Postgres SQL Injection Cheat Sheet</a></li>
-  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/informix-sql-injection-cheat-sheet">Pentestmonkey - Informix SQL Injection Cheat Sheet</a></li>
-  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet">Pentestmonkey - MSSQL Injection Cheat Sheet</a></li>
-  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/db2-sql-injection-cheat-sheet">Pentestmonkey - DB2 SQL Injection Cheat Sheet</a></li>
-  <li><a href="https://pentestmonkey.net/cheat-sheet/sql-injection/ingres-sql-injection-cheat-sheet">Pentestmonkey - Ingres SQL Injection Cheat Sheet</a></li>
-  <li><a href="https://www.codecademy.com/learn/defending-express-applications-from-sql-injection-xss-csrf-attacks/modules/preventing-sql-injection-attacks/cheatsheet">Codecademy - Preventing SQL Injection Attacks</a></li>
-  <li><a href="https://websec.wordpress.com/2010/03/19/exploiting-hard-filtered-sql-injections/">Exploiting hard filtered SQL Injections</a></li>
-  <li><a href="http://web.archive.org/web/20080822123152/http://www.webapptest.org/ms-access-sql-injection-cheat-sheet-EN.html">MS Access SQL Injection Cheat Sheet</a></li>
-  <li><a href="https://www.yazilimkodlama.com/sql-server-2/sql-sorgulari-ve-ornekleri/">Yazılım Kodlama - SQL Sorguları ve SQL Sorgu Örnekleri</a></li>
-  <li><a href="https://cheatography.com/neolex/cheat-sheets/injection-sql/">Cheatography - Injection SQL Cheat Sheet by Neolex</a></li>
-  <li><a href="https://cheatography.com/nimakarimian/cheat-sheets/sql-cheatsheet/">Cheatography - SQL CheatSheet Cheat Sheet by nimakarimian</a></li>
-  <li><a href="https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/">INVICTI - SQL Injection Cheat Sheet</a></li>
-  <li><a href="https://deadlyhacker.wordpress.com/2013/05/09/list-of-google-dorks-for-sql-injection/">Deadly Hacker - List of google dorks for sql injection</a></li>
-  <li><a href="https://perspectiverisk.com/mysql-sql-injection-practical-cheat-sheet/">Perspective Risk - MySQL SQL Injection Practical Cheat Sheet</a></li>
-  <li><a href="https://www.asafety.fr/mysql-injection-cheat-sheet/">MySQL Injection Cheat Sheet</a></li>
-</ul>
-
-<p><br />
-<br />
-I hope you liked my article. See you in my other articles:hand:</p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="sql injection, sqli guide" /><summary type="html"><![CDATA[In this article, I intended to explain SQL injection in the most basic and most easily understandable way. Because the resources, I tried to learn were often too detailed for the beginner level and not very clear for the beginner level. So, I preferred a shorter and clearer explanation.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/sqli.png" /><media:content medium="image" url="http://localhost:4000/assets/img/sqli.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="command-injection, sql-injection, real-world" /><summary type="html"><![CDATA[Easy level CTF. Capture the flags and have fun!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/chill-hack.png" /><media:content medium="image" url="http://localhost:4000/assets/img/chill-hack.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

@@ -69,10 +69,6 @@
 <lastmod>2023-03-28T00:00:00+03:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/tryhackme-chocolate-factory/</loc>
-<lastmod>2023-03-29T00:00:00+03:00</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/tryhackme-cyber-heroes/</loc>
 <lastmod>2023-03-30T00:00:00+03:00</lastmod>
 </url>
@@ -117,6 +113,10 @@
 <lastmod>2023-07-10T00:00:00+03:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/bug-bounty-methodology-oto/</loc>
+<lastmod>2024-02-29T00:00:00+03:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/whoami/</loc>
 </url>
 <url>
@@ -157,6 +157,6 @@
 </url>
 <url>
 <loc>http://localhost:4000/google7d1daf12fb5d4e76.html</loc>
-<lastmod>2023-03-27T17:02:08+03:00</lastmod>
+<lastmod>2024-02-29T13:45:20+03:00</lastmod>
 </url>
 </urlset>
