@@ -8,10 +8,17 @@ image: "/assets/img/otorecon.png"
 image_alt: otorecon
 ---
 
+Bug Bounty Methodology, Otorecon
+
+<br>
+<br>
+<br>
+
+
 <h1 align="center">
 <a href="https://github.com/Mr0Wido/otorecon"><img src="https://i.hizliresim.com/s1vb4eu.png" alt="otorecon"/>
-	</a>
-	</h1>
+</a>
+</h1>
 
 # [OTORECON](https://github.com/Mr0Wido/otorecon)
 
