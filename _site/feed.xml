@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-17T22:31:21+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Basics of Computer Technology and Networking</title><link href="http://localhost:4000/first-day-of-roadmapsh-challenge/" rel="alternate" type="text/html" title="Basics of Computer Technology and Networking" /><published>2025-02-15T00:00:00+03:00</published><updated>2025-02-15T00:00:00+03:00</updated><id>http://localhost:4000/first-day-of-roadmapsh-challenge</id><content type="html" xml:base="http://localhost:4000/first-day-of-roadmapsh-challenge/"><![CDATA[<p>Basics of Computer Technology and Networking</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-17T22:45:08+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Basics of Computer Technology and Networking</title><link href="http://localhost:4000/basics-of-computer-technology-and-networking/" rel="alternate" type="text/html" title="Basics of Computer Technology and Networking" /><published>2025-02-15T00:00:00+03:00</published><updated>2025-02-15T00:00:00+03:00</updated><id>http://localhost:4000/basics-of-computer-technology-and-networking</id><content type="html" xml:base="http://localhost:4000/basics-of-computer-technology-and-networking/"><![CDATA[<p>Basics of Computer Technology and Networking</p>
 
 <p><br /></p>
 
 <h2 id="contents"><strong>Contents</strong></h2>
 <ul>
-  <li><a href="#computer-hardwares">Computer Hardwares</a></li>
+  <li><a href="#computer-hardware">Computer Hardware</a></li>
   <li><a href="#connection-types">Connection Types</a></li>
 </ul>
 
 <p><br />
 <br /></p>
 
-<h2 id="computer-hardwares"><strong>Computer Hardwares</strong></h2>
+<h2 id="computer-hardware"><strong>Computer Hardware</strong></h2>
 
 <p>There are several different kinds of hardware inside a PC.</p>
 

@@ -17,13 +17,13 @@ Basics of Computer Technology and Networking
 <br>
 
 ## __Contents__
-- [Computer Hardwares](#computer-hardwares)
+- [Computer Hardware](#computer-hardware)
 - [Connection Types](#connection-types)
 
 <br>
 <br>
 
-## __Computer Hardwares__
+## __Computer Hardware__
 
 There are several different kinds of hardware inside a PC. 
 
