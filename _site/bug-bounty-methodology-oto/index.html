@@ -52,6 +52,8 @@
 
     <title>Bug Bounty Methodology, Otorecon - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    
+  
   </head>
   <body>
     <header class="site-header">
@@ -122,13 +124,13 @@
     <li><a class="site-nav__link " href="/categories/">Categories</a></li>
   </ul>
   <ul class="social ul-base">
-    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
-    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
-    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
-    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
   </ul>
   <div class="copyright">
-    <span> © Copyright 2024 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+    <span> © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
   </div>
 </nav>
 <div class="overlay"></div>
@@ -139,12 +141,18 @@
           <div class="post">
   <h1 class="post__title">Bug Bounty Methodology, Otorecon</h1>
   <div class="post__content">
-    <h1 align="center">
-<a href="https://github.com/Mr0Wido/otorecon" rel="external nofollow noopener" target="_blank"><img src="https://i.hizliresim.com/s1vb4eu.png" alt="otorecon">
-	</a>
-	</h1>
+    <p>Bug Bounty Methodology, Otorecon</p>
 
-<h1 id="otorecon"><a href="https://github.com/Mr0Wido/otorecon" rel="external nofollow noopener" target="_blank">OTORECON</a></h1>
+<p><br>
+<br>
+<br></p>
+
+<h1 align="center">
+<a href="https://github.com/Mr0Wido/otorecon"><img src="https://i.hizliresim.com/s1vb4eu.png" alt="otorecon">
+</a>
+</h1>
+
+<h1 id="otorecon"><a href="https://github.com/Mr0Wido/otorecon">OTORECON</a></h1>
 
 <p>I am building a tool for my bug bounty methodology. I will explain the tool, but first I want to explain myself and my methodology. You can get to the tool by clicking on the title.</p>
 
@@ -172,7 +180,7 @@ I want to do this because I believe it could be useful and good work for my port
 <p><br>
 <br></p>
 <h3 id="basic-scan">Basic Scan</h3>
-<p>Basic scan fuction include theese tools, <a href="https://github.com/Mr0Wido/dnmasscan" rel="external nofollow noopener" target="_blank">dnmasscan</a> and <a href="https://github.com/urbanadventurer/WhatWeb" rel="external nofollow noopener" target="_blank">whatweb</a>. This fuction purpose is getting basic information about target domain. You can run this command for <strong><code class="language-plaintext highlighter-rouge">basic scan</code></strong>.</p>
+<p>Basic scan fuction include theese tools, <a href="https://github.com/Mr0Wido/dnmasscan">dnmasscan</a> and <a href="https://github.com/urbanadventurer/WhatWeb">whatweb</a>. This fuction purpose is getting basic information about target domain. You can run this command for <strong><code class="language-plaintext highlighter-rouge">basic scan</code></strong>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -bs all/tools -d example.com
 </code></pre></div></div>
@@ -198,12 +206,12 @@ I want to do this because I believe it could be useful and good work for my port
 
 <h3 id="subdomain-scan">Subdomain Scan</h3>
 <p>Subdomain scan include theese tools; 
-<a href="https://github.com/projectdiscovery/subfinder" rel="external nofollow noopener" target="_blank">subfinder</a>, <a href="https://github.com/tomnomnom/assetfinder" rel="external nofollow noopener" target="_blank">assetfinder</a>, <a href="https://github.com/Findomain/Findomain" rel="external nofollow noopener" target="_blank">findomain</a>, <a href="https://github.com/aboul3la/Sublist3r" rel="external nofollow noopener" target="_blank">sublist3r</a>, 
-<a href="https://github.com/laramies/theHarvester?tab=readme-ov-file" rel="external nofollow noopener" target="_blank">theHarvester</a>, 
-<a href="https://github.com/projectdiscovery/shuffledns" rel="external nofollow noopener" target="_blank">shuffledns</a>, <a href="https://github.com/ProjectAnte/dnsgen" rel="external nofollow noopener" target="_blank">dnsgen</a>, 
-<a href="https://github.com/infosec-au/altdns" rel="external nofollow noopener" target="_blank">altdns</a>, 
-<a href="https://github.com/Mr0Wido/crtsh.py" rel="external nofollow noopener" target="_blank">crtsh</a> and 
-<a href="https://github.com/xmendez/wfuzz" rel="external nofollow noopener" target="_blank">wfuzz</a></p>
+<a href="https://github.com/projectdiscovery/subfinder">subfinder</a>, <a href="https://github.com/tomnomnom/assetfinder">assetfinder</a>, <a href="https://github.com/Findomain/Findomain">findomain</a>, <a href="https://github.com/aboul3la/Sublist3r">sublist3r</a>, 
+<a href="https://github.com/laramies/theHarvester?tab=readme-ov-file">theHarvester</a>, 
+<a href="https://github.com/projectdiscovery/shuffledns">shuffledns</a>, <a href="https://github.com/ProjectAnte/dnsgen">dnsgen</a>, 
+<a href="https://github.com/infosec-au/altdns">altdns</a>, 
+<a href="https://github.com/Mr0Wido/crtsh.py">crtsh</a> and 
+<a href="https://github.com/xmendez/wfuzz">wfuzz</a></p>
 
 <p>I use a lot of tool and I use bunch of wordlists for scan. But I didn’t use some popular tools in <code class="language-plaintext highlighter-rouge">otorecon</code> because they are too slow. These tools are;  amass, subbrute.py, subdominizer it’s a good tool but it’s too slow. But I will write all of them.
 Beside that this function have <strong><code class="language-plaintext highlighter-rouge">out of scope</code></strong> option. Remember I create this tool for bugbounty. So you can write out of scope domains in a file and try <strong><code class="language-plaintext highlighter-rouge">-os</code></strong> parameter. It’s required option. And if you want you can choose <strong><code class="language-plaintext highlighter-rouge">a tool</code></strong> for scan or <strong><code class="language-plaintext highlighter-rouge">all</code></strong> for all tools.
@@ -224,42 +232,42 @@ You can run this command for <strong><code class="language-plaintext highlighter
 
 <h3 id="hard-subdomain-scan-tools">Hard Subdomain Scan Tools</h3>
 
-<p><code class="language-plaintext highlighter-rouge">Crtsh</code> is a usefull website you can go visit <a href="https://crt.sh/" rel="external nofollow noopener" target="_blank">here</a> . And I write a code for getting crtsh results in terminal my code is in my github page you can download <a href="https://github.com/Mr0Wido/crtsh.py" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">Crtsh</code> is a usefull website you can go visit <a href="https://crt.sh/">here</a> . And I write a code for getting crtsh results in terminal my code is in my github page you can download <a href="https://github.com/Mr0Wido/crtsh.py">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 crtsh.py -d example.com
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">theHarvester</code>, have very usefull results. You can download <a href="https://github.com/laramies/theHarvester?tab=readme-ov-file" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">theHarvester</code>, have very usefull results. You can download <a href="https://github.com/laramies/theHarvester?tab=readme-ov-file">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ theHarvester -d example.com -b anubis,crtsh,dnsdumpster,rapiddns,otx,urlscan,yahoo -f theHarvester_out'
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">submass</code>, I call that submass because we use subbrute.py and massdns. You can download subbrute <a href="https://github.com/TheRook/subbrute" rel="external nofollow noopener" target="_blank">here</a> and you can download massdns <a href="https://github.com/blechschmidt/massdns" rel="external nofollow noopener" target="_blank">here</a>.</p>
+<p><code class="language-plaintext highlighter-rouge">submass</code>, I call that submass because we use subbrute.py and massdns. You can download subbrute <a href="https://github.com/TheRook/subbrute">here</a> and you can download massdns <a href="https://github.com/blechschmidt/massdns">here</a>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 subbrute.py example.com names.txt | massdns -r resolvers.txt -o S -w results.txt'
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">dnsgen</code>, This time we use dnsgen tool(download) and massdns. You can use domains file. I saw this code in one source which I don’t remember. I don’t know “dnsgen -“ mean. But I use in my function. You can downlad <a href="https://github.com/ProjectAnte/dnsgen" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">dnsgen</code>, This time we use dnsgen tool(download) and massdns. You can use domains file. I saw this code in one source which I don’t remember. I don’t know “dnsgen -“ mean. But I use in my function. You can downlad <a href="https://github.com/ProjectAnte/dnsgen">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat domain.file | dnsgen - | massdns -r resolvers.txt  -t A -o J --flush 2&gt;/dev/null -w result.txt'
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">wfuzz</code>, I use all.txt t’s jason haddix’s wordlists. You can download <a href="https://github.com/xmendez/wfuzz" rel="external nofollow noopener" target="_blank">here</a>. Also I write a tool for subdomain bruteforcing you can downlad <a href="https://github.com/Mr0Wido/bff-subdomains" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">wfuzz</code>, I use all.txt t’s jason haddix’s wordlists. You can download <a href="https://github.com/xmendez/wfuzz">here</a>. Also I write a tool for subdomain bruteforcing you can downlad <a href="https://github.com/Mr0Wido/bff-subdomains">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wfuzz -f result.txt -Z -w fierce.txt/all.txt -sc 200,202,204,301,302,403 example.com
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">altdns</code> you can download tool <a href="https://github.com/infosec-au/altdns" rel="external nofollow noopener" target="_blank">here</a>.</p>
+<p><code class="language-plaintext highlighter-rouge">altdns</code> you can download tool <a href="https://github.com/infosec-au/altdns">here</a>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ altdns -i domain.file -o result.txt -w words.txt'
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">Subdomainizer</code>, you can download <a href="https://github.com/nsonaniya2010/SubDomainizer" rel="external nofollow noopener" target="_blank">here</a> this tool have usefull results like theHarvester.</p>
+<p><code class="language-plaintext highlighter-rouge">Subdomainizer</code>, you can download <a href="https://github.com/nsonaniya2010/SubDomainizer">here</a> this tool have usefull results like theHarvester.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ subdomanizer -h
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">Shuffledns</code> You can download <a href="https://github.com/projectdiscovery/shuffledns" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">Shuffledns</code> You can download <a href="https://github.com/projectdiscovery/shuffledns">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ shuffledns -d {domain_name} -w /names.txt -r resolvers.txt -silent'
 </code></pre></div></div>
@@ -272,13 +280,14 @@ You can run this command for <strong><code class="language-plaintext highlighter
 
 <p><br>
 <br></p>
+
 <h3 id="filtering">Filtering</h3>
 
-<p>I use <a href="https://github.com/projectdiscovery/httpx" rel="external nofollow noopener" target="_blank">httpx</a> tool for filtering but if you want you can use <a href="https://github.com/tomnomnom/httprobe" rel="external nofollow noopener" target="_blank">httprobe</a> to.</p>
+<p>I use <a href="https://github.com/projectdiscovery/httpx">httpx</a> tool for filtering but if you want you can use <a href="https://github.com/tomnomnom/httprobe">httprobe</a> to.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -fl subdomains.txt
 </code></pre></div></div>
-<p><code class="language-plaintext highlighter-rouge">httpx</code>, you can download <a href="https://github.com/projectdiscovery/httpx" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">httpx</code>, you can download <a href="https://github.com/projectdiscovery/httpx">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ httpx -l &lt;domainlist.txt&gt; -p 443,8443,80,8080 -mc 200,202,204,301,307,403 -status-code -title 
 </code></pre></div></div>
@@ -295,17 +304,17 @@ You can run this command for <strong><code class="language-plaintext highlighter
 
 <p>All tools;</p>
 <ul>
-  <li><a href="https://github.com/Mr0Wido/urlcrawler.py" rel="external nofollow noopener" target="_blank">crawler.py</a></li>
+  <li><a href="https://github.com/Mr0Wido/urlcrawler.py">crawler.py</a></li>
   <li>waymac.py</li>
-  <li><a href="https://github.com/Mr0Wido/commoncrawl.py" rel="external nofollow noopener" target="_blank">cocrawl.py</a></li>
-  <li><a href="https://github.com/Mr0Wido/webarchive.py" rel="external nofollow noopener" target="_blank">archive.py</a></li>
-  <li><a href="https://github.com/tomnomnom/waybackurls" rel="external nofollow noopener" target="_blank">waybackurls</a></li>
-  <li><a href="https://github.com/lc/gau" rel="external nofollow noopener" target="_blank">gau</a></li>
-  <li><a href="https://github.com/003random/getJS" rel="external nofollow noopener" target="_blank">getJS</a></li>
-  <li><a href="https://github.com/projectdiscovery/katana" rel="external nofollow noopener" target="_blank">katana</a></li>
-  <li><a href="https://github.com/edoardottt/cariddi" rel="external nofollow noopener" target="_blank">cariddi</a></li>
-  <li><a href="https://github.com/hakluke/hakrawler" rel="external nofollow noopener" target="_blank">hakrawler</a></li>
-  <li><a href="https://github.com/0xsha/GoLinkFinder" rel="external nofollow noopener" target="_blank">golinkFinder</a></li>
+  <li><a href="https://github.com/Mr0Wido/commoncrawl.py">cocrawl.py</a></li>
+  <li><a href="https://github.com/Mr0Wido/webarchive.py">archive.py</a></li>
+  <li><a href="https://github.com/tomnomnom/waybackurls">waybackurls</a></li>
+  <li><a href="https://github.com/lc/gau">gau</a></li>
+  <li><a href="https://github.com/003random/getJS">getJS</a></li>
+  <li><a href="https://github.com/projectdiscovery/katana">katana</a></li>
+  <li><a href="https://github.com/edoardottt/cariddi">cariddi</a></li>
+  <li><a href="https://github.com/hakluke/hakrawler">hakrawler</a></li>
+  <li><a href="https://github.com/0xsha/GoLinkFinder">golinkFinder</a></li>
 </ul>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -cs all -cl subdomain_list.txt -cp
@@ -316,7 +325,7 @@ You can run this command for <strong><code class="language-plaintext highlighter
 <br></p>
 <h3 id="get-screenshots">Get Screenshots</h3>
 
-<p>I use <a href="https://github.com/sensepost/gowitness" rel="external nofollow noopener" target="_blank">gowitness</a> for this scan.</p>
+<p>I use <a href="https://github.com/sensepost/gowitness">gowitness</a> for this scan.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -gcs domain_list.txt
 </code></pre></div></div>
@@ -416,7 +425,7 @@ You can run this command for <strong><code class="language-plaintext highlighter
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
 
 
@@ -452,23 +461,23 @@ You can run this command for <strong><code class="language-plaintext highlighter
         
           
             
-              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
             
           
             
-              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
             
           
             
-              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
             
           
             
-              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
             
           
             
-              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
             
           
         
@@ -524,23 +533,23 @@ You can run this command for <strong><code class="language-plaintext highlighter
           
             
               
-                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
               
             
               
-                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
               
             
               
-                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
               
             
               
-                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
               
             
               
-                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
               
             
           
@@ -618,23 +627,23 @@ You can run this command for <strong><code class="language-plaintext highlighter
         
           
             
-              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
             
           
             
-              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
             
           
             
-              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
             
           
             
-              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
             
           
             
-              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
             
           
         
@@ -690,23 +699,23 @@ You can run this command for <strong><code class="language-plaintext highlighter
           
             
               
-                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
               
             
               
-                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
               
             
               
-                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
               
             
               
-                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
               
             
               
-                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
               
             
           
@@ -757,12 +766,18 @@ You can run this command for <strong><code class="language-plaintext highlighter
           <div class="post">
   <h1 class="post__title">Bug Bounty Methodology, Otorecon</h1>
   <div class="post__content">
-    <h1 align="center">
-<a href="https://github.com/Mr0Wido/otorecon" rel="external nofollow noopener" target="_blank"><img src="https://i.hizliresim.com/s1vb4eu.png" alt="otorecon">
-	</a>
-	</h1>
+    <p>Bug Bounty Methodology, Otorecon</p>
 
-<h1 id="otorecon"><a href="https://github.com/Mr0Wido/otorecon" rel="external nofollow noopener" target="_blank">OTORECON</a></h1>
+<p><br>
+<br>
+<br></p>
+
+<h1 align="center">
+<a href="https://github.com/Mr0Wido/otorecon"><img src="https://i.hizliresim.com/s1vb4eu.png" alt="otorecon">
+</a>
+</h1>
+
+<h1 id="otorecon"><a href="https://github.com/Mr0Wido/otorecon">OTORECON</a></h1>
 
 <p>I am building a tool for my bug bounty methodology. I will explain the tool, but first I want to explain myself and my methodology. You can get to the tool by clicking on the title.</p>
 
@@ -790,7 +805,7 @@ I want to do this because I believe it could be useful and good work for my port
 <p><br>
 <br></p>
 <h3 id="basic-scan">Basic Scan</h3>
-<p>Basic scan fuction include theese tools, <a href="https://github.com/Mr0Wido/dnmasscan" rel="external nofollow noopener" target="_blank">dnmasscan</a> and <a href="https://github.com/urbanadventurer/WhatWeb" rel="external nofollow noopener" target="_blank">whatweb</a>. This fuction purpose is getting basic information about target domain. You can run this command for <strong><code class="language-plaintext highlighter-rouge">basic scan</code></strong>.</p>
+<p>Basic scan fuction include theese tools, <a href="https://github.com/Mr0Wido/dnmasscan">dnmasscan</a> and <a href="https://github.com/urbanadventurer/WhatWeb">whatweb</a>. This fuction purpose is getting basic information about target domain. You can run this command for <strong><code class="language-plaintext highlighter-rouge">basic scan</code></strong>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -bs all/tools -d example.com
 </code></pre></div></div>
@@ -816,12 +831,12 @@ I want to do this because I believe it could be useful and good work for my port
 
 <h3 id="subdomain-scan">Subdomain Scan</h3>
 <p>Subdomain scan include theese tools; 
-<a href="https://github.com/projectdiscovery/subfinder" rel="external nofollow noopener" target="_blank">subfinder</a>, <a href="https://github.com/tomnomnom/assetfinder" rel="external nofollow noopener" target="_blank">assetfinder</a>, <a href="https://github.com/Findomain/Findomain" rel="external nofollow noopener" target="_blank">findomain</a>, <a href="https://github.com/aboul3la/Sublist3r" rel="external nofollow noopener" target="_blank">sublist3r</a>, 
-<a href="https://github.com/laramies/theHarvester?tab=readme-ov-file" rel="external nofollow noopener" target="_blank">theHarvester</a>, 
-<a href="https://github.com/projectdiscovery/shuffledns" rel="external nofollow noopener" target="_blank">shuffledns</a>, <a href="https://github.com/ProjectAnte/dnsgen" rel="external nofollow noopener" target="_blank">dnsgen</a>, 
-<a href="https://github.com/infosec-au/altdns" rel="external nofollow noopener" target="_blank">altdns</a>, 
-<a href="https://github.com/Mr0Wido/crtsh.py" rel="external nofollow noopener" target="_blank">crtsh</a> and 
-<a href="https://github.com/xmendez/wfuzz" rel="external nofollow noopener" target="_blank">wfuzz</a></p>
+<a href="https://github.com/projectdiscovery/subfinder">subfinder</a>, <a href="https://github.com/tomnomnom/assetfinder">assetfinder</a>, <a href="https://github.com/Findomain/Findomain">findomain</a>, <a href="https://github.com/aboul3la/Sublist3r">sublist3r</a>, 
+<a href="https://github.com/laramies/theHarvester?tab=readme-ov-file">theHarvester</a>, 
+<a href="https://github.com/projectdiscovery/shuffledns">shuffledns</a>, <a href="https://github.com/ProjectAnte/dnsgen">dnsgen</a>, 
+<a href="https://github.com/infosec-au/altdns">altdns</a>, 
+<a href="https://github.com/Mr0Wido/crtsh.py">crtsh</a> and 
+<a href="https://github.com/xmendez/wfuzz">wfuzz</a></p>
 
 <p>I use a lot of tool and I use bunch of wordlists for scan. But I didn’t use some popular tools in <code class="language-plaintext highlighter-rouge">otorecon</code> because they are too slow. These tools are;  amass, subbrute.py, subdominizer it’s a good tool but it’s too slow. But I will write all of them.
 Beside that this function have <strong><code class="language-plaintext highlighter-rouge">out of scope</code></strong> option. Remember I create this tool for bugbounty. So you can write out of scope domains in a file and try <strong><code class="language-plaintext highlighter-rouge">-os</code></strong> parameter. It’s required option. And if you want you can choose <strong><code class="language-plaintext highlighter-rouge">a tool</code></strong> for scan or <strong><code class="language-plaintext highlighter-rouge">all</code></strong> for all tools.
@@ -842,42 +857,42 @@ You can run this command for <strong><code class="language-plaintext highlighter
 
 <h3 id="hard-subdomain-scan-tools">Hard Subdomain Scan Tools</h3>
 
-<p><code class="language-plaintext highlighter-rouge">Crtsh</code> is a usefull website you can go visit <a href="https://crt.sh/" rel="external nofollow noopener" target="_blank">here</a> . And I write a code for getting crtsh results in terminal my code is in my github page you can download <a href="https://github.com/Mr0Wido/crtsh.py" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">Crtsh</code> is a usefull website you can go visit <a href="https://crt.sh/">here</a> . And I write a code for getting crtsh results in terminal my code is in my github page you can download <a href="https://github.com/Mr0Wido/crtsh.py">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 crtsh.py -d example.com
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">theHarvester</code>, have very usefull results. You can download <a href="https://github.com/laramies/theHarvester?tab=readme-ov-file" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">theHarvester</code>, have very usefull results. You can download <a href="https://github.com/laramies/theHarvester?tab=readme-ov-file">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ theHarvester -d example.com -b anubis,crtsh,dnsdumpster,rapiddns,otx,urlscan,yahoo -f theHarvester_out'
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">submass</code>, I call that submass because we use subbrute.py and massdns. You can download subbrute <a href="https://github.com/TheRook/subbrute" rel="external nofollow noopener" target="_blank">here</a> and you can download massdns <a href="https://github.com/blechschmidt/massdns" rel="external nofollow noopener" target="_blank">here</a>.</p>
+<p><code class="language-plaintext highlighter-rouge">submass</code>, I call that submass because we use subbrute.py and massdns. You can download subbrute <a href="https://github.com/TheRook/subbrute">here</a> and you can download massdns <a href="https://github.com/blechschmidt/massdns">here</a>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 subbrute.py example.com names.txt | massdns -r resolvers.txt -o S -w results.txt'
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">dnsgen</code>, This time we use dnsgen tool(download) and massdns. You can use domains file. I saw this code in one source which I don’t remember. I don’t know “dnsgen -“ mean. But I use in my function. You can downlad <a href="https://github.com/ProjectAnte/dnsgen" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">dnsgen</code>, This time we use dnsgen tool(download) and massdns. You can use domains file. I saw this code in one source which I don’t remember. I don’t know “dnsgen -“ mean. But I use in my function. You can downlad <a href="https://github.com/ProjectAnte/dnsgen">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat domain.file | dnsgen - | massdns -r resolvers.txt  -t A -o J --flush 2&gt;/dev/null -w result.txt'
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">wfuzz</code>, I use all.txt t’s jason haddix’s wordlists. You can download <a href="https://github.com/xmendez/wfuzz" rel="external nofollow noopener" target="_blank">here</a>. Also I write a tool for subdomain bruteforcing you can downlad <a href="https://github.com/Mr0Wido/bff-subdomains" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">wfuzz</code>, I use all.txt t’s jason haddix’s wordlists. You can download <a href="https://github.com/xmendez/wfuzz">here</a>. Also I write a tool for subdomain bruteforcing you can downlad <a href="https://github.com/Mr0Wido/bff-subdomains">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wfuzz -f result.txt -Z -w fierce.txt/all.txt -sc 200,202,204,301,302,403 example.com
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">altdns</code> you can download tool <a href="https://github.com/infosec-au/altdns" rel="external nofollow noopener" target="_blank">here</a>.</p>
+<p><code class="language-plaintext highlighter-rouge">altdns</code> you can download tool <a href="https://github.com/infosec-au/altdns">here</a>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ altdns -i domain.file -o result.txt -w words.txt'
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">Subdomainizer</code>, you can download <a href="https://github.com/nsonaniya2010/SubDomainizer" rel="external nofollow noopener" target="_blank">here</a> this tool have usefull results like theHarvester.</p>
+<p><code class="language-plaintext highlighter-rouge">Subdomainizer</code>, you can download <a href="https://github.com/nsonaniya2010/SubDomainizer">here</a> this tool have usefull results like theHarvester.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ subdomanizer -h
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">Shuffledns</code> You can download <a href="https://github.com/projectdiscovery/shuffledns" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">Shuffledns</code> You can download <a href="https://github.com/projectdiscovery/shuffledns">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ shuffledns -d {domain_name} -w /names.txt -r resolvers.txt -silent'
 </code></pre></div></div>
@@ -890,13 +905,14 @@ You can run this command for <strong><code class="language-plaintext highlighter
 
 <p><br>
 <br></p>
+
 <h3 id="filtering">Filtering</h3>
 
-<p>I use <a href="https://github.com/projectdiscovery/httpx" rel="external nofollow noopener" target="_blank">httpx</a> tool for filtering but if you want you can use <a href="https://github.com/tomnomnom/httprobe" rel="external nofollow noopener" target="_blank">httprobe</a> to.</p>
+<p>I use <a href="https://github.com/projectdiscovery/httpx">httpx</a> tool for filtering but if you want you can use <a href="https://github.com/tomnomnom/httprobe">httprobe</a> to.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -fl subdomains.txt
 </code></pre></div></div>
-<p><code class="language-plaintext highlighter-rouge">httpx</code>, you can download <a href="https://github.com/projectdiscovery/httpx" rel="external nofollow noopener" target="_blank">here</a></p>
+<p><code class="language-plaintext highlighter-rouge">httpx</code>, you can download <a href="https://github.com/projectdiscovery/httpx">here</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ httpx -l &lt;domainlist.txt&gt; -p 443,8443,80,8080 -mc 200,202,204,301,307,403 -status-code -title 
 </code></pre></div></div>
@@ -913,17 +929,17 @@ You can run this command for <strong><code class="language-plaintext highlighter
 
 <p>All tools;</p>
 <ul>
-  <li><a href="https://github.com/Mr0Wido/urlcrawler.py" rel="external nofollow noopener" target="_blank">crawler.py</a></li>
+  <li><a href="https://github.com/Mr0Wido/urlcrawler.py">crawler.py</a></li>
   <li>waymac.py</li>
-  <li><a href="https://github.com/Mr0Wido/commoncrawl.py" rel="external nofollow noopener" target="_blank">cocrawl.py</a></li>
-  <li><a href="https://github.com/Mr0Wido/webarchive.py" rel="external nofollow noopener" target="_blank">archive.py</a></li>
-  <li><a href="https://github.com/tomnomnom/waybackurls" rel="external nofollow noopener" target="_blank">waybackurls</a></li>
-  <li><a href="https://github.com/lc/gau" rel="external nofollow noopener" target="_blank">gau</a></li>
-  <li><a href="https://github.com/003random/getJS" rel="external nofollow noopener" target="_blank">getJS</a></li>
-  <li><a href="https://github.com/projectdiscovery/katana" rel="external nofollow noopener" target="_blank">katana</a></li>
-  <li><a href="https://github.com/edoardottt/cariddi" rel="external nofollow noopener" target="_blank">cariddi</a></li>
-  <li><a href="https://github.com/hakluke/hakrawler" rel="external nofollow noopener" target="_blank">hakrawler</a></li>
-  <li><a href="https://github.com/0xsha/GoLinkFinder" rel="external nofollow noopener" target="_blank">golinkFinder</a></li>
+  <li><a href="https://github.com/Mr0Wido/commoncrawl.py">cocrawl.py</a></li>
+  <li><a href="https://github.com/Mr0Wido/webarchive.py">archive.py</a></li>
+  <li><a href="https://github.com/tomnomnom/waybackurls">waybackurls</a></li>
+  <li><a href="https://github.com/lc/gau">gau</a></li>
+  <li><a href="https://github.com/003random/getJS">getJS</a></li>
+  <li><a href="https://github.com/projectdiscovery/katana">katana</a></li>
+  <li><a href="https://github.com/edoardottt/cariddi">cariddi</a></li>
+  <li><a href="https://github.com/hakluke/hakrawler">hakrawler</a></li>
+  <li><a href="https://github.com/0xsha/GoLinkFinder">golinkFinder</a></li>
 </ul>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -cs all -cl subdomain_list.txt -cp
@@ -934,7 +950,7 @@ You can run this command for <strong><code class="language-plaintext highlighter
 <br></p>
 <h3 id="get-screenshots">Get Screenshots</h3>
 
-<p>I use <a href="https://github.com/sensepost/gowitness" rel="external nofollow noopener" target="_blank">gowitness</a> for this scan.</p>
+<p>I use <a href="https://github.com/sensepost/gowitness">gowitness</a> for this scan.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 otorecon.py -gcs domain_list.txt
 </code></pre></div></div>
@@ -1034,7 +1050,7 @@ You can run this command for <strong><code class="language-plaintext highlighter
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
 
 
@@ -1049,7 +1065,7 @@ You can run this command for <strong><code class="language-plaintext highlighter
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
     <footer>
   <div class="footer">
-    © Copyright 2024 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+    © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
   </div>
 </footer>
 

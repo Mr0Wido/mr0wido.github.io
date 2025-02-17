@@ -52,6 +52,8 @@
 
     <title>Insecure Direct Object References (IDOR) Guide - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    
+  
   </head>
   <body>
     <header class="site-header">
@@ -122,13 +124,13 @@
     <li><a class="site-nav__link " href="/categories/">Categories</a></li>
   </ul>
   <ul class="social ul-base">
-    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
-    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
-    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
-    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
   </ul>
   <div class="copyright">
-    <span> © Copyright 2024 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+    <span> © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
   </div>
 </nav>
 <div class="overlay"></div>
@@ -183,46 +185,46 @@
 <h3 id="sources">IDOR Sources</h3>
 
 <ul>
-  <li><a href="https://www.youtube.com/watch?v=rloqMGcPMkI" rel="external nofollow noopener" target="_blank">PwnFuction (Video) - Insecure Direct Object Reference (IDOR) Explained</a></li>
-  <li><a href="https://www.youtube.com/watch?v=gINAtzdccts" rel="external nofollow noopener" target="_blank">InsiderPhD (Video) - Finding Your First Bug: Manual IDOR Hunting)</a></li>
-  <li><a href="https://www.youtube.com/watch?v=3K1-a7dnA60&amp;t=260s" rel="external nofollow noopener" target="_blank">STÖK (Video) - Burp Suite tutorial: IDOR vulnerability automation using Autorize and AutoRepeater (bug bounty)</a></li>
-  <li><a href="https://youtu.be/TsJ2XPuGe1k" rel="external nofollow noopener" target="_blank">Mehmet D.INCE (Video) - Web Security 101 0x02, IDOR Insecure Direct Object Reference Zafiyetleri Hakkında Her şey</a></li>
-  <li><a href="https://portswigger.net/web-security/access-control/idor" rel="external nofollow noopener" target="_blank">Web Security Academy - IDOR</a></li>
-  <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References" rel="external nofollow noopener" target="_blank">OWASP - IDOR</a></li>
-  <li><a href="https://blog.intigriti.com/hackademy/idor/" rel="external nofollow noopener" target="_blank">Intigriti - IDOR</a></li>
-  <li><a href="https://www.bugcrowd.com/blog/how-to-find-idor-insecure-direct-object-reference-vulnerabilities-for-large-bounty-rewards/" rel="external nofollow noopener" target="_blank">Bugcrowd - How-To: Find IDOR Vulnerabilities for Large Bounty Rewards</a></li>
-  <li><a href="https://medium.com/@aysebilgegunduz/everything-you-need-to-know-about-idor-insecure-direct-object-references-375f83e03a87" rel="external nofollow noopener" target="_blank">Ayşe Bilgi Gündüz - Everything You Need to Know About IDOR</a></li>
-  <li><a href="https://www.geeksforgeeks.org/insecure-direct-object-reference-idor-vulnerability/?ref=gcse" rel="external nofollow noopener" target="_blank">Geeksforgeeks - IDOR</a></li>
-  <li><a href="https://book.hacktricks.xyz/pentesting-web/idor" rel="external nofollow noopener" target="_blank">HackTricks - IDOR</a></li>
-  <li><a href="https://www.secjuice.com/idor-insecure-direct-object-reference-definition/" rel="external nofollow noopener" target="_blank">Secjuice - IDOR </a></li>
-  <li><a href="https://thehackerish.com/idor-tutorial-hands-on-owasp-top-10-training/" rel="external nofollow noopener" target="_blank">Thehackerish - IDOR Tutorial</a></li>
-  <li><a href="https://medium.com/cyberverse/automating-burp-to-find-idors-2b3dbe9fa0b8" rel="external nofollow noopener" target="_blank">Aditya Soni - Automating BURP to find IDORs</a></li>
-  <li><a href="https://cyberweapons.medium.com/idor-is-everywhere-you-need-to-find-them-3ed12435c9de" rel="external nofollow noopener" target="_blank">ProfessorXSS - IDOR is Everywhere 😁 You need to find them</a></li>
-  <li><a href="https://medium.com/@gonzalocarrascosec/fuzzing-idor-admin-takeover-5343bb8f436e" rel="external nofollow noopener" target="_blank">Gonzalo Carrasco - Fuzzing + IDOR = Admin TakeOver</a></li>
-  <li><a href="https://infosecwriteups.com/all-about-getting-first-bounty-with-idor-849db2828c8" rel="external nofollow noopener" target="_blank">Mukul Trivedi (M0hn1sh) - All About Getting First Bounty with IDOR</a></li>
-  <li><a href="https://medium.com/@swapmaurya20/a-simple-idor-to-account-takeover-88b8a1d2ec24" rel="external nofollow noopener" target="_blank">Swapmaurya - A Simple IDOR to Account Takeover</a></li>
-  <li><a href="https://aseem-shrey.medium.com/attention-to-details-a-curious-case-of-multiple-idors-5a4417ba8848" rel="external nofollow noopener" target="_blank">Aseem Shrey - Attention to Details : Finding Hidden IDORs</a></li>
-  <li><a href="https://vickieli.medium.com/intro-to-idor-9048453a3e5d" rel="external nofollow noopener" target="_blank">Vickie Li - Intro to IDOR</a></li>
-  <li><a href="https://betterprogramming.pub/all-about-idor-attacks-64c4203b518e" rel="external nofollow noopener" target="_blank">Vickie Li - All About IDOR Attacks</a></li>
-  <li><a href="https://vickieli.medium.com/how-to-find-more-idors-ae2db67c9489" rel="external nofollow noopener" target="_blank">Vickie Li - How to find more IDORs</a></li>
-  <li><a href="https://sagarsajeev.medium.com/business-logic-vulnerability-via-idor-6d510f1caea9" rel="external nofollow noopener" target="_blank">Sagar Sajeev - Business Logic Vulnerability via IDOR</a></li>
-  <li><a href="https://shahjerry33.medium.com/idor-inside-the-session-storage-88af485fc899" rel="external nofollow noopener" target="_blank">Jerry Shah (Jerry) - IDOR - Inside the Session Storage</a></li>
-  <li><a href="https://medium.com/techiepedia/an-bug-bounty-hunters-guide-to-idor-vulnerabilities-27012bbccd7" rel="external nofollow noopener" target="_blank">Daniel Hunt - A Bug Bounty Hunter’s Guide to IDOR Vulnerabilities</a></li>
-  <li><a href="https://thegrayarea.tech/bug-hunting-101-idors-for-beginners-40a43f7055ea" rel="external nofollow noopener" target="_blank">Graham Zemel - Bug Hunting 101: IDORs for Beginners</a></li>
-  <li><a href="https://junoonbro.medium.com/idors-how-to-find-idors-in-ecommerce-sites-d112bd946fcf" rel="external nofollow noopener" target="_blank">JunoonBro - \(\) IDOR’s — How to find IDORs in Ecommerce sites?</a></li>
-  <li><a href="https://medium.com/@swapmaurya20/3-step-idor-in-hackerresume-a365f2632996" rel="external nofollow noopener" target="_blank">Swapmaurya - 3 Step IDOR in HackerResume</a></li>
-  <li><a href="https://infosecwriteups.com/what-is-idor-vulnerability-and-how-does-it-affect-you-85431d10f8fb" rel="external nofollow noopener" target="_blank">c0d3x27 - What is IDOR Vulnerability, and how does it affect you?</a></li>
-  <li><a href="https://thexssrat.medium.com/idors-what-are-they-and-how-do-you-test-for-them-885c9df4af36" rel="external nofollow noopener" target="_blank">Thexssrat - IDORs: What are they and how do you test for them?</a></li>
-  <li><a href="https://ms-official5878.medium.com/insecure-direct-object-reference-6cbe6dc2f47e" rel="external nofollow noopener" target="_blank">Mohammad Mohsin - Insecure Direct object Reference</a></li>
-  <li><a href="https://sapt.medium.com/insecure-direct-object-reference-cyber-sapiens-internship-task-18-986a5824c797" rel="external nofollow noopener" target="_blank">Prajit Sindhkar - Insecure Direct Object Reference</a></li>
-  <li><a href="https://medium.com/@nynan/what-i-learnt-from-reading-220-idor-bug-reports-6efbea44db7" rel="external nofollow noopener" target="_blank">nynan - What I learnt from reading 220* IDOR bug reports.</a></li>
-  <li><a href="https://ozguralp.medium.com/a-less-known-attack-vector-second-order-idor-attacks-14468009781a" rel="external nofollow noopener" target="_blank">Ozgur Alp - A Less Known Attack Vector, Second Order IDOR Attacks</a></li>
-  <li><a href="https://medium.com/@jedus0r/idor-insecure-direct-object-references-my-first-p1-in-bugbounty-fb01f50e25df" rel="external nofollow noopener" target="_blank">jedus0r - IDOR “Insecure direct object references”, my first P1 in Bugbounty</a></li>
-  <li><a href="https://infosecwriteups.com/leveraging-burp-suite-extension-for-finding-idor-insecure-direct-object-reference-2653f9b89fd4" rel="external nofollow noopener" target="_blank">Dhanush - Leveraging Burp Suite extension for finding IDOR(Insecure Direct Object Reference).</a></li>
-  <li><a href="https://medium.com/@Steiner254/insecure-direct-object-references-idor-16bf0b981b90" rel="external nofollow noopener" target="_blank">Steiner254 - Insecure Direct Object References (IDOR)</a></li>
-  <li><a href="https://medium.com/@sathvika03/insecure-direct-object-reference-2506ecd37a83" rel="external nofollow noopener" target="_blank">Sathvika - Insecure Direct Object Reference</a></li>
-  <li><a href="https://shellmates.medium.com/insecure-direct-object-references-idor-vulnerability-aa48ad99b8c8" rel="external nofollow noopener" target="_blank">Shellmates Club - Insecure direct object references (IDOR) vulnerability</a></li>
-  <li><a href="https://chetan-conikee.medium.com/insecure-direct-object-reference-c33bb851da05" rel="external nofollow noopener" target="_blank">Chetan Conikee - Insecure Direct Object Reference</a></li>
+  <li><a href="https://www.youtube.com/watch?v=rloqMGcPMkI">PwnFuction (Video) - Insecure Direct Object Reference (IDOR) Explained</a></li>
+  <li><a href="https://www.youtube.com/watch?v=gINAtzdccts">InsiderPhD (Video) - Finding Your First Bug: Manual IDOR Hunting)</a></li>
+  <li><a href="https://www.youtube.com/watch?v=3K1-a7dnA60&t=260s">STÖK (Video) - Burp Suite tutorial: IDOR vulnerability automation using Autorize and AutoRepeater (bug bounty)</a></li>
+  <li><a href="https://youtu.be/TsJ2XPuGe1k">Mehmet D.INCE (Video) - Web Security 101 0x02, IDOR Insecure Direct Object Reference Zafiyetleri Hakkında Her şey</a></li>
+  <li><a href="https://portswigger.net/web-security/access-control/idor">Web Security Academy - IDOR</a></li>
+  <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References">OWASP - IDOR</a></li>
+  <li><a href="https://blog.intigriti.com/hackademy/idor/">Intigriti - IDOR</a></li>
+  <li><a href="https://www.bugcrowd.com/blog/how-to-find-idor-insecure-direct-object-reference-vulnerabilities-for-large-bounty-rewards/">Bugcrowd - How-To: Find IDOR Vulnerabilities for Large Bounty Rewards</a></li>
+  <li><a href="https://medium.com/@aysebilgegunduz/everything-you-need-to-know-about-idor-insecure-direct-object-references-375f83e03a87">Ayşe Bilgi Gündüz - Everything You Need to Know About IDOR</a></li>
+  <li><a href="https://www.geeksforgeeks.org/insecure-direct-object-reference-idor-vulnerability/?ref=gcse">Geeksforgeeks - IDOR</a></li>
+  <li><a href="https://book.hacktricks.xyz/pentesting-web/idor">HackTricks - IDOR</a></li>
+  <li><a href="https://www.secjuice.com/idor-insecure-direct-object-reference-definition/">Secjuice - IDOR </a></li>
+  <li><a href="https://thehackerish.com/idor-tutorial-hands-on-owasp-top-10-training/">Thehackerish - IDOR Tutorial</a></li>
+  <li><a href="https://medium.com/cyberverse/automating-burp-to-find-idors-2b3dbe9fa0b8">Aditya Soni - Automating BURP to find IDORs</a></li>
+  <li><a href="https://cyberweapons.medium.com/idor-is-everywhere-you-need-to-find-them-3ed12435c9de">ProfessorXSS - IDOR is Everywhere 😁 You need to find them</a></li>
+  <li><a href="https://medium.com/@gonzalocarrascosec/fuzzing-idor-admin-takeover-5343bb8f436e">Gonzalo Carrasco - Fuzzing + IDOR = Admin TakeOver</a></li>
+  <li><a href="https://infosecwriteups.com/all-about-getting-first-bounty-with-idor-849db2828c8">Mukul Trivedi (M0hn1sh) - All About Getting First Bounty with IDOR</a></li>
+  <li><a href="https://medium.com/@swapmaurya20/a-simple-idor-to-account-takeover-88b8a1d2ec24">Swapmaurya - A Simple IDOR to Account Takeover</a></li>
+  <li><a href="https://aseem-shrey.medium.com/attention-to-details-a-curious-case-of-multiple-idors-5a4417ba8848">Aseem Shrey - Attention to Details : Finding Hidden IDORs</a></li>
+  <li><a href="https://vickieli.medium.com/intro-to-idor-9048453a3e5d">Vickie Li - Intro to IDOR</a></li>
+  <li><a href="https://betterprogramming.pub/all-about-idor-attacks-64c4203b518e">Vickie Li - All About IDOR Attacks</a></li>
+  <li><a href="https://vickieli.medium.com/how-to-find-more-idors-ae2db67c9489">Vickie Li - How to find more IDORs</a></li>
+  <li><a href="https://sagarsajeev.medium.com/business-logic-vulnerability-via-idor-6d510f1caea9">Sagar Sajeev - Business Logic Vulnerability via IDOR</a></li>
+  <li><a href="https://shahjerry33.medium.com/idor-inside-the-session-storage-88af485fc899">Jerry Shah (Jerry) - IDOR - Inside the Session Storage</a></li>
+  <li><a href="https://medium.com/techiepedia/an-bug-bounty-hunters-guide-to-idor-vulnerabilities-27012bbccd7">Daniel Hunt - A Bug Bounty Hunter’s Guide to IDOR Vulnerabilities</a></li>
+  <li><a href="https://thegrayarea.tech/bug-hunting-101-idors-for-beginners-40a43f7055ea">Graham Zemel - Bug Hunting 101: IDORs for Beginners</a></li>
+  <li><a href="https://junoonbro.medium.com/idors-how-to-find-idors-in-ecommerce-sites-d112bd946fcf">JunoonBro - \(\) IDOR’s — How to find IDORs in Ecommerce sites?</a></li>
+  <li><a href="https://medium.com/@swapmaurya20/3-step-idor-in-hackerresume-a365f2632996">Swapmaurya - 3 Step IDOR in HackerResume</a></li>
+  <li><a href="https://infosecwriteups.com/what-is-idor-vulnerability-and-how-does-it-affect-you-85431d10f8fb">c0d3x27 - What is IDOR Vulnerability, and how does it affect you?</a></li>
+  <li><a href="https://thexssrat.medium.com/idors-what-are-they-and-how-do-you-test-for-them-885c9df4af36">Thexssrat - IDORs: What are they and how do you test for them?</a></li>
+  <li><a href="https://ms-official5878.medium.com/insecure-direct-object-reference-6cbe6dc2f47e">Mohammad Mohsin - Insecure Direct object Reference</a></li>
+  <li><a href="https://sapt.medium.com/insecure-direct-object-reference-cyber-sapiens-internship-task-18-986a5824c797">Prajit Sindhkar - Insecure Direct Object Reference</a></li>
+  <li><a href="https://medium.com/@nynan/what-i-learnt-from-reading-220-idor-bug-reports-6efbea44db7">nynan - What I learnt from reading 220* IDOR bug reports.</a></li>
+  <li><a href="https://ozguralp.medium.com/a-less-known-attack-vector-second-order-idor-attacks-14468009781a">Ozgur Alp - A Less Known Attack Vector, Second Order IDOR Attacks</a></li>
+  <li><a href="https://medium.com/@jedus0r/idor-insecure-direct-object-references-my-first-p1-in-bugbounty-fb01f50e25df">jedus0r - IDOR “Insecure direct object references”, my first P1 in Bugbounty</a></li>
+  <li><a href="https://infosecwriteups.com/leveraging-burp-suite-extension-for-finding-idor-insecure-direct-object-reference-2653f9b89fd4">Dhanush - Leveraging Burp Suite extension for finding IDOR(Insecure Direct Object Reference).</a></li>
+  <li><a href="https://medium.com/@Steiner254/insecure-direct-object-references-idor-16bf0b981b90">Steiner254 - Insecure Direct Object References (IDOR)</a></li>
+  <li><a href="https://medium.com/@sathvika03/insecure-direct-object-reference-2506ecd37a83">Sathvika - Insecure Direct Object Reference</a></li>
+  <li><a href="https://shellmates.medium.com/insecure-direct-object-references-idor-vulnerability-aa48ad99b8c8">Shellmates Club - Insecure direct object references (IDOR) vulnerability</a></li>
+  <li><a href="https://chetan-conikee.medium.com/insecure-direct-object-reference-c33bb851da05">Chetan Conikee - Insecure Direct Object Reference</a></li>
 </ul>
 
 <p><br></p>
@@ -230,19 +232,19 @@
 <h3 id="labs">IDOR Labs</h3>
 
 <ul>
-  <li><a href="https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references" rel="external nofollow noopener" target="_blank">Web Security Academy - Lab: Insecure direct object references</a></li>
-  <li><a href="https://tryhackme.com/room/introwebapplicationsecurity" rel="external nofollow noopener" target="_blank">TryHackMe - Web Application Security</a></li>
+  <li><a href="https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references">Web Security Academy - Lab: Insecure direct object references</a></li>
+  <li><a href="https://tryhackme.com/room/introwebapplicationsecurity">TryHackMe - Web Application Security</a></li>
   <li>
-<a href="https://tryhackme.com/room/corridor" rel="external nofollow noopener" target="_blank">TryHackMe - Corridor</a> - <a href="https://mr0wido.github.io/tryhackme-corridor/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+<a href="https://tryhackme.com/room/corridor">TryHackMe - Corridor</a> - <a href="https://mr0wido.github.io/tryhackme-corridor/">My Writeup <img class="emoji" title=":punch:" alt=":punch:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png" height="20" width="20"></a>
 </li>
   <li>
-<a href="https://tryhackme.com/room/neighbour" rel="external nofollow noopener" target="_blank">TryHackMe - Neighbour</a> - <a href="https://mr0wido.github.io/tryhackme-neighbour/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+<a href="https://tryhackme.com/room/neighbour">TryHackMe - Neighbour</a> - <a href="https://mr0wido.github.io/tryhackme-neighbour/">My Writeup <img class="emoji" title=":punch:" alt=":punch:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png" height="20" width="20"></a>
 </li>
 </ul>
 
 <p><br>
 <br>
-I hope you liked my article. See you in my other articles<image class="emoji" title="hand" alt="✋" src="https://github.githubassets.com/images/icons/emoji/unicode/270b.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+I hope you liked my article. See you in my other articles<img class="emoji" title=":hand:" alt=":hand:" src="https://github.githubassets.com/images/icons/emoji/unicode/270b.png" height="20" width="20"></p>
 
   </div>
   <div class="post__footer">
@@ -299,7 +301,7 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
 
 
@@ -335,23 +337,23 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
         
           
             
-              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
             
           
             
-              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
             
           
             
-              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
             
           
             
-              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
             
           
             
-              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
             
           
         
@@ -407,23 +409,23 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
           
             
               
-                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
               
             
               
-                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
               
             
               
-                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
               
             
               
-                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
               
             
               
-                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
               
             
           
@@ -501,23 +503,23 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
         
           
             
-              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
             
           
             
-              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
             
           
             
-              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
             
           
             
-              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
             
           
             
-              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
             
           
         
@@ -573,23 +575,23 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
           
             
               
-                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
               
             
               
-                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
               
             
               
-                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
               
             
               
-                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
               
             
               
-                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
               
             
           
@@ -684,46 +686,46 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
 <h3 id="sources">IDOR Sources</h3>
 
 <ul>
-  <li><a href="https://www.youtube.com/watch?v=rloqMGcPMkI" rel="external nofollow noopener" target="_blank">PwnFuction (Video) - Insecure Direct Object Reference (IDOR) Explained</a></li>
-  <li><a href="https://www.youtube.com/watch?v=gINAtzdccts" rel="external nofollow noopener" target="_blank">InsiderPhD (Video) - Finding Your First Bug: Manual IDOR Hunting)</a></li>
-  <li><a href="https://www.youtube.com/watch?v=3K1-a7dnA60&amp;t=260s" rel="external nofollow noopener" target="_blank">STÖK (Video) - Burp Suite tutorial: IDOR vulnerability automation using Autorize and AutoRepeater (bug bounty)</a></li>
-  <li><a href="https://youtu.be/TsJ2XPuGe1k" rel="external nofollow noopener" target="_blank">Mehmet D.INCE (Video) - Web Security 101 0x02, IDOR Insecure Direct Object Reference Zafiyetleri Hakkında Her şey</a></li>
-  <li><a href="https://portswigger.net/web-security/access-control/idor" rel="external nofollow noopener" target="_blank">Web Security Academy - IDOR</a></li>
-  <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References" rel="external nofollow noopener" target="_blank">OWASP - IDOR</a></li>
-  <li><a href="https://blog.intigriti.com/hackademy/idor/" rel="external nofollow noopener" target="_blank">Intigriti - IDOR</a></li>
-  <li><a href="https://www.bugcrowd.com/blog/how-to-find-idor-insecure-direct-object-reference-vulnerabilities-for-large-bounty-rewards/" rel="external nofollow noopener" target="_blank">Bugcrowd - How-To: Find IDOR Vulnerabilities for Large Bounty Rewards</a></li>
-  <li><a href="https://medium.com/@aysebilgegunduz/everything-you-need-to-know-about-idor-insecure-direct-object-references-375f83e03a87" rel="external nofollow noopener" target="_blank">Ayşe Bilgi Gündüz - Everything You Need to Know About IDOR</a></li>
-  <li><a href="https://www.geeksforgeeks.org/insecure-direct-object-reference-idor-vulnerability/?ref=gcse" rel="external nofollow noopener" target="_blank">Geeksforgeeks - IDOR</a></li>
-  <li><a href="https://book.hacktricks.xyz/pentesting-web/idor" rel="external nofollow noopener" target="_blank">HackTricks - IDOR</a></li>
-  <li><a href="https://www.secjuice.com/idor-insecure-direct-object-reference-definition/" rel="external nofollow noopener" target="_blank">Secjuice - IDOR </a></li>
-  <li><a href="https://thehackerish.com/idor-tutorial-hands-on-owasp-top-10-training/" rel="external nofollow noopener" target="_blank">Thehackerish - IDOR Tutorial</a></li>
-  <li><a href="https://medium.com/cyberverse/automating-burp-to-find-idors-2b3dbe9fa0b8" rel="external nofollow noopener" target="_blank">Aditya Soni - Automating BURP to find IDORs</a></li>
-  <li><a href="https://cyberweapons.medium.com/idor-is-everywhere-you-need-to-find-them-3ed12435c9de" rel="external nofollow noopener" target="_blank">ProfessorXSS - IDOR is Everywhere 😁 You need to find them</a></li>
-  <li><a href="https://medium.com/@gonzalocarrascosec/fuzzing-idor-admin-takeover-5343bb8f436e" rel="external nofollow noopener" target="_blank">Gonzalo Carrasco - Fuzzing + IDOR = Admin TakeOver</a></li>
-  <li><a href="https://infosecwriteups.com/all-about-getting-first-bounty-with-idor-849db2828c8" rel="external nofollow noopener" target="_blank">Mukul Trivedi (M0hn1sh) - All About Getting First Bounty with IDOR</a></li>
-  <li><a href="https://medium.com/@swapmaurya20/a-simple-idor-to-account-takeover-88b8a1d2ec24" rel="external nofollow noopener" target="_blank">Swapmaurya - A Simple IDOR to Account Takeover</a></li>
-  <li><a href="https://aseem-shrey.medium.com/attention-to-details-a-curious-case-of-multiple-idors-5a4417ba8848" rel="external nofollow noopener" target="_blank">Aseem Shrey - Attention to Details : Finding Hidden IDORs</a></li>
-  <li><a href="https://vickieli.medium.com/intro-to-idor-9048453a3e5d" rel="external nofollow noopener" target="_blank">Vickie Li - Intro to IDOR</a></li>
-  <li><a href="https://betterprogramming.pub/all-about-idor-attacks-64c4203b518e" rel="external nofollow noopener" target="_blank">Vickie Li - All About IDOR Attacks</a></li>
-  <li><a href="https://vickieli.medium.com/how-to-find-more-idors-ae2db67c9489" rel="external nofollow noopener" target="_blank">Vickie Li - How to find more IDORs</a></li>
-  <li><a href="https://sagarsajeev.medium.com/business-logic-vulnerability-via-idor-6d510f1caea9" rel="external nofollow noopener" target="_blank">Sagar Sajeev - Business Logic Vulnerability via IDOR</a></li>
-  <li><a href="https://shahjerry33.medium.com/idor-inside-the-session-storage-88af485fc899" rel="external nofollow noopener" target="_blank">Jerry Shah (Jerry) - IDOR - Inside the Session Storage</a></li>
-  <li><a href="https://medium.com/techiepedia/an-bug-bounty-hunters-guide-to-idor-vulnerabilities-27012bbccd7" rel="external nofollow noopener" target="_blank">Daniel Hunt - A Bug Bounty Hunter’s Guide to IDOR Vulnerabilities</a></li>
-  <li><a href="https://thegrayarea.tech/bug-hunting-101-idors-for-beginners-40a43f7055ea" rel="external nofollow noopener" target="_blank">Graham Zemel - Bug Hunting 101: IDORs for Beginners</a></li>
-  <li><a href="https://junoonbro.medium.com/idors-how-to-find-idors-in-ecommerce-sites-d112bd946fcf" rel="external nofollow noopener" target="_blank">JunoonBro - \(\) IDOR’s — How to find IDORs in Ecommerce sites?</a></li>
-  <li><a href="https://medium.com/@swapmaurya20/3-step-idor-in-hackerresume-a365f2632996" rel="external nofollow noopener" target="_blank">Swapmaurya - 3 Step IDOR in HackerResume</a></li>
-  <li><a href="https://infosecwriteups.com/what-is-idor-vulnerability-and-how-does-it-affect-you-85431d10f8fb" rel="external nofollow noopener" target="_blank">c0d3x27 - What is IDOR Vulnerability, and how does it affect you?</a></li>
-  <li><a href="https://thexssrat.medium.com/idors-what-are-they-and-how-do-you-test-for-them-885c9df4af36" rel="external nofollow noopener" target="_blank">Thexssrat - IDORs: What are they and how do you test for them?</a></li>
-  <li><a href="https://ms-official5878.medium.com/insecure-direct-object-reference-6cbe6dc2f47e" rel="external nofollow noopener" target="_blank">Mohammad Mohsin - Insecure Direct object Reference</a></li>
-  <li><a href="https://sapt.medium.com/insecure-direct-object-reference-cyber-sapiens-internship-task-18-986a5824c797" rel="external nofollow noopener" target="_blank">Prajit Sindhkar - Insecure Direct Object Reference</a></li>
-  <li><a href="https://medium.com/@nynan/what-i-learnt-from-reading-220-idor-bug-reports-6efbea44db7" rel="external nofollow noopener" target="_blank">nynan - What I learnt from reading 220* IDOR bug reports.</a></li>
-  <li><a href="https://ozguralp.medium.com/a-less-known-attack-vector-second-order-idor-attacks-14468009781a" rel="external nofollow noopener" target="_blank">Ozgur Alp - A Less Known Attack Vector, Second Order IDOR Attacks</a></li>
-  <li><a href="https://medium.com/@jedus0r/idor-insecure-direct-object-references-my-first-p1-in-bugbounty-fb01f50e25df" rel="external nofollow noopener" target="_blank">jedus0r - IDOR “Insecure direct object references”, my first P1 in Bugbounty</a></li>
-  <li><a href="https://infosecwriteups.com/leveraging-burp-suite-extension-for-finding-idor-insecure-direct-object-reference-2653f9b89fd4" rel="external nofollow noopener" target="_blank">Dhanush - Leveraging Burp Suite extension for finding IDOR(Insecure Direct Object Reference).</a></li>
-  <li><a href="https://medium.com/@Steiner254/insecure-direct-object-references-idor-16bf0b981b90" rel="external nofollow noopener" target="_blank">Steiner254 - Insecure Direct Object References (IDOR)</a></li>
-  <li><a href="https://medium.com/@sathvika03/insecure-direct-object-reference-2506ecd37a83" rel="external nofollow noopener" target="_blank">Sathvika - Insecure Direct Object Reference</a></li>
-  <li><a href="https://shellmates.medium.com/insecure-direct-object-references-idor-vulnerability-aa48ad99b8c8" rel="external nofollow noopener" target="_blank">Shellmates Club - Insecure direct object references (IDOR) vulnerability</a></li>
-  <li><a href="https://chetan-conikee.medium.com/insecure-direct-object-reference-c33bb851da05" rel="external nofollow noopener" target="_blank">Chetan Conikee - Insecure Direct Object Reference</a></li>
+  <li><a href="https://www.youtube.com/watch?v=rloqMGcPMkI">PwnFuction (Video) - Insecure Direct Object Reference (IDOR) Explained</a></li>
+  <li><a href="https://www.youtube.com/watch?v=gINAtzdccts">InsiderPhD (Video) - Finding Your First Bug: Manual IDOR Hunting)</a></li>
+  <li><a href="https://www.youtube.com/watch?v=3K1-a7dnA60&t=260s">STÖK (Video) - Burp Suite tutorial: IDOR vulnerability automation using Autorize and AutoRepeater (bug bounty)</a></li>
+  <li><a href="https://youtu.be/TsJ2XPuGe1k">Mehmet D.INCE (Video) - Web Security 101 0x02, IDOR Insecure Direct Object Reference Zafiyetleri Hakkında Her şey</a></li>
+  <li><a href="https://portswigger.net/web-security/access-control/idor">Web Security Academy - IDOR</a></li>
+  <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References">OWASP - IDOR</a></li>
+  <li><a href="https://blog.intigriti.com/hackademy/idor/">Intigriti - IDOR</a></li>
+  <li><a href="https://www.bugcrowd.com/blog/how-to-find-idor-insecure-direct-object-reference-vulnerabilities-for-large-bounty-rewards/">Bugcrowd - How-To: Find IDOR Vulnerabilities for Large Bounty Rewards</a></li>
+  <li><a href="https://medium.com/@aysebilgegunduz/everything-you-need-to-know-about-idor-insecure-direct-object-references-375f83e03a87">Ayşe Bilgi Gündüz - Everything You Need to Know About IDOR</a></li>
+  <li><a href="https://www.geeksforgeeks.org/insecure-direct-object-reference-idor-vulnerability/?ref=gcse">Geeksforgeeks - IDOR</a></li>
+  <li><a href="https://book.hacktricks.xyz/pentesting-web/idor">HackTricks - IDOR</a></li>
+  <li><a href="https://www.secjuice.com/idor-insecure-direct-object-reference-definition/">Secjuice - IDOR </a></li>
+  <li><a href="https://thehackerish.com/idor-tutorial-hands-on-owasp-top-10-training/">Thehackerish - IDOR Tutorial</a></li>
+  <li><a href="https://medium.com/cyberverse/automating-burp-to-find-idors-2b3dbe9fa0b8">Aditya Soni - Automating BURP to find IDORs</a></li>
+  <li><a href="https://cyberweapons.medium.com/idor-is-everywhere-you-need-to-find-them-3ed12435c9de">ProfessorXSS - IDOR is Everywhere 😁 You need to find them</a></li>
+  <li><a href="https://medium.com/@gonzalocarrascosec/fuzzing-idor-admin-takeover-5343bb8f436e">Gonzalo Carrasco - Fuzzing + IDOR = Admin TakeOver</a></li>
+  <li><a href="https://infosecwriteups.com/all-about-getting-first-bounty-with-idor-849db2828c8">Mukul Trivedi (M0hn1sh) - All About Getting First Bounty with IDOR</a></li>
+  <li><a href="https://medium.com/@swapmaurya20/a-simple-idor-to-account-takeover-88b8a1d2ec24">Swapmaurya - A Simple IDOR to Account Takeover</a></li>
+  <li><a href="https://aseem-shrey.medium.com/attention-to-details-a-curious-case-of-multiple-idors-5a4417ba8848">Aseem Shrey - Attention to Details : Finding Hidden IDORs</a></li>
+  <li><a href="https://vickieli.medium.com/intro-to-idor-9048453a3e5d">Vickie Li - Intro to IDOR</a></li>
+  <li><a href="https://betterprogramming.pub/all-about-idor-attacks-64c4203b518e">Vickie Li - All About IDOR Attacks</a></li>
+  <li><a href="https://vickieli.medium.com/how-to-find-more-idors-ae2db67c9489">Vickie Li - How to find more IDORs</a></li>
+  <li><a href="https://sagarsajeev.medium.com/business-logic-vulnerability-via-idor-6d510f1caea9">Sagar Sajeev - Business Logic Vulnerability via IDOR</a></li>
+  <li><a href="https://shahjerry33.medium.com/idor-inside-the-session-storage-88af485fc899">Jerry Shah (Jerry) - IDOR - Inside the Session Storage</a></li>
+  <li><a href="https://medium.com/techiepedia/an-bug-bounty-hunters-guide-to-idor-vulnerabilities-27012bbccd7">Daniel Hunt - A Bug Bounty Hunter’s Guide to IDOR Vulnerabilities</a></li>
+  <li><a href="https://thegrayarea.tech/bug-hunting-101-idors-for-beginners-40a43f7055ea">Graham Zemel - Bug Hunting 101: IDORs for Beginners</a></li>
+  <li><a href="https://junoonbro.medium.com/idors-how-to-find-idors-in-ecommerce-sites-d112bd946fcf">JunoonBro - \(\) IDOR’s — How to find IDORs in Ecommerce sites?</a></li>
+  <li><a href="https://medium.com/@swapmaurya20/3-step-idor-in-hackerresume-a365f2632996">Swapmaurya - 3 Step IDOR in HackerResume</a></li>
+  <li><a href="https://infosecwriteups.com/what-is-idor-vulnerability-and-how-does-it-affect-you-85431d10f8fb">c0d3x27 - What is IDOR Vulnerability, and how does it affect you?</a></li>
+  <li><a href="https://thexssrat.medium.com/idors-what-are-they-and-how-do-you-test-for-them-885c9df4af36">Thexssrat - IDORs: What are they and how do you test for them?</a></li>
+  <li><a href="https://ms-official5878.medium.com/insecure-direct-object-reference-6cbe6dc2f47e">Mohammad Mohsin - Insecure Direct object Reference</a></li>
+  <li><a href="https://sapt.medium.com/insecure-direct-object-reference-cyber-sapiens-internship-task-18-986a5824c797">Prajit Sindhkar - Insecure Direct Object Reference</a></li>
+  <li><a href="https://medium.com/@nynan/what-i-learnt-from-reading-220-idor-bug-reports-6efbea44db7">nynan - What I learnt from reading 220* IDOR bug reports.</a></li>
+  <li><a href="https://ozguralp.medium.com/a-less-known-attack-vector-second-order-idor-attacks-14468009781a">Ozgur Alp - A Less Known Attack Vector, Second Order IDOR Attacks</a></li>
+  <li><a href="https://medium.com/@jedus0r/idor-insecure-direct-object-references-my-first-p1-in-bugbounty-fb01f50e25df">jedus0r - IDOR “Insecure direct object references”, my first P1 in Bugbounty</a></li>
+  <li><a href="https://infosecwriteups.com/leveraging-burp-suite-extension-for-finding-idor-insecure-direct-object-reference-2653f9b89fd4">Dhanush - Leveraging Burp Suite extension for finding IDOR(Insecure Direct Object Reference).</a></li>
+  <li><a href="https://medium.com/@Steiner254/insecure-direct-object-references-idor-16bf0b981b90">Steiner254 - Insecure Direct Object References (IDOR)</a></li>
+  <li><a href="https://medium.com/@sathvika03/insecure-direct-object-reference-2506ecd37a83">Sathvika - Insecure Direct Object Reference</a></li>
+  <li><a href="https://shellmates.medium.com/insecure-direct-object-references-idor-vulnerability-aa48ad99b8c8">Shellmates Club - Insecure direct object references (IDOR) vulnerability</a></li>
+  <li><a href="https://chetan-conikee.medium.com/insecure-direct-object-reference-c33bb851da05">Chetan Conikee - Insecure Direct Object Reference</a></li>
 </ul>
 
 <p><br></p>
@@ -731,19 +733,19 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
 <h3 id="labs">IDOR Labs</h3>
 
 <ul>
-  <li><a href="https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references" rel="external nofollow noopener" target="_blank">Web Security Academy - Lab: Insecure direct object references</a></li>
-  <li><a href="https://tryhackme.com/room/introwebapplicationsecurity" rel="external nofollow noopener" target="_blank">TryHackMe - Web Application Security</a></li>
+  <li><a href="https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references">Web Security Academy - Lab: Insecure direct object references</a></li>
+  <li><a href="https://tryhackme.com/room/introwebapplicationsecurity">TryHackMe - Web Application Security</a></li>
   <li>
-<a href="https://tryhackme.com/room/corridor" rel="external nofollow noopener" target="_blank">TryHackMe - Corridor</a> - <a href="https://mr0wido.github.io/tryhackme-corridor/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+<a href="https://tryhackme.com/room/corridor">TryHackMe - Corridor</a> - <a href="https://mr0wido.github.io/tryhackme-corridor/">My Writeup <img class="emoji" title=":punch:" alt=":punch:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png" height="20" width="20"></a>
 </li>
   <li>
-<a href="https://tryhackme.com/room/neighbour" rel="external nofollow noopener" target="_blank">TryHackMe - Neighbour</a> - <a href="https://mr0wido.github.io/tryhackme-neighbour/" rel="external nofollow noopener" target="_blank">My Writeup <image class="emoji" title="punch" alt="👊" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></a>
+<a href="https://tryhackme.com/room/neighbour">TryHackMe - Neighbour</a> - <a href="https://mr0wido.github.io/tryhackme-neighbour/">My Writeup <img class="emoji" title=":punch:" alt=":punch:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png" height="20" width="20"></a>
 </li>
 </ul>
 
 <p><br>
 <br>
-I hope you liked my article. See you in my other articles<image class="emoji" title="hand" alt="✋" src="https://github.githubassets.com/images/icons/emoji/unicode/270b.png?v8" style="vertical-align: middle;             max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.alt)">           </image></p>
+I hope you liked my article. See you in my other articles<img class="emoji" title=":hand:" alt=":hand:" src="https://github.githubassets.com/images/icons/emoji/unicode/270b.png" height="20" width="20"></p>
 
   </div>
   <div class="post__footer">
@@ -800,7 +802,7 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
 
 
@@ -815,7 +817,7 @@ I hope you liked my article. See you in my other articles<image class="emoji" ti
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
     <footer>
   <div class="footer">
-    © Copyright 2024 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+    © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
   </div>
 </footer>
 

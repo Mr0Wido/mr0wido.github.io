@@ -52,6 +52,8 @@
 
     <title>TryHackMe - Magician - Mr0Wido's Blog</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    
+  
   </head>
   <body>
     <header class="site-header">
@@ -122,13 +124,13 @@
     <li><a class="site-nav__link " href="/categories/">Categories</a></li>
   </ul>
   <ul class="social ul-base">
-    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
-    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
-    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
-    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
   </ul>
   <div class="copyright">
-    <span> © Copyright 2024 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+    <span> © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
   </div>
 </nav>
 <div class="overlay"></div>
@@ -176,7 +178,7 @@ On Windows, the hosts file should be at C:\Windows\System32\drivers\etc\hosts.</
 <p><img src="/assets/img/tryhackme/magician/ftp.png" alt="ftp"></p>
 
 <p>I found an important clue here. 
-This is what I came across when I visited this site: <a href="https://imagetragick.com" rel="external nofollow noopener" target="_blank">https://imagetragick.com</a>.</p>
+This is what I came across when I visited this site: <a href="https://imagetragick.com">https://imagetragick.com</a>.</p>
 
 <p><img src="/assets/img/tryhackme/magician/hint.png" alt="hint"></p>
 
@@ -229,7 +231,7 @@ This is what I came across when I visited this site: <a href="https://imagetragi
 
 <p>Now we need root privilege. So let’s download linepeas.sh and run it.</p>
 
-<p>I’m downloading <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319" rel="external nofollow noopener" target="_blank">linpeas.sh</a> on my own machine.</p>
+<p>I’m downloading <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319">linpeas.sh</a> on my own machine.</p>
 
 <p>Let’s run the following code in the directory where linpeas.sh is located.</p>
 
@@ -249,7 +251,7 @@ This is what I came across when I visited this site: <a href="https://imagetragi
 
 <p>There is something running on port 6666. To achieve this, we need to do port forwarding.</p>
 
-<p>First, let’s download the <a href="https://github.com/jpillora/chisel/releases" rel="external nofollow noopener" target="_blank">chisel</a> to our own machine and send it to the target machine.</p>
+<p>First, let’s download the <a href="https://github.com/jpillora/chisel/releases">chisel</a> to our own machine and send it to the target machine.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://github.com/jpillora/chisel/releases/download/v1.8.1/chisel_1.8.1_linux_arm64.gz
 $ gunzip chisel_1.8.1_linux_arm64.gz  
@@ -276,7 +278,7 @@ $ chisel server --reverse --port 5555
 
 <p><img src="/assets/img/tryhackme/magician/chisel-own.png" alt="chisel-own"></p>
 
-<p>Now we can look at the site running on the port we forwarded. <a href="http://0.0.0.0:5554" rel="external nofollow noopener" target="_blank">http://0.0.0.0:5554</a></p>
+<p>Now we can look at the site running on the port we forwarded. <a href="http://0.0.0.0:5554">http://0.0.0.0:5554</a></p>
 
 <p><img src="/assets/img/tryhackme/magician/run.png" alt="run"></p>
 
@@ -324,7 +326,7 @@ $ chisel server --reverse --port 5555
 </div>
 <br>
 <!-- Twitter Share Button -->
-<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Magician&amp;url=http://localhost:4000/tryhackme-magician/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Magician&url=http://localhost:4000/tryhackme-magician/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
     Tweet
 </a>
   
@@ -353,7 +355,7 @@ $ chisel server --reverse --port 5555
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
 
 
@@ -389,23 +391,23 @@ $ chisel server --reverse --port 5555
         
           
             
-              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
             
           
             
-              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
             
           
             
-              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
             
           
             
-              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
             
           
             
-              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
             
           
         
@@ -461,23 +463,23 @@ $ chisel server --reverse --port 5555
           
             
               
-                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
               
             
               
-                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
               
             
               
-                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
               
             
               
-                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
               
             
               
-                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
               
             
           
@@ -555,23 +557,23 @@ $ chisel server --reverse --port 5555
         
           
             
-              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
             
           
             
-              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
             
           
             
-              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
             
           
             
-              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
             
           
             
-              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
             
           
         
@@ -627,23 +629,23 @@ $ chisel server --reverse --port 5555
           
             
               
-                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
               
             
               
-                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
               
             
               
-                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
               
             
               
-                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
               
             
               
-                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs" target="_blank"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
               
             
           
@@ -731,7 +733,7 @@ On Windows, the hosts file should be at C:\Windows\System32\drivers\etc\hosts.</
 <p><img src="/assets/img/tryhackme/magician/ftp.png" alt="ftp"></p>
 
 <p>I found an important clue here. 
-This is what I came across when I visited this site: <a href="https://imagetragick.com" rel="external nofollow noopener" target="_blank">https://imagetragick.com</a>.</p>
+This is what I came across when I visited this site: <a href="https://imagetragick.com">https://imagetragick.com</a>.</p>
 
 <p><img src="/assets/img/tryhackme/magician/hint.png" alt="hint"></p>
 
@@ -784,7 +786,7 @@ This is what I came across when I visited this site: <a href="https://imagetragi
 
 <p>Now we need root privilege. So let’s download linepeas.sh and run it.</p>
 
-<p>I’m downloading <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319" rel="external nofollow noopener" target="_blank">linpeas.sh</a> on my own machine.</p>
+<p>I’m downloading <a href="https://github.com/carlospolop/PEASS-ng/releases/tag/20230319">linpeas.sh</a> on my own machine.</p>
 
 <p>Let’s run the following code in the directory where linpeas.sh is located.</p>
 
@@ -804,7 +806,7 @@ This is what I came across when I visited this site: <a href="https://imagetragi
 
 <p>There is something running on port 6666. To achieve this, we need to do port forwarding.</p>
 
-<p>First, let’s download the <a href="https://github.com/jpillora/chisel/releases" rel="external nofollow noopener" target="_blank">chisel</a> to our own machine and send it to the target machine.</p>
+<p>First, let’s download the <a href="https://github.com/jpillora/chisel/releases">chisel</a> to our own machine and send it to the target machine.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://github.com/jpillora/chisel/releases/download/v1.8.1/chisel_1.8.1_linux_arm64.gz
 $ gunzip chisel_1.8.1_linux_arm64.gz  
@@ -831,7 +833,7 @@ $ chisel server --reverse --port 5555
 
 <p><img src="/assets/img/tryhackme/magician/chisel-own.png" alt="chisel-own"></p>
 
-<p>Now we can look at the site running on the port we forwarded. <a href="http://0.0.0.0:5554" rel="external nofollow noopener" target="_blank">http://0.0.0.0:5554</a></p>
+<p>Now we can look at the site running on the port we forwarded. <a href="http://0.0.0.0:5554">http://0.0.0.0:5554</a></p>
 
 <p><img src="/assets/img/tryhackme/magician/run.png" alt="run"></p>
 
@@ -879,7 +881,7 @@ $ chisel server --reverse --port 5555
 </div>
 <br>
 <!-- Twitter Share Button -->
-<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Magician&amp;url=http://localhost:4000/tryhackme-magician/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+<a href="https://twitter.com/intent/tweet?text=TryHackMe%20-%20Magician&url=http://localhost:4000/tryhackme-magician/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
     Tweet
 </a>
   
@@ -908,7 +910,7 @@ $ chisel server --reverse --port 5555
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by Disqus.</a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
 
 
@@ -923,7 +925,7 @@ $ chisel server --reverse --port 5555
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
     <footer>
   <div class="footer">
-    © Copyright 2024 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+    © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
   </div>
 </footer>
 
