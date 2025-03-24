@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Bir Türk Genci ve Bug Bounty",
+      "category" : "",
+      "tags"     : "security,, bug-bounty, social",
+      "url"      : "/bir-turk-genci-ve-bug-bounty/",
+      "date"     : "2025-03-23 00:00:00 +0300"
+    } ,
+  
+    {
       "title"    : "Basics of Computer Technology and Networking",
       "category" : "",
       "tags"     : "security,, cyber-security,, challange,",
@@ -102,14 +110,6 @@
       "tags"     : "ctf, security, credential",
       "url"      : "/tryhackme-cyber-heroes/",
       "date"     : "2023-03-30 00:00:00 +0300"
-    } ,
-  
-    {
-      "title"    : "TryHackMe Chocolate Factory",
-      "category" : "",
-      "tags"     : "ctf, privesc, stego",
-      "url"      : "/tryhackme-chocolate-factory/",
-      "date"     : "2023-03-29 00:00:00 +0300"
     } ,
   
     {

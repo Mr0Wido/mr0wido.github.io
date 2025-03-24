@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This is my personal website. The purpose of the Website is to assist and monitor my own development.">
+<meta name="google-site-verification" content="NeMnHGyDeeJqt9s_pg03TI1foYUOvLwrHreqLj_mgRE">
+<meta name="language" content="en">
+
+<!-- Twitter And Open Graph Meta -->
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Bir Türk Genci ve Bug Bounty">
+<meta property="og:type" content="Article">
+<meta property="og:url" content="http://localhost:4000/bir-turk-genci-ve-bug-bounty/">
+<meta name="image" property="og:image" content="/assets/img/avatar.jpg">
+<meta property="og:image:alt" content="">
+<meta property="og:site_name" content="Mr0Wido's Blog">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+<meta name="twitter:title" content="Bir Türk Genci ve Bug Bounty">
+<meta name="twitter:image" content="/assets/img/avatar.jpg">
+
+
+
+<!-- css -->
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="canonical" href="/bir-turk-genci-ve-bug-bounty/">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<title>Bir Türk Genci ve Bug Bounty - Mr0Wido's Blog</title>
+
+
+
+<!-- Script -->
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://kit.fontawesome.com/d54796acd1.js" crossorigin="anonymous"></script>
+
+
+
+
+
+    <title>Bir Türk Genci ve Bug Bounty - Mr0Wido's Blog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    
+  
+  </head>
+  <body>
+    <header class="site-header">
+  <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+  <div class="site-title">
+    <a href="http://localhost:4000">Mr0Wido's Blog</a>
+  </div>
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/">Home</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/whoami/">Whoami</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/posts/">Posts</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/projects/">Projects</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/cv/">CV</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/categories/">Categories</a>
+      </li>
+      <li class="site-nav__item">
+        <div class="search">
+          <input type="text" id="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+          <ul id="results-container"></ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- 360 to 980 -->
+<header class="header-mobile">
+  <div class="header-inner clearfix">
+    <div class="nav-btn nav-slider">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+    <div class="site-title">
+      <a href="http://localhost:4000">Mr0Wido's Blog</a>
+    </div>
+  </div>
+</header>
+<nav class="sidebar">
+  <div class="nav-header">
+    <div class="nav-search">
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
+      </div>
+    </div>
+  </div>
+  <ul class="nav-categories ul-base">
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
+  </ul>
+  <ul class="social ul-base">
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+  </ul>
+  <div class="copyright">
+    <span> © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+  </div>
+</nav>
+<div class="overlay"></div>
+    
+    <div class="container-default">
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">Bir Türk Genci ve Bug Bounty</h1>
+  <div class="post__content">
+    <p>Bir Türk Gencinin Çabası, Bug Bounty Nedir? Bug Bounty Yol Haritası</p>
+
+<p><br></p>
+
+<h2 id="contents"><strong>Contents</strong></h2>
+<ul>
+  <li><a href="#bug-bounty-nedir"><strong>Bug Bounty Nedir?</strong></a></li>
+  <li><a href="#kendi-%C3%A7abalar%C4%B1m"><strong>Kendi Çabalarım</strong></a></li>
+  <li>
+<a href="#bug-bounty-yol-haritas%C4%B1-ve-kaynaklar"><strong>Bug Bounty Yol Haritası ve Kaynaklar</strong></a>
+    <ul>
+      <li><a href="#ara%C5%9Ft%C4%B1rma">Araştırma</a></li>
+      <li><a href="#temel-teknolojiler-ve-terimler">Temel Teknolojiler ve Terimler</a></li>
+      <li><a href="#g%C3%BCvenlik-a%C3%A7%C4%B1klar%C4%B1">Güvenlik Açıkları</a></li>
+      <li><a href="#bug-bounty">Bug Bounty</a></li>
+      <li><a href="#recon">Recon</a></li>
+      <li><a href="#attack">Attack</a></li>
+      <li><a href="#bug-bounty-ile-alakal%C4%B1-t%C3%BCm-kaynaklar">Bug Bounty ile Alakalı Tüm Kaynaklar</a></li>
+      <li><a href="#lab-ortamlar%C4%B1">Lab Ortamları</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><br>
+<br></p>
+
+<h2 id="bug-bounty-nedir"><strong>Bug Bounty Nedir?</strong></h2>
+
+<p>Basitçe, şirketlerin belirlediği kurallar çerçevesinde bulduğunuz güvenlik açıkları karşılığında ödül aldığınız bir sistem. Bu sistemde aracı kuruluşlar var; HackerOne, Bugcrowd, Intigriti gibi ve kendi ülkemizde de olan Bugbounter gibi siteler. Hackerlar ile şirketler arasında bir bağlantı olurlar. Bizler de bu siteler aracılığıyla bulduğumuz güvenlik açıklarını raporlarız. Bu sayede de hem şirket fayda görür hem e biz ödül kazanabiliriz.</p>
+<h2 id="kendi-çabalarım"><strong>Kendi Çabalarım</strong></h2>
+
+<p>Fakir ama gönlü zengin bir genç olarak Bug Bounty’den bahsedeceğim. Bunları anlatıyorsun peki sen hiç para kazandın mı derseniz eğer kazanamadım. Hala deniyorum, pes etmedim, pes etmeyeceğim.</p>
+
+<p><img src="/assets/img/social/you-never-give-up-john-cena.gif" alt="dontgivup"></p>
+
+<p>İşin özüne gelirsek eğer, birkaç yıl oldu bu işi deneyeli ve o zamanlar çok fazla bilgi sahibi değildim. İlgileniyordum bu işlerle fakat küçük şeylerle uğraşıyordum, kendime websitesi falan yapıyordum. Ama bundan çok zevk alıyordum. Küçük bir şeyi tasarlayıp bitirdiğimde, o websitesi hiçbir şeye benzemese de başarmışlık hissinin verdiği haz farklı oluyordu. Bu haz bir süre bu işlerle uğraşmaya devam etmeni sağlar fakat zaman ilerlediğinde para kazanman gerçekliğiyle yüzleşeceksin. Ben de yüzleştim bu gerçekle ve kötü yola düşmeden <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20"> bir hacker olarak para kazanmanın yollarını aradım.</p>
+
+<p>Bu gerçek seni araştırmaya itiyo ve buluabileceğin en iyi sonuç freelancer çalışmak oluyor. İlgi alanına göre de ilerleyişin değişiyor tabi ki.</p>
+
+<p>Bu sırada da ben bug bounty olayını duydum ve büyülendim. Dışarıda bu işin içerisinde on yıllarını vermiş insanlar, bu olayı anlattığında kolay bir işmiş gibi duruyor. Ben de bu iş çok iyimiş, hemen yaparım dedim. Fakat öyle değil. Çok fazla çaba ve öğrenme süreci var ve bu süreci karşılıksız yapmak çok zor. Çünkü hayatımızda bir çok sorun bir çok derdin yanında okul falan derken uzun bir öğrenme sürecinde hedefinizi kovalamanız gerekiyor. Bu sadece bug bounty için değil bizim ülkemizdeki her gencin herhangi bir hayali için geçerli.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Bu süreçte öğrenme faslını hızlıca geçmeye çalıştığında ve sadece para kazanmaya odaklı ilerlediğinde en büyük hatayı yapıyorsun. İşin aslını kaçırıp yıllarca kendini oyalamaktan başka hiçbir şey yapmıyorusun.</code></strong></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Bu süreçte herhangi bir başarmışlık hissi almayacaksın. Zamanını harcayacaksın bu işi herşeyin haline getireceksin. Getireceksin ki güncel kalabilesin. Çevre kurucaksın. Başarmak için kolay bir yol yok. Bir disiplinin olacak ve ona uyacaksın, keyfine düşkünsen bu işte başarılı olamazsın. Öğrenmekten, oturup araştırmaktan, bilgisayar başında bir şeyler okumaktan zevk almıyorsan bu işte başarılı olamazsın. Ben bunun bir örneğiyim.</code></strong></p>
+
+<p><strong>Eğer üçkağıtçı değilseniz, suçlu veya siyasetçi değilseniz kimsenin hakkını yemiyorsanız kolay para diye bir şey hiç bir yerde yok.</strong></p>
+
+<ul>
+  <li>İş zor olacak, pes etmeyeceksin.</li>
+  <li>Para kazanmadan önce çok fazla zamanını ayıracaksın.</li>
+  <li>En temel bilgileri dahi okumaktan çekinmeyeceksin ve disiplinini bozmayacaksın.</li>
+  <li>İngilizcen de iyi olacak okuduğunu aşağı yukarı anlıyacaksın.</li>
+  <li>Gerisi sende</li>
+</ul>
+
+<p><img src="/assets/img/social/you-got-it-spongebob.webp" alt="gif"></p>
+
+<p><br></p>
+
+<h2 id="bug-bounty-yol-haritası-ve-kaynaklar"><strong>Bug Bounty Yol Haritası ve Kaynaklar</strong></h2>
+
+<p>Her şeyi sıfırdan anlatmayacağım. Linux öğrenin vesaire diye. Bunlar her halükarda bilmeniz gereken en temel şeyler.</p>
+
+<h2 id="araştırma"><strong>Araştırma</strong></h2>
+
+<p>Bu temel değil mi? Bu da temel ama herkesin atladığı bir temel. İnsanlara öğretmesi en zor olan şey araştırmak. Araştırma duygusuna sahip olun, bulabildiğiniz tüm kaynakları internette araştırın, öğrenmek istediğiniz şeyleri yazmaktan çekinmeyin en basit şeyi bile. Bilmemekten iyidir. Mesela uzak durulması gereken bir tür var bunlar her türlü +18 içeriği aratmasını bilir ama PDF nasıl dönüştürülür diye yazmaktan çekinir. <img class="emoji" title=":stop_sign:" alt=":stop_sign:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f6d1.png" height="20" width="20"> <img class="emoji" title=":facepunch:" alt=":facepunch:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png" height="20" width="20"></p>
+
+<p>Bunu neden söylüyorum? Bug bounty güncel bir iş. Yeni web siteleri, yeni teknolojiler demek, yeni güvenlik açıkları demek. Bu yüzden sürekli bilmediğiniz şeyler karşınıza çıkacak. <code class="language-plaintext highlighter-rouge">Bu yüzden araştırmak bizim için daha daha önemli.</code></p>
+
+<h2 id="temel-teknolojiler-ve-terimler"><strong>Temel Teknolojiler ve Terimler</strong></h2>
+
+<p>Bug bounty’e özel olmayan fakat bilginiz dahilinde olması gereken şeyler de mevcut.  Çok daha genel ve siber güvenlik kavramını kapsayan terimler. Bunun için kesinlikle önerim <a href="https://roadmap.sh/cyber-security">Roadmap.sh’a</a> bakmanız. Burada çok kapsamlı bir bilgi ağacı var her biri çok değerli ve temelde sahip olmanız gereken bilgiler. Ve bu bilgileri kavramanız gerek.</p>
+
+<p>Bence İngilizce bir şeyi okuyup anlamak ile o bilgiyi kavramak arasında çok fark var. Zaten orada yazanlara bağlı kalmamanızı ve orada gördüğünüz şeyleri ayrıca araştırmanız gerekeceğini söylememe gerek yoktur herhalde.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Benim bu konuda izlediğim yol ise websitesi açmak. Websitesi açmaktaki sebep ise anlatmak. Bir bilgiyi kavramadan anlatmanız imkansız. O bilgiyi anlayıp kafanızda oturttuğunuz zaman o konuda bir şeyler anlatabilir olursunuz. Araştırın, öğrenin ve anlatın.</code></strong></p>
+
+<h2 id="güvenlik-açıkları"><strong>Güvenlik Açıkları</strong></h2>
+
+<p><code class="language-plaintext highlighter-rouge">Roadmap.sh'ta</code> yer alan temel her şeyi hallettiğinizde tabii ki her şeyi öğrenmiş olmuyorsunuz. <strong><code class="language-plaintext highlighter-rouge">Sizin için artık en önemli şey güvenlik açıklarını anlamak.</code></strong> Roadmap’te her şey çok detaylı değil. Sizin de artık yeni ve daha detaylı kaynaklara geçmeniz gerekiyor, araştırmalar yapmanız gerekiyor.  Web security içerisindeki güvenlik açıklarının çoğuna hakim olmanız gerekiyor. En iyi kaynak sizin en iyi anladığınız olacaktır. Ben <a href="https://youtube.com/playlist?list=PLwP4ObPL5GY940XhCtAykxLxLEOKCu0nT&si=0NJlE6NnsNZZZ7H6">Mehmet INCE abinin</a>  videolarını yalayıp yutmanızı öneririm. Videoları tek seferde yalayıp yutmak zor, tekrar tekrar izleyin ve kavrayın. Sonrasında siz de anlatmaya çalışın ister yazarak yapın ister videoya alın. Ayrıca bu tür içerik yaratmak da sizin kariyeriniz için çok iyi olacaktır.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Güvenlik açıklarını araştırıp okuyup, izleyip kavradıktan sonra lablarda bunları uygulamalı test edin.</code></strong> TryHackMe benim en sevdiğim platform, arayüzü basit ve anlaşılır. Burada öğrendiğiniz güvenlik açıklarıyla alakalı labları bulun ve test edin. Bunun gibi birçok platform var. <a href="#bug-bounty-ile-alakal%C4%B1-t%C3%BCm-kaynaklar">Kaynaklar</a> kısmından bakabilirsiniz.</p>
+
+<p>İkinci önerim <a href="https://portswigger.net/web-security/all-labs">PortSwigger</a> olacak daha detaylı güvenlik açıklarını test edebiliyorsunuz.</p>
+
+<p><a href="http://testphp.vulnweb.com/">testphp.vulnweb’de</a>  benim en sevdiklerimden burada da birçok şeyi test edebilirsiniz.</p>
+
+<h2 id="bug-bounty"><strong>Bug Bounty</strong></h2>
+
+<p>Gel gelelim Bug bounty metodolojisine, araştırmayı öğrendik, güvenlik açıklarına hakimiz artık para kazanabiliriz. Değil mi? Herhalde kazanırız,  inşallah kazanırız.</p>
+
+<p><img src="/assets/img/social/detective-pikachu-anime.gif" alt="hope"></p>
+
+<p>Bug bounty’de para ödüllü sitelerde rakipleriniz çok olacağından güvenlik açığı bulmak daha zor olacaktır. Öncelikle ödül vermeyen sitelerde şansınızı deneyebilirsiniz. Ben hiç denemedim.</p>
+
+<p>Bug Bounty metodolojisi olarak araştırdığınızda birçok farklı şey göreceksiniz ama olay temelde aynı; hedef hakkında bilgi toplayıp bulabildiğiniz bu bilgilerle güvenlik açığı yaratmak.</p>
+
+<p>Öncelikle hedefinizi belirleyin. Hedef belirleme önemli bir kısım. Kuralları dikkatli okuyun ve başlangıçta bol domainli sitelerde şanısnızı deneyin, ihtimallerinizi yükseltirsiniz.  Hedefinizi belirledikten sonra şunlar çok önemli; <strong><code class="language-plaintext highlighter-rouge">hedef sitenin yapısını anlamak, websitesinin amacını anlamak, ne yaptığını ve o site için ne olursa tehlikeli olur, bunları anlamak.</code></strong>  Bu saydıklarım öncelikli olarak bir websitesinde güvenlik açığı aramadan önce hakim olmanız gereken bilgilerdir.</p>
+
+<p>Güvenlik testlerinde sizin için en iyi araç Burp Suite olacaktır. Alternatif olarak istekleri izleyebilceğiniz postman veya caido gibi uygulamalarda var. Kullanması size hangisi daha rahat geliyor ise onu kullanın.</p>
+<h2 id="recon">Recon</h2>
+
+<p>Bilgi edinme olayına recon diyoruz ve recon içerisinde araç kullanmaktan çekinmemize gerek yok. Birçok araç var ve bunlarla bilgiler toplarsınız, bu konuda yazdığım <a href="https://github.com/Mr0Wido/otorecon">toolu</a> kullanabilirsiniz. Recon için oluşturduğum metodolojimde şu şkilde;</p>
+
+<p><img src="/assets/img/social/otorecon.png" alt="otorecon"></p>
+
+<h2 id="attack">Attack</h2>
+
+<p>Bu bilgileri edindikten sonra bu bilgileri teker teker test etmek gerek. Güvenlik açığı testlerini otomatize etmek için toollar var fakat kesinlikle önermem. <strong><code class="language-plaintext highlighter-rouge">Toollar aptaldır.</code></strong>  Sadece verilen if-else’leri yaparlar. Akıllı olan biziz siteye göre ne arayacağımızı biliriz neye dikkat edeceğimizi biliriz, tool bilmez.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Bu nedenle manuel olarak web sitesini test etmek bizim için çok daha verimli olacaktır. Bilgi toplamak için araç kullanabiliriz tespit ettiğimiz güvenlik açıklarını patlatmak için de araç kullanabiliriz ama güvenlik açığını tespit etmek için tool kullanmak bize hiçbir şey getirmez</code>.  Ama şu da var ki, bir Türk genci olmanın zorluğu olarak öğrenmeyi bekleyemiyecek durumda oluyoruz. Bu yüzden bir yandan toollarla şansınızı deneyip bir yandan da öğrenmeye devam etmeniz benim size önerim olur. Ben de bunu yapıyorum ve şu aracı <a href="https://github.com/Mr0Wido/otoattack">‘otoattack’</a> yeni bitirdim. Siz de deneyebilirsiniz. Belki şansınıza bulursunuz ve size öğrenmeye daha çok iter.</p>
+
+<p><img src="/assets/img/social/otoattack.png" alt="otoattack"></p>
+
+<p>Güvenlik açıklarını raporlamak için de internette halka arz edilmiş birçok rapor var. Bulduğunuz güvenlik açıklarıyla alakalı raporlara bakın örnek ve güzel bir rapor yazın. Nasıl yazılacağı konusunda araştırmalar yapın.</p>
+
+<p>Bunların haricinde anlatacak bir şey yok. Bu iş kesinlikle basit bir şey değil ve toolardan da fazla ümit etmeyin işin asıl kısmını öğrenmeyi halledin. Ve gerisi gelecektir. İnternet nasıl işler bilmiyorken ben bug bounty yapacağım demeyin.</p>
+
+<p> Bunlar bu konudaki genel görüşlerimdi. Umarım yardımı dokunur. Kendinize iyi bakın.  <img class="emoji" title=":wave:" alt=":wave:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png" height="20" width="20"></p>
+
+<h2 id="bug-bounty-ile-alakalı-tüm-kaynaklar"><strong>Bug Bounty ile Alakalı Tüm Kaynaklar</strong></h2>
+
+<ul>
+  <li><a href="https://github.com/akr3ch/BugBountyBooks/tree/main">Bug Bounty Books</a></li>
+  <li><a href="https://m0chan.github.io/2019/12/17/Bug-Bounty-Cheetsheet.html">@m0chan -  Bug Bounty Cheatsheet</a></li>
+  <li><a href="https://bugbountytuts.wordpress.com/wp-content/uploads/2019/01/dirty-recon-1.pdf">Recon Like A Boss</a></li>
+  <li><a href="https://pentestbook.six2dez.com/">@six2dez - pentest-book</a></li>
+  <li><a href="https://infosecwriteups.com/comprehensive-bug-bounty-hunting-checklist-2024-edition-4abb3a9cbe66">Comprehensive Bug Bounty Hunting Methodology</a></li>
+  <li><a href="https://pentester.land/blog/levelup-2018-the-bug-hunters-methodology-v3/">The Bug Hunters Methodology v3</a></li>
+  <li><a href="https://hadariel.pp.ua/aboutme/ethical-hacking/files/TBHMv4%20Recon.pdf">The Bug Hunter’s Methodology v4</a></li>
+  <li><a href="https://github.com/jhaddix/tbhm/tree/master">tbhm</a></li>
+  <li><a href="https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/blob/master/assets/tools.md">Resources-for-Beginner-Bug-Bounty-Hunters</a></li>
+  <li><a href="https://github.com/trilokdhaked/Bug-Bounty-Methodology">Bug-Bounty-Methodology</a></li>
+  <li><a href="https://github.com/LuNiZz/websec101">websec101</a></li>
+  <li><a href="https://github.com/bugcrowd/bugcrowd_university">Bugcrowd University</a></li>
+  <li><a href="https://web.stanford.edu/class/cs253/">CS 253 Web Security</a></li>
+  <li><a href="https://github.com/bittentech/Bug-Bounty-Beginner-Roadmap">Bug-Bounty-Beginner-Roadmap</a></li>
+  <li><a href="https://github.com/ngalongc/bug-bounty-reference">bug-bounty-reference</a></li>
+  <li><a href="https://github.com/sbilly/awesome-security">awesome-security</a></li>
+  <li><a href="https://github.com/blaCCkHatHacEEkr/PENTESTING-BIBLE">PENTESTING-BIBLE</a></li>
+  <li><a href="https://github.com/daffainfo/AllAboutBugBounty">AllAboutBugBounty</a></li>
+  <li><a href="https://github.com/qazbnm456/awesome-web-security">awesome-web-security</a></li>
+  <li><a href="https://github.com/enaqx/awesome-pentest">awesome-pentest</a></li>
+  <li><a href="https://github.com/Hack-with-Github/Awesome-Hacking">Awesome-Hacking</a></li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">TOOLS</code></strong></p>
+<ul>
+  <li><a href="https://github.com/vavkamil/awesome-bugbounty-tools">awesome bugbounty tools</a></li>
+  <li><a href="https://tomnomnom.com/talks/bash-bug-bounty.pdf">Bug Bounties With Bash</a></li>
+  <li><a href="https://bugbountyforum.com/tools/">Bug Bounty Forum</a></li>
+  <li><a href="https://github.com/hahwul/WebHackersWeapons?tab=readme-ov-file#tools">WebHackersWeapons</a></li>
+  <li><a href="https://github.com/0xPugal/One-Liners">One-Liners</a></li>
+  <li><a href="https://github.com/dwisiswant0/awesome-oneliner-bugbounty">Awesome One-liner Bug Bounty</a></li>
+  <li><a href="https://github.com/twseptian/oneliner-bugbounty">oneliner commands</a></li>
+  <li><a href="https://github.com/swisskyrepo/PayloadsAllTheThings">PayloadsAllTheThings</a></li>
+  <li><a href="https://github.com/snoopysecurity/awesome-burp-extensions">Awesome Burp Extensions</a></li>
+  <li><a href="https://github.com/KingOfBugbounty/KingOfBugBountyTips">KingOfBugBountyTips</a></li>
+  <li><a href="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets">Pentest-Cheat-Sheets</a></li>
+  <li><a href="https://github.com/edoardottt/awesome-hacker-search-engines">awesome-hacker-search-engines</a></li>
+  <li>
+<a href="https://github.com/Mr0Wido/bug-bounty-tools">bug-bounty-tools</a>
+    <h2 id="lab-ortamları"><strong>Lab Ortamları</strong></h2>
+  </li>
+  <li><a href="https://tryhackme.com/dashboard">TryHackMe</a></li>
+  <li><a href="https://learn.cyberexam.io/dashboard">cyberexam</a></li>
+  <li><a href="https://ctf.hacker101.com/">hacker101</a></li>
+  <li><a href="https://www.bugbountyhunter.com/training/">BugBountyHunter</a></li>
+  <li><a href="https://overthewire.org/wargames/natas/">overthewire</a></li>
+  <li><a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a></li>
+  <li><a href="https://app.hackinghub.io/hubs">hackinghub</a></li>
+  <li><a href="https://github.com/nahamsec/nahamsec.training">Nahamsec’s Intro To Bug Bounty Labs</a></li>
+  <li><a href="https://www.vulnhub.com/">vulnhub</a></li>
+  <li><a href="https://www.smashthestack.org/main.html">Smash The Stack</a></li>
+  <li><a href="https://www.root-me.org/?lang=en">rootme</a></li>
+  <li><a href="https://pwnable.xyz/">pwnable</a></li>
+  <li><a href="https://pentesterlab.com/">pentesterlab</a></li>
+  <li><a href="https://legacy.hacking-lab.com/events/">legacy</a></li>
+  <li><a href="https://exploit.education/">exploit-education</a></li>
+  <li><a href="https://cryptohack.org/">cryptohack</a></li>
+  <li><a href="https://github.com/cliffe/SecGen">SecGen</a></li>
+  <li><a href="https://github.com/moloch--/RootTheBox">RootTheBox</a></li>
+  <li><a href="https://picoctf.com/">picoCTF</a></li>
+  <li><a href="https://github.com/CTFd/CTFd">CTFd</a></li>
+  <li><a href="https://ctftime.org/">ctftime</a></li>
+</ul>
+
+<p><br>
+<br>
+<br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 23, 2025</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#Social">Social</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">security,</span>
+          
+          <span class="post__tags-item">bug-bounty</span>
+          
+          <span class="post__tags-item">social</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+<!-- Twitter Share Button -->
+<a href="https://twitter.com/intent/tweet?text=Bir%20T%C3%BCrk%20Genci%20ve%20Bug%20Bounty&url=http://localhost:4000/bir-turk-genci-ve-bug-bounty/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+    Tweet
+</a>
+  
+<!-- LinkedIn Share Button -->
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/bir-turk-genci-ve-bug-bounty/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+    LinkedIn
+</a>
+  
+  
+
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/bir-turk-genci-ve-bug-bounty/';
+    this.page.identifier = '/bir-turk-genci-ve-bug-bounty';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am passionate about all things technology-related. My thirst for knowledge knows no bounds, and I consider myself a lifelong learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am passionate about all things technology-related. My thirst for knowledge knows no bounds, and I consider myself a lifelong learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am passionate about all things technology-related. My thirst for knowledge knows no bounds, and I consider myself a lifelong learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am passionate about all things technology-related. My thirst for knowledge knows no bounds, and I consider myself a lifelong learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">Bir Türk Genci ve Bug Bounty</h1>
+  <div class="post__content">
+    <p>Bir Türk Gencinin Çabası, Bug Bounty Nedir? Bug Bounty Yol Haritası</p>
+
+<p><br></p>
+
+<h2 id="contents"><strong>Contents</strong></h2>
+<ul>
+  <li><a href="#bug-bounty-nedir"><strong>Bug Bounty Nedir?</strong></a></li>
+  <li><a href="#kendi-%C3%A7abalar%C4%B1m"><strong>Kendi Çabalarım</strong></a></li>
+  <li>
+<a href="#bug-bounty-yol-haritas%C4%B1-ve-kaynaklar"><strong>Bug Bounty Yol Haritası ve Kaynaklar</strong></a>
+    <ul>
+      <li><a href="#ara%C5%9Ft%C4%B1rma">Araştırma</a></li>
+      <li><a href="#temel-teknolojiler-ve-terimler">Temel Teknolojiler ve Terimler</a></li>
+      <li><a href="#g%C3%BCvenlik-a%C3%A7%C4%B1klar%C4%B1">Güvenlik Açıkları</a></li>
+      <li><a href="#bug-bounty">Bug Bounty</a></li>
+      <li><a href="#recon">Recon</a></li>
+      <li><a href="#attack">Attack</a></li>
+      <li><a href="#bug-bounty-ile-alakal%C4%B1-t%C3%BCm-kaynaklar">Bug Bounty ile Alakalı Tüm Kaynaklar</a></li>
+      <li><a href="#lab-ortamlar%C4%B1">Lab Ortamları</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><br>
+<br></p>
+
+<h2 id="bug-bounty-nedir"><strong>Bug Bounty Nedir?</strong></h2>
+
+<p>Basitçe, şirketlerin belirlediği kurallar çerçevesinde bulduğunuz güvenlik açıkları karşılığında ödül aldığınız bir sistem. Bu sistemde aracı kuruluşlar var; HackerOne, Bugcrowd, Intigriti gibi ve kendi ülkemizde de olan Bugbounter gibi siteler. Hackerlar ile şirketler arasında bir bağlantı olurlar. Bizler de bu siteler aracılığıyla bulduğumuz güvenlik açıklarını raporlarız. Bu sayede de hem şirket fayda görür hem e biz ödül kazanabiliriz.</p>
+<h2 id="kendi-çabalarım"><strong>Kendi Çabalarım</strong></h2>
+
+<p>Fakir ama gönlü zengin bir genç olarak Bug Bounty’den bahsedeceğim. Bunları anlatıyorsun peki sen hiç para kazandın mı derseniz eğer kazanamadım. Hala deniyorum, pes etmedim, pes etmeyeceğim.</p>
+
+<p><img src="/assets/img/social/you-never-give-up-john-cena.gif" alt="dontgivup"></p>
+
+<p>İşin özüne gelirsek eğer, birkaç yıl oldu bu işi deneyeli ve o zamanlar çok fazla bilgi sahibi değildim. İlgileniyordum bu işlerle fakat küçük şeylerle uğraşıyordum, kendime websitesi falan yapıyordum. Ama bundan çok zevk alıyordum. Küçük bir şeyi tasarlayıp bitirdiğimde, o websitesi hiçbir şeye benzemese de başarmışlık hissinin verdiği haz farklı oluyordu. Bu haz bir süre bu işlerle uğraşmaya devam etmeni sağlar fakat zaman ilerlediğinde para kazanman gerçekliğiyle yüzleşeceksin. Ben de yüzleştim bu gerçekle ve kötü yola düşmeden <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20"> bir hacker olarak para kazanmanın yollarını aradım.</p>
+
+<p>Bu gerçek seni araştırmaya itiyo ve buluabileceğin en iyi sonuç freelancer çalışmak oluyor. İlgi alanına göre de ilerleyişin değişiyor tabi ki.</p>
+
+<p>Bu sırada da ben bug bounty olayını duydum ve büyülendim. Dışarıda bu işin içerisinde on yıllarını vermiş insanlar, bu olayı anlattığında kolay bir işmiş gibi duruyor. Ben de bu iş çok iyimiş, hemen yaparım dedim. Fakat öyle değil. Çok fazla çaba ve öğrenme süreci var ve bu süreci karşılıksız yapmak çok zor. Çünkü hayatımızda bir çok sorun bir çok derdin yanında okul falan derken uzun bir öğrenme sürecinde hedefinizi kovalamanız gerekiyor. Bu sadece bug bounty için değil bizim ülkemizdeki her gencin herhangi bir hayali için geçerli.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Bu süreçte öğrenme faslını hızlıca geçmeye çalıştığında ve sadece para kazanmaya odaklı ilerlediğinde en büyük hatayı yapıyorsun. İşin aslını kaçırıp yıllarca kendini oyalamaktan başka hiçbir şey yapmıyorusun.</code></strong></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Bu süreçte herhangi bir başarmışlık hissi almayacaksın. Zamanını harcayacaksın bu işi herşeyin haline getireceksin. Getireceksin ki güncel kalabilesin. Çevre kurucaksın. Başarmak için kolay bir yol yok. Bir disiplinin olacak ve ona uyacaksın, keyfine düşkünsen bu işte başarılı olamazsın. Öğrenmekten, oturup araştırmaktan, bilgisayar başında bir şeyler okumaktan zevk almıyorsan bu işte başarılı olamazsın. Ben bunun bir örneğiyim.</code></strong></p>
+
+<p><strong>Eğer üçkağıtçı değilseniz, suçlu veya siyasetçi değilseniz kimsenin hakkını yemiyorsanız kolay para diye bir şey hiç bir yerde yok.</strong></p>
+
+<ul>
+  <li>İş zor olacak, pes etmeyeceksin.</li>
+  <li>Para kazanmadan önce çok fazla zamanını ayıracaksın.</li>
+  <li>En temel bilgileri dahi okumaktan çekinmeyeceksin ve disiplinini bozmayacaksın.</li>
+  <li>İngilizcen de iyi olacak okuduğunu aşağı yukarı anlıyacaksın.</li>
+  <li>Gerisi sende</li>
+</ul>
+
+<p><img src="/assets/img/social/you-got-it-spongebob.webp" alt="gif"></p>
+
+<p><br></p>
+
+<h2 id="bug-bounty-yol-haritası-ve-kaynaklar"><strong>Bug Bounty Yol Haritası ve Kaynaklar</strong></h2>
+
+<p>Her şeyi sıfırdan anlatmayacağım. Linux öğrenin vesaire diye. Bunlar her halükarda bilmeniz gereken en temel şeyler.</p>
+
+<h2 id="araştırma"><strong>Araştırma</strong></h2>
+
+<p>Bu temel değil mi? Bu da temel ama herkesin atladığı bir temel. İnsanlara öğretmesi en zor olan şey araştırmak. Araştırma duygusuna sahip olun, bulabildiğiniz tüm kaynakları internette araştırın, öğrenmek istediğiniz şeyleri yazmaktan çekinmeyin en basit şeyi bile. Bilmemekten iyidir. Mesela uzak durulması gereken bir tür var bunlar her türlü +18 içeriği aratmasını bilir ama PDF nasıl dönüştürülür diye yazmaktan çekinir. <img class="emoji" title=":stop_sign:" alt=":stop_sign:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f6d1.png" height="20" width="20"> <img class="emoji" title=":facepunch:" alt=":facepunch:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png" height="20" width="20"></p>
+
+<p>Bunu neden söylüyorum? Bug bounty güncel bir iş. Yeni web siteleri, yeni teknolojiler demek, yeni güvenlik açıkları demek. Bu yüzden sürekli bilmediğiniz şeyler karşınıza çıkacak. <code class="language-plaintext highlighter-rouge">Bu yüzden araştırmak bizim için daha daha önemli.</code></p>
+
+<h2 id="temel-teknolojiler-ve-terimler"><strong>Temel Teknolojiler ve Terimler</strong></h2>
+
+<p>Bug bounty’e özel olmayan fakat bilginiz dahilinde olması gereken şeyler de mevcut.  Çok daha genel ve siber güvenlik kavramını kapsayan terimler. Bunun için kesinlikle önerim <a href="https://roadmap.sh/cyber-security">Roadmap.sh’a</a> bakmanız. Burada çok kapsamlı bir bilgi ağacı var her biri çok değerli ve temelde sahip olmanız gereken bilgiler. Ve bu bilgileri kavramanız gerek.</p>
+
+<p>Bence İngilizce bir şeyi okuyup anlamak ile o bilgiyi kavramak arasında çok fark var. Zaten orada yazanlara bağlı kalmamanızı ve orada gördüğünüz şeyleri ayrıca araştırmanız gerekeceğini söylememe gerek yoktur herhalde.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Benim bu konuda izlediğim yol ise websitesi açmak. Websitesi açmaktaki sebep ise anlatmak. Bir bilgiyi kavramadan anlatmanız imkansız. O bilgiyi anlayıp kafanızda oturttuğunuz zaman o konuda bir şeyler anlatabilir olursunuz. Araştırın, öğrenin ve anlatın.</code></strong></p>
+
+<h2 id="güvenlik-açıkları"><strong>Güvenlik Açıkları</strong></h2>
+
+<p><code class="language-plaintext highlighter-rouge">Roadmap.sh'ta</code> yer alan temel her şeyi hallettiğinizde tabii ki her şeyi öğrenmiş olmuyorsunuz. <strong><code class="language-plaintext highlighter-rouge">Sizin için artık en önemli şey güvenlik açıklarını anlamak.</code></strong> Roadmap’te her şey çok detaylı değil. Sizin de artık yeni ve daha detaylı kaynaklara geçmeniz gerekiyor, araştırmalar yapmanız gerekiyor.  Web security içerisindeki güvenlik açıklarının çoğuna hakim olmanız gerekiyor. En iyi kaynak sizin en iyi anladığınız olacaktır. Ben <a href="https://youtube.com/playlist?list=PLwP4ObPL5GY940XhCtAykxLxLEOKCu0nT&si=0NJlE6NnsNZZZ7H6">Mehmet INCE abinin</a>  videolarını yalayıp yutmanızı öneririm. Videoları tek seferde yalayıp yutmak zor, tekrar tekrar izleyin ve kavrayın. Sonrasında siz de anlatmaya çalışın ister yazarak yapın ister videoya alın. Ayrıca bu tür içerik yaratmak da sizin kariyeriniz için çok iyi olacaktır.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Güvenlik açıklarını araştırıp okuyup, izleyip kavradıktan sonra lablarda bunları uygulamalı test edin.</code></strong> TryHackMe benim en sevdiğim platform, arayüzü basit ve anlaşılır. Burada öğrendiğiniz güvenlik açıklarıyla alakalı labları bulun ve test edin. Bunun gibi birçok platform var. <a href="#bug-bounty-ile-alakal%C4%B1-t%C3%BCm-kaynaklar">Kaynaklar</a> kısmından bakabilirsiniz.</p>
+
+<p>İkinci önerim <a href="https://portswigger.net/web-security/all-labs">PortSwigger</a> olacak daha detaylı güvenlik açıklarını test edebiliyorsunuz.</p>
+
+<p><a href="http://testphp.vulnweb.com/">testphp.vulnweb’de</a>  benim en sevdiklerimden burada da birçok şeyi test edebilirsiniz.</p>
+
+<h2 id="bug-bounty"><strong>Bug Bounty</strong></h2>
+
+<p>Gel gelelim Bug bounty metodolojisine, araştırmayı öğrendik, güvenlik açıklarına hakimiz artık para kazanabiliriz. Değil mi? Herhalde kazanırız,  inşallah kazanırız.</p>
+
+<p><img src="/assets/img/social/detective-pikachu-anime.gif" alt="hope"></p>
+
+<p>Bug bounty’de para ödüllü sitelerde rakipleriniz çok olacağından güvenlik açığı bulmak daha zor olacaktır. Öncelikle ödül vermeyen sitelerde şansınızı deneyebilirsiniz. Ben hiç denemedim.</p>
+
+<p>Bug Bounty metodolojisi olarak araştırdığınızda birçok farklı şey göreceksiniz ama olay temelde aynı; hedef hakkında bilgi toplayıp bulabildiğiniz bu bilgilerle güvenlik açığı yaratmak.</p>
+
+<p>Öncelikle hedefinizi belirleyin. Hedef belirleme önemli bir kısım. Kuralları dikkatli okuyun ve başlangıçta bol domainli sitelerde şanısnızı deneyin, ihtimallerinizi yükseltirsiniz.  Hedefinizi belirledikten sonra şunlar çok önemli; <strong><code class="language-plaintext highlighter-rouge">hedef sitenin yapısını anlamak, websitesinin amacını anlamak, ne yaptığını ve o site için ne olursa tehlikeli olur, bunları anlamak.</code></strong>  Bu saydıklarım öncelikli olarak bir websitesinde güvenlik açığı aramadan önce hakim olmanız gereken bilgilerdir.</p>
+
+<p>Güvenlik testlerinde sizin için en iyi araç Burp Suite olacaktır. Alternatif olarak istekleri izleyebilceğiniz postman veya caido gibi uygulamalarda var. Kullanması size hangisi daha rahat geliyor ise onu kullanın.</p>
+<h2 id="recon">Recon</h2>
+
+<p>Bilgi edinme olayına recon diyoruz ve recon içerisinde araç kullanmaktan çekinmemize gerek yok. Birçok araç var ve bunlarla bilgiler toplarsınız, bu konuda yazdığım <a href="https://github.com/Mr0Wido/otorecon">toolu</a> kullanabilirsiniz. Recon için oluşturduğum metodolojimde şu şkilde;</p>
+
+<p><img src="/assets/img/social/otorecon.png" alt="otorecon"></p>
+
+<h2 id="attack">Attack</h2>
+
+<p>Bu bilgileri edindikten sonra bu bilgileri teker teker test etmek gerek. Güvenlik açığı testlerini otomatize etmek için toollar var fakat kesinlikle önermem. <strong><code class="language-plaintext highlighter-rouge">Toollar aptaldır.</code></strong>  Sadece verilen if-else’leri yaparlar. Akıllı olan biziz siteye göre ne arayacağımızı biliriz neye dikkat edeceğimizi biliriz, tool bilmez.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Bu nedenle manuel olarak web sitesini test etmek bizim için çok daha verimli olacaktır. Bilgi toplamak için araç kullanabiliriz tespit ettiğimiz güvenlik açıklarını patlatmak için de araç kullanabiliriz ama güvenlik açığını tespit etmek için tool kullanmak bize hiçbir şey getirmez</code>.  Ama şu da var ki, bir Türk genci olmanın zorluğu olarak öğrenmeyi bekleyemiyecek durumda oluyoruz. Bu yüzden bir yandan toollarla şansınızı deneyip bir yandan da öğrenmeye devam etmeniz benim size önerim olur. Ben de bunu yapıyorum ve şu aracı <a href="https://github.com/Mr0Wido/otoattack">‘otoattack’</a> yeni bitirdim. Siz de deneyebilirsiniz. Belki şansınıza bulursunuz ve size öğrenmeye daha çok iter.</p>
+
+<p><img src="/assets/img/social/otoattack.png" alt="otoattack"></p>
+
+<p>Güvenlik açıklarını raporlamak için de internette halka arz edilmiş birçok rapor var. Bulduğunuz güvenlik açıklarıyla alakalı raporlara bakın örnek ve güzel bir rapor yazın. Nasıl yazılacağı konusunda araştırmalar yapın.</p>
+
+<p>Bunların haricinde anlatacak bir şey yok. Bu iş kesinlikle basit bir şey değil ve toolardan da fazla ümit etmeyin işin asıl kısmını öğrenmeyi halledin. Ve gerisi gelecektir. İnternet nasıl işler bilmiyorken ben bug bounty yapacağım demeyin.</p>
+
+<p> Bunlar bu konudaki genel görüşlerimdi. Umarım yardımı dokunur. Kendinize iyi bakın.  <img class="emoji" title=":wave:" alt=":wave:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png" height="20" width="20"></p>
+
+<h2 id="bug-bounty-ile-alakalı-tüm-kaynaklar"><strong>Bug Bounty ile Alakalı Tüm Kaynaklar</strong></h2>
+
+<ul>
+  <li><a href="https://github.com/akr3ch/BugBountyBooks/tree/main">Bug Bounty Books</a></li>
+  <li><a href="https://m0chan.github.io/2019/12/17/Bug-Bounty-Cheetsheet.html">@m0chan -  Bug Bounty Cheatsheet</a></li>
+  <li><a href="https://bugbountytuts.wordpress.com/wp-content/uploads/2019/01/dirty-recon-1.pdf">Recon Like A Boss</a></li>
+  <li><a href="https://pentestbook.six2dez.com/">@six2dez - pentest-book</a></li>
+  <li><a href="https://infosecwriteups.com/comprehensive-bug-bounty-hunting-checklist-2024-edition-4abb3a9cbe66">Comprehensive Bug Bounty Hunting Methodology</a></li>
+  <li><a href="https://pentester.land/blog/levelup-2018-the-bug-hunters-methodology-v3/">The Bug Hunters Methodology v3</a></li>
+  <li><a href="https://hadariel.pp.ua/aboutme/ethical-hacking/files/TBHMv4%20Recon.pdf">The Bug Hunter’s Methodology v4</a></li>
+  <li><a href="https://github.com/jhaddix/tbhm/tree/master">tbhm</a></li>
+  <li><a href="https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/blob/master/assets/tools.md">Resources-for-Beginner-Bug-Bounty-Hunters</a></li>
+  <li><a href="https://github.com/trilokdhaked/Bug-Bounty-Methodology">Bug-Bounty-Methodology</a></li>
+  <li><a href="https://github.com/LuNiZz/websec101">websec101</a></li>
+  <li><a href="https://github.com/bugcrowd/bugcrowd_university">Bugcrowd University</a></li>
+  <li><a href="https://web.stanford.edu/class/cs253/">CS 253 Web Security</a></li>
+  <li><a href="https://github.com/bittentech/Bug-Bounty-Beginner-Roadmap">Bug-Bounty-Beginner-Roadmap</a></li>
+  <li><a href="https://github.com/ngalongc/bug-bounty-reference">bug-bounty-reference</a></li>
+  <li><a href="https://github.com/sbilly/awesome-security">awesome-security</a></li>
+  <li><a href="https://github.com/blaCCkHatHacEEkr/PENTESTING-BIBLE">PENTESTING-BIBLE</a></li>
+  <li><a href="https://github.com/daffainfo/AllAboutBugBounty">AllAboutBugBounty</a></li>
+  <li><a href="https://github.com/qazbnm456/awesome-web-security">awesome-web-security</a></li>
+  <li><a href="https://github.com/enaqx/awesome-pentest">awesome-pentest</a></li>
+  <li><a href="https://github.com/Hack-with-Github/Awesome-Hacking">Awesome-Hacking</a></li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">TOOLS</code></strong></p>
+<ul>
+  <li><a href="https://github.com/vavkamil/awesome-bugbounty-tools">awesome bugbounty tools</a></li>
+  <li><a href="https://tomnomnom.com/talks/bash-bug-bounty.pdf">Bug Bounties With Bash</a></li>
+  <li><a href="https://bugbountyforum.com/tools/">Bug Bounty Forum</a></li>
+  <li><a href="https://github.com/hahwul/WebHackersWeapons?tab=readme-ov-file#tools">WebHackersWeapons</a></li>
+  <li><a href="https://github.com/0xPugal/One-Liners">One-Liners</a></li>
+  <li><a href="https://github.com/dwisiswant0/awesome-oneliner-bugbounty">Awesome One-liner Bug Bounty</a></li>
+  <li><a href="https://github.com/twseptian/oneliner-bugbounty">oneliner commands</a></li>
+  <li><a href="https://github.com/swisskyrepo/PayloadsAllTheThings">PayloadsAllTheThings</a></li>
+  <li><a href="https://github.com/snoopysecurity/awesome-burp-extensions">Awesome Burp Extensions</a></li>
+  <li><a href="https://github.com/KingOfBugbounty/KingOfBugBountyTips">KingOfBugBountyTips</a></li>
+  <li><a href="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets">Pentest-Cheat-Sheets</a></li>
+  <li><a href="https://github.com/edoardottt/awesome-hacker-search-engines">awesome-hacker-search-engines</a></li>
+  <li>
+<a href="https://github.com/Mr0Wido/bug-bounty-tools">bug-bounty-tools</a>
+    <h2 id="lab-ortamları"><strong>Lab Ortamları</strong></h2>
+  </li>
+  <li><a href="https://tryhackme.com/dashboard">TryHackMe</a></li>
+  <li><a href="https://learn.cyberexam.io/dashboard">cyberexam</a></li>
+  <li><a href="https://ctf.hacker101.com/">hacker101</a></li>
+  <li><a href="https://www.bugbountyhunter.com/training/">BugBountyHunter</a></li>
+  <li><a href="https://overthewire.org/wargames/natas/">overthewire</a></li>
+  <li><a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a></li>
+  <li><a href="https://app.hackinghub.io/hubs">hackinghub</a></li>
+  <li><a href="https://github.com/nahamsec/nahamsec.training">Nahamsec’s Intro To Bug Bounty Labs</a></li>
+  <li><a href="https://www.vulnhub.com/">vulnhub</a></li>
+  <li><a href="https://www.smashthestack.org/main.html">Smash The Stack</a></li>
+  <li><a href="https://www.root-me.org/?lang=en">rootme</a></li>
+  <li><a href="https://pwnable.xyz/">pwnable</a></li>
+  <li><a href="https://pentesterlab.com/">pentesterlab</a></li>
+  <li><a href="https://legacy.hacking-lab.com/events/">legacy</a></li>
+  <li><a href="https://exploit.education/">exploit-education</a></li>
+  <li><a href="https://cryptohack.org/">cryptohack</a></li>
+  <li><a href="https://github.com/cliffe/SecGen">SecGen</a></li>
+  <li><a href="https://github.com/moloch--/RootTheBox">RootTheBox</a></li>
+  <li><a href="https://picoctf.com/">picoCTF</a></li>
+  <li><a href="https://github.com/CTFd/CTFd">CTFd</a></li>
+  <li><a href="https://ctftime.org/">ctftime</a></li>
+</ul>
+
+<p><br>
+<br>
+<br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 23, 2025</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#Social">Social</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">security,</span>
+          
+          <span class="post__tags-item">bug-bounty</span>
+          
+          <span class="post__tags-item">social</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+<!-- Twitter Share Button -->
+<a href="https://twitter.com/intent/tweet?text=Bir%20T%C3%BCrk%20Genci%20ve%20Bug%20Bounty&url=http://localhost:4000/bir-turk-genci-ve-bug-bounty/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+    Tweet
+</a>
+  
+<!-- LinkedIn Share Button -->
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/bir-turk-genci-ve-bug-bounty/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+    LinkedIn
+</a>
+  
+  
+
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/bir-turk-genci-ve-bug-bounty/';
+    this.page.identifier = '/bir-turk-genci-ve-bug-bounty';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+    </div>
+
+
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
+    <footer>
+  <div class="footer">
+    © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+  </div>
+</footer>
+
+    <!-- script -->
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/clip.js"></script>
+    <script src="/assets/js/scroll-top.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bir Türk Genci ve Bug Bounty",
+    "author": {
+      "@type": "Person",
+      "name": ""
+    },
+    "datePublished": "2025-03-23 00:00:00 +0300",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://localhost:4000/bir-turk-genci-ve-bug-bounty/"
+    },
+    "articleSection": "Social"
+  }
+</script>
+  </body>
+</html>
